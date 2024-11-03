@@ -1,24 +1,39 @@
+import { useState, useEffect } from 'react'
 import { Route, Routes, Outlet } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ProjectPage from './pages/ProjectPage'
 import ContactPage from './pages/ContactPage'
 import BoardPage from './pages/BoardPage'
-import Header from './components/Header'
+import Header from './components/header/Header'
 import Footer from './components/Footer'
+import { Theme } from './types/theme'
 
-const Layout = () => (
+const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
-    <Header />
+    <Header toggleTheme={toggleTheme} theme={theme} />
     <Outlet />
     <Footer />
   </>
 )
 
 const App = () => {
+  const [theme, setTheme] = useState('light')
+
+  useEffect(() => {
+    document.body.className = theme
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
+  }
+
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route
+        path="/"
+        element={<Layout toggleTheme={toggleTheme} theme={theme} />}
+      >
         <Route index element={<HomePage />} />
         <Route path="home" element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />

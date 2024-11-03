@@ -1,10 +1,12 @@
 import Container from '@/styles/Container'
+import { Theme } from '@/types/theme'
 import styled from '@emotion/styled'
 import { linkItems } from '@mocks/data'
 import { capitalizeFirstLetter } from '@utils/utils'
 import { Link } from 'react-router-dom'
+import ToggleThemeSwitch from './ToggleThemeSwitch'
 
-const Header = () => {
+const Header = ({ toggleTheme }: Theme) => {
   return (
     <HeaderStyled>
       <Container>
@@ -21,8 +23,10 @@ const Header = () => {
             ))}
           </ul>
         </nav>
-
-        <button>로그인</button>
+        <div className="flex gap-6">
+          <ToggleThemeSwitch onClick={toggleTheme} />
+          <button>로그인</button>
+        </div>
       </Container>
     </HeaderStyled>
   )
@@ -39,7 +43,6 @@ const HeaderStyled = styled.header`
   justify-content: space-between;
   align-items: center;
   height: 5rem;
-  background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 9999;
 `
