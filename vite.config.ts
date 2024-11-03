@@ -1,16 +1,25 @@
-import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react({
+      jsxImportSource: '@emotion/react',
+      babel: {
+        plugins: ['@emotion/babel-plugin'],
+      },
+    }),
+  ],
   resolve: {
     alias: [
       { find: '@', replacement: '/src' },
+      { find: '@mocks', replacement: '/src/mocks' },
       { find: '@components', replacement: '/src/components' },
       { find: '@sections', replacement: '/src/components/sections' },
       { find: '@layouts', replacement: '/src/components/layouts' },
       { find: '@utils', replacement: '/src/utils' },
+      { find: '@assets', replacement: '/src/assets' },
       { find: '@styles', replacement: '/src/styles' },
       { find: '@images', replacement: '/src/images' },
       { find: '@data', replacement: '/src/data' },
@@ -23,7 +32,7 @@ export default defineConfig({
       { find: '@services', replacement: '/src/services' },
       { find: '@api', replacement: '/src/api' },
       { find: '@types', replacement: '/src/types' },
-      { find: '@public', replacement: '/public' }
-    ]
-  }
+      { find: '@public', replacement: '/public' },
+    ],
+  },
 })
