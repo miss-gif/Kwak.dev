@@ -1,5 +1,4 @@
 import HomeLeft from '@/components/home/HomeLeft'
-import HomeRight from '@/components/home/HomeRight'
 import styled from '@emotion/styled'
 
 const HomeInfo = () => {
@@ -7,11 +6,10 @@ const HomeInfo = () => {
     <HomeInfoStyled>
       <div className="">
         <p className="text-8xl">PORTFOLIO</p>
-        <p className="text-8xl">WEB DEVELOP</p>
+        <p className="text-8xl">WEB DEVELOPER</p>
       </div>
       <div className="flex">
         <HomeLeft />
-        <HomeRight />
       </div>
     </HomeInfoStyled>
   )
@@ -26,5 +24,4 @@ const HomeInfoStyled = styled.div`
   gap: 30px;
   width: 100%;
   height: 100vh;
-  padding: 0 2rem;
 `
