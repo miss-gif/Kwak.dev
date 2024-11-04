@@ -8,9 +8,10 @@ import BoardPage from './pages/BoardPage'
 import ChartsPage from './pages/ChartsPage'
 import ContactPage from './pages/ContactPage'
 import HomePage from './pages/HomePage'
+import InterviewPage from './pages/InterviewPage'
+import ProjectDetailPage from './pages/ProjectDetailPage'
 import ProjectPage from './pages/ProjectPage'
 import { Theme } from './types/theme'
-import InterviewPage from './pages/InterviewPage'
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="home" element={<HomePage />} />
         <Route path="about" element={<AboutPage />} />
         <Route path="project" element={<ProjectPage />} />
+        <Route path="project/:id" element={<ProjectDetailPage />} />
         <Route path="interview" element={<InterviewPage />} />
         <Route path="board" element={<BoardPage />} />
         <Route path="contact" element={<ContactPage />} />

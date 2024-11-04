@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <Section>
       <div className="flex ">
-        <AboutLeft />
+        {/* <AboutLeft /> */}
         <AboutRight />
       </div>
     </Section>

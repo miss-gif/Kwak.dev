@@ -4,3 +4,7 @@
 - autoprefixer
 - mui/material
 - mui/icons-material
+
+- react-select
+- fuse.js
+- framer-motion
