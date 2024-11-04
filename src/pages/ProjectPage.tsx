@@ -1,7 +1,8 @@
+import Section from '@/components/sections/Section'
 import React from 'react'
 
 const ProjectPage = () => {
-  return <div>ProjectPage</div>
+  return <Section>ProjectPage</Section>
 }
 
 export default ProjectPage

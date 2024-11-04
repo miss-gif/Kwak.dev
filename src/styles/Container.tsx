@@ -1,6 +1,12 @@
 import styled from '@emotion/styled'
 
-const Container = styled.div`
+const Container = ({ children }: { children: React.ReactNode }) => {
+  return <ContainerStyled>{children}</ContainerStyled>
+}
+
+export default Container
+
+export const ContainerStyled = styled.div`
   padding: 0 2rem;
   max-width: 1440px;
   width: 100%;
@@ -9,5 +15,3 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 `
-
-export default Container

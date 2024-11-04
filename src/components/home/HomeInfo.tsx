@@ -5,8 +5,14 @@ import styled from '@emotion/styled'
 const HomeInfo = () => {
   return (
     <HomeInfoStyled>
-      <HomeLeft />
-      <HomeRight />
+      <div className="">
+        <p className="text-8xl">PORTFOLIO</p>
+        <p className="text-8xl">WEB DEVELOP</p>
+      </div>
+      <div className="flex">
+        <HomeLeft />
+        <HomeRight />
+      </div>
     </HomeInfoStyled>
   )
 }
@@ -14,10 +20,10 @@ const HomeInfo = () => {
 export default HomeInfo
 
 const HomeInfoStyled = styled.div`
-  position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
   width: 100%;
   height: 100vh;
   padding: 0 2rem;

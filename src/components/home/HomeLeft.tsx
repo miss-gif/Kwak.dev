@@ -1,17 +1,12 @@
 import { home } from '@/mocks/data'
 import styled from '@emotion/styled'
-import { FaGithub } from 'react-icons/fa'
-import { RxNotionLogo } from 'react-icons/rx'
-import { PiNotePencil } from 'react-icons/pi'
+import ContactPageIcon from '@mui/icons-material/ContactPage'
+import EditNoteIcon from '@mui/icons-material/EditNote'
+import GitHubIcon from '@mui/icons-material/GitHub'
 
 const HomeLeft = () => {
   return (
     <HomeLeftStyled>
-      <div className="">
-        <p className="text-8xl">PORTFOLIO</p>
-        <p className="text-8xl">WEB DEVELOP</p>
-      </div>
-
       <div className="">{home.description}</div>
       <div className="flex gap-2">
         <LinkStyled
@@ -19,20 +14,20 @@ const HomeLeft = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaGithub />
-          깃허브 링크
+          <GitHubIcon />
+          깃허브
         </LinkStyled>
         <LinkStyled
           href={home.resume}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <RxNotionLogo />
-          이력서 링크
+          <ContactPageIcon />
+          이력서
         </LinkStyled>
         <LinkStyled href={home.study} target="_blank" rel="noopener noreferrer">
-          <PiNotePencil />
-          스터디 링크
+          <EditNoteIcon />
+          스터디
         </LinkStyled>
       </div>
     </HomeLeftStyled>

@@ -2,6 +2,5 @@
 - tailwindcss
 - postcss
 - autoprefixer
-- react-icons
 - mui/material
 - mui/icons-material
