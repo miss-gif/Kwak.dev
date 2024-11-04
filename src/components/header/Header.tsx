@@ -41,7 +41,7 @@ const Header = ({ toggleTheme }: Theme) => {
           <ul className="flex gap-6">
             {linkItems.map((item, index) => (
               <li>
-                <Link to={item.name} key={index}>
+                <Link to={item.path} key={index}>
                   {capitalizeFirstLetter(item.name)}
                 </Link>
               </li>

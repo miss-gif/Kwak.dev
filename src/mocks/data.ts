@@ -1,10 +1,10 @@
 export const linkItems = [
-  { name: 'about' },
-  { name: 'project' },
-  { name: 'interview' },
-  { name: 'board' },
-  { name: 'contact' },
-  { name: 'charts' },
+  { name: '소개', path: 'about' },
+  { name: '프로젝트', path: 'project' },
+  { name: '인터뷰', path: 'interview' },
+  { name: '문의', path: 'contact' },
+  { name: '게시판', path: 'board' },
+  { name: '차트', path: 'charts' },
 ]
 
 export const home = {

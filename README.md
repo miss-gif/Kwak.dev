@@ -8,3 +8,7 @@
 - react-select
 - fuse.js
 - framer-motion
+- zod
+- react-toastify
+- react-hook-form
+- @hookform/resolvers
