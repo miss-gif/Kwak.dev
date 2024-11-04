@@ -1,5 +1,5 @@
 import HeroVideo from '@/components/home/HeroVideo'
-import Container from '@/styles/Container'
+import Container from '@/components/common/Container'
 import HomeInfo from './../components/home/HomeInfo'
 
 const HomePage = () => {

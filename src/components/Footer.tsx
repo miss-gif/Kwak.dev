@@ -1,4 +1,4 @@
-import Container from '@/styles/Container'
+import Container from '@/components/common/Container'
 
 const getCurrentYear = () => {
   return new Date().getFullYear()

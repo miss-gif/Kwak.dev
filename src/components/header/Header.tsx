@@ -1,4 +1,4 @@
-import Container from '@/styles/Container'
+import Container from '@/components/common/Container'
 import { Theme } from '@/types/theme'
 import styled from '@emotion/styled'
 import { linkItems } from '@mocks/data'

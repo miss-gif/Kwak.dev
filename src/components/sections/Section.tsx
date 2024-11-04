@@ -1,4 +1,4 @@
-import Container from '@/styles/Container'
+import Container from '@/components/common/Container'
 import SectionTitle from './SectionTitle'
 
 const Section = ({ children }: { children: React.ReactNode }) => {

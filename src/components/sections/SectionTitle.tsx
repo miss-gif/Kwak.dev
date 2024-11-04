@@ -1,4 +1,4 @@
-import Container from '@/styles/Container'
+import Container from '@/components/common/Container'
 import styled from '@emotion/styled'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'

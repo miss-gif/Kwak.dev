@@ -1,9 +1,10 @@
 export const linkItems = [
-  { name: 'home' },
   { name: 'about' },
   { name: 'project' },
+  { name: 'interview' },
   { name: 'board' },
   { name: 'contact' },
+  { name: 'charts' },
 ]
 
 export const home = {
