@@ -162,6 +162,46 @@ const skills = [
       '코드 스플리팅 및 라우터 기반의 코드 로딩 가능',
     ],
   },
+  {
+    img: '',
+    id: 16,
+    name: 'Tailwind CSS',
+    percentage: 68,
+    description: [
+      '신속한 스타일링 및 컴포넌트 기반 설계 가능',
+      '반응형 디자인과 커스터마이징을 적용 가능',
+    ],
+  },
+  {
+    img: '',
+    id: 17,
+    name: 'Firebase',
+    percentage: 68,
+    description: [
+      '실시간 데이터베이스 및 Firestore 활용 가능',
+      '인증(Authentication) 기능을 통한 사용자 관리 가능',
+      'Firebase Hosting을 이용한 애플리케이션 배포 가능',
+    ],
+  },
+  {
+    img: '',
+    id: 17,
+    name: 'React Hook Form',
+    percentage: 68,
+    description: [
+      '효율적인 폼 상태 관리 가능',
+      '커스텀 입력 컴포넌트와 통합 가능',
+      '성능 최적화를 위한 렌더링 최소화 가능',
+      '비동기 유효성 검사 및 에러 처리 가능',
+    ],
+  },
+  {
+    img: '',
+    id: 17,
+    name: 'Zod',
+    percentage: 68,
+    description: ['간단한 API로 데이터 유효성 검증 및 타입 추론 가능'],
+  },
 ]
 
 export default skills
