@@ -4,7 +4,7 @@ export const linkItems = [
   { name: '인터뷰', path: 'interview' },
   { name: '문의', path: 'contact' },
   { name: '게시판', path: 'board' },
-  { name: '차트', path: 'charts' },
+  { name: '통계', path: 'charts' },
 ]
 
 export const home = {
