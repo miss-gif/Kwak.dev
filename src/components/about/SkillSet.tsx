@@ -79,9 +79,11 @@ const SkillSet = () => {
        * 이 코드가 있어야 canvas에서 마우스 휠 이벤트를 중지 할 수 있음.
        * canvas.removeEventListener('wheel', mouse.mousewheel)
        * canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
+       * 24.11.05 수정
+       * 배포 문제로 인해 주석처리
        */
-      canvas.removeEventListener('wheel', mouse.mousewheel)
-      canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
+      // canvas.removeEventListener('wheel', mouse.mousewheel)
+      // canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
 
       Events.on(mouseConstraint, 'mousedown', () => {
         const newSelected =
