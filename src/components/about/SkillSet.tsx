@@ -17,7 +17,7 @@ import JS from '@assets/skill_icons/css.svg'
 const data = {
   자바스크립트: { title: JS, level: 4, description: '자바스크립트 설명' },
   CSS: { title: JS, level: 4, description: 'CSS 설명' },
-  axios: { title: JS, level: 4, description: 'CSS 설명' },
+  axios: { title: AXIOS, level: 4, description: 'axios 설명' },
 }
 
 const SkillSet = () => {
@@ -28,7 +28,7 @@ const SkillSet = () => {
     const canvas = canvasRef.current as HTMLCanvasElement | null
     if (!canvas) return
 
-    let observer
+    let observer: IntersectionObserver
 
     const cw = 1000
     const ch = 1000
@@ -69,8 +69,14 @@ const SkillSet = () => {
       })
       Composite.add(engine.world, mouseConstraint)
 
-      canvas.removeEventListener('wheel', mouse.mousewheel)
-      canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
+      Events.on(mouseConstraint, 'mousedown', () => {
+        const newSelected =
+          mouseConstraint.body &&
+          data[mouseConstraint.body.label as keyof typeof data]
+
+        newSelected && setSelected(newSelected)
+        console.log(mouseConstraint.body)
+      })
     }
     const initIntersectionObserver = () => {
       const options = {
@@ -78,11 +84,10 @@ const SkillSet = () => {
       }
       observer = new IntersectionObserver((entries) => {
         const entry = entries[0]
-        console.log(entry.isIntersecting)
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !runner.enabled) {
           runner.enabled = true
           Render.run(render)
-        } else {
+        } else if (!entry.isIntersecting && runner.enabled) {
           runner.enabled = false
           Render.stop(render)
         }
@@ -108,27 +113,21 @@ const SkillSet = () => {
       }
     }
     const initSkillIcon = () => {
-      addRect(cw / 2, ch / 2, 100 * 0.7, 100 * 0.7, {
-        label: 'axios',
-        chamfer: { radius: 20 },
-        render: {
-          sprite: {
-            texture: AXIOS,
-            xScale: 0.5,
-            yScale: 0.5,
+      Object.entries(data).forEach(([key, { title }]) => {
+        addRect(cw / 2, ch / 2, 100 * 0.7, 100 * 0.7, {
+          label: key,
+          chamfer: { radius: 20 },
+          render: {
+            sprite: {
+              texture: title,
+              xScale: 0.5,
+              yScale: 0.5,
+            },
           },
-        },
-      })
-      addRect(cw / 2, ch / 2, 100 * 0.7, 100 * 0.7, {
-        render: {
-          sprite: {
-            texture: JS,
-            xScale: 0.5,
-            yScale: 0.5,
-          },
-        },
+        })
       })
     }
+
     const addRect = (
       x: number,
       y: number,
@@ -146,13 +145,7 @@ const SkillSet = () => {
     initSkillIcon()
     initIntersectionObserver()
 
-    Events.on(mouseConstraint, 'mousedown', () => {
-      const newSelected =
-        mouseConstraint.body && data[mouseConstraint.body.label]
-
-      newSelected && setSelected(newSelected)
-      console.log(mouseConstraint.body)
-    })
+    runner = Runner.create()
 
     Events.on(runner, 'tick', () => {
       gravityDeg += 1
@@ -164,8 +157,7 @@ const SkillSet = () => {
 
     return () => {
       observer.unobserve(canvas)
-
-      Composite.clear(engine.world)
+      Composite.clear(engine.world, false)
       Mouse.clearSourceEvents(mouse)
       Render.stop(render)
       Runner.stop(runner)
