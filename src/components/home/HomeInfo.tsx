@@ -1,15 +1,17 @@
 import HomeLeft from '@/components/home/HomeLeft'
 import styled from '@emotion/styled'
+import HomeNotice from './HomeNotice'
 
 const HomeInfo = () => {
   return (
     <HomeInfoStyled>
-      <div className="">
-        <p className="text-8xl">PORTFOLIO</p>
-        <p className="text-8xl">WEB DEVELOPER</p>
-      </div>
-      <div className="flex">
+      <div className="flex justify-between">
         <HomeLeft />
+        <div className="flex flex-col gap-4">
+          <HomeNotice />
+          <HomeNotice />
+          <HomeNotice />
+        </div>
       </div>
     </HomeInfoStyled>
   )
