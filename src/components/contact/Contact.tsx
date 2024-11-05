@@ -1,15 +1,14 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import ContactForm from './ContactForm'
 import ThankYouMessage from './ThankYouMessage'
 
 const Contact = () => {
   const [complete, setComplete] = useState(false)
-  const [profile, setProfile] = useState({
-    contact: '',
-    email: '',
-    github: '',
-  })
+  // const [profile, setProfile] = useState({
+  //   contact: '',
+  //   email: '',
+  //   github: '',
+  // })
 
   const handleSubmitSuccess = () => {
     setComplete(true)

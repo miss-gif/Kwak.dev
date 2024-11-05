@@ -19,11 +19,11 @@ export default Article
 
 const ArticleStyled = styled.article`
   border-radius: 4px;
-  /* background: red; */
 `
 
 const TitleStyled = styled.h2`
-  padding: 40px 20px;
+  text-transform: uppercase;
+  padding: 60px 40px;
   text-align: center;
   font-size: 40px;
   font-weight: 700;

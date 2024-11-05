@@ -9,7 +9,7 @@ import Section from '@/components/sections/Section'
 import { useState } from 'react'
 
 const AboutPage = () => {
-  const [showSkill, setShowSkill] = useState(true)
+  const [showSkill, setShowSkill] = useState(false)
 
   const handleToggle = () => {
     setShowSkill(!showSkill)

@@ -35,6 +35,7 @@ const RAW_RUNTIME_STATE =
           ["@hookform/resolvers", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:3.9.1"],\
           ["@mui/icons-material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
           ["@mui/material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
+          ["@types/matter-js", "npm:0.19.7"],\
           ["@types/react", "npm:18.3.12"],\
           ["@types/react-dom", "npm:18.3.1"],\
           ["@typescript-eslint/eslint-plugin", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:8.12.2"],\
@@ -51,6 +52,7 @@ const RAW_RUNTIME_STATE =
           ["framer-motion", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:11.11.11"],\
           ["fuse.js", "npm:7.0.0"],\
           ["globals", "npm:15.11.0"],\
+          ["matter-js", "npm:0.20.0"],\
           ["postcss", "npm:8.4.47"],\
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
@@ -1590,6 +1592,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@types-json-schema-npm-7.0.15-fd16381786-10c0.zip/node_modules/@types/json-schema/",\
         "packageDependencies": [\
           ["@types/json-schema", "npm:7.0.15"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/matter-js", [\
+      ["npm:0.19.7", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@types-matter-js-npm-0.19.7-bd8c3f482f-10c0.zip/node_modules/@types/matter-js/",\
+        "packageDependencies": [\
+          ["@types/matter-js", "npm:0.19.7"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4367,6 +4378,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["matter-js", [\
+      ["npm:0.20.0", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/matter-js-npm-0.20.0-7d3bb65115-10c0.zip/node_modules/matter-js/",\
+        "packageDependencies": [\
+          ["matter-js", "npm:0.20.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["memoize-one", [\
       ["npm:6.0.0", {\
         "packageLocation": "../../AppData/Local/Yarn/Berry/cache/memoize-one-npm-6.0.0-8b2a2cd020-10c0.zip/node_modules/memoize-one/",\
@@ -5070,6 +5090,7 @@ const RAW_RUNTIME_STATE =
           ["@hookform/resolvers", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:3.9.1"],\
           ["@mui/icons-material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
           ["@mui/material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
+          ["@types/matter-js", "npm:0.19.7"],\
           ["@types/react", "npm:18.3.12"],\
           ["@types/react-dom", "npm:18.3.1"],\
           ["@typescript-eslint/eslint-plugin", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:8.12.2"],\
@@ -5086,6 +5107,7 @@ const RAW_RUNTIME_STATE =
           ["framer-motion", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:11.11.11"],\
           ["fuse.js", "npm:7.0.0"],\
           ["globals", "npm:15.11.0"],\
+          ["matter-js", "npm:0.20.0"],\
           ["postcss", "npm:8.4.47"],\
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\

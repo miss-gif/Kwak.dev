@@ -20,8 +20,6 @@ interface SkillItemProps {
 
 const Skill = () => {
   const [skills, setSkills] = useState<Skill[]>([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -29,10 +27,8 @@ const Skill = () => {
         const response = await axios.get('/json/skills.json')
         setSkills(response.data)
       } catch (error) {
-        setError('Skills data could not be loaded. Please try again later.')
         console.error('Error fetching skills data:', error)
       } finally {
-        setLoading(false)
       }
     }
 

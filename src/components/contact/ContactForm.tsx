@@ -1,4 +1,4 @@
-// ContactForm.js
+// ContactForm.tsx
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
 import { useForm } from 'react-hook-form'
@@ -12,16 +12,16 @@ const schema = z.object({
   honeypot: z.string().optional(),
 })
 
-const ContactForm = ({ onSubmitSuccess }) => {
+const ContactForm = ({ onSubmitSuccess }: any) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm({
     resolver: zodResolver(schema),
   })
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: any) => {
     const formData = new FormData()
     Object.keys(data).forEach((key) => formData.append(key, data[key]))
 
@@ -54,14 +54,14 @@ const ContactForm = ({ onSubmitSuccess }) => {
           </label>
           <input
             id="name"
-            name="name"
+            // name="name"
             className="contact-form__input"
             placeholder="귀하의 성함을 적어주세요."
             {...register('name')}
           />
-          {errors.name && (
+          {/* {errors.name && (
             <p className="contact-form__error">{errors.name.message}</p>
-          )}
+          )} */}
         </fieldset>
 
         <fieldset className="contact-form__group">
@@ -70,15 +70,15 @@ const ContactForm = ({ onSubmitSuccess }) => {
           </label>
           <input
             id="email"
-            name="email"
+            // name="email"
             type="email"
             className="contact-form__input"
             placeholder="답변받으실 이메일 주소를 적어주세요."
             {...register('email')}
           />
-          {errors.email && (
+          {/* {errors.email && (
             <p className="contact-form__error">{errors.email.message}</p>
-          )}
+          )} */}
         </fieldset>
 
         <fieldset className="contact-form__group">
@@ -87,15 +87,15 @@ const ContactForm = ({ onSubmitSuccess }) => {
           </label>
           <textarea
             id="message"
-            name="message"
-            rows="5"
+            // name="message"
+            // rows="5"
             className="contact-form__textarea"
             placeholder="궁금하신 점이 있으시면 언제든지 문의해 주세요."
             {...register('message')}
           />
-          {errors.message && (
+          {/* {errors.message && (
             <p className="contact-form__error">{errors.message.message}</p>
-          )}
+          )} */}
         </fieldset>
 
         <fieldset
@@ -108,7 +108,7 @@ const ContactForm = ({ onSubmitSuccess }) => {
           </label>
           <input
             id="honeypot"
-            name="honeypot"
+            // name="honeypot"
             type="text"
             {...register('honeypot')}
           />
@@ -118,6 +118,7 @@ const ContactForm = ({ onSubmitSuccess }) => {
           보내기
         </button>
       </div>
+      <button type="submit">전송</button>
     </form>
   )
 }
