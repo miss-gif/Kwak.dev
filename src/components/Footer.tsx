@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <FooterStyled>
       <Container>
-        <p> ⓒ {currentYear} miss-gif. All Rights Reserved.</p>
+        <p>ⓒ {currentYear} miss-gif. All Rights Reserved.</p>
       </Container>
     </FooterStyled>
   )
@@ -20,6 +20,12 @@ const Footer = () => {
 export default Footer
 
 const FooterStyled = styled.footer`
-  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 80px;
+  padding: 30px 0;
   background: rgba(0, 0, 0, 0.1);
 `
