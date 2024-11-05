@@ -41,29 +41,17 @@ const Skill = () => {
 
   return (
     <section className="skills section">
-      <h2 className="section__title text-cs" id="skills">
-        Professional Skills
-      </h2>
-      <p className="section__subtitle">
-        My <span>techStack</span>
-      </p>
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <ul className="skills__container container grid">
-          {skills.map(({ img, name, percentage, description, id }) => (
-            <SkillItem
-              key={id}
-              img={img}
-              name={name}
-              percentage={percentage}
-              description={description}
-            />
-          ))}
-        </ul>
-      )}
+      <ul className="skills__container container grid">
+        {skills.map(({ img, name, percentage, description, id }) => (
+          <SkillItem
+            key={id}
+            img={img}
+            name={name}
+            percentage={percentage}
+            description={description}
+          />
+        ))}
+      </ul>
     </section>
   )
 }

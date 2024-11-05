@@ -1,14 +1,11 @@
 const Career = () => {
   return (
     <div className="p-6 lg:p-12 ">
-      <h3 className="text-3xl font-bold mb-8 text-center  tracking-wide">
-        CAREER
-      </h3>
       <div className="flex flex-col gap-16">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col md:flex-row gap-8 md:gap-12">
             <div className="w-[300px] flex  justify-center">
-              <div className="w-[230px] h-[230px] border-4  rounded-full flex items-center justify-center shadow-md">
+              <div className="w-[230px] h-[230px] border-4  rounded-full flex items-center justify-center shadow-md ">
                 <p className="text-lg  font-semibold">로고</p>
               </div>
             </div>
