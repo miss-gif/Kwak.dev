@@ -14,7 +14,14 @@ import { useEffect, useRef, useState } from 'react'
 import AXIOS from '@assets/skill_icons/axios.svg'
 import JS from '@assets/skill_icons/css.svg'
 
-const data = {
+// Skill data 타입 정의
+type SkillData = {
+  title: string
+  level: number
+  description: string
+}
+
+const data: Record<string, SkillData> = {
   자바스크립트: { title: JS, level: 4, description: '자바스크립트 설명' },
   CSS: { title: JS, level: 4, description: 'CSS 설명' },
   axios: { title: AXIOS, level: 4, description: 'axios 설명' },
@@ -22,25 +29,24 @@ const data = {
 
 const SkillSet = () => {
   const [selected, setSelected] = useState(data['CSS'])
-  const canvasRef = useRef(null)
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
-    const canvas = canvasRef.current as HTMLCanvasElement | null
+    const canvas = canvasRef.current
     if (!canvas) return
-
-    let observer: IntersectionObserver
 
     const cw = 1000
     const ch = 1000
 
-    const garvityPower = 0.5
+    const gravityPower = 0.5 // 오타 수정
     let gravityDeg = 0
 
-    let engine: Engine,
-      render: Render,
-      runner: Runner,
-      mouse: Mouse,
-      mouseConstraint: MouseConstraint
+    let engine: Engine
+    let render: Render
+    let runner: Runner
+    let mouse: Mouse
+    let mouseConstraint: MouseConstraint
+    let observer: IntersectionObserver
 
     const initScene = () => {
       engine = Engine.create()
@@ -55,10 +61,10 @@ const SkillSet = () => {
       })
 
       runner = Runner.create()
-
       Render.run(render)
       Runner.run(runner, engine)
     }
+
     const initMouse = () => {
       mouse = Mouse.create(canvas)
       mouseConstraint = MouseConstraint.create(engine, {
@@ -69,32 +75,40 @@ const SkillSet = () => {
       })
       Composite.add(engine.world, mouseConstraint)
 
+      /**
+       * 이 코드가 있어야 canvas에서 마우스 휠 이벤트를 중지 할 수 있음.
+       * canvas.removeEventListener('wheel', mouse.mousewheel)
+       * canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
+       */
+      canvas.removeEventListener('wheel', mouse.mousewheel)
+      canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
+
       Events.on(mouseConstraint, 'mousedown', () => {
         const newSelected =
           mouseConstraint.body &&
           data[mouseConstraint.body.label as keyof typeof data]
-
         newSelected && setSelected(newSelected)
         console.log(mouseConstraint.body)
       })
     }
+
     const initIntersectionObserver = () => {
-      const options = {
-        threshold: 0.5,
-      }
-      observer = new IntersectionObserver((entries) => {
-        const entry = entries[0]
-        if (entry.isIntersecting && !runner.enabled) {
-          runner.enabled = true
-          Render.run(render)
-        } else if (!entry.isIntersecting && runner.enabled) {
-          runner.enabled = false
-          Render.stop(render)
-        }
-      }, options)
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            runner.enabled = true
+            Render.run(render)
+          } else {
+            runner.enabled = false
+            Render.stop(render)
+          }
+        },
+        { threshold: 0.5 },
+      )
 
       observer.observe(canvas)
     }
+
     const initGround = () => {
       const segment = 32
       const deg = (Math.PI * 2) / segment
@@ -112,6 +126,7 @@ const SkillSet = () => {
         })
       }
     }
+
     const initSkillIcon = () => {
       Object.entries(data).forEach(([key, { title }]) => {
         addRect(cw / 2, ch / 2, 100 * 0.7, 100 * 0.7, {
@@ -150,9 +165,9 @@ const SkillSet = () => {
     Events.on(runner, 'tick', () => {
       gravityDeg += 1
       engine.world.gravity.x =
-        Math.cos((Math.PI / 100) * gravityDeg) * garvityPower
+        Math.cos((Math.PI / 100) * gravityDeg) * gravityPower
       engine.world.gravity.y =
-        Math.sin((Math.PI / 100) * gravityDeg) * garvityPower
+        Math.sin((Math.PI / 100) * gravityDeg) * gravityPower
     })
 
     return () => {
@@ -174,18 +189,16 @@ const SkillSet = () => {
           <p>
             {Array(5)
               .fill(null)
-              .map((_, i) => {
-                return (
-                  <span
-                    key={i}
-                    style={{
-                      filter: `grayscale(${selected.level <= i ? 1 : 0})`,
-                    }}
-                  >
-                    &#11088;
-                  </span>
-                )
-              })}
+              .map((_, i) => (
+                <span
+                  key={i}
+                  style={{
+                    filter: `grayscale(${selected.level <= i ? 1 : 0})`,
+                  }}
+                >
+                  &#11088;
+                </span>
+              ))}
           </p>
           <p>{selected.description}</p>
         </AsideStyled>
