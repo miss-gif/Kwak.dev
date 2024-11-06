@@ -8,16 +8,29 @@ export default function BasicButtons({
 }) {
   return (
     <Stack spacing={2} direction="row">
-      {/* <Button variant="text">{children}</Button> */}
       <Button
-        variant="contained"
+        variant="text"
         sx={{
-          color: 'white',
-          backgroundColor: '#705746',
+          color: 'currentColor',
+          fontWeight: 'bold',
+          textDecoration: 'underline',
+          '&:hover': {
+            color: '#fff',
+            backgroundColor: '#EE8130',
+          },
         }}
       >
         {children}
       </Button>
+      {/* <Button
+        variant="contained"
+        sx={{
+          color: 'white',
+          backgroundColor: 'black',
+        }}
+      >
+        {children}
+      </Button> */}
       {/* <Button variant="outlined">{children}</Button> */}
     </Stack>
   )

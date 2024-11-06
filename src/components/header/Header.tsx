@@ -1,28 +1,23 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Container from '@/components/common/Container'
 import { Theme } from '@/types/theme'
-import styled from '@emotion/styled'
 import { linkItems } from '@mocks/data'
 import { capitalizeFirstLetter } from '@utils/utils'
-import { Link } from 'react-router-dom'
 import BasicButtons from '../common/Button'
+import NavToggle from './NavToggle'
 import ToggleThemeSwitch from './ToggleThemeSwitch'
-import { useEffect } from 'react'
+import { handleScroll } from './handleScroll'
+
+import classNames from 'classnames'
 
 const Header = ({ toggleTheme }: Theme) => {
-  // 스크롤 이벤트 핸들러
-  const handleScroll = () => {
-    const header = document.querySelector('.header')
-    if (header) {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-      if (scrollTop > 0) {
-        header.classList.add('scrolled')
-      } else {
-        header.classList.remove('scrolled')
-      }
-    }
+  const [selectedItem, setSelectedItem] = useState<string | null>(null)
+
+  const handleClick = (itemName: string | null) => {
+    setSelectedItem(itemName)
   }
 
-  // 스크롤 이벤트 등록
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => {
@@ -31,47 +26,42 @@ const Header = ({ toggleTheme }: Theme) => {
   }, [])
 
   return (
-    <HeaderStyled className="header">
+    <header className="header fixed top-0 left-0 w-full flex items-center justify-between h-20 z-50 transition-shadow duration-300">
       <Container>
-        <Link to={'/'}>
-          <h1>Portfolio</h1>
-        </Link>
+        <div className="flex items-center justify-between w-full px-4">
+          <Link to={'/'} onClick={() => handleClick(null)}>
+            <h1 className="text-2xl font-bold">Portfolio</h1>
+          </Link>
 
-        <nav>
-          <ul className="flex gap-6">
-            {linkItems.map((item, index) => (
-              <li>
-                <Link to={item.path} key={index}>
-                  {capitalizeFirstLetter(item.name)}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="flex gap-6">
-          <ToggleThemeSwitch onClick={toggleTheme} />
-          <BasicButtons>로그인</BasicButtons>
+          <nav className="hidden md:block">
+            <ul className="flex gap-6">
+              {linkItems.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    to={item.path}
+                    className={classNames('hover:text-blue-600', {
+                      'font-bold': selectedItem === item.name,
+                    })}
+                    onClick={() => handleClick(item.name)} // 클릭 시 선택된 항목을 설정
+                  >
+                    {capitalizeFirstLetter(item.name)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex items-center md:gap-6 gap-2">
+            <div className="flex md:gap-2 gap-2 items-center">
+              <BasicButtons>로그인</BasicButtons>
+              <ToggleThemeSwitch onClick={toggleTheme} />
+            </div>
+            <NavToggle />
+          </div>
         </div>
       </Container>
-    </HeaderStyled>
+    </header>
   )
 }
 
 export default Header
-
-const HeaderStyled = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  z-index: 9999;
-
-  &.scrolled {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-  }
-`

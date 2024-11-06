@@ -10,15 +10,16 @@ const HomeLeft = () => {
       <div className="flex flex-col">
         {/* 타이틀 */}
         <div className="">
-          <p className="text-2xl font-bold">FRONT END & Web Publisher</p>
+          <p className="text-2xl font-bold">to design the world by coding</p>
           <p className="text-7xl font-bold">PORTFOLIO</p>
           <p className="text-7xl font-bold">WEB DEVELOPER</p>
         </div>
         {/* 콘텐츠 */}
-        <div className="py-14 ">
-          <p>제 포트폴리오에 관심을 가져주셔서 감사합니다. </p>
-          <p>전문성을 향상시키기 위해 끊임없이 새로운 기술을 학습하고,</p>
-          <p>프로젝트에 적용하여 역량을 강화하고 있습니다.</p>
+        <div className="py-14 leading-8">
+          저는 끊임없이 새로운 기술을 배우고,
+          <br /> 이를 실제 프로젝트에 적용하며 성장하는 프론트엔드 개발자입니다.
+          <br /> 사용자 중심의 디자인을 통해 효율적이고 직관적인 웹 서비스를
+          개발하는 것을 목표로 합니다. <br />
         </div>
         {/* 링크 그룹 */}
         <div className="flex gap-2">
@@ -61,15 +62,24 @@ const HomeLeftStyled = styled.div`
 `
 
 const LinkStyled = styled.a`
-  width: 160px;
-  height: 50px;
-  padding: 15px 30px;
-  border: 1px solid #333;
-  border-radius: 30px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  svg {
-    font-size: 26px;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+
+  &:hover {
+    background-color: #ee8130;
+    color: #fff;
+  }
+
+  &:focus {
+    outline: 2px solid #ee8130;
   }
 `
