@@ -39,6 +39,7 @@ export default function SkillViewer() {
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue)
+    console.log(event)
   }
 
   return (
