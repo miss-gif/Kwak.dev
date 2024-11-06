@@ -5,7 +5,7 @@ const Career = () => {
   const trainingData = education[1].training
 
   return (
-    <ul className="flex flex-col gap-32">
+    <ul className="flex flex-col gap-32 mt-16">
       {trainingData?.map((training, index) => (
         <li key={index} className="flex gap-12">
           {/* 기업로고 영역 */}

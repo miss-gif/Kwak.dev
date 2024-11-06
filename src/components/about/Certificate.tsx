@@ -4,7 +4,7 @@ const Certificate = () => {
   const certifications = personalInfo.certifications
 
   return (
-    <ul className="grid gap-8">
+    <ul className="grid gap-8 mt-16">
       {certifications.map((certification, index) => (
         <li
           key={index}

@@ -23,7 +23,7 @@ const ArticleStyled = styled.article`
 
 const TitleStyled = styled.h2`
   text-transform: uppercase;
-  padding: 120px 0;
+  padding-top: 120px;
   text-align: center;
   font-size: 40px;
   font-weight: 700;
