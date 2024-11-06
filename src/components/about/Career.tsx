@@ -1,24 +1,24 @@
-import { education } from '@/data'
-import styled from '@emotion/styled'
+import { education } from "@/data";
+import styled from "@emotion/styled";
 
 const Career = () => {
-  const trainingData = education[1].training
+  const trainingData = education[1].training;
 
   return (
-    <ul className="flex flex-col gap-32 mt-16">
+    <ul className="mt-16 flex flex-col gap-32">
       {trainingData?.map((training, index) => (
-        <li key={index} className="flex gap-12">
+        <li key={index} className="flex flex-col gap-12 lg:flex-row">
           {/* 기업로고 영역 */}
-          <div>
+          <div className="m-auto">
             <LogoStyled>
               <img src={training.logo} alt={`${training.institution} logo`} />
             </LogoStyled>
           </div>
 
           {/* 활동내역 영역 */}
-          <div className="border-l-4 border-gray-100 pl-12 py-4">
+          <div className="w-full border-l-4 py-4 pl-12 lg:border-gray-100">
             <div>
-              <div className="flex flex-col gap-2 mb-4">
+              <div className="mb-4 flex flex-col gap-2">
                 <h4 className="text-2xl font-semibold">
                   {training.institution}
                 </h4>
@@ -33,7 +33,7 @@ const Career = () => {
                       <time>{project.date}</time>
                       <p className="leading-6">{project.description}</p>
                       <p className="leading-relaxed">
-                        기술 스택: {project.techStack.join(', ')}
+                        기술 스택: {project.techStack.join(", ")}
                       </p>
                     </div>
                   </div>
@@ -44,10 +44,10 @@ const Career = () => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default Career
+export default Career;
 
 const LogoStyled = styled.div`
   width: 230px;
@@ -61,8 +61,8 @@ const LogoStyled = styled.div`
   overflow: hidden;
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     object-fit: contain;
   }
-`
+`;

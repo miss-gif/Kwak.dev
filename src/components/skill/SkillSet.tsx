@@ -204,12 +204,14 @@ const SkillSet = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-between gap-10">
+      <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
         <CanvasStyled ref={canvasRef}></CanvasStyled>
         {selected && (
           // 우측 사이드 영역
-          <AsideStyled>
-            <h4 className="text-4xl font-semibold">{selected.name}</h4>
+          <div className="flex h-2/3 w-2/4 flex-col items-center justify-center gap-5 md:items-start">
+            <h4 className="text-6xl font-semibold md:text-6xl">
+              {selected.name}
+            </h4>
             <p>
               {Array(5)
                 .fill(null)
@@ -226,13 +228,13 @@ const SkillSet = () => {
             </p>
             <p>
               {selected.description.map((item, index) => (
-                <span key={index}>
+                <span key={index} className="text-xl leading-8">
                   {item}
                   <br />
                 </span>
               ))}
             </p>
-          </AsideStyled>
+          </div>
         )}
       </div>
     </div>
