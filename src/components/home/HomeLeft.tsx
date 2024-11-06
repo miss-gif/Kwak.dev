@@ -1,8 +1,8 @@
-import { home } from '@/mocks/data'
-import styled from '@emotion/styled'
-import ContactPageIcon from '@mui/icons-material/ContactPage'
-import EditNoteIcon from '@mui/icons-material/EditNote'
-import GitHubIcon from '@mui/icons-material/GitHub'
+import { home } from "@/mocks/data";
+import styled from "@emotion/styled";
+import ContactPageIcon from "@mui/icons-material/ContactPage";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const HomeLeft = () => {
   return (
@@ -50,16 +50,16 @@ const HomeLeft = () => {
         </div>
       </div>
     </HomeLeftStyled>
-  )
-}
+  );
+};
 
-export default HomeLeft
+export default HomeLeft;
 
 const HomeLeftStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-`
+`;
 
 const LinkStyled = styled.a`
   display: flex;
@@ -82,4 +82,4 @@ const LinkStyled = styled.a`
   &:focus {
     outline: 2px solid #ee8130;
   }
-`
+`;

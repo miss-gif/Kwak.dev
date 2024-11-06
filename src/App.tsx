@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react'
-import { Outlet, Route, Routes } from 'react-router-dom'
-import BasicSpeedDial from './components/common/BasicSpeedDial'
-import Footer from './components/Footer'
-import Header from './components/header/Header'
-import AboutPage from './pages/AboutPage'
-import BoardPage from './pages/BoardPage'
-import ChartsPage from './pages/ChartsPage'
-import ContactPage from './pages/ContactPage'
-import HomePage from './pages/HomePage'
-import InterviewPage from './pages/InterviewPage'
-import ProjectDetailPage from './pages/ProjectDetailPage'
-import ProjectPage from './pages/ProjectPage'
-import { Theme } from './types/theme'
+import { useEffect, useState } from "react";
+import { Outlet, Route, Routes } from "react-router-dom";
+import BasicSpeedDial from "./components/common/BasicSpeedDial";
+import Footer from "./components/Footer";
+import Header from "./components/header/Header";
+import AboutPage from "./pages/AboutPage";
+import BoardPage from "./pages/BoardPage";
+import ChartsPage from "./pages/ChartsPage";
+import ContactPage from "./pages/ContactPage";
+import HomePage from "./pages/HomePage";
+import InterviewPage from "./pages/InterviewPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
+import ProjectPage from "./pages/ProjectPage";
+import { Theme } from "./types/theme";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -20,18 +20,18 @@ const Layout = ({ toggleTheme, theme }: Theme) => (
     <Footer />
     <BasicSpeedDial />
   </>
-)
+);
 
 const App = () => {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    document.body.className = theme
-  }, [theme])
+    document.body.className = theme;
+  }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'))
-  }
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
 
   return (
     <Routes>
@@ -50,7 +50,7 @@ const App = () => {
         <Route path="charts" element={<ChartsPage />} />
       </Route>
     </Routes>
-  )
-}
+  );
+};
 
-export default App
+export default App;

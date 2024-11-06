@@ -1,31 +1,19 @@
-import Container from '@/components/common/Container'
-import styled from '@emotion/styled'
+import Container from "@/components/common/Container";
 
 const getCurrentYear = () => {
-  return new Date().getFullYear()
-}
+  return new Date().getFullYear();
+};
 
 const Footer = () => {
-  const currentYear = getCurrentYear()
+  const currentYear = getCurrentYear();
 
   return (
-    <FooterStyled>
+    <footer className="mt-20 flex flex-col items-center justify-center bg-black bg-opacity-10 py-8">
       <Container>
         <p>ⓒ {currentYear} miss-gif. All Rights Reserved.</p>
       </Container>
-    </FooterStyled>
-  )
-}
+    </footer>
+  );
+};
 
-export default Footer
-
-const FooterStyled = styled.footer`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  margin-top: 80px;
-  padding: 30px 0;
-  background: rgba(0, 0, 0, 0.1);
-`
+export default Footer;

@@ -1,19 +1,19 @@
-import HomeLeft from '@/components/home/HomeLeft'
-import HomeNotice from './HomeNotice'
+import HomeLeft from "@/components/home/HomeLeft";
+import HomeNotice from "./HomeNotice";
 
 const HomeInfo = () => {
   return (
-    <div className="flex flex-col justify-center gap-10 w-full md:h-svh md:flex-none ">
-      <div className="flex flex-col md:flex-row md:justify-between md:h-svh items-center justify-center mt-20">
+    <div className="flex w-full flex-col justify-center gap-10 md:h-svh md:flex-none">
+      <div className="mt-20 flex flex-col items-center justify-center gap-10 md:h-svh md:flex-row md:justify-between">
         <HomeLeft />
-        <div className="md:flex md:flex-col gap-4 w-full">
+        <div className="flex w-full gap-2 md:flex md:w-2/5 md:flex-col">
           <HomeNotice />
           <HomeNotice />
           <HomeNotice />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomeInfo
+export default HomeInfo;
