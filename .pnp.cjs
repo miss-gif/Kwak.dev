@@ -35,6 +35,7 @@ const RAW_RUNTIME_STATE =
           ["@hookform/resolvers", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:3.9.1"],\
           ["@mui/icons-material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
           ["@mui/material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
+          ["@tanstack/react-query", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:5.59.19"],\
           ["@types/matter-js", "npm:0.19.7"],\
           ["@types/react", "npm:18.3.12"],\
           ["@types/react-dom", "npm:18.3.1"],\
@@ -1529,6 +1530,38 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/unplugged/@rollup-rollup-win32-x64-msvc-npm-4.24.3-7a36666962/node_modules/@rollup/rollup-win32-x64-msvc/",\
         "packageDependencies": [\
           ["@rollup/rollup-win32-x64-msvc", "npm:4.24.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@tanstack/query-core", [\
+      ["npm:5.59.17", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@tanstack-query-core-npm-5.59.17-96b2849b0e-10c0.zip/node_modules/@tanstack/query-core/",\
+        "packageDependencies": [\
+          ["@tanstack/query-core", "npm:5.59.17"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@tanstack/react-query", [\
+      ["npm:5.59.19", {\
+        "packageLocation": "../../AppData/Local/Yarn/Berry/cache/@tanstack-react-query-npm-5.59.19-d49be866ba-10c0.zip/node_modules/@tanstack/react-query/",\
+        "packageDependencies": [\
+          ["@tanstack/react-query", "npm:5.59.19"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:5.59.19", {\
+        "packageLocation": "./.yarn/__virtual__/@tanstack-react-query-virtual-bca74c0593/3/AppData/Local/Yarn/Berry/cache/@tanstack-react-query-npm-5.59.19-d49be866ba-10c0.zip/node_modules/@tanstack/react-query/",\
+        "packageDependencies": [\
+          ["@tanstack/react-query", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:5.59.19"],\
+          ["@tanstack/query-core", "npm:5.59.17"],\
+          ["@types/react", "npm:18.3.12"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5090,6 +5123,7 @@ const RAW_RUNTIME_STATE =
           ["@hookform/resolvers", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:3.9.1"],\
           ["@mui/icons-material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
           ["@mui/material", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:6.1.6"],\
+          ["@tanstack/react-query", "virtual:4d3d6a63d8ed6799bb265c42b6b87e0b12e59fee77b5cfc0897c12d19561031eb1fcc7f7c1fdc1396dc9f95d7d0b67b288ab7928e56778db18f1aa55c8e9d900#npm:5.59.19"],\
           ["@types/matter-js", "npm:0.19.7"],\
           ["@types/react", "npm:18.3.12"],\
           ["@types/react-dom", "npm:18.3.1"],\
