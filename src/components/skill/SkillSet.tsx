@@ -10,35 +10,42 @@ import {
   Runner,
 } from 'matter-js'
 import { useEffect, useRef, useState } from 'react'
+import skillsData from '@data/skills.ts'
 
-import AXIOS from '@assets/skill_icons/axios.svg'
-import JS from '@assets/skill_icons/css.svg'
-
-// Skill data 타입 정의
 type SkillData = {
-  title: string
+  img: string
+  name: string
   level: number
-  description: string
-}
-
-const data: Record<string, SkillData> = {
-  자바스크립트: { title: JS, level: 4, description: '자바스크립트 설명' },
-  CSS: { title: JS, level: 4, description: 'CSS 설명' },
-  axios: { title: AXIOS, level: 4, description: 'axios 설명' },
+  description: string[]
 }
 
 const SkillSet = () => {
-  const [selected, setSelected] = useState(data['CSS'])
+  const [selected, setSelected] = useState<SkillData | null>(null)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   useEffect(() => {
+    const formattedData: Record<string, SkillData> = skillsData.reduce(
+      (acc, skill) => {
+        acc[skill.name] = {
+          img: skill.img,
+          name: skill.name,
+          level: Math.ceil(skill.percentage / 20),
+          description: skill.description,
+        }
+        return acc
+      },
+      {} as Record<string, SkillData>,
+    )
+
+    setSelected(formattedData['React'])
+
     const canvas = canvasRef.current
     if (!canvas) return
 
     const cw = 1000
     const ch = 1000
 
-    const gravityPower = 0.5 // 오타 수정
+    const gravityPower = 0.5
     let gravityDeg = 0
 
     let engine: Engine
@@ -88,9 +95,10 @@ const SkillSet = () => {
       Events.on(mouseConstraint, 'mousedown', () => {
         const newSelected =
           mouseConstraint.body &&
-          data[mouseConstraint.body.label as keyof typeof data]
+          formattedData[
+            mouseConstraint.body.label as keyof typeof formattedData
+          ]
         newSelected && setSelected(newSelected)
-        console.log(mouseConstraint.body)
       })
     }
 
@@ -130,15 +138,20 @@ const SkillSet = () => {
     }
 
     const initSkillIcon = () => {
-      Object.entries(data).forEach(([key, { title }]) => {
-        addRect(cw / 2, ch / 2, 100 * 0.7, 100 * 0.7, {
+      Object.entries(formattedData).forEach(([key, { img }]) => {
+        const randomX = Math.random() * cw // 캔버스 너비 내 임의의 x 좌표
+        const randomY = Math.random() * ch // 캔버스 높이 내 임의의 y 좌표
+        const scale = 0.7
+        const t1 = { w: 250 * scale, h: 250 * scale }
+
+        addRect(randomX, randomY, t1.w, t1.h, {
           label: key,
           chamfer: { radius: 20 },
           render: {
             sprite: {
-              texture: title,
-              xScale: 0.5,
-              yScale: 0.5,
+              texture: img,
+              xScale: scale,
+              yScale: scale,
             },
           },
         })
@@ -186,24 +199,26 @@ const SkillSet = () => {
     <div>
       <div className="flex items-center">
         <CanvasStyled ref={canvasRef}></CanvasStyled>
-        <AsideStyled>
-          <h4 className="text-4xl">{selected.title}</h4>
-          <p>
-            {Array(5)
-              .fill(null)
-              .map((_, i) => (
-                <span
-                  key={i}
-                  style={{
-                    filter: `grayscale(${selected.level <= i ? 1 : 0})`,
-                  }}
-                >
-                  &#11088;
-                </span>
-              ))}
-          </p>
-          <p>{selected.description}</p>
-        </AsideStyled>
+        {selected && (
+          <AsideStyled>
+            <h4 className="text-4xl">{selected.name}</h4>
+            <p>
+              {Array(5)
+                .fill(null)
+                .map((_, i) => (
+                  <span
+                    key={i}
+                    style={{
+                      filter: `grayscale(${selected.level <= i ? 1 : 0})`,
+                    }}
+                  >
+                    &#11088;
+                  </span>
+                ))}
+            </p>
+            <p>{selected.description.join(', ')}</p>
+          </AsideStyled>
+        )}
       </div>
     </div>
   )

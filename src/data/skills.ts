@@ -1,6 +1,6 @@
 const skills = [
   {
-    img: '../../assets/skill/HTML.svg',
+    img: '../../assets/skill_icons/html.svg',
     id: 1,
     name: 'HTML',
     percentage: 88,
@@ -11,7 +11,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/CSS.svg',
+    img: '../../assets/skill_icons/css.svg',
     id: 2,
     name: 'CSS',
     percentage: 92,
@@ -24,7 +24,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/JavaScript.svg',
+    img: '../../assets/skill_icons/javascript.svg',
     id: 3,
     name: 'JavaScript',
     percentage: 85,
@@ -34,7 +34,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/React.svg',
+    img: '../../assets/skill_icons/react.svg',
     id: 4,
     name: 'React',
     percentage: 80,
@@ -45,7 +45,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/TypeScript.svg',
+    img: '../../assets/skill_icons/typescript.svg',
     id: 5,
     name: 'TypeScript',
     percentage: 30,
@@ -57,7 +57,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/Redux.svg',
+    img: '../../assets/skill_icons/redux.svg',
     id: 6,
     name: 'Redux',
     percentage: 50,
@@ -67,7 +67,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/Zustand.svg',
+    img: '../../assets/skill_icons/zustand.svg',
     id: 7,
     name: 'Zustand',
     percentage: 40,
@@ -77,7 +77,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/Axios.svg',
+    img: '../../assets/skill_icons/axios.svg',
     id: 8,
     name: 'Axios',
     percentage: 60,
@@ -89,7 +89,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/react-query.svg',
+    img: '../../assets/skill_icons/react-query.svg',
     id: 9,
     name: 'React Query',
     percentage: 50,
@@ -99,7 +99,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/Figma.svg',
+    img: '../../assets/skill_icons/figma-Light.svg',
     id: 10,
     name: 'Figma',
     percentage: 50,
@@ -109,7 +109,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/Sass.svg',
+    img: '../../assets/skill_icons/sass.svg',
     id: 11,
     name: 'Sass',
     percentage: 83,
@@ -122,7 +122,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/Emotion-Light.svg',
+    img: '../../assets/skill_icons/emotion-Light.svg',
     id: 12,
     name: 'Emotion',
     percentage: 72,
@@ -132,7 +132,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/Swagger.svg',
+    img: '../../assets/skill_icons/swagger.svg',
     id: 13,
     name: 'Swagger',
     percentage: 50,
@@ -142,7 +142,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/MaterialUI-Light.svg',
+    img: '../../assets/skill_icons/materialUI-Light.svg',
     id: 14,
     name: 'Material UI',
     percentage: 72,
@@ -152,7 +152,7 @@ const skills = [
     ],
   },
   {
-    img: '../../assets/skill/ReactRouter.svg',
+    img: '../../assets/skill_icons/react-router.svg',
     id: 15,
     name: 'React Router',
     percentage: 68,
@@ -185,7 +185,7 @@ const skills = [
   },
   {
     img: '',
-    id: 17,
+    id: 18,
     name: 'React Hook Form',
     percentage: 68,
     description: [
@@ -197,7 +197,7 @@ const skills = [
   },
   {
     img: '',
-    id: 17,
+    id: 19,
     name: 'Zod',
     percentage: 68,
     description: ['간단한 API로 데이터 유효성 검증 및 타입 추론 가능'],

@@ -34,7 +34,8 @@
       "@theme/*": ["src/theme/*"],
       "@translations/*": ["src/translations/*"],
       "@validations/*": ["src/validations/*"],
-      "@views/*": ["src/views/*"]
+      "@views/*": ["src/views/*"],
+      "@public/*": ["public/*"]
     },
 
     /* Bundler mode */
