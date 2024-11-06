@@ -1,18 +1,18 @@
-import Box from '@mui/material/Box'
-import Tab from '@mui/material/Tab'
-import Tabs from '@mui/material/Tabs'
-import { useState } from 'react'
-import Skill from './Skill'
-import SkillSet from './SkillSet'
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import { useState } from "react";
+import SkillSet from "./SkillSet";
+import SkillsList from "./SkillsList";
 
 interface TabPanelProps {
-  children?: React.ReactNode
-  index: number
-  value: number
+  children?: React.ReactNode;
+  index: number;
+  value: number;
 }
 
 function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props
+  const { children, value, index, ...other } = props;
 
   return (
     <div
@@ -24,27 +24,27 @@ function CustomTabPanel(props: TabPanelProps) {
     >
       {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
-  )
+  );
 }
 
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  }
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
 }
 
 export default function SkillViewer() {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue)
-    console.log(event)
-  }
+    setValue(newValue);
+    console.log(event);
+  };
 
   return (
     <>
-      <div className="flex justify-center items-center mb-10 mt-3">
+      <div className="mb-10 mt-3 flex items-center justify-center">
         {/* 탭 영역 */}
         <Tabs value={value} onChange={handleChange}>
           <Tab label="SkillSet" {...a11yProps(0)} />
@@ -56,8 +56,8 @@ export default function SkillViewer() {
         <SkillSet />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <Skill />
+        <SkillsList />
       </CustomTabPanel>
     </>
-  )
+  );
 }
