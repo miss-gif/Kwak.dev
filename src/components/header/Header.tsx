@@ -1,29 +1,28 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import Container from '@/components/common/Container'
+import useHeaderScroll from '@/hooks/useHeaderScroll'
 import { Theme } from '@/types/theme'
 import { linkItems } from '@mocks/data'
 import { capitalizeFirstLetter } from '@utils/utils'
+import classNames from 'classnames'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import BasicButtons from '../common/Button'
 import NavToggle from './NavToggle'
 import ToggleThemeSwitch from './ToggleThemeSwitch'
-import { handleScroll } from './handleScroll'
-
-import classNames from 'classnames'
 
 const Header = ({ toggleTheme }: Theme) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = (itemName: string | null) => {
     setSelectedItem(itemName)
   }
 
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+  const toggleDrawer = () => {
+    setIsOpen(!isOpen)
+  }
+
+  useHeaderScroll()
 
   return (
     <header className="header fixed top-0 left-0 w-full flex items-center justify-between h-20 z-50 transition-shadow duration-300">
@@ -42,7 +41,7 @@ const Header = ({ toggleTheme }: Theme) => {
                     className={classNames('hover:text-blue-600', {
                       'font-bold': selectedItem === item.name,
                     })}
-                    onClick={() => handleClick(item.name)} // 클릭 시 선택된 항목을 설정
+                    onClick={() => handleClick(item.name)}
                   >
                     {capitalizeFirstLetter(item.name)}
                   </Link>
@@ -56,7 +55,11 @@ const Header = ({ toggleTheme }: Theme) => {
               <BasicButtons>로그인</BasicButtons>
               <ToggleThemeSwitch onClick={toggleTheme} />
             </div>
-            <NavToggle />
+            <NavToggle
+              toggleDrawer={toggleDrawer}
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+            />
           </div>
         </div>
       </Container>
