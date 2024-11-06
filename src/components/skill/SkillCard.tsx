@@ -12,32 +12,34 @@ const SkillCard = ({ img, name, percentage, description }: SkillCardProps) => {
 
   return (
     <li
-      className="skills__item"
+      className="flex items-center gap-4"
       data-aos="fade-up"
       data-aos-duration="1500"
       ref={elementRef}
     >
-      <div className="skills__item__img-wrapper">
+      <div className="w-20">
         <img src={img} alt={name} />
       </div>
-      <div className="skills__item__info">
-        <div className="skills__titles">
-          <h3 className="skills__name">{name}</h3>
-          <span className="skills__number">
+      <div className="flex-1">
+        <div className="mb-2 flex items-center justify-between">
+          <p className="text-xl font-semibold">{name}</p>
+          <span className="text-cyan-800">
             {currentPercentage} <span>%</span>
           </span>
         </div>
-        <ul className="skills__description">
+        <ul className="mb-5">
           {description.map((desc, index) => (
-            <li key={index}>{desc}</li>
+            <li key={index} className="text-sm">
+              {desc}
+            </li>
           ))}
         </ul>
-        <div className="skills__bar">
+        <div className="bg-gray-100 bg-opacity-20">
           <span
-            className="skills__percentage"
+            className="relative block h-[2px] bg-cyan-800"
             style={{ width: `${currentPercentage}%` }}
           >
-            <span></span>
+            <span className="absolute right-0 top-[-12px] h-[25px] w-[25px] rounded-3xl border-2 bg-cyan-800"></span>
           </span>
         </div>
       </div>

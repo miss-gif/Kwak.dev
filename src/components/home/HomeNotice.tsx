@@ -13,7 +13,7 @@ const HomeNotice = () => {
         Excepturi blanditiis esse repellat pariatur non ex nemo minima porro
         dicta ut.
       </p>
-      <span className="text-sm text-gray-500">2022-12-22</span>
+      <span className="text-sm">2022-12-22</span>
     </div>
   );
 };

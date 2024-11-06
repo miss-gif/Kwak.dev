@@ -29,8 +29,8 @@ const SkillsList = () => {
   }, []);
 
   return (
-    <section className="skills section">
-      <ul className="skills__container container grid">
+    <div>
+      <ul className="grid grid-cols-3 gap-5">
         {skills.map(({ img, name, percentage, description, id }) => (
           <SkillCard
             key={id}
@@ -41,7 +41,7 @@ const SkillsList = () => {
           />
         ))}
       </ul>
-    </section>
+    </div>
   );
 };
 
