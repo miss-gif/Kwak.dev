@@ -2,7 +2,6 @@ import { education } from '@/data'
 import styled from '@emotion/styled'
 
 const Career = () => {
-  // education 데이터에서 training 배열만 가져오기
   const trainingData = education[1].training
 
   return (

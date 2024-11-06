@@ -32,8 +32,16 @@ const personalInfo = {
     },
   ],
   certifications: [
-    '웹디자인기능사 2022.06',
-    '컴퓨터그래픽스운용기능사 2009.07',
+    {
+      name: '웹디자인기능사',
+      date: '2022.06',
+      organization: '한국산업인력공단',
+    },
+    {
+      name: '컴퓨터그래픽스운용기능사',
+      date: '2009.07',
+      organization: '한국산업인력공단',
+    },
   ],
 }
 

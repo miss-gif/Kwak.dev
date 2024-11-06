@@ -1,8 +1,24 @@
+import { personalInfo } from '@/data'
+
 const Certificate = () => {
+  const certifications = personalInfo.certifications
+
   return (
-    <ul>
-      <li>웹 디자인 기능사</li>
-      <li>그래픽스 운용 기능사</li>
+    <ul className="grid gap-8">
+      {certifications.map((certification, index) => (
+        <li
+          key={index}
+          className="p-6 border border-gray-300 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-200"
+        >
+          <h3 className="text-xl font-semibold">{certification.name}</h3>
+          <div className="mt-2">
+            <time dateTime={certification.date} className="block text-sm">
+              {certification.date}
+            </time>
+            <span className="block text-sm">{certification.organization}</span>
+          </div>
+        </li>
+      ))}
     </ul>
   )
 }
