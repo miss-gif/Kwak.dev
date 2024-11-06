@@ -1,8 +1,6 @@
-import styled from '@emotion/styled'
-
 const HomeNotice = () => {
   return (
-    <HomeNoticeStyled>
+    <div className="p-3 border rounded border-gray-300 max-h-80">
       <h3>공지</h3>
       <div>
         <h4>
@@ -19,17 +17,8 @@ const HomeNotice = () => {
         </p>
         <span>2022-12-22</span>
       </div>
-    </HomeNoticeStyled>
+    </div>
   )
 }
 
 export default HomeNotice
-
-const HomeNoticeStyled = styled.div`
-  padding: 12px;
-  border: 1px solid #333;
-  border-radius: 10px;
-  width: 500px;
-  height: 140px;
-  overflow: hidden;
-`
