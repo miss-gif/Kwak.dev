@@ -14,3 +14,5 @@
 - @hookform/resolvers
 
 - classnames
+
+- prettier-plugin-tailwindcss

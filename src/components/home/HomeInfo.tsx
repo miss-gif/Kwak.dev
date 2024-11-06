@@ -1,29 +1,19 @@
 import HomeLeft from '@/components/home/HomeLeft'
-import styled from '@emotion/styled'
 import HomeNotice from './HomeNotice'
 
 const HomeInfo = () => {
   return (
-    <HomeInfoStyled>
-      <div className="flex justify-between">
+    <div className="flex flex-col justify-center gap-10 w-full md:h-svh ">
+      <div className="flex flex-col md:flex-row md:justify-between h-svh items-center justify-center">
         <HomeLeft />
-        <div className="flex flex-col gap-4">
+        <div className="md:flex md:flex-col gap-4 ">
           <HomeNotice />
           <HomeNotice />
           <HomeNotice />
         </div>
       </div>
-    </HomeInfoStyled>
+    </div>
   )
 }
 
 export default HomeInfo
-
-const HomeInfoStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 30px;
-  width: 100%;
-  height: 100vh;
-`

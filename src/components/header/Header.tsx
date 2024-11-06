@@ -27,7 +27,7 @@ const Header = ({ toggleTheme }: Theme) => {
   return (
     <header className="header fixed top-0 left-0 w-full flex items-center justify-between h-20 z-50 transition-shadow duration-300">
       <Container>
-        <div className="flex items-center justify-between w-full px-4">
+        <div className="flex items-center justify-between w-full">
           <Link to={'/'} onClick={() => handleClick(null)}>
             <h1 className="text-2xl font-bold">Portfolio</h1>
           </Link>
