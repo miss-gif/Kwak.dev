@@ -163,7 +163,7 @@
     ]
   },
   {
-    "img": "",
+    "img": "../../assets/skill_icons/tailwindCSS-Light.svg",
     "id": 16,
     "name": "Tailwind CSS",
     "percentage": 68,
@@ -173,7 +173,7 @@
     ]
   },
   {
-    "img": "",
+    "img": "../../assets/skill_icons/firebase-Light.svg",
     "id": 17,
     "name": "Firebase",
     "percentage": 68,
@@ -184,7 +184,7 @@
     ]
   },
   {
-    "img": "",
+    "img": "../../assets/skill_icons/react-hook-form.svg",
     "id": 18,
     "name": "React Hook Form",
     "percentage": 68,
@@ -196,7 +196,7 @@
     ]
   },
   {
-    "img": "",
+    "img": "../../assets/skill_icons/zod.svg",
     "id": 19,
     "name": "Zod",
     "percentage": 68,

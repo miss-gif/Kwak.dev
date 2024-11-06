@@ -1,4 +1,4 @@
-import styled from '@emotion/styled'
+import styled from "@emotion/styled";
 import {
   Bodies,
   Composite,
@@ -8,20 +8,20 @@ import {
   MouseConstraint,
   Render,
   Runner,
-} from 'matter-js'
-import { useEffect, useRef, useState } from 'react'
-import skillsData from '@data/skills.ts'
+} from "matter-js";
+import { useEffect, useRef, useState } from "react";
+import skillsData from "@data/skills.ts";
 
 type SkillData = {
-  img: string
-  name: string
-  level: number
-  description: string[]
-}
+  img: string;
+  name: string;
+  level: number;
+  description: string[];
+};
 
 const SkillSet = () => {
-  const [selected, setSelected] = useState<SkillData | null>(null)
-  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+  const [selected, setSelected] = useState<SkillData | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
     const formattedData: Record<string, SkillData> = skillsData.reduce(
@@ -31,32 +31,32 @@ const SkillSet = () => {
           name: skill.name,
           level: Math.ceil(skill.percentage / 20),
           description: skill.description,
-        }
-        return acc
+        };
+        return acc;
       },
       {} as Record<string, SkillData>,
-    )
+    );
 
-    setSelected(formattedData['React'])
+    setSelected(formattedData["React"]);
 
-    const canvas = canvasRef.current
-    if (!canvas) return
+    const canvas = canvasRef.current;
+    if (!canvas) return;
 
-    const cw = 1000
-    const ch = 1000
+    const cw = 1000;
+    const ch = 1000;
 
-    const gravityPower = 0.5
-    let gravityDeg = 0
+    const gravityPower = 0.5;
+    let gravityDeg = 0;
 
-    let engine: Engine
-    let render: Render
-    let runner: Runner
-    let mouse: Mouse
-    let mouseConstraint: MouseConstraint
-    let observer: IntersectionObserver
+    let engine: Engine;
+    let render: Render;
+    let runner: Runner;
+    let mouse: Mouse;
+    let mouseConstraint: MouseConstraint;
+    let observer: IntersectionObserver;
 
     const initScene = () => {
-      engine = Engine.create()
+      engine = Engine.create();
       render = Render.create({
         canvas: canvas,
         engine: engine,
@@ -65,22 +65,22 @@ const SkillSet = () => {
           height: ch,
           wireframes: false,
         },
-      })
+      });
 
-      runner = Runner.create()
-      Render.run(render)
-      Runner.run(runner, engine)
-    }
+      runner = Runner.create();
+      Render.run(render);
+      Runner.run(runner, engine);
+    };
 
     const initMouse = () => {
-      mouse = Mouse.create(canvas)
+      mouse = Mouse.create(canvas);
       mouseConstraint = MouseConstraint.create(engine, {
         mouse: mouse,
         constraint: {
           render: { visible: false },
         },
-      })
-      Composite.add(engine.world, mouseConstraint)
+      });
+      Composite.add(engine.world, mouseConstraint);
 
       /**
        * 이 코드가 있어야 canvas에서 마우스 휠 이벤트를 중지 할 수 있음.
@@ -92,71 +92,78 @@ const SkillSet = () => {
       // canvas.removeEventListener('wheel', mouse.mousewheel)
       // canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
 
-      Events.on(mouseConstraint, 'mousedown', () => {
+      Events.on(mouseConstraint, "mousedown", () => {
         const newSelected =
           mouseConstraint.body &&
           formattedData[
             mouseConstraint.body.label as keyof typeof formattedData
-          ]
-        newSelected && setSelected(newSelected)
-      })
-    }
+          ];
+        newSelected && setSelected(newSelected);
+      });
+    };
 
     const initIntersectionObserver = () => {
       observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            runner.enabled = true
-            Render.run(render)
+            runner.enabled = true;
+            Render.run(render);
           } else {
-            runner.enabled = false
-            Render.stop(render)
+            runner.enabled = false;
+            Render.stop(render);
           }
         },
         { threshold: 0.5 },
-      )
+      );
 
-      observer.observe(canvas)
-    }
+      observer.observe(canvas);
+    };
 
     const initGround = () => {
-      const segment = 32
-      const deg = (Math.PI * 2) / segment
-      const width = 50
-      const radius = cw / 2 + width / 2
-      const height = radius * Math.tan(deg / 2) * 2
+      const segment = 32;
+      const deg = (Math.PI * 2) / segment;
+      const width = 50;
+      const radius = cw / 2 + width / 2;
+      const height = radius * Math.tan(deg / 2) * 2;
 
       for (let i = 0; i < segment; i++) {
-        const theta = deg * i
-        const x = radius * Math.cos(theta) + cw / 2
-        const y = radius * Math.sin(theta) + ch / 2
+        const theta = deg * i;
+        const x = radius * Math.cos(theta) + cw / 2;
+        const y = radius * Math.sin(theta) + ch / 2;
         addRect(x, y, width, height, {
           isStatic: true,
           angle: theta,
-        })
+        });
       }
-    }
+    };
 
     const initSkillIcon = () => {
       Object.entries(formattedData).forEach(([key, { img }]) => {
-        const randomX = Math.random() * cw // 캔버스 너비 내 임의의 x 좌표
-        const randomY = Math.random() * ch // 캔버스 높이 내 임의의 y 좌표
-        const scale = 0.7
-        const t1 = { w: 250 * scale, h: 250 * scale }
+        const randomX = Math.random() * cw; // 캔버스 너비 내 임의의 x 좌표
+        const randomY = Math.random() * ch; // 캔버스 높이 내 임의의 y 좌표
+        const scale = 0.7;
+        const t1 = { w: 250 * scale, h: 250 * scale };
 
-        addRect(randomX, randomY, t1.w, t1.h, {
-          label: key,
-          chamfer: { radius: 20 },
-          render: {
-            sprite: {
-              texture: img,
-              xScale: scale,
-              yScale: scale,
+        const image = new Image();
+        image.src = img;
+        image.onload = () => {
+          addRect(randomX, randomY, t1.w, t1.h, {
+            label: key,
+            chamfer: { radius: 20 },
+            render: {
+              sprite: {
+                texture: img,
+                xScale: scale,
+                yScale: scale,
+              },
             },
-          },
-        })
-      })
-    }
+          });
+        };
+        image.onerror = () => {
+          console.error(`이미지 로드 실패: ${img}`);
+        };
+      });
+    };
 
     const addRect = (
       x: number,
@@ -165,35 +172,35 @@ const SkillSet = () => {
       h: number,
       options = {} as any,
     ) => {
-      const rect = Bodies.rectangle(x, y, w, h, options)
-      Composite.add(engine.world, rect)
-    }
+      const rect = Bodies.rectangle(x, y, w, h, options);
+      Composite.add(engine.world, rect);
+    };
 
-    initScene()
-    initMouse()
-    initGround()
-    initSkillIcon()
-    initIntersectionObserver()
+    initScene();
+    initMouse();
+    initGround();
+    initSkillIcon();
+    initIntersectionObserver();
 
-    runner = Runner.create()
+    runner = Runner.create();
 
-    Events.on(runner, 'tick', () => {
-      gravityDeg += 1
+    Events.on(runner, "tick", () => {
+      gravityDeg += 1;
       engine.world.gravity.x =
-        Math.cos((Math.PI / 100) * gravityDeg) * gravityPower
+        Math.cos((Math.PI / 100) * gravityDeg) * gravityPower;
       engine.world.gravity.y =
-        Math.sin((Math.PI / 100) * gravityDeg) * gravityPower
-    })
+        Math.sin((Math.PI / 100) * gravityDeg) * gravityPower;
+    });
 
     return () => {
-      observer.unobserve(canvas)
-      Composite.clear(engine.world, false)
-      Mouse.clearSourceEvents(mouse)
-      Render.stop(render)
-      Runner.stop(runner)
-      Engine.clear(engine)
-    }
-  }, [])
+      observer.unobserve(canvas);
+      Composite.clear(engine.world, false);
+      Mouse.clearSourceEvents(mouse);
+      Render.stop(render);
+      Runner.stop(runner);
+      Engine.clear(engine);
+    };
+  }, []);
 
   return (
     <div>
@@ -229,16 +236,16 @@ const SkillSet = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SkillSet
+export default SkillSet;
 
 const CanvasStyled = styled.canvas`
   width: 50vmin;
   height: 50vmin;
   border-radius: 50%;
-`
+`;
 
 const AsideStyled = styled.div`
   display: flex;
@@ -246,4 +253,4 @@ const AsideStyled = styled.div`
   gap: 10px;
   width: 60%;
   min-height: 300px;
-`
+`;
