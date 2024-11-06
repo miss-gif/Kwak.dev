@@ -1,10 +1,10 @@
 import { personalInfo } from '@/data'
 
-const Certificate = () => {
+const TextCard = () => {
   const certifications = personalInfo.certifications
 
   return (
-    <ul className="flex flex-col gap-8 mt-16">
+    <ul className="grid gap-8 mt-16">
       {certifications.map((certification, index) => (
         <li
           key={index}
@@ -23,4 +23,4 @@ const Certificate = () => {
   )
 }
 
-export default Certificate
+export default TextCard
