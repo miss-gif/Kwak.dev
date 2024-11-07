@@ -205,7 +205,10 @@ const SkillSet = () => {
   return (
     <div>
       <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
-        <CanvasStyled ref={canvasRef}></CanvasStyled>
+        <canvas
+          ref={canvasRef}
+          className="h-[50vmin] w-[50vmin] rounded-full"
+        ></canvas>
         {selected && (
           // 우측 사이드 영역
           <div className="flex h-2/3 w-2/4 flex-col items-center justify-center gap-5 md:items-start">
@@ -242,17 +245,3 @@ const SkillSet = () => {
 };
 
 export default SkillSet;
-
-const CanvasStyled = styled.canvas`
-  width: 50vmin;
-  height: 50vmin;
-  border-radius: 50%;
-`;
-
-const AsideStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 60%;
-  min-height: 300px;
-`;
