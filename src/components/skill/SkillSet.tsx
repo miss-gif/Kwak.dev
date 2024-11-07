@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import skillsData from "@data/skills.ts";
 import {
   Bodies,
   Composite,
@@ -10,7 +10,6 @@ import {
   Runner,
 } from "matter-js";
 import { useEffect, useRef, useState } from "react";
-import skillsData from "@data/skills.ts";
 
 type SkillData = {
   img: string;
