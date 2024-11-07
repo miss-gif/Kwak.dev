@@ -1,24 +1,8 @@
-import { fetchSkillsData } from "@/api/skillApi";
-import { useQuery } from "@tanstack/react-query";
+import useSkillData from "@/hooks/useSkillData";
 import SkillCard from "./SkillCard";
 
-interface SkillData {
-  img: string;
-  id: number;
-  name: string;
-  percentage: number;
-  description: string[];
-}
-
 const SkillsList = () => {
-  const {
-    data: skills,
-    error,
-    isLoading,
-  } = useQuery<SkillData[], Error>({
-    queryKey: ["skills"],
-    queryFn: fetchSkillsData,
-  });
+  const { skills, error, isLoading } = useSkillData(); // 데이터 훅 사용
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading skills data: {error.message}</div>;
