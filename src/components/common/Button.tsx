@@ -1,22 +1,22 @@
-import Button from '@mui/material/Button'
-import Stack from '@mui/material/Stack'
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 export default function BasicButtons({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <Stack spacing={2} direction="row">
       <Button
         variant="text"
         sx={{
-          color: 'currentColor',
-          fontWeight: 'bold',
-          textDecoration: 'underline',
-          '&:hover': {
-            color: '#fff',
-            backgroundColor: '#EE8130',
+          color: "currentColor",
+          fontWeight: "bold",
+          textDecoration: "underline",
+          "&:hover": {
+            color: "#fff",
+            backgroundColor: "#EE8130",
           },
         }}
       >
@@ -33,5 +33,5 @@ export default function BasicButtons({
       </Button> */}
       {/* <Button variant="outlined">{children}</Button> */}
     </Stack>
-  )
+  );
 }

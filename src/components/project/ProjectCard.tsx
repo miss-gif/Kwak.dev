@@ -1,28 +1,36 @@
-interface ProjectCardProps {
-  thumbnail: string;
-  title: string;
-  duration: string;
-  teamSize: number;
-  description: string;
-  technologies: string[];
-}
+import { ProjectData } from "@/types/projectData";
+import { Link } from "react-router-dom";
 
-const ProjectCard = ({
-  thumbnail,
-  title,
-  duration,
-  teamSize,
-  description,
-  technologies,
-}: ProjectCardProps) => {
+const ProjectCard = ({ data }: { data: ProjectData }) => {
+  const { thumbnail, title, teamSize, duration, description, techStack } = data;
+
   return (
-    <li className="max-w-sm overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-200 hover:shadow-lg">
+    <li className="relative max-w-sm overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-200 hover:shadow-lg">
       {/* 썸네일 */}
       <img
         src={thumbnail}
         alt={`${title} thumbnail`}
         className="h-48 w-full object-cover"
       />
+
+      {/* 호버 시 딤드 효과 */}
+      <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-gray-900 opacity-0 transition-opacity duration-200 hover:opacity-100">
+        <div className="flex flex-col items-center justify-center gap-5">
+          <p className="pb-3 text-2xl font-semibold text-white">{title}</p>
+          <Link
+            to={"/project/1"}
+            className="w-52 rounded bg-none px-4 py-3 text-center text-black transition-colors duration-300 ease-in-out hover:bg-white hover:text-black"
+          >
+            자세히 보기
+          </Link>
+          <a
+            href="/"
+            className="w-52 rounded bg-none px-4 py-3 text-center text-black transition-colors duration-300 ease-in-out hover:bg-white hover:text-black"
+          >
+            사이트 바로가기
+          </a>
+        </div>
+      </div>
 
       {/* 카드 내용 */}
       <div className="p-6">
@@ -39,7 +47,7 @@ const ProjectCard = ({
 
         {/* 사용 기술 */}
         <div className="flex flex-wrap gap-2">
-          {technologies.map((tech, index) => (
+          {techStack.map((tech, index) => (
             <span
               key={index}
               className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-800"

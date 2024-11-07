@@ -22,7 +22,7 @@ const tagOptions = [
   { value: "Firebase", label: "Firebase" },
 ];
 
-const ProjectFilter = () => {
+const ProjectFilter = ({ ...data }) => {
   const [selectedTags, setSelectedTags] = useState<
     { value: string; label: string }[]
   >([]);

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 body.light {
@@ -12,7 +12,7 @@ body.light {
 }
 
 body.dark {
-  background-color: #333;
+  background-color: #191e22;
   color: white;
 }
 

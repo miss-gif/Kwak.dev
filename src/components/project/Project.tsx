@@ -1,6 +1,6 @@
 import ProjectCard from "./ProjectCard.tsx";
 
-function Project() {
+function Project({ ...data }) {
   const projectData = {
     thumbnail: "https://via.placeholder.com/300",
     title: "포트폴리오 프로젝트",
@@ -12,7 +12,7 @@ function Project() {
 
   return (
     <ul className="grid gap-5 py-5 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-      <ProjectCard {...projectData} />
+      <ProjectCard {...data} />
     </ul>
   );
 }

@@ -2,7 +2,7 @@ import useSkillData from "@/hooks/useSkillData";
 import SkillCard from "./SkillCard";
 
 const SkillsList = () => {
-  const { skills, error, isLoading } = useSkillData(); // 데이터 훅 사용
+  const { skills, error, isLoading } = useSkillData();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading skills data: {error.message}</div>;
