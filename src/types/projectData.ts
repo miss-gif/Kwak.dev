@@ -3,12 +3,13 @@ interface ProjectCard {
   thumbnail: string;
   title: string;
   duration: Duration;
-  teamSize: number;
+  teamSize: number | string;
   description: string;
   techStack: string[];
   links: ProjectLinks;
   client: string;
   team: ProjectTeam;
+  badge?: string[];
 }
 
 // 기간 정보를 담는 인터페이스

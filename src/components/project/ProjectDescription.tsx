@@ -1,4 +1,10 @@
-const ProjectDescription = ({ data }) => {
+import { ProjectData } from "@/types/projectData";
+
+type ProjectDescriptionProps = {
+  data: ProjectData["detail"];
+};
+
+const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
   return (
     <div className="rounded-lg bg-white p-6 shadow-md">
       <h1 className="mb-4 text-2xl font-bold"> 구축 보고</h1>

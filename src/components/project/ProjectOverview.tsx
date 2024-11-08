@@ -1,4 +1,10 @@
-const ProjectOverview = ({ data }) => {
+import { ProjectData } from "@/types/projectData";
+
+type ProjectOverviewProps = {
+  data: ProjectData["card"];
+};
+
+const ProjectOverview = ({ data }: ProjectOverviewProps) => {
   return (
     <div className="">
       {/* 제목 */}

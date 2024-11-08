@@ -6,15 +6,8 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
-  const {
-    thumbnail,
-    title,
-    duration,
-    teamSize,
-    description,
-    techStack,
-    links,
-  } = project.card;
+  const { thumbnail, title, duration, description, techStack, links, badge } =
+    project.card;
   const { id } = project;
 
   return (
@@ -51,15 +44,22 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <h3 className="mb-2 text-2xl font-semibold text-gray-800">{title}</h3>
 
         {/* 작업 기간과 작업 인원 */}
-        <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
-          <span>{`${duration.startDate.toLocaleDateString()} ~ ${duration.endDate.toLocaleDateString()}`}</span>
-          <div className="rounded-md bg-gray-800 px-1 text-white">
-            {teamSize}명
+        <div className="mb-4 flex items-center justify-between text-sm text-gray-600">
+          <span className="font-semibold">{`${duration.startDate.toLocaleDateString()} ~ ${duration.endDate.toLocaleDateString()}`}</span>
+          <div className="flex gap-1">
+            {badge?.map((badge, index) => (
+              <span
+                key={index}
+                className="rounded-md bg-gray-800 px-1 text-white"
+              >
+                {badge}
+              </span>
+            ))}
           </div>
         </div>
 
         {/* 간략한 설명 */}
-        <p className="mb-4 text-gray-700">{description}</p>
+        <p className="mb-4 line-clamp-2 text-gray-700">{description}</p>
 
         {/* 사용 기술 */}
         <div className="flex flex-wrap gap-2">
