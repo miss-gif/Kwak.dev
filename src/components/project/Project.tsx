@@ -1,18 +1,16 @@
-import ProjectCard from "./ProjectCard.tsx";
+import { ProjectData } from "@/types/projectData";
+import ProjectCard from "./ProjectCard.tsx"; // 미리보기 및 상세보기로 나누어 렌더링할 카드 컴포넌트
 
-function Project({ ...data }) {
-  const projectData = {
-    thumbnail: "https://via.placeholder.com/300",
-    title: "포트폴리오 프로젝트",
-    duration: "2023년 1월 - 3월",
-    teamSize: 4,
-    description: "사용자 데이터를 관리하는 웹 애플리케이션 프로젝트입니다.",
-    technologies: ["React", "Tailwind CSS", "Node.js", "MongoDB"],
-  };
+interface ProjectProps {
+  data: ProjectData[]; // ProjectData 배열
+}
 
+function Project({ data }: ProjectProps) {
   return (
     <ul className="grid gap-5 py-5 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-      <ProjectCard {...data} />
+      {data.map((project) => (
+        <ProjectCard key={project.title} project={project} /> // 각 프로젝트 데이터를 ProjectCard에 전달
+      ))}
     </ul>
   );
 }

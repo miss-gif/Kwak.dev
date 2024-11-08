@@ -1,8 +1,13 @@
 import { ProjectData } from "@/types/projectData";
 import { Link } from "react-router-dom";
 
-const ProjectCard = ({ data }: { data: ProjectData }) => {
-  const { thumbnail, title, teamSize, duration, description, techStack } = data;
+interface ProjectCardProps {
+  project: ProjectData; // 각 프로젝트 데이터
+}
+
+const ProjectCard = ({ project }: ProjectCardProps) => {
+  const { thumbnail, title, duration, teamSize, description, techStack } =
+    project;
 
   return (
     <li className="relative max-w-sm overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-200 hover:shadow-lg">
