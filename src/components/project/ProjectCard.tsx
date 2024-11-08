@@ -6,8 +6,16 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
-  const { thumbnail, title, duration, teamSize, description, techStack } =
-    project;
+  const {
+    thumbnail,
+    title,
+    duration,
+    teamSize,
+    description,
+    techStack,
+    links,
+  } = project.card;
+  const { id } = project;
 
   return (
     <li className="relative max-w-sm overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-200 hover:shadow-lg">
@@ -23,13 +31,13 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <div className="flex flex-col items-center justify-center gap-5">
           <p className="pb-3 text-2xl font-semibold text-white">{title}</p>
           <Link
-            to={"/project/1"}
+            to={`/project/${id}`}
             className="w-52 rounded bg-none px-4 py-3 text-center text-black transition-colors duration-300 ease-in-out hover:bg-white hover:text-black"
           >
             자세히 보기
           </Link>
           <a
-            href="/"
+            href={links.demoUrl}
             className="w-52 rounded bg-none px-4 py-3 text-center text-black transition-colors duration-300 ease-in-out hover:bg-white hover:text-black"
           >
             사이트 바로가기
@@ -43,8 +51,11 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
         <h3 className="mb-2 text-2xl font-semibold text-gray-800">{title}</h3>
 
         {/* 작업 기간과 작업 인원 */}
-        <div className="mb-4 text-sm text-gray-600">
-          <span>{duration}</span> | <span>{teamSize}명 작업</span>
+        <div className="mb-4 flex items-center gap-2 text-sm text-gray-600">
+          <span>{`${duration.startDate.toLocaleDateString()} ~ ${duration.endDate.toLocaleDateString()}`}</span>
+          <div className="rounded-md bg-gray-800 px-1 text-white">
+            {teamSize}명
+          </div>
         </div>
 
         {/* 간략한 설명 */}
