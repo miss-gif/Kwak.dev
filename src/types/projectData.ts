@@ -25,9 +25,9 @@ export interface ProjectData {
   development?: string; // 개발 담당자 또는 개발 관련 정보 (선택 사항)
 
   // 목표 및 설명 섹션 (상세보기에서 사용)
-  goal?: string; // 프로젝트의 목표 설명
+  goal?: string[]; // 프로젝트의 목표 설명
   features?: string[]; // 프로젝트 기능 설명 리스트
-  technology?: string; // 기술 설명
-  result?: string; // 결과 설명
-  achievement?: string; // 성과 설명
+  technology?: string[]; // 기술 설명
+  result?: string[]; // 결과 설명
+  achievement?: string[]; // 성과 설명
 }
