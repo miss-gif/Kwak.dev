@@ -42,10 +42,10 @@ interface ProjectDetail {
 
 // 팀원 정보를 담는 인터페이스
 interface ProjectTeam {
-  planner: string;
-  designer: string;
-  publisher: string;
-  developer: string;
+  planner: string | number;
+  designer: string | number;
+  publisher: string | number;
+  developer: string | number;
 }
 
 // 상세 섹션 인터페이스
