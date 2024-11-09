@@ -9,10 +9,12 @@ import { Link } from "react-router-dom";
 import BasicButtons from "../common/Button";
 import NavToggle from "./NavToggle";
 import ToggleThemeSwitch from "./ToggleThemeSwitch";
+import { useAuthStore } from "../stores/authStore";
 
 const Header = ({ toggleTheme }: Theme) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const { user, isLoggedIn, logout } = useAuthStore();
 
   const handleClick = (itemName: string | null) => {
     setSelectedItem(itemName);
@@ -52,9 +54,16 @@ const Header = ({ toggleTheme }: Theme) => {
 
           <div className="flex items-center gap-2 md:gap-6">
             <div className="flex items-center gap-2 md:gap-2">
-              <Link to="login">
-                <BasicButtons>로그인</BasicButtons>
-              </Link>
+              {isLoggedIn ? (
+                <>
+                  <span>{user?.email}</span>
+                  <button onClick={logout}>로그아웃</button>
+                </>
+              ) : (
+                <Link to="login" onClick={() => handleClick(null)}>
+                  <BasicButtons>로그인</BasicButtons>
+                </Link>
+              )}
               <ToggleThemeSwitch onClick={toggleTheme} />
             </div>
             <NavToggle
