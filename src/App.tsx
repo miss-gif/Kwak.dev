@@ -9,8 +9,11 @@ import ChartsPage from "./pages/ChartsPage";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
 import InterviewPage from "./pages/InterviewPage";
+import LoginPage from "./pages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
+import SignupPage from "./pages/SignupPage";
 import { Theme } from "./types/theme";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
@@ -48,6 +51,9 @@ const App = () => {
         <Route path="contact" element={<ContactPage />} />
         <Route path="board" element={<BoardPage />} />
         <Route path="charts" element={<ChartsPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="signup" element={<SignupPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   );

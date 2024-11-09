@@ -52,7 +52,9 @@ const Header = ({ toggleTheme }: Theme) => {
 
           <div className="flex items-center gap-2 md:gap-6">
             <div className="flex items-center gap-2 md:gap-2">
-              <BasicButtons>로그인</BasicButtons>
+              <Link to="login">
+                <BasicButtons>로그인</BasicButtons>
+              </Link>
               <ToggleThemeSwitch onClick={toggleTheme} />
             </div>
             <NavToggle
