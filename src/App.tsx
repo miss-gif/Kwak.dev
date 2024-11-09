@@ -15,6 +15,7 @@ import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
 import SignupPage from "./pages/SignupPage";
 import { Theme } from "./types/theme";
+import AccountInfoPage from "./pages/AccountInfopage";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -53,6 +54,7 @@ const App = () => {
         <Route path="charts" element={<ChartsPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<SignupPage />} />
+        <Route path="accountinfo" element={<AccountInfoPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

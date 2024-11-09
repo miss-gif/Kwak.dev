@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const actions = [
   { icon: <EmailIcon />, name: "Email", path: "/contact" },
@@ -15,6 +16,7 @@ const actions = [
 
 export default function BasicSpeedDial() {
   const [showButton, setShowButton] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,7 +54,7 @@ export default function BasicSpeedDial() {
               key={action.name}
               icon={action.icon}
               tooltipTitle={action.name}
-              onClick={() => (window.location.href = action.path)}
+              onClick={() => navigate(`${action.path}`)}
             />
           ))}
         </SpeedDial>

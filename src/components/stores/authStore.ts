@@ -1,11 +1,21 @@
 import { create } from "zustand";
-import { onAuthStateChanged, User } from "firebase/auth";
+import {
+  onAuthStateChanged,
+  updateEmail,
+  updatePassword,
+  User,
+  deleteUser,
+} from "firebase/auth";
 import { auth } from "@/firebaseConfig";
+import { toast } from "react-toastify";
 
 interface AuthState {
   user: User | null;
   isLoggedIn: boolean;
   setUser: (user: User | null) => void;
+  updateUserEmail: (newEmail: string) => Promise<void>;
+  updateUserPassword: (newPassword: string) => Promise<void>;
+  deleteAccount: () => Promise<void>;
   logout: () => void;
 }
 
@@ -14,8 +24,26 @@ export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   isLoggedIn: false,
   setUser: (user) => set({ user, isLoggedIn: !!user }),
+  updateUserEmail: async (newEmail) => {
+    if (auth.currentUser) {
+      await updateEmail(auth.currentUser, newEmail);
+      set((state) => ({ ...state, user: auth.currentUser }));
+    }
+  },
+  updateUserPassword: async (newPassword) => {
+    if (auth.currentUser) {
+      await updatePassword(auth.currentUser, newPassword);
+    }
+  },
+  deleteAccount: async () => {
+    if (auth.currentUser) {
+      await deleteUser(auth.currentUser);
+      set({ user: null, isLoggedIn: false });
+    }
+  },
   logout: () => {
     auth.signOut();
+    toast.success("로그아웃 되었습니다.");
     set({ user: null, isLoggedIn: false });
   },
 }));

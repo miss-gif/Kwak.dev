@@ -56,7 +56,7 @@ const Header = ({ toggleTheme }: Theme) => {
             <div className="flex items-center gap-2 md:gap-2">
               {isLoggedIn ? (
                 <>
-                  <span>{user?.email}</span>
+                  <Link to={"/accountinfo"}>{user?.email}</Link>
                   <button onClick={logout}>로그아웃</button>
                 </>
               ) : (

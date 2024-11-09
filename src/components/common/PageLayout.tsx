@@ -1,3 +1,4 @@
+import useScrollTo from "@/hooks/useScrollTo";
 import React from "react";
 
 const PageLayout = ({
@@ -9,6 +10,8 @@ const PageLayout = ({
   title?: string;
   subtitle?: string;
 }) => {
+  useScrollTo();
+
   return (
     <div className="mx-auto flex w-full flex-col">
       {title && (
