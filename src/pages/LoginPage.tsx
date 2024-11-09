@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import { useLogin } from "@/hooks/useLogin";
 import { Link } from "react-router-dom";
 
-function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const test = {
+  email: "test1234@naver.com",
+  password: "test1234@naver.com",
+};
 
-  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // 로그인 로직을 여기에 추가
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
+const LoginPage = () => {
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    error,
+    loading,
+    handleLogin,
+  } = useLogin({
+    initialEmail: test.email,
+    initialPassword: test.password,
+  });
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
@@ -53,9 +61,10 @@ function LoginPage() {
             type="submit"
             className="w-full rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
-            로그인
+            {loading ? "로그인 중..." : "로그인"}
           </button>
         </form>
+        {error && <p>{error}</p>}
         <p className="text-center text-sm text-gray-600">
           계정이 없으신가요?
           <Link to="/signup" className="text-blue-500 hover:underline">
@@ -65,6 +74,6 @@ function LoginPage() {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
