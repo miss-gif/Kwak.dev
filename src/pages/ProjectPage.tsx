@@ -1,14 +1,15 @@
+import PageLayout from "@/components/common/PageLayout";
+import SectionWrapper from "@/components/common/SectionWrapper";
 import Project from "@/components/project/Project";
-import Section from "@/components/sections/Section";
 import { projectData } from "@/data/projectData";
 
 const ProjectPage = () => {
   return (
-    <Section>
-      <div className="flex flex-col">
+    <PageLayout title="프로젝트">
+      <SectionWrapper>
         <Project projectData={projectData} />
-      </div>
-    </Section>
+      </SectionWrapper>
+    </PageLayout>
   );
 };
 

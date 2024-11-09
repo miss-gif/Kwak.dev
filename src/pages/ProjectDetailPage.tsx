@@ -1,6 +1,7 @@
+import PageLayout from "@/components/common/PageLayout";
+import SectionWrapper from "@/components/common/SectionWrapper";
 import ProjectDescription from "@/components/project/ProjectDescription";
 import ProjectOverview from "@/components/project/ProjectOverview";
-import Section from "@/components/sections/Section";
 import { projectData } from "@/data/projectData";
 
 import { useParams } from "react-router-dom";
@@ -16,12 +17,12 @@ const ProjectDetailPage = () => {
   }
 
   return (
-    <Section>
-      <div className="flex flex-col gap-10">
+    <PageLayout title="프로젝트">
+      <SectionWrapper>
         <ProjectOverview data={project.card} />
         <ProjectDescription data={project.detail} />
-      </div>
-    </Section>
+      </SectionWrapper>
+    </PageLayout>
   );
 };
 

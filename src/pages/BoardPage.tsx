@@ -1,7 +1,12 @@
-import Section from '@/components/sections/Section'
+import PageLayout from "@/components/common/PageLayout";
+import SectionWrapper from "@/components/common/SectionWrapper";
 
 const BoardPage = () => {
-  return <Section>BoardPage</Section>
-}
+  return (
+    <PageLayout title="게시판">
+      <SectionWrapper>BoardPage</SectionWrapper>
+    </PageLayout>
+  );
+};
 
-export default BoardPage
+export default BoardPage;

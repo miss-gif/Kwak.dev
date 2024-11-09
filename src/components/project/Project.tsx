@@ -7,7 +7,7 @@ interface ProjectProps {
 
 function Project({ projectData }: ProjectProps) {
   return (
-    <ul className="grid gap-5 py-5 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+    <ul className="grid w-full gap-5 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
       {projectData.map((project) => (
         <ProjectCard key={project.id} project={project} /> // 각 프로젝트 데이터를 ProjectCard에 전달
       ))}
