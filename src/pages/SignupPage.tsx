@@ -1,18 +1,17 @@
-import React, { useState } from "react";
+import { useSignup } from "@/hooks/useSignup";
 import { Link } from "react-router-dom";
 
 function SignupPage() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // 회원가입 로직을 여기에 추가
-    console.log("Username:", username);
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
+  const {
+    username,
+    setUsername,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    error,
+    handleSignup,
+  } = useSignup();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-100">
@@ -69,6 +68,7 @@ function SignupPage() {
               required
             />
           </div>
+          {error && <p className="text-red-500">{error}</p>}
           <button
             type="submit"
             className="w-full rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
