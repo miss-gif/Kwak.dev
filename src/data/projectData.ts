@@ -5,7 +5,8 @@ export const projectData: ProjectData[] = [
     id: 1,
     card: {
       badge: ["코딩", "기술", "협업"],
-      thumbnail: "https://placehold.co/600x400", // 대표 이미지로 수정한 예시
+      thumbnail:
+        "https://portfolio-final-neon-psi.vercel.app/assets/1-f857b189.png", // 대표 이미지로 수정한 예시
       title: "주문이요 (음식주문 플랫폼)",
       duration: {
         startDate: new Date("2024-07-24"),

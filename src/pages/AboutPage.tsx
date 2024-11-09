@@ -1,30 +1,30 @@
-import Career from '@/components/about/Career'
-import Certificate from '@/components/about/Certificate'
-import Intro from '@/components/about/Intro'
-import Article from '@/components/articles/Article'
-import Section from '@/components/sections/Section'
-import SkillViewer from '@/components/skill/SkillViewer'
+import Career from "@/components/about/Career";
+import Certificate from "@/components/about/Certificate";
+import Intro from "@/components/about/Intro";
+import PageLayout from "@/components/common/PageLayout";
+import SectionWrapper from "@/components/common/SectionWrapper";
+import SkillViewer from "@/components/skill/SkillViewer";
 
 const AboutPage = () => {
   return (
-    <Section>
-      <div className="flex flex-col">
+    <PageLayout title="소개">
+      <SectionWrapper>
         <Intro />
+      </SectionWrapper>
 
-        <Article title="Skill">
-          <SkillViewer />
-        </Article>
+      <SectionWrapper title="Skill">
+        <SkillViewer />
+      </SectionWrapper>
 
-        <Article title="Education">
-          <Career />
-        </Article>
+      <SectionWrapper title="Education">
+        <Career />
+      </SectionWrapper>
 
-        <Article title="Certificate">
-          <Certificate />
-        </Article>
-      </div>
-    </Section>
-  )
-}
+      <SectionWrapper title="Certificate">
+        <Certificate />
+      </SectionWrapper>
+    </PageLayout>
+  );
+};
 
-export default AboutPage
+export default AboutPage;
