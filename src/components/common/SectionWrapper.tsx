@@ -17,13 +17,13 @@ const SectionWrapper = ({
   title?: string;
 }) => {
   return (
-    <section className="m-auto flex w-full max-w-screen-xl flex-col items-center px-4 py-10">
+    <section className="mx-auto flex w-full max-w-screen-xl flex-col items-center gap-5 px-4 py-10">
       {title && (
-        <h3 className="text-center text-3xl font-semibold uppercase">
+        <h3 className="w-full text-center text-6xl font-semibold uppercase">
           {title}
         </h3>
       )}
-      {children}
+      <div className="w-full">{children}</div>
     </section>
   );
 };

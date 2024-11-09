@@ -22,7 +22,7 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -44,7 +44,7 @@ export default function SkillViewer() {
 
   return (
     <>
-      <div className="mb-10 mt-3 flex items-center justify-center">
+      <div className="mb-10 flex items-center justify-center">
         {/* 탭 영역 */}
         <Tabs value={value} onChange={handleChange}>
           <Tab label="SkillSet" {...a11yProps(0)} />

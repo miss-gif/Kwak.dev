@@ -4,6 +4,7 @@ import Intro from "@/components/about/Intro";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import SkillViewer from "@/components/skill/SkillViewer";
+import Timeline from "@/components/timeline/Timeline";
 
 const AboutPage = () => {
   return (
@@ -22,6 +23,10 @@ const AboutPage = () => {
 
       <SectionWrapper title="Certificate">
         <Certificate />
+      </SectionWrapper>
+
+      <SectionWrapper title="히스토리">
+        <Timeline />
       </SectionWrapper>
     </PageLayout>
   );

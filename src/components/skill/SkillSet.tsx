@@ -202,18 +202,16 @@ const SkillSet = () => {
   }, []);
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-between gap-10 md:flex-row">
-        <canvas
-          ref={canvasRef}
-          className="h-[50vmin] w-[50vmin] rounded-full"
-        ></canvas>
-        {selected && (
-          // 우측 사이드 영역
-          <div className="flex h-[300px] w-[550px] flex-col items-center justify-center gap-5 p-4 md:h-[350px] md:items-start">
-            <h4 className="text-4xl font-semibold md:text-6xl">
-              {selected.name}
-            </h4>
+    <div className="flex flex-col items-center justify-between gap-10 md:flex-row md:gap-20">
+      <canvas
+        ref={canvasRef}
+        className="h-[50vmin] w-[50vmin] rounded-full"
+      ></canvas>
+      {selected && (
+        // 우측 사이드 영역
+        <div className="flex w-full flex-col items-center justify-center md:h-[300px]">
+          <div className="flex w-full flex-col items-center justify-center gap-3 md:items-start">
+            <h4 className="text-4xl font-semibold">{selected.name}</h4>
             <p>
               {Array(5)
                 .fill(null)
@@ -228,17 +226,17 @@ const SkillSet = () => {
                   </span>
                 ))}
             </p>
-            <p>
+            <div>
               {selected.description.map((item, index) => (
                 <span key={index} className="text-md leading-8 md:text-xl">
                   {item}
                   <br />
                 </span>
               ))}
-            </p>
+            </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };
