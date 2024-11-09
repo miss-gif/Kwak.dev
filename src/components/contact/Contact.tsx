@@ -14,7 +14,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex w-full items-center justify-center bg-slate-200 py-4">
+    <div className="flex w-full items-center justify-center py-4">
       {!complete ? (
         <ContactForm onSubmitSuccess={handleSubmitSuccess} />
       ) : (
