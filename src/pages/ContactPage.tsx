@@ -7,7 +7,7 @@ const ContactPage = () => {
   return (
     <PageLayout title="문의">
       <SectionWrapper>
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between gap-10">
           <ContactInfo />
           <Contact />
         </div>

@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import ContactForm from './ContactForm'
-import ThankYouMessage from './ThankYouMessage'
+import { useState } from "react";
+import ContactForm from "./ContactForm";
+import ThankYouMessage from "./ThankYouMessage";
 
 const Contact = () => {
-  const [complete, setComplete] = useState(false)
-  // const [profile, setProfile] = useState({
-  //   contact: '',
-  //   email: '',
-  //   github: '',
-  // })
+  const [complete, setComplete] = useState(false);
 
   const handleSubmitSuccess = () => {
-    setComplete(true)
-  }
+    setComplete(true);
+  };
 
   const handleReset = () => {
-    setComplete(false)
-  }
+    setComplete(false);
+  };
 
   return (
-    <div className="contact-content">
-      <div className="contact-content__form">
-        {!complete ? (
-          <ContactForm onSubmitSuccess={handleSubmitSuccess} />
-        ) : (
-          <ThankYouMessage onReset={handleReset} />
-        )}
-      </div>
+    <div className="flex w-full items-center justify-center bg-slate-200 py-4">
+      {!complete ? (
+        <ContactForm onSubmitSuccess={handleSubmitSuccess} />
+      ) : (
+        <ThankYouMessage onReset={handleReset} />
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

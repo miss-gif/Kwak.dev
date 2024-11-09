@@ -1,17 +1,23 @@
-const ThankYouMessage = ({ onReset }: any) => (
-  <div className="flex flex-col items-center justify-center p-6 bg-gray-100 rounded-lg shadow-md">
-    <h2 className="text-xl font-semibold text-gray-800 text-center mb-4">
-      문의해주셔서 감사합니다!
+import React from "react";
+
+interface ThankYouMessageProps {
+  onReset: () => void;
+}
+
+const ThankYouMessage: React.FC<ThankYouMessageProps> = ({ onReset }) => (
+  <div className="flex w-1/2 flex-col items-center justify-center rounded-lg bg-white p-8 shadow-lg">
+    <h2 className="mb-6 text-center text-xl font-bold leading-10 text-gray-900">
+      소중한 문의 감사합니다!
       <br />
-      최대한 빠르게 답변드리겠습니다.
+      최대한 빠른 시일 내에 답변드리겠습니다.
     </h2>
     <button
       onClick={onReset}
-      className="px-4 py-2 bg-green-500 text-white font-medium rounded-md hover:bg-green-600 transition duration-200"
+      className="rounded-lg bg-blue-500 px-6 py-3 text-lg font-semibold text-white transition duration-300 ease-in-out hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
     >
-      추가 문의
+      새 문의 하기
     </button>
   </div>
-)
+);
 
-export default ThankYouMessage
+export default ThankYouMessage;
