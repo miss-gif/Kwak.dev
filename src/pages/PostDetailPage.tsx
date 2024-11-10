@@ -69,6 +69,14 @@ const PostDetailPage = () => {
   };
 
   const handleDelete = () => {
+    if (!user) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+    if (post.author !== user.email) {
+      alert("게시글 작성자만 수정할 수 있습니다.");
+      return;
+    }
     if (window.confirm("정말 삭제하시겠습니까?")) {
       // 삭제 로직
       console.log("삭제 로직");

@@ -1,8 +1,6 @@
-import { useAuthStore } from "@/components/stores/authStore";
 import useAccount from "@/hooks/useAccount";
+import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
 
 const AccountInfoPage = () => {
   const {
@@ -17,21 +15,12 @@ const AccountInfoPage = () => {
     handlePasswordUpdate,
     handleAccountDelete,
   } = useAccount();
-  const { user: login } = useAuthStore();
-  const navigate = useNavigate();
+
+  useRequireLogin(); // 로그인 상태가 아닐 경우 리다이렉트 실행
 
   useEffect(() => {
-    console.log(login);
-
-    if (!login) {
-      toast.error("로그인이 필요합니다.");
-      navigate("/login"); // React Router의 useNavigate를 사용해 리다이렉트
-    }
-  }, [login, navigate]);
-
-  if (!login) {
-    return null; // 로그인 상태가 없을 경우 UI 렌더링을 멈추고 리다이렉트 실행
-  }
+    console.log("user", user);
+  }, []);
 
   return (
     <div className="mx-auto mt-10 max-w-md rounded-lg bg-white p-6 shadow-lg">
@@ -41,13 +30,35 @@ const AccountInfoPage = () => {
 
       <div className="mb-4">
         <p className="text-gray-600">
+          <span className="font-semibold">uid:</span> {user?.uid}
+        </p>
+        <p className="text-gray-600">
+          <span className="font-semibold">닉네임:</span> {user?.displayName}
+        </p>
+        <p className="text-gray-600">
+          <span className="font-semibold">인증여부:</span>
+          {user?.isAnonymous ? "인증" : "게스트"}
+        </p>
+        <p className="text-gray-600">
           <span className="font-semibold">아이디(이메일):</span> {user?.email}
+        </p>
+        <p className="text-gray-600">
+          <span className="font-semibold">이메일 여부:</span>
+          {user?.emailVerified ? "인증" : "미인증"}
+        </p>
+        <p className="text-gray-600">
+          <span className="font-semibold">프로필 이미지</span>
+          {user?.photoURL}
+        </p>
+        <p className="text-gray-600">
+          <span className="font-semibold">연락처:</span>
+          {user?.phoneNumber}
         </p>
         <p className="text-gray-600">
           <span className="font-semibold">계정 생성일:</span> {creationDate}
         </p>
         <p className="text-gray-600">
-          <span className="font-semibold">최근 로그인 날짜:</span>{" "}
+          <span className="font-semibold">최근 로그인 날짜:</span>
           {lastSignInDate}
         </p>
       </div>
