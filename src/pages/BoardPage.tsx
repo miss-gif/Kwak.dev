@@ -46,7 +46,7 @@ const BoardPage = () => {
                   {posts.map((post) => (
                     <tr
                       key={post.postId}
-                      className="cursor-pointer border-b hover:bg-gray-50"
+                      className="cursor-pointer border-b hover:bg-orange-200"
                       onClick={() => {
                         navigate(`/post/${post.postId}`);
                       }}

@@ -6,14 +6,14 @@ type ProjectDescriptionProps = {
 
 const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
   return (
-    <div className="rounded-lg bg-white">
+    <div className="rounded-lg">
       {/* 성과 */}
-      <div className="my-6 rounded-xl bg-slate-800 px-4 py-4 text-white">
+      <div className="my-6 rounded-xl bg-slate-800 px-4 py-4">
         <p className="mb-2 text-xl font-semibold">성과</p>
         <ul className="mb-4 list-inside list-disc">
           {data.achievement.map((item, index) => (
             <li key={index}>
-              <strong className="text-blue-500">{item.title}</strong>{" "}
+              <strong className="text-blue-500">{item.title}</strong>
               {item.details.join(", ")}
             </li>
           ))}
@@ -27,7 +27,7 @@ const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
       <ul className="mb-4 list-inside list-disc">
         {data.goal.map((item, index) => (
           <li key={index}>
-            <strong className="text-blue-500">{item.title}</strong>{" "}
+            <strong className="text-blue-500">{item.title}</strong>
             {item.details.join(", ")}
           </li>
         ))}
@@ -38,7 +38,7 @@ const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
       <ul className="mb-4 list-inside list-disc">
         {data.features.map((item, index) => (
           <li key={index}>
-            <strong className="text-blue-500">{item.title}</strong>{" "}
+            <strong className="text-blue-500">{item.title}</strong>
             {item.details.join(", ")}
           </li>
         ))}
@@ -49,7 +49,7 @@ const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
       <ul className="mb-4 list-inside list-disc">
         {data.technology.map((item, index) => (
           <li key={index}>
-            <strong className="text-blue-500">{item.title}</strong>{" "}
+            <strong className="text-blue-500">{item.title}</strong>
             {item.details.join(", ")}
           </li>
         ))}
@@ -60,7 +60,7 @@ const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
       <ul className="mb-4 list-inside list-disc">
         {data.result.map((item, index) => (
           <li key={index}>
-            <strong className="text-blue-500">{item.title}</strong>{" "}
+            <strong className="text-blue-500">{item.title}</strong>
             {item.details.join(", ")}
           </li>
         ))}
