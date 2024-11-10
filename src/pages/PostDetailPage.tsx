@@ -1,3 +1,4 @@
+import CommentList from "@/components/board/CommentList";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import { useAuthStore } from "@/components/stores/authStore";
@@ -18,31 +19,45 @@ const PostDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useAuthStore();
 
-  useEffect(() => {
-    const fetchPost = async () => {
-      if (!postId) return;
+  // 게시글 불러오기
+  const fetchPost = async () => {
+    if (!postId) return;
 
-      try {
-        const postRef = doc(db, "posts", postId);
-        const postSnap = await getDoc(postRef);
+    try {
+      const postRef = doc(db, "posts", postId);
+      const postSnap = await getDoc(postRef);
 
-        if (postSnap.exists()) {
-          const postData = postSnap.data() as Post;
-          setPost(postData);
+      if (postSnap.exists()) {
+        const postData = postSnap.data() as Post;
+        setPost(postData);
 
-          // 조회수 증가
-          await updateDoc(postRef, { views: (postData.views || 0) + 1 });
-        } else {
-          console.error("게시글을 찾을 수 없습니다.");
-          navigate("/not-found");
-        }
-      } catch (error) {
-        console.error("게시글을 불러오는데 실패했습니다:", error);
-      } finally {
-        setLoading(false);
+        // 조회수 증가
+        await updateDoc(postRef, { views: (postData.views || 0) + 1 });
+      } else {
+        console.error("게시글을 찾을 수 없습니다.");
+        navigate("/not-found");
       }
-    };
+    } catch (error) {
+      console.error("게시글을 불러오는데 실패했습니다:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // 로그인 및 작성자 확인
+  const validateUser = () => {
+    if (!user) {
+      alert("로그인이 필요합니다.");
+      return false;
+    }
+    if (post?.author !== user.email) {
+      alert("게시글 작성자만 수정할 수 있습니다.");
+      return false;
+    }
+    return true;
+  };
+
+  useEffect(() => {
     fetchPost();
   }, [postId, navigate]);
 
@@ -59,27 +74,13 @@ const PostDetailPage = () => {
   }
 
   const handleEdit = () => {
-    if (!user) {
-      alert("로그인이 필요합니다.");
-      return;
+    if (validateUser()) {
+      navigate(`/post/${postId}/edit`);
     }
-    if (post.author !== user.email) {
-      alert("게시글 작성자만 수정할 수 있습니다.");
-      return;
-    }
-    navigate(`/post/${postId}/edit`);
   };
 
   const handleDelete = () => {
-    if (!user) {
-      alert("로그인이 필요합니다.");
-      return;
-    }
-    if (post.author !== user.email) {
-      alert("게시글 작성자만 수정할 수 있습니다.");
-      return;
-    }
-    if (window.confirm("정말 삭제하시겠습니까?")) {
+    if (validateUser() && window.confirm("정말 삭제하시겠습니까?")) {
       // 삭제 로직
       console.log("삭제 로직");
     }
@@ -99,7 +100,34 @@ const PostDetailPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col">
+          {/* 버튼들 */}
+          <div className="sticky top-20 mb-4 flex w-full items-center justify-between rounded-lg border-2 border-blue-300 bg-white px-2 py-4">
+            <button
+              onClick={() => navigate(-1)}
+              className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+            >
+              목록
+            </button>
+            {post?.author !== user?.email ? null : (
+              <div className="flex gap-2">
+                <button
+                  onClick={handleEdit}
+                  className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+                >
+                  수정
+                </button>
+                <button
+                  onClick={handleDelete}
+                  className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+                >
+                  삭제
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* 게시글 내용 */}
           <div className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-sm">
             <h1 className="mb-4 text-3xl font-bold text-gray-800">
               {post.title}
@@ -132,64 +160,7 @@ const PostDetailPage = () => {
           </div>
 
           {/* 댓글 영역 */}
-          <div className="mt-8 w-full rounded-lg border border-gray-300 bg-white p-6 shadow-sm">
-            <h2 className="mb-4 text-xl font-semibold text-gray-800">댓글</h2>
-            <div className="space-y-4">
-              {/* {comments.map((comment) => (
-                <div key={comment.id} className="border-b pb-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-600">
-                      {comment.author}
-                    </span>
-                    <span className="text-xs text-gray-500">
-                      {comment.date}
-                    </span>
-                  </div>
-                  <p className="mt-2 text-gray-700">{comment.content}</p>
-                </div>
-              ))} */}
-              댓글
-            </div>
-
-            {/* 댓글 입력 폼 */}
-            <div className="mt-6">
-              <textarea
-                placeholder="댓글을 남기세요..."
-                className="w-full rounded-md border border-gray-300 p-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                // rows="3"
-                // value={newComment}
-                // onChange={(e) => setNewComment(e.target.value)}
-              />
-              <div className="mt-4 flex justify-end">
-                <button
-                  // onClick={handleCommentSubmit}
-                  className="rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"
-                >
-                  댓글 작성
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* 버튼들 */}
-          <button
-            onClick={() => navigate(-1)}
-            className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-          >
-            목록
-          </button>
-          <button
-            onClick={handleEdit}
-            className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-          >
-            수정
-          </button>
-          <button
-            onClick={handleDelete}
-            className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-          >
-            삭제
-          </button>
+          <CommentList />
         </div>
       </SectionWrapper>
     </PageLayout>
