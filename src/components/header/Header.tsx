@@ -56,8 +56,15 @@ const Header = ({ toggleTheme }: Theme) => {
             <div className="flex items-center gap-2 md:gap-2">
               {isLoggedIn ? (
                 <>
-                  <Link to={"/accountinfo"}>{user?.email}</Link>
-                  <button onClick={logout}>로그아웃</button>
+                  <Link
+                    to={"/accountinfo"}
+                    className="hover:text-fire hover:underline"
+                  >
+                    {user?.email}
+                  </Link>
+                  <button onClick={logout}>
+                    <BasicButtons>로그아웃</BasicButtons>
+                  </button>
                 </>
               ) : (
                 <Link to="login" onClick={() => handleClick(null)}>
