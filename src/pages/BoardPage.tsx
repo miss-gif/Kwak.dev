@@ -56,7 +56,13 @@ const BoardPage = () => {
                 </thead>
                 <tbody>
                   {posts.map((post) => (
-                    <tr key={post.postId} className="border-b hover:bg-gray-50">
+                    <tr
+                      key={post.postId}
+                      className="border-b hover:bg-gray-50"
+                      onClick={() => {
+                        navigate(`/post/${post.postId}`);
+                      }}
+                    >
                       <td className="px-4 py-3">
                         <h2 className="text-lg font-semibold">{post.title}</h2>
                       </td>
@@ -90,7 +96,7 @@ const BoardPage = () => {
           <button
             className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
             onClick={() => {
-              !user ? alert("로그인이 필요합니다.") : navigate("write");
+              !user ? alert("로그인이 필요합니다.") : navigate("/post/write");
             }}
           >
             글쓰기

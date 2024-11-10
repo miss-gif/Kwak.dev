@@ -17,6 +17,7 @@ import { Theme } from "./types/theme";
 import AccountInfoPage from "./pages/AccountInfopage";
 import CreatePostPage from "./pages/CreatePostPage";
 import BoardPage from "./pages/BoardPage";
+import PostDetailPage from "./pages/PostDetailPage";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -58,7 +59,8 @@ const App = () => {
         <Route path="accountinfo" element={<AccountInfoPage />} />
         {/* 게시판 */}
         <Route path="board" element={<BoardPage />} />
-        <Route path="board/write" element={<CreatePostPage />} />
+        <Route path="post/write" element={<CreatePostPage />} />
+        <Route path="post/:postId" element={<PostDetailPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
