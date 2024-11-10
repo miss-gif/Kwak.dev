@@ -1,28 +1,21 @@
 import { useAuthStore } from "@/components/stores/authStore";
+import { postSchema } from "@/schema/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
-const postSchema = z.object({
-  title: z.string().min(1, { message: "제목을 입력해주세요." }),
-  content: z
-    .string()
-    .min(10, { message: "내용은 최소 10자 이상이어야 합니다." }),
-  author: z.string().min(1, { message: "작성자를 입력해주세요." }),
-});
-
 type PostFormData = z.infer<typeof postSchema>;
 
 const CreatePostPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navegate = useNavigate();
+  const navigator = useNavigate();
   const { user } = useAuthStore();
 
   useEffect(() => {
     if (user === null) {
-      navegate("/login");
+      navigator("/login");
     }
   }, [user]);
 
@@ -40,7 +33,7 @@ const CreatePostPage = () => {
       // 여기서 API 호출이나 데이터베이스에 게시글 저장
       console.log("게시글 제출:", data);
       // 게시글 저장 후 페이지 이동이나 성공 메시지 추가 가능
-      navegate("/board");
+      navigator("/board");
     } catch (error) {
       console.error("게시글 제출 실패:", error);
     } finally {

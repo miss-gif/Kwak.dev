@@ -5,9 +5,9 @@ interface Post {
   author: string;
   likes: number;
   dislikes: number;
-  createdAt: Date;
   views: number;
-  number?: number;
+  createdAt: Date;
+  likedBy: [string];
 }
 
 export default Post;

@@ -22,8 +22,8 @@ const useFetchPosts = () => {
             likes: data.likes ?? 0,
             dislikes: data.dislikes ?? 0,
             views: data.views ?? 0,
-            number: data.number,
             createdAt: data.createdAt.toDate(),
+            likedBy: data.likedBy ?? [],
           };
         });
         setPosts(postsData);
