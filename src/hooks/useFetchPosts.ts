@@ -21,6 +21,7 @@ const useFetchPosts = (searchTerm: string, pageSize: number) => {
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
 
+  // 게시물을 가져오는 함수
   const fetchPosts = async (isNewSearch = false) => {
     setLoading(true);
     setError(null);
@@ -50,7 +51,9 @@ const useFetchPosts = (searchTerm: string, pageSize: number) => {
         q = query(q, startAfter(lastDoc));
       }
 
+      // 쿼리 실행
       const querySnapshot = await getDocs(q);
+      // 쿼리 결과를 Post 타입으로 변환
       const fetchedPosts = querySnapshot.docs.map((doc) => {
         const data = doc.data();
         return {
@@ -68,6 +71,7 @@ const useFetchPosts = (searchTerm: string, pageSize: number) => {
       });
 
       if (isNewSearch) {
+        // 새로운 검색이면 posts를 교체
         setPosts(fetchedPosts);
       } else {
         setPosts((prevPosts) => [...prevPosts, ...fetchedPosts]);
