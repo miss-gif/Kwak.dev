@@ -5,17 +5,19 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/firebaseConfig";
 
 type PostFormData = z.infer<typeof postSchema>;
 
 const CreatePostPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const navigator = useNavigate();
+  const navigate = useNavigate();
   const { user } = useAuthStore();
 
   useEffect(() => {
     if (user === null) {
-      navigator("/login");
+      navigate("/login");
     }
   }, [user]);
 
@@ -30,12 +32,22 @@ const CreatePostPage = () => {
   const onSubmit = async (data: PostFormData) => {
     setIsSubmitting(true);
     try {
-      // 여기서 API 호출이나 데이터베이스에 게시글 저장
-      console.log("게시글 제출:", data);
-      // 게시글 저장 후 페이지 이동이나 성공 메시지 추가 가능
-      navigator("/board");
+      // Firestore의 posts 컬렉션에 게시글 저장
+      await addDoc(collection(db, "posts"), {
+        title: data.title,
+        content: data.content,
+        author: user?.email || "Anonymous",
+        likes: 0,
+        dislikes: 0,
+        views: 0,
+        createdAt: serverTimestamp(),
+        likedBy: [],
+      });
+
+      console.log("게시글이 성공적으로 저장되었습니다.");
+      navigate("/board"); // 저장 후 게시판 페이지로 이동
     } catch (error) {
-      console.error("게시글 제출 실패:", error);
+      console.error("게시글 저장 실패:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -88,6 +100,8 @@ const CreatePostPage = () => {
             id="author"
             className="mt-1 w-full rounded-md border border-gray-300 p-2"
             placeholder="작성자를 입력하세요"
+            value={user?.email ?? ""}
+            readOnly
             {...register("author")}
           />
           {errors.author && (
