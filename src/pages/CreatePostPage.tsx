@@ -57,6 +57,7 @@ const CreatePostPage = () => {
   const handleCancel = () => {
     if (confirm("작성을 취소하시겠습니까?")) {
       navigate("/board");
+      toast.error("작성이 취소되었습니다.");
     } else {
       return;
     }
@@ -70,9 +71,27 @@ const CreatePostPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <div className="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-center justify-center p-6">
-          <h2 className="mb-6 text-2xl font-semibold">새 글 작성</h2>
+        <div className="flex w-full flex-col">
           <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-4">
+            <div className="mb-3 flex justify-between border-b border-black py-3">
+              <h2 className="text-left text-2xl font-semibold">새 글 작성</h2>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  className="rounded-md bg-red-500 px-4 py-2 text-white hover:bg-red-600"
+                  onClick={handleCancel}
+                >
+                  취소
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                >
+                  {isSubmitting ? "저장 중..." : "등록"}
+                </button>
+              </div>
+            </div>
             <div>
               <label htmlFor="title" className="block text-gray-700">
                 제목
@@ -130,22 +149,7 @@ const CreatePostPage = () => {
                 </p>
               )}
             </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="mt-4 w-full rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
-            >
-              {isSubmitting ? "저장 중..." : "글 작성하기"}
-            </button>
           </form>
-          <button
-            type="submit"
-            className="mt-4 w-full rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
-            onClick={handleCancel}
-          >
-            취소
-          </button>
         </div>
       </SectionWrapper>
     </PageLayout>
