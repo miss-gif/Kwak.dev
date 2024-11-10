@@ -46,6 +46,22 @@ const BoardPage = () => {
     return <div>{error}</div>;
   }
 
+  // 날짜 포맷을 변경하는 함수
+  const formatDate = (dateString: string) => {
+    const today = new Date();
+    const createdAt = new Date(dateString);
+
+    const isSameDay = today.toDateString() === createdAt.toDateString();
+
+    // 오늘 날짜와 같으면 시간만 표시, 다르면 날짜만 표시
+    return isSameDay
+      ? createdAt.toLocaleTimeString("ko-KR", {
+          hour: "2-digit",
+          minute: "2-digit",
+        })
+      : createdAt.toLocaleDateString("ko-KR");
+  };
+
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
@@ -102,7 +118,7 @@ const BoardPage = () => {
                   <td className="text-center text-red-500">{post.dislikes}</td>
                   <td className="text-center">{post.views}</td>
                   <td className="text-center text-xs">
-                    {post.createdAt.toLocaleString()}
+                    {formatDate(post.createdAt)}
                   </td>
                 </tr>
               ))}
