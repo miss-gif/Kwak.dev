@@ -4,20 +4,20 @@ import BasicSpeedDial from "./components/common/BasicSpeedDial";
 import Footer from "./components/Footer";
 import Header from "./components/header/Header";
 import AboutPage from "./pages/AboutPage";
+import AccountInfoPage from "./pages/AccountInfoPage";
+import BoardPage from "./pages/BoardPage";
 import ChartsPage from "./pages/ChartsPage";
 import ContactPage from "./pages/ContactPage";
+import CreatePostPage from "./pages/CreatePostPage";
 import HomePage from "./pages/HomePage";
 import InterviewPage from "./pages/InterviewPage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import PostDetailPage from "./pages/PostDetailPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
 import SignupPage from "./pages/SignupPage";
 import { Theme } from "./types/theme";
-import AccountInfoPage from "./pages/AccountInfopage";
-import CreatePostPage from "./pages/CreatePostPage";
-import BoardPage from "./pages/BoardPage";
-import PostDetailPage from "./pages/PostDetailPage";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>

@@ -1,15 +1,13 @@
-import Container from "@/components/common/Container";
+import SectionWrapper from "@/components/common/SectionWrapper";
 import HeroVideo from "@/components/home/HeroVideo";
 import HomeInfo from "./../components/home/HomeInfo";
 
 const HomePage = () => {
   return (
-    <section>
-      <Container>
-        <HeroVideo />
-        <HomeInfo />
-      </Container>
-    </section>
+    <SectionWrapper>
+      <HeroVideo />
+      <HomeInfo />
+    </SectionWrapper>
   );
 };
 
