@@ -1,5 +1,3 @@
-import { Timestamp } from "firebase/firestore";
-
 interface Post {
   postId: string;
   title: string;
@@ -8,7 +6,7 @@ interface Post {
   likes: number;
   dislikes: number;
   views: number;
-  createdAt: Date | Timestamp;
+  createdAt: any;
   likedBy: [string];
   dislikedBy: [string];
 }
