@@ -33,7 +33,7 @@ export const useLogin = ({
         password,
       );
       setUser(userCredential.user); // Zustand 스토어에 로그인 상태 설정
-      navigate("/");
+      navigate(-1);
       toast.success("로그인 되었습니다.");
     } catch (error: any) {
       setError("로그인 실패");

@@ -7,7 +7,7 @@ interface Post {
   dislikes: number;
   createdAt: Date;
   views: number;
-  number: number;
+  number?: number;
 }
 
 export default Post;

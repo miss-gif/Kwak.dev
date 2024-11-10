@@ -1,11 +1,15 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
+import { useAuthStore } from "@/components/stores/authStore";
 import { db } from "@/firebaseConfig";
 import useFetchPosts from "@/hooks/useFetchPosts";
 import { doc, increment, updateDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const BoardPage = () => {
   const { posts, error } = useFetchPosts();
+  const { user } = useAuthStore();
+  const navigate = useNavigate();
 
   const handleLike = async (postId: string) => {
     const postRef = doc(db, "posts", postId);
@@ -31,9 +35,6 @@ const BoardPage = () => {
                 <thead>
                   <tr className="border-b bg-gray-100">
                     <th className="px-4 py-2 text-left font-semibold text-gray-700">
-                      번호
-                    </th>
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700">
                       제목
                     </th>
                     <th className="px-4 py-2 text-left font-semibold text-gray-700">
@@ -56,7 +57,6 @@ const BoardPage = () => {
                 <tbody>
                   {posts.map((post) => (
                     <tr key={post.postId} className="border-b hover:bg-gray-50">
-                      <td className="px-4 py-3">{post.number}</td>
                       <td className="px-4 py-3">
                         <h2 className="text-lg font-semibold">{post.title}</h2>
                       </td>
@@ -87,7 +87,12 @@ const BoardPage = () => {
               </table>
             </div>
           </div>
-          <button className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
+          <button
+            className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+            onClick={() => {
+              !user ? alert("로그인이 필요합니다.") : navigate("write");
+            }}
+          >
             글쓰기
           </button>
         </div>

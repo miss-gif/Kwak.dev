@@ -4,7 +4,6 @@ import BasicSpeedDial from "./components/common/BasicSpeedDial";
 import Footer from "./components/Footer";
 import Header from "./components/header/Header";
 import AboutPage from "./pages/AboutPage";
-import BoardPage from "./pages/BoardPage";
 import ChartsPage from "./pages/ChartsPage";
 import ContactPage from "./pages/ContactPage";
 import HomePage from "./pages/HomePage";
@@ -16,6 +15,8 @@ import ProjectPage from "./pages/ProjectPage";
 import SignupPage from "./pages/SignupPage";
 import { Theme } from "./types/theme";
 import AccountInfoPage from "./pages/AccountInfopage";
+import CreatePostPage from "./pages/CreatePostPage";
+import BoardPage from "./pages/BoardPage";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -50,13 +51,17 @@ const App = () => {
         <Route path="project/:id" element={<ProjectDetailPage />} />
         <Route path="interview" element={<InterviewPage />} />
         <Route path="contact" element={<ContactPage />} />
-        <Route path="board" element={<BoardPage />} />
         <Route path="charts" element={<ChartsPage />} />
+        {/*  */}
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<SignupPage />} />
         <Route path="accountinfo" element={<AccountInfoPage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        {/* 게시판 */}
+        <Route path="board" element={<BoardPage />} />
+        <Route path="board/write" element={<CreatePostPage />} />
       </Route>
+
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
