@@ -10,6 +10,7 @@ interface Post {
   views: number;
   createdAt: Date | Timestamp;
   likedBy: [string];
+  dislikedBy: [string];
 }
 
 export default Post;

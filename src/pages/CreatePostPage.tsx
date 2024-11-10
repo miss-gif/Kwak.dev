@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
+import { toast } from "react-toastify";
 
 type PostFormData = z.infer<typeof postSchema>;
 
@@ -42,12 +43,12 @@ const CreatePostPage = () => {
         views: 0,
         createdAt: serverTimestamp(),
         likedBy: [],
+        dislikedBy: [],
       });
-
-      console.log("게시글이 성공적으로 저장되었습니다.");
-      navigate("/board"); // 저장 후 게시판 페이지로 이동
+      toast.success("게시글이 성공적으로 저장되었습니다.");
+      navigate("/board");
     } catch (error) {
-      console.error("게시글 저장 실패:", error);
+      toast.error("게시글 저장에 실패했습니다.");
     } finally {
       setIsSubmitting(false);
     }

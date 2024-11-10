@@ -1,25 +1,13 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import { useAuthStore } from "@/components/stores/authStore";
-import { db } from "@/firebaseConfig";
 import useFetchPosts from "@/hooks/useFetchPosts";
-import { doc, increment, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 const BoardPage = () => {
   const { posts, error } = useFetchPosts();
   const { user } = useAuthStore();
   const navigate = useNavigate();
-
-  const handleLike = async (postId: string) => {
-    const postRef = doc(db, "posts", postId);
-    await updateDoc(postRef, { likes: increment(1) });
-  };
-
-  const handleDislike = async (postId: string) => {
-    const postRef = doc(db, "posts", postId);
-    await updateDoc(postRef, { dislikes: increment(1) });
-  };
 
   if (error) {
     return <div>{error}</div>;
@@ -58,7 +46,7 @@ const BoardPage = () => {
                   {posts.map((post) => (
                     <tr
                       key={post.postId}
-                      className="border-b hover:bg-gray-50"
+                      className="cursor-pointer border-b hover:bg-gray-50"
                       onClick={() => {
                         navigate(`/post/${post.postId}`);
                       }}
@@ -68,24 +56,18 @@ const BoardPage = () => {
                       </td>
                       <td className="px-4 py-3">{post.author}</td>
                       <td className="px-4 py-3">
-                        <button
-                          className="text-blue-500 hover:text-blue-700"
-                          onClick={() => handleLike(post.postId)}
-                        >
+                        <span className="text-blue-500 hover:text-blue-700">
                           👍 {post.likes}
-                        </button>
+                        </span>
                       </td>
                       <td className="px-4 py-3">
-                        <button
-                          className="text-red-500 hover:text-red-700"
-                          onClick={() => handleDislike(post.postId)}
-                        >
+                        <span className="text-red-500 hover:text-red-700">
                           👎 {post.dislikes}
-                        </button>
+                        </span>
                       </td>
                       <td className="px-4 py-3">{post.views}</td>
                       <td className="px-4 py-3 text-xs text-gray-500">
-                        {post.createdAt.toLocaleDateString()}
+                        {post.createdAt.toLocaleString()}
                       </td>
                     </tr>
                   ))}

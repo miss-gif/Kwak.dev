@@ -1,5 +1,6 @@
 import { db } from "@/firebaseConfig";
 import Post from "@/types/post";
+import { handleDislike, handleLike } from "@/utils/utils";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -77,11 +78,17 @@ const PostDetailPage = () => {
           {post.content}
         </div>
         <div className="mt-4 flex items-center space-x-6">
-          <div className="flex items-center text-gray-600">
+          <div
+            className="flex cursor-pointer items-center text-gray-600"
+            onClick={() => postId && handleLike(postId)}
+          >
             <ThumbUpIcon className="mr-1 text-blue-500" />
             <span>{post.likes}</span>
           </div>
-          <div className="flex items-center text-gray-600">
+          <div
+            className="flex cursor-pointer items-center text-gray-600"
+            onClick={() => postId && handleDislike(postId)}
+          >
             <ThumbDownIcon className="mr-1 text-red-500" />
             <span>{post.dislikes}</span>
           </div>
