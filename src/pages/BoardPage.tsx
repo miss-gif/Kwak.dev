@@ -1,12 +1,14 @@
-import { useState } from "react";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import { useAuthStore } from "@/components/stores/authStore";
 import useFetchPosts from "@/hooks/useFetchPosts";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const BoardPage = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialSearchTerm = searchParams.get("search") || "";
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
   const [pageSize] = useState(10); // 페이지당 문서 수
   const { posts, error, loading, hasMore, fetchMorePosts } = useFetchPosts(
     searchTerm,
@@ -19,6 +21,10 @@ const BoardPage = () => {
     e.preventDefault();
     fetchMorePosts();
   };
+
+  useEffect(() => {
+    setSearchParams({ search: searchTerm });
+  }, [searchTerm]);
 
   if (error) {
     return <div>{error}</div>;

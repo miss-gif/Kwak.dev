@@ -62,9 +62,9 @@ const Header = ({ toggleTheme }: Theme) => {
                   >
                     {user?.email}
                   </Link>
-                  <button onClick={logout}>
+                  <div onClick={logout}>
                     <BasicButtons>로그아웃</BasicButtons>
-                  </button>
+                  </div>
                 </>
               ) : (
                 <Link to="login" onClick={() => handleClick(null)}>
