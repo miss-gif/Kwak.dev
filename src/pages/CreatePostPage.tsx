@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/components/stores/authStore";
 import { db } from "@/firebaseConfig";
-import useLoginCheck from "@/hooks/useLoginCheck";
+import { useLoginCheck } from "@/hooks/useLoginCheck";
 import { postSchema } from "@/schema/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";

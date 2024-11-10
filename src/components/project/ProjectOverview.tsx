@@ -1,10 +1,13 @@
 import { ProjectData } from "@/types/projectData";
+import { useAuthStore } from "../stores/authStore";
 
 type ProjectOverviewProps = {
   data: ProjectData["card"];
 };
 
 const ProjectOverview = ({ data }: ProjectOverviewProps) => {
+  const { user } = useAuthStore();
+
   return (
     <div className="">
       {/* 제목 */}
@@ -82,11 +85,15 @@ const ProjectOverview = ({ data }: ProjectOverviewProps) => {
             >
               사이트 바로가기
             </a>
+
             <a
-              href={data.links.githubUrl}
-              className="rounded bg-gray-600 p-2 text-center text-white"
-              target="_blank"
+              href={user ? data.links.githubUrl : "#"}
+              className={`rounded bg-gray-600 p-2 text-center text-white ${!user ? "cursor-not-allowed opacity-50" : ""}`}
+              target={user ? "_blank" : "_self"}
               rel="noopener noreferrer"
+              onClick={() => {
+                if (!user) alert("로그인이 필요합니다.");
+              }}
             >
               깃허브 바로가기
             </a>

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // 로그인 상태 확인 후 로그인 페이지로 이동하는 훅
-const useLoginCheck = () => {
+export const useLoginCheck = () => {
   const navigate = useNavigate();
   const { user } = useAuthStore();
 
@@ -13,5 +13,3 @@ const useLoginCheck = () => {
     }
   }, [user]);
 };
-
-export default useLoginCheck;
