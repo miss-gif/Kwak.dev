@@ -19,16 +19,19 @@ const BoardPage = () => {
   const navigate = useNavigate();
   const { inView, ref } = useInView({ threshold: 1 });
 
+  // 검색어가 변경될 때마다 URL 파라미터를 업데이트
   useEffect(() => {
     setSearchParams({ search: searchTerm });
   }, [searchTerm]);
 
+  // 무한 스크롤
   useEffect(() => {
     if (inView && hasMore && !loading) {
       fetchMorePosts();
     }
   }, [inView, hasMore, loading, fetchMorePosts]);
 
+  // 검색어로 게시물을 검색
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     fetchMorePosts();
