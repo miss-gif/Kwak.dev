@@ -29,8 +29,13 @@ const InterviewPage = () => {
   // 검색어 초기화 함수
   const clearQuery = () => setQuery("");
 
+  const props = {
+    title: "소개",
+    subtitle: "✨ 서브타이틀",
+  };
+
   return (
-    <PageLayout title="인터뷰">
+    <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
         {/* 검색 입력 필드 */}
         <div className="sticky top-20 z-10 flex w-full items-center">

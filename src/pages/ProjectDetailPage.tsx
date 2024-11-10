@@ -16,8 +16,13 @@ const ProjectDetailPage = () => {
     return <div>Project not found</div>;
   }
 
+  const props = {
+    title: "소개",
+    subtitle: "✨ 서브타이틀",
+  };
+
   return (
-    <PageLayout title="프로젝트">
+    <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
         <ProjectOverview data={project.card} />
         <ProjectDescription data={project.detail} />

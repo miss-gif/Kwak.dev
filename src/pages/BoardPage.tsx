@@ -13,8 +13,13 @@ const BoardPage = () => {
     return <div>{error}</div>;
   }
 
+  const props = {
+    title: "소개",
+    subtitle: "✨ 서브타이틀",
+  };
+
   return (
-    <PageLayout title="게시판">
+    <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
         <div className="mx-auto max-w-3xl p-6">
           <div className="space-y-4">
@@ -22,22 +27,22 @@ const BoardPage = () => {
               <table className="min-w-full table-auto border-collapse text-sm">
                 <thead>
                   <tr className="border-b bg-gray-100">
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                    <th className="px-4 py-2 text-center font-semibold text-gray-700">
                       제목
                     </th>
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                    <th className="px-4 py-2 text-center font-semibold text-gray-700">
                       작성자
                     </th>
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                    <th className="px-4 py-2 text-center font-semibold text-gray-700">
                       추천
                     </th>
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                    <th className="px-4 py-2 text-center font-semibold text-gray-700">
                       비추천
                     </th>
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                    <th className="px-4 py-2 text-center font-semibold text-gray-700">
                       조회
                     </th>
-                    <th className="px-4 py-2 text-left font-semibold text-gray-700">
+                    <th className="px-4 py-2 text-center font-semibold text-gray-700">
                       작성일
                     </th>
                   </tr>
@@ -52,20 +57,16 @@ const BoardPage = () => {
                       }}
                     >
                       <td className="px-4 py-3">
-                        <h2 className="text-lg font-semibold">{post.title}</h2>
+                        <h2 className="">{post.title}</h2>
                       </td>
                       <td className="px-4 py-3">{post.author}</td>
-                      <td className="px-4 py-3">
-                        <span className="text-blue-500 hover:text-blue-700">
-                          👍 {post.likes}
-                        </span>
+                      <td className="px-4 py-3 text-center text-blue-500">
+                        {post.likes}
                       </td>
-                      <td className="px-4 py-3">
-                        <span className="text-red-500 hover:text-red-700">
-                          👎 {post.dislikes}
-                        </span>
+                      <td className="px-4 py-3 text-center text-red-500">
+                        {post.dislikes}
                       </td>
-                      <td className="px-4 py-3">{post.views}</td>
+                      <td className="px-4 py-3 text-center">{post.views}</td>
                       <td className="px-4 py-3 text-xs text-gray-500">
                         {post.createdAt.toLocaleString()}
                       </td>

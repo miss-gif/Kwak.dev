@@ -1,3 +1,5 @@
+import PageLayout from "@/components/common/PageLayout";
+import SectionWrapper from "@/components/common/SectionWrapper";
 import { useAuthStore } from "@/components/stores/authStore";
 import { db } from "@/firebaseConfig";
 import Post from "@/types/post";
@@ -89,55 +91,66 @@ const PostDetailPage = () => {
       : post.createdAt.toDate().toLocaleDateString()
     : "";
 
+  const props = {
+    title: "소개",
+    subtitle: "✨ 서브타이틀",
+  };
+
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-center justify-center p-6">
-      <div className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-lg">
-        <h1 className="mb-4 text-3xl font-bold text-gray-800">{post.title}</h1>
-        <div className="mb-6 text-sm text-gray-500">
-          <span>작성자: {post.author}</span> |{formattedDate}
-          <span className="ml-2 flex items-center text-gray-700">
-            <VisibilityIcon className="mr-1" /> {post.views} views
-          </span>
-        </div>
-        <div className="mb-6 whitespace-pre-wrap text-gray-700">
-          {post.content}
-        </div>
-        <div className="mt-4 flex items-center space-x-6">
-          <div
-            className="flex cursor-pointer items-center text-gray-600"
-            onClick={() => postId && handleLike(postId)}
-          >
-            <ThumbUpIcon className="mr-1 text-blue-500" />
-            <span>{post.likes}</span>
+    <PageLayout title={props.title} subtitle={props.subtitle}>
+      <SectionWrapper>
+        <div className="mx-auto flex min-h-screen w-full max-w-3xl flex-col items-center justify-center p-6">
+          <div className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-lg">
+            <h1 className="mb-4 text-3xl font-bold text-gray-800">
+              {post.title}
+            </h1>
+            <div className="mb-6 text-sm text-gray-500">
+              <span>작성자: {post.author}</span> |{formattedDate}
+              <span className="ml-2 flex items-center text-gray-700">
+                <VisibilityIcon className="mr-1" /> {post.views} views
+              </span>
+            </div>
+            <div className="mb-6 whitespace-pre-wrap text-gray-700">
+              {post.content}
+            </div>
+            <div className="mt-4 flex items-center space-x-6">
+              <div
+                className="flex cursor-pointer items-center text-gray-600"
+                onClick={() => postId && handleLike(postId)}
+              >
+                <ThumbUpIcon className="mr-1 text-blue-500" />
+                <span>{post.likes}</span>
+              </div>
+              <div
+                className="flex cursor-pointer items-center text-gray-600"
+                onClick={() => postId && handleDislike(postId)}
+              >
+                <ThumbDownIcon className="mr-1 text-red-500" />
+                <span>{post.dislikes}</span>
+              </div>
+            </div>
           </div>
-          <div
-            className="flex cursor-pointer items-center text-gray-600"
-            onClick={() => postId && handleDislike(postId)}
+          <button
+            onClick={() => navigate(-1)}
+            className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
           >
-            <ThumbDownIcon className="mr-1 text-red-500" />
-            <span>{post.dislikes}</span>
-          </div>
+            뒤로 가기
+          </button>
+          <button
+            onClick={handleEdit}
+            className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+          >
+            수정
+          </button>
+          <button
+            onClick={handleDelete}
+            className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+          >
+            삭제
+          </button>
         </div>
-      </div>
-      <button
-        onClick={() => navigate(-1)}
-        className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-      >
-        뒤로 가기
-      </button>
-      <button
-        onClick={handleEdit}
-        className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-      >
-        수정
-      </button>
-      <button
-        onClick={handleDelete}
-        className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-      >
-        삭제
-      </button>
-    </div>
+      </SectionWrapper>
+    </PageLayout>
   );
 };
 

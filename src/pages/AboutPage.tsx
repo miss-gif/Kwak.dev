@@ -6,8 +6,13 @@ import SectionWrapper from "@/components/common/SectionWrapper";
 import SkillViewer from "@/components/skill/SkillViewer";
 
 const AboutPage = () => {
+  const props = {
+    title: "소개",
+    subtitle: "✨ 서브타이틀",
+  };
+
   return (
-    <PageLayout title="소개">
+    <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
         <Intro />
       </SectionWrapper>
