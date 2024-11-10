@@ -14,6 +14,7 @@ import InterviewPage from "./pages/InterviewPage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PostDetailPage from "./pages/PostDetailPage";
+import PostEditorPage from "./pages/PostEditorPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
 import SignupPage from "./pages/SignupPage";
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="board" element={<BoardPage />} />
         <Route path="post/write" element={<CreatePostPage />} />
         <Route path="post/:postId" element={<PostDetailPage />} />
+        <Route path="post/:postId/edit" element={<PostEditorPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

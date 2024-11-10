@@ -1,3 +1,4 @@
+import { useAuthStore } from "@/components/stores/authStore";
 import { db } from "@/firebaseConfig";
 import Post from "@/types/post";
 import { handleDislike, handleLike } from "@/utils/utils";
@@ -13,18 +14,15 @@ const PostDetailPage = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState<Post | null>(null);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuthStore();
 
   useEffect(() => {
-    console.log("postId:", postId);
-
     const fetchPost = async () => {
       if (!postId) return;
 
       try {
         const postRef = doc(db, "posts", postId);
         const postSnap = await getDoc(postRef);
-
-        console.log("postId:", postId);
 
         if (postSnap.exists()) {
           const postData = postSnap.data() as Post;
@@ -57,6 +55,25 @@ const PostDetailPage = () => {
       </div>
     );
   }
+
+  const handleEdit = () => {
+    if (!user) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+    if (post.author !== user.email) {
+      alert("게시글 작성자만 수정할 수 있습니다.");
+      return;
+    }
+    navigate(`/post/${postId}/edit`);
+  };
+
+  const handleDelete = () => {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      // 삭제 로직
+      console.log("삭제 로직");
+    }
+  };
 
   const formattedDate = post.createdAt
     ? post.createdAt instanceof Date
@@ -99,6 +116,18 @@ const PostDetailPage = () => {
         className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
       >
         뒤로 가기
+      </button>
+      <button
+        onClick={handleEdit}
+        className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+      >
+        수정
+      </button>
+      <button
+        onClick={handleDelete}
+        className="mt-4 rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+      >
+        삭제
       </button>
     </div>
   );

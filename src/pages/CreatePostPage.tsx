@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/components/stores/authStore";
 import { db } from "@/firebaseConfig";
-import { useLoginCheck } from "@/hooks/useLoginCheck";
+import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { postSchema } from "@/schema/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
@@ -17,8 +17,8 @@ const CreatePostPage = () => {
   const navigate = useNavigate();
   const { user } = useAuthStore();
 
-  // useLoginCheck 훅을 사용하여 로그인 상태 확인
-  useLoginCheck();
+  // useRequireLogin 훅을 사용하여 로그인 상태 확인
+  useRequireLogin();
 
   const {
     register,
