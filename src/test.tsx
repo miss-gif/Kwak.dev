@@ -5,7 +5,7 @@ import { useAuthStore } from "./components/stores/authStore";
 import useAllPosts from "./hooks/postbody/useAllPosts";
 import { formatDate } from "./utils/formatDate";
 
-const test = () => {
+const Test = () => {
   const { posts, isLoading, error } = useAllPosts(); // 게시물 상태 및 데이터 가져오기
   const { user } = useAuthStore();
   const navigate = useNavigate();
@@ -71,4 +71,4 @@ const test = () => {
   );
 };
 
-export default test;
+export default Test;

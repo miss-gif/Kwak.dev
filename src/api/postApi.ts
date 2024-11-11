@@ -9,6 +9,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  limit,
   orderBy,
   query,
   updateDoc,
@@ -21,6 +22,7 @@ export const getAllPosts = async (): Promise<Posts[]> => {
     const postsQuery = query(
       collection(db, "posts"),
       orderBy("createdAt", "desc"),
+      limit(20),
     );
 
     // 쿼리 실행
