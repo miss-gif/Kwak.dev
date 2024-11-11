@@ -8,17 +8,17 @@ import { useInView } from "react-intersection-observer";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 const BoardPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialSearchTerm = searchParams.get("search") || "";
-  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
+  const [searchParams, setSearchParams] = useSearchParams(); // URL 파라미터
+  const initialSearchTerm = searchParams.get("search") || ""; // 검색어
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm); // 검색어 상태
   const [pageSize] = useState(20); // 페이지당 문서 수
   const { posts, error, loading, hasMore, fetchMorePosts } = useFetchPosts(
     searchTerm,
     pageSize,
-  );
-  const { user } = useAuthStore();
+  ); // 게시물 상태 및 데이터 가져오기
+  const { user } = useAuthStore(); // 사용자 상태
   const navigate = useNavigate();
-  const { inView, ref } = useInView({ threshold: 1 });
+  const { inView, ref } = useInView({ threshold: 1 }); // 무한 스크롤
 
   // 검색어가 변경될 때마다 URL 파라미터를 업데이트
   useEffect(() => {

@@ -1,4 +1,5 @@
 import { db } from "@/firebaseConfig";
+import Posts from "@/types/posts";
 import {
   addDoc,
   arrayRemove,
@@ -12,13 +13,13 @@ import {
 } from "firebase/firestore";
 
 // 게시물 목록 조회
-export const getAllPosts = async () => {
+export const getAllPosts = async (): Promise<Posts[]> => {
   try {
     const querySnapshot = await getDocs(collection(db, "posts"));
     const posts = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
+      postId: doc.id,
       ...doc.data(),
-    }));
+    })) as Posts[];
     return posts;
   } catch (error) {
     console.error("Error fetching posts:", error);

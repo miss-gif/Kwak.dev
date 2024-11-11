@@ -18,7 +18,11 @@ import PostEditorPage from "./pages/PostEditorPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
 import SignupPage from "./pages/SignupPage";
+import Test from "./Test";
 import { Theme } from "./types/theme";
+import TestPostPage from "./TestPostPage";
+import TestDetailPage from "./TestDetailPage";
+import TestEditorPage from "./TestEditorPage";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -65,6 +69,10 @@ const App = () => {
         <Route path="post/:postId/edit" element={<PostEditorPage />} />
       </Route>
 
+      <Route path="/test" element={<Test />} />
+      <Route path="/test/write" element={<TestPostPage />} />
+      <Route path="/test/:postId" element={<TestDetailPage />} />
+      <Route path="/test/:postId/edit" element={<TestEditorPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
