@@ -13,8 +13,6 @@ const test = () => {
   if (isLoading) return <p>Loading posts...</p>;
   if (error) return <p>Error: {error?.message}</p>;
 
-  console.log(posts);
-
   const props = {
     title: "소개",
     subtitle: "✨ 서브타이틀",
@@ -28,7 +26,7 @@ const test = () => {
             <button
               className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
               onClick={() =>
-                !user ? alert("로그인이 필요합니다.") : navigate("/post/write")
+                !user ? alert("로그인이 필요합니다.") : navigate("/test/write")
               }
             >
               글쓰기

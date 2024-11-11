@@ -9,17 +9,29 @@ import {
   doc,
   getDoc,
   getDocs,
+  orderBy,
+  query,
   updateDoc,
 } from "firebase/firestore";
 
 // 게시물 목록 조회
 export const getAllPosts = async (): Promise<Posts[]> => {
   try {
-    const querySnapshot = await getDocs(collection(db, "posts"));
+    // 쿼리 생성: 'createdAt' 필드를 기준으로 내림차순 정렬
+    const postsQuery = query(
+      collection(db, "posts"),
+      orderBy("createdAt", "desc"),
+    );
+
+    // 쿼리 실행
+    const querySnapshot = await getDocs(postsQuery);
+
+    // 쿼리 결과를 Posts 타입으로 변환
     const posts = querySnapshot.docs.map((doc) => ({
       postId: doc.id,
       ...doc.data(),
     })) as Posts[];
+
     return posts;
   } catch (error) {
     console.error("Error fetching posts:", error);
@@ -28,12 +40,12 @@ export const getAllPosts = async (): Promise<Posts[]> => {
 };
 
 // 게시물 상세 조회
-export const getPostById = async (postId: string) => {
+export const getPostById = async (postId: string): Promise<Posts> => {
   try {
     const docRef = doc(db, "posts", postId);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() };
+      return { id: docSnap.id, ...docSnap.data() } as Posts;
     } else {
       throw new Error("게시물을 찾을 수 없습니다.");
     }
