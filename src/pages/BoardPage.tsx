@@ -2,11 +2,10 @@ import AddPost from "@/components/board/AddPost";
 import PostTable from "@/components/board/PostTable";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import { useAuthStore } from "@/components/stores/authStore";
 import useFetchPosts from "@/hooks/useFetchPosts";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const BoardPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -19,8 +18,6 @@ const BoardPage = () => {
     pageSize,
   );
 
-  const { user } = useAuthStore();
-  const navigate = useNavigate();
   const { inView, ref } = useInView({ threshold: 1 });
 
   /**

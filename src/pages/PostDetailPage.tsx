@@ -2,47 +2,23 @@ import CommentList from "@/components/board/CommentList";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import { useAuthStore } from "@/components/stores/authStore";
-import { db } from "@/firebaseConfig";
-import Post from "@/types/post";
+import useGetPosts from "@/hooks/postbody/useGetPosts";
 import { handleDislike, handleLike } from "@/utils/utils";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const PostDetailPage = () => {
   const { postId } = useParams<{ postId: string }>();
+  if (!postId) return <p>No postId found</p>;
+  const { post, isLoading, error } = useGetPosts(postId);
   const navigate = useNavigate();
-  const [post, setPost] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(true);
   const { user } = useAuthStore();
 
-  // 게시글 불러오기
-  const fetchPost = async () => {
-    if (!postId) return;
-
-    try {
-      const postRef = doc(db, "posts", postId);
-      const postSnap = await getDoc(postRef);
-
-      if (postSnap.exists()) {
-        const postData = postSnap.data() as Post;
-        setPost(postData);
-
-        // 조회수 증가
-        await updateDoc(postRef, { views: (postData.views || 0) + 1 });
-      } else {
-        console.error("게시글을 찾을 수 없습니다.");
-        navigate("/not-found");
-      }
-    } catch (error) {
-      console.error("게시글을 불러오는데 실패했습니다:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  if (isLoading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!post) return <p>No post found</p>;
 
   // 로그인 및 작성자 확인
   const validateUser = () => {
@@ -56,22 +32,6 @@ const PostDetailPage = () => {
     }
     return true;
   };
-
-  useEffect(() => {
-    fetchPost();
-  }, [postId, navigate]);
-
-  if (loading) {
-    return <div className="mt-8 text-center">로딩 중...</div>;
-  }
-
-  if (!post) {
-    return (
-      <div className="mt-8 text-center text-red-500">
-        게시글을 찾을 수 없습니다.
-      </div>
-    );
-  }
 
   const handleEdit = () => {
     if (validateUser()) {
