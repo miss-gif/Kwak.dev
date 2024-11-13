@@ -1,5 +1,4 @@
 import { education } from "@/data";
-import styled from "@emotion/styled";
 
 const Career = () => {
   const trainingData = education[1].training;
@@ -7,12 +6,19 @@ const Career = () => {
   return (
     <ul className="mt-16 flex flex-col gap-32">
       {trainingData?.map((training, index) => (
-        <li key={index} className="flex flex-col gap-12 lg:flex-row">
+        <li
+          key={index}
+          className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-center"
+        >
           {/* 기업로고 영역 */}
-          <div className="m-auto">
-            <LogoStyled>
-              <img src={training.logo} alt={`${training.institution} logo`} />
-            </LogoStyled>
+          <div className="m-auto md:m-0 md:my-4">
+            <div className="flex h-40 w-40 items-center justify-center overflow-hidden rounded-full shadow-md">
+              <img
+                className="h-40 w-40 object-cover"
+                src={training.logo}
+                alt={`${training.institution} logo`}
+              />
+            </div>
           </div>
 
           {/* 활동내역 영역 */}
@@ -48,21 +54,3 @@ const Career = () => {
 };
 
 export default Career;
-
-const LogoStyled = styled.div`
-  width: 230px;
-  height: 230px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-
-  img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-  }
-`;

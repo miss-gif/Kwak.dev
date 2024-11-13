@@ -9,6 +9,8 @@
 // 타이틀이 있을 경우 타이틀을 표시하고, children을 표시합니다.
 // 타이틀이 없을 경우 children만 표시합니다.
 
+import LinkIcon from "@mui/icons-material/Link";
+
 const SectionWrapper = ({
   children,
   title,
@@ -17,11 +19,16 @@ const SectionWrapper = ({
   title?: string;
 }) => {
   return (
-    <section className="mx-auto flex w-full max-w-screen-xl flex-col items-center gap-5 px-4 py-10">
+    <section className="mx-auto mb-10 flex w-full max-w-screen-xl flex-col items-center gap-5 px-4 py-10">
       {title && (
-        <h3 className="w-full text-center text-6xl font-semibold uppercase">
-          {title}
-        </h3>
+        <div className="relative flex items-center justify-center">
+          <div className="absolute -left-10 hidden -translate-x-1/2 transform md:block">
+            <LinkIcon sx={{ fontSize: "4rem", transform: "rotate(-45deg)" }} />
+          </div>
+          <h3 className="border-b-4 border-b-black py-2 text-center text-6xl font-semibold uppercase">
+            {title}
+          </h3>
+        </div>
       )}
       <div className="w-full">{children}</div>
     </section>

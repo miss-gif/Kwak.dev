@@ -3,7 +3,7 @@ import Certificate from "@/components/about/Certificate";
 import Intro from "@/components/about/Intro";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import SkillViewer from "@/components/skill/SkillViewer";
+import SkillsViewer from "@/components/skill/SkillsViewer";
 
 const AboutPage = () => {
   const props = {
@@ -18,7 +18,7 @@ const AboutPage = () => {
       </SectionWrapper>
 
       <SectionWrapper title="Skill">
-        <SkillViewer />
+        <SkillsViewer />
       </SectionWrapper>
 
       <SectionWrapper title="Education">

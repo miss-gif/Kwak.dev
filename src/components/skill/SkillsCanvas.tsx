@@ -18,7 +18,7 @@ type SkillData = {
   description: string[];
 };
 
-const SkillSet = () => {
+const SkillsCanvas = () => {
   const [selected, setSelected] = useState<SkillData | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -80,6 +80,8 @@ const SkillSet = () => {
         },
       });
       Composite.add(engine.world, mouseConstraint);
+
+      //TODO : 캔버스 안에서 마우스 휠 이벤트 중지
 
       /**
        * 이 코드가 있어야 canvas에서 마우스 휠 이벤트를 중지 할 수 있음.
@@ -202,16 +204,18 @@ const SkillSet = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-between gap-10 md:flex-row md:gap-20">
+    <div className="flex h-full w-full flex-col items-center justify-between gap-10 md:flex-row md:gap-20">
       <canvas
         ref={canvasRef}
         className="h-[50vmin] w-[50vmin] rounded-full"
       ></canvas>
       {selected && (
         // 우측 사이드 영역
-        <div className="flex w-full flex-col items-center justify-center md:h-[300px]">
-          <div className="flex w-full flex-col items-center justify-center gap-3 md:items-start">
-            <h4 className="text-4xl font-semibold">{selected.name}</h4>
+        <div className="flex h-[50vmin] w-full flex-col items-center justify-center">
+          <div className="flex h-full w-full flex-col items-center justify-center gap-3 md:items-start md:justify-start">
+            <h4 className="w-full pb-2 text-center text-5xl font-semibold md:mb-4 md:border-b-2 md:text-left md:text-8xl">
+              {selected.name}
+            </h4>
             <p>
               {Array(5)
                 .fill(null)
@@ -226,14 +230,17 @@ const SkillSet = () => {
                   </span>
                 ))}
             </p>
-            <div>
+            <p>
               {selected.description.map((item, index) => (
-                <span key={index} className="text-md leading-8 md:text-xl">
+                <span
+                  key={index}
+                  className="text-md leading-8 md:text-xl md:leading-10"
+                >
                   {item}
                   <br />
                 </span>
               ))}
-            </div>
+            </p>
           </div>
         </div>
       )}
@@ -241,4 +248,4 @@ const SkillSet = () => {
   );
 };
 
-export default SkillSet;
+export default SkillsCanvas;
