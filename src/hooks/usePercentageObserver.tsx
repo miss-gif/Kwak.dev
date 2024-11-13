@@ -34,7 +34,7 @@ const usePercentageObserver = (
         }, delay);
       } else {
         // 요소가 화면에서 사라지면 퍼센티지를 0으로 초기화합니다.
-        setCurrentPercentage(0);
+        // setCurrentPercentage(0);
       }
     };
 

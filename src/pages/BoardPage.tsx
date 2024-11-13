@@ -50,8 +50,8 @@ const BoardPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <div className="w-full">
-          <div className="sticky top-20 mb-4 flex items-center justify-between rounded-lg border-2 border-blue-300 bg-white px-2 py-4">
+        <div className="min-h-[40vh] w-full">
+          <div className="sticky top-20 mb-4 flex items-center justify-between rounded-lg border-2 border-gray-300 bg-gray-200 px-2 py-4">
             <button
               className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
               onClick={() =>
@@ -91,7 +91,7 @@ const BoardPage = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="h-10 cursor-pointer border-b bg-slate-100 hover:bg-orange-200">
+              <tr className="h-10 cursor-pointer border-b bg-gray-300 text-black hover:bg-orange-200">
                 <td className="px-4">
                   현재 게시판은 작업중입니다. 최대한 빠른 시일 내에 작업을
                   완료하겠습니다.
