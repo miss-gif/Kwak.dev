@@ -22,6 +22,6 @@ body.dark {
 }
 
 /* 스크롤바 제거 */
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   width: 0px;
-}
+} */
