@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../stores/authStore";
 
-const AddPost = () => {
+const ToAddPost = () => {
   const { user } = useAuthStore();
   const navigate = useNavigate();
 
@@ -19,4 +19,4 @@ const AddPost = () => {
   );
 };
 
-export default AddPost;
+export default ToAddPost;

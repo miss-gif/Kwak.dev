@@ -1,6 +1,7 @@
 import CommentList from "@/components/board/CommentList";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
+import ToBackButton from "@/components/common/ToBackButton";
 import { useAuthStore } from "@/components/stores/authStore";
 import useGetPosts from "@/hooks/postbody/useGetPosts";
 import { handleDislike, handleLike } from "@/utils/utils";
@@ -63,12 +64,7 @@ const PostDetailPage = () => {
         <div className="flex flex-col">
           {/* 버튼들 */}
           <div className="sticky top-20 mb-4 flex w-full items-center justify-between rounded-lg border-2 border-blue-300 bg-white px-2 py-4">
-            <button
-              onClick={() => navigate(-1)}
-              className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-            >
-              목록
-            </button>
+            <ToBackButton title="목록" />
             {post?.author !== user?.email ? null : (
               <div className="flex gap-2">
                 <button

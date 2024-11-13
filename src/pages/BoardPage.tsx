@@ -1,4 +1,4 @@
-import AddPost from "@/components/board/AddPost";
+import ToAddPost from "@/components/board/ToAddPost";
 import PostTable from "@/components/board/PostTable";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
@@ -61,7 +61,7 @@ const BoardPage = () => {
       <SectionWrapper>
         <div className="min-h-[40vh] w-full">
           <div className="sticky top-20 mb-4 flex items-center justify-between rounded-lg border-2 border-gray-300 bg-gray-200 px-2 py-4">
-            <AddPost />
+            <ToAddPost />
             <form onSubmit={handleSearch}>
               <input
                 type="text"
