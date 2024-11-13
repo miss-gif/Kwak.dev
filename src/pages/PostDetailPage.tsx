@@ -1,4 +1,7 @@
 import CommentList from "@/components/board/CommentList";
+import DeletePost from "@/components/board/DeletePost";
+import ToEditPost from "@/components/board/ToEditPost";
+import UpDownButton from "@/components/board/UpDownButton";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import ToBackButton from "@/components/common/ToBackButton";
@@ -7,7 +10,6 @@ import useGetPosts from "@/hooks/postbody/useGetPosts";
 import { handleDislike, handleLike } from "@/utils/utils";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate, useParams } from "react-router-dom";
 
 const PostDetailPage = () => {
@@ -67,51 +69,45 @@ const PostDetailPage = () => {
             <ToBackButton title="목록" />
             {post?.author !== user?.email ? null : (
               <div className="flex gap-2">
-                <button
-                  onClick={handleEdit}
-                  className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-                >
-                  수정
-                </button>
-                <button
-                  onClick={handleDelete}
-                  className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-                >
-                  삭제
-                </button>
+                <ToEditPost onEdit={handleEdit} />
+                <DeletePost onDelete={handleDelete} />
               </div>
             )}
           </div>
 
           {/* 게시글 내용 */}
           <div className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-sm">
-            <h1 className="mb-4 text-3xl font-bold text-gray-800">
+            <h3 className="mb-4 text-3xl font-bold text-gray-800">
               {post.title}
-            </h1>
-            <div className="mb-6 text-sm text-gray-500">
-              <span>작성자: {post.author}</span> | {formattedDate}
-              <span className="ml-2 flex items-center text-gray-700">
-                <VisibilityIcon className="mr-1" /> {post.views} views
-              </span>
+            </h3>
+            <div className="mb-6 flex flex-col gap-1 text-sm">
+              <span className="font-semibold">{post.author}</span>
+              <div className="flex gap-2 text-gray-500">
+                <span>{formattedDate}</span>
+                <span className="flex items-center">조회 {post.views}</span>
+              </div>
             </div>
             <div className="mb-6 whitespace-pre-wrap text-gray-700">
               {post.content}
             </div>
-            <div className="mt-4 flex items-center space-x-6">
-              <div
-                className="flex cursor-pointer items-center text-gray-600"
-                onClick={() => postId && handleLike(postId)}
+            {/* 추천 비추천 */}
+            <div className="flex items-center justify-center gap-6 pb-10 pt-20">
+              <UpDownButton
+                postId={postId}
+                onClick={handleLike}
+                post={post}
+                rule={"likes"}
               >
                 <ThumbUpIcon className="mr-1 text-blue-500" />
-                <span>{post.likes}</span>
-              </div>
-              <div
-                className="flex cursor-pointer items-center text-gray-600"
-                onClick={() => postId && handleDislike(postId)}
+              </UpDownButton>
+              <UpDownButton
+                postId={postId}
+                onClick={handleDislike}
+                post={post}
+                rule={"dislikes"}
               >
                 <ThumbDownIcon className="mr-1 text-red-500" />
-                <span>{post.dislikes}</span>
-              </div>
+              </UpDownButton>
             </div>
           </div>
 
