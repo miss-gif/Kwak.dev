@@ -6,7 +6,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 const HomeLeft = () => {
   return (
-    <HomeLeftStyled>
+    <div className="flex flex-col justify-center">
       <div className="flex flex-col">
         {/* 타이틀 */}
         <div className="">
@@ -23,63 +23,37 @@ const HomeLeft = () => {
         </div>
         {/* 링크 그룹 */}
         <div className="flex gap-2">
-          <LinkStyled
+          <a
+            className="flex items-center gap-1 rounded-md px-2 py-3 transition duration-300 ease-in-out hover:bg-fire hover:text-white"
             href={home.github}
             target="_blank"
             rel="noopener noreferrer"
           >
             <GitHubIcon />
             깃허브
-          </LinkStyled>
-          <LinkStyled
+          </a>
+          <a
+            className="flex items-center gap-1 rounded-md px-2 py-3 transition duration-300 ease-in-out hover:bg-fire hover:text-white"
             href={home.resume}
             target="_blank"
             rel="noopener noreferrer"
           >
             <ContactPageIcon />
             이력서
-          </LinkStyled>
-          <LinkStyled
+          </a>
+          <a
+            className="flex items-center gap-1 rounded-md px-2 py-3 transition duration-300 ease-in-out hover:bg-fire hover:text-white"
             href={home.study}
             target="_blank"
             rel="noopener noreferrer"
           >
             <EditNoteIcon />
             스터디
-          </LinkStyled>
+          </a>
         </div>
       </div>
-    </HomeLeftStyled>
+    </div>
   );
 };
 
 export default HomeLeft;
-
-const HomeLeftStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-const LinkStyled = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  text-decoration: none;
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
-
-  &:hover {
-    background-color: #ee8130;
-    color: #fff;
-  }
-
-  &:focus {
-    outline: 2px solid #ee8130;
-  }
-`;

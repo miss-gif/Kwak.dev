@@ -23,19 +23,22 @@ interface AuthState {
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
   isLoggedIn: false,
-  setUser: (user) => set({ user, isLoggedIn: !!user }),
+  setUser: (user) => set({ user, isLoggedIn: !!user }), // 로그인 상태를 갱신
   updateUserEmail: async (newEmail) => {
+    // 이메일 변경
     if (auth.currentUser) {
       await updateEmail(auth.currentUser, newEmail);
       set((state) => ({ ...state, user: auth.currentUser }));
     }
   },
   updateUserPassword: async (newPassword) => {
+    // 비밀번호 변경
     if (auth.currentUser) {
       await updatePassword(auth.currentUser, newPassword);
     }
   },
   deleteAccount: async () => {
+    // 계정 삭제
     if (auth.currentUser) {
       await deleteUser(auth.currentUser);
       set({ user: null, isLoggedIn: false });
@@ -50,5 +53,5 @@ export const useAuthStore = create<AuthState>((set) => ({
 
 // 로그인 상태를 Zustand 스토어에 저장
 onAuthStateChanged(auth, (user) => {
-  useAuthStore.getState().setUser(user);
+  useAuthStore.getState().setUser(user); // 로그인 상태를 갱신
 });

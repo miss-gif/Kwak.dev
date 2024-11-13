@@ -9,6 +9,6 @@ interface SkillData {
 }
 
 export const fetchSkillsData = async (): Promise<SkillData[]> => {
-  const response = await axios.get("/json/skills.json");
+  const response = await axios.get("/json/skillsData.json");
   return response.data;
 };
