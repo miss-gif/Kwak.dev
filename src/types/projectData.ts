@@ -10,6 +10,7 @@ interface ProjectCard {
   client: string;
   team: ProjectTeam;
   badge?: string[];
+  keywords?: string[];
 }
 
 // 기간 정보를 담는 인터페이스
