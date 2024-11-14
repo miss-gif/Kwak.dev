@@ -76,6 +76,8 @@ const PostDetailPage = () => {
       : post.createdAt.toDate().toLocaleDateString()
     : "";
 
+  // TODO : 조회수 증가 기능 필요
+
   const props = {
     title: "소개",
     subtitle: "✨ 서브타이틀",

@@ -23,6 +23,7 @@ import { Theme } from "./types/theme";
 import TestPostPage from "./TestPostPage";
 import TestDetailPage from "./TestDetailPage";
 import TestEditorPage from "./TestEditorPage";
+import ProjectForm from "./pages/ProjectForm";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -73,6 +74,8 @@ const App = () => {
       <Route path="/test/write" element={<TestPostPage />} />
       <Route path="/test/:postId" element={<TestDetailPage />} />
       <Route path="/test/:postId/edit" element={<TestEditorPage />} />
+      <Route path="/input" element={<ProjectForm />} />
+
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
