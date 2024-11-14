@@ -12,7 +12,7 @@ export const projectData: ProjectData[] = [
         startDate: new Date("2024-07-24"),
         endDate: new Date("2024-08-23"),
       },
-      keywords: ["2"],
+      keywords: ["2024"],
       teamSize: "FE 3명 BE 5",
       description:
         "1차적으로 완성한 서비스를 성능을 개선하고, 사용자 피드백을 반영하여 기능을 추가하며 지속적으로 서비스를 완성했습니다.",
@@ -173,7 +173,7 @@ export const projectData: ProjectData[] = [
         startDate: new Date("2024-07-24"),
         endDate: new Date("2024-08-23"),
       },
-      keywords: ["1"],
+      keywords: ["2024", "반응형"],
       teamSize: "FE 3명 BE 5",
       description:
         "1차적으로 완성한 서비스를 성능을 개선하고, 사용자 피드백을 반영하여 기능을 추가하며 지속적으로 서비스를 완성했습니다.",
