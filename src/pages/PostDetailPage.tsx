@@ -1,5 +1,4 @@
 import CommentList from "@/components/board/CommentList";
-import DeletePost from "@/components/board/DeletePost";
 import ToEditPost from "@/components/board/ToEditPost";
 import UpDownButton from "@/components/board/UpDownButton";
 import UrlCopyButton from "@/components/board/UrlCopyButton";
@@ -7,11 +6,14 @@ import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import ToBackButton from "@/components/common/ToBackButton";
 import { useAuthStore } from "@/components/stores/authStore";
+import { db } from "@/firebaseConfig";
 import useGetPosts from "@/hooks/postbody/useGetPosts";
 import { handleDislike, handleLike } from "@/utils/utils";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import { deleteDoc, doc } from "firebase/firestore";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const PostDetailPage = () => {
   const { postId } = useParams<{ postId: string }>();
@@ -43,10 +45,28 @@ const PostDetailPage = () => {
     }
   };
 
-  const handleDelete = () => {
-    if (validateUser() && window.confirm("정말 삭제하시겠습니까?")) {
-      // 삭제 로직
-      console.log("삭제 로직");
+  const handleDelete = async (postId: string, user: any, navigate: any) => {
+    const validateUser = () => {
+      // 사용자 검증 로직 (예: 게시글 작성자 확인)
+      return user && user.email; // 작성자 권한 확인
+    };
+
+    if (!validateUser()) {
+      toast.error("삭제 권한이 없습니다.");
+      return;
+    }
+
+    if (window.confirm("정말 삭제하시겠습니까?")) {
+      try {
+        // Firestore에서 해당 게시글 삭제
+        const postRef = doc(db, "posts", postId);
+        await deleteDoc(postRef);
+        toast.success("게시글이 성공적으로 삭제되었습니다.");
+        navigate("/board");
+      } catch (error) {
+        console.error("삭제 실패:", error);
+        toast.error("게시글 삭제에 실패했습니다.");
+      }
     }
   };
 
@@ -71,7 +91,14 @@ const PostDetailPage = () => {
             {post?.author !== user?.email ? null : (
               <div className="flex gap-2">
                 <ToEditPost onEdit={handleEdit} />
-                <DeletePost onDelete={handleDelete} />
+                <button
+                  onClick={() => {
+                    handleDelete(postId, user, navigate);
+                  }}
+                  className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
+                >
+                  삭제
+                </button>
               </div>
             )}
           </div>
