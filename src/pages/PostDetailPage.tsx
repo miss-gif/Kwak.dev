@@ -2,6 +2,7 @@ import CommentList from "@/components/board/CommentList";
 import DeletePost from "@/components/board/DeletePost";
 import ToEditPost from "@/components/board/ToEditPost";
 import UpDownButton from "@/components/board/UpDownButton";
+import UrlCopyButton from "@/components/board/UrlCopyButton";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import ToBackButton from "@/components/common/ToBackButton";
@@ -80,13 +81,18 @@ const PostDetailPage = () => {
             <h3 className="mb-4 text-3xl font-bold text-gray-800">
               {post.title}
             </h3>
-            <div className="mb-6 flex flex-col gap-1 text-sm">
-              <span className="font-semibold">{post.author}</span>
-              <div className="flex gap-2 text-gray-500">
-                <span>{formattedDate}</span>
-                <span className="flex items-center">조회 {post.views}</span>
+            <div className="mb-6 flex items-center justify-between">
+              <div className="flex flex-col gap-1 text-sm">
+                <span className="font-semibold">{post.author}</span>
+                <div className="flex gap-2 text-gray-500">
+                  <span>{formattedDate}</span>
+                  <span className="flex items-center">조회 {post.views}</span>
+                </div>
               </div>
+              <UrlCopyButton />
             </div>
+
+            {/* 내용 */}
             <div className="mb-6 whitespace-pre-wrap text-gray-700">
               {post.content}
             </div>
