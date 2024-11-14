@@ -24,6 +24,7 @@ import TestPostPage from "./TestPostPage";
 import TestDetailPage from "./TestDetailPage";
 import TestEditorPage from "./TestEditorPage";
 import ProjectForm from "./pages/ProjectForm";
+import AdminPage from "./pages/AdminPage";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -68,6 +69,8 @@ const App = () => {
         <Route path="post/write" element={<CreatePostPage />} />
         <Route path="post/:postId" element={<PostDetailPage />} />
         <Route path="post/:postId/edit" element={<PostEditorPage />} />
+        {/* 관리자 */}
+        <Route path="admin" element={<AdminPage />} />
       </Route>
 
       <Route path="/test" element={<Test />} />
