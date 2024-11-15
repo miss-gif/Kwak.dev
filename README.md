@@ -23,6 +23,9 @@
 
 https://www.data.go.kr/data/15012690/openapi.do
 
+데이터 요청: solYear와 solMonth가 변경될 때마다 해당 달의 데이터를 Firebase에서 먼저 확인합니다. Firebase에 데이터가 없으면 API를 호출하여 데이터를 받아오고, 받아온 데이터를 Firebase에 저장합니다.
+Firebase에서 데이터를 사용: Firebase에 데이터가 있을 경우, 해당 데이터를 사용하여 달력을 표시하고, API 요청을 피할 수 있습니다
+
 페이지 헤딩 h2 7xl 볼드
 섹션 헤딩 h3 6xl 세미볼드
 
