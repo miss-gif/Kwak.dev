@@ -27,7 +27,8 @@ function Calendar() {
       const response = await fetch(`${API_URL}?${params}`);
       const textData = await response.text();
 
-      console.log("공휴일 데이터:", textData); // 실제 XML 데이터를 출력
+      // 실제 XML 데이터를 출력
+      console.log("공휴일 데이터:", textData);
 
       // XML 데이터 파싱
       const parser = new XMLParser();
@@ -63,6 +64,9 @@ function Calendar() {
 
         return holidayDates;
       } else {
+        await setDoc(doc(db, "holidays", `${year}-${month}`), {
+          holidays: [],
+        });
         throw new Error("공휴일 데이터가 없습니다.");
       }
     } catch (error) {
