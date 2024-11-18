@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Header from "./components/header/Header";
 import AboutPage from "./pages/AboutPage";
 import AccountInfoPage from "./pages/AccountInfoPage";
+import AdminPage from "./pages/AdminPage";
 import BoardPage from "./pages/BoardPage";
 import ChartsPage from "./pages/ChartsPage";
 import ContactPage from "./pages/ContactPage";
@@ -17,15 +18,9 @@ import PostDetailPage from "./pages/PostDetailPage";
 import PostEditorPage from "./pages/PostEditorPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
-import SignupPage from "./pages/SignupPage";
-import Test from "./Test";
-import { Theme } from "./types/theme";
-import TestPostPage from "./TestPostPage";
-import TestDetailPage from "./TestDetailPage";
-import TestEditorPage from "./TestEditorPage";
-import ProjectForm from "./pages/ProjectForm";
-import AdminPage from "./pages/AdminPage";
 import SchedulePage from "./pages/SchedulePage";
+import SignupPage from "./pages/SignupPage";
+import { Theme } from "./types/theme";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -74,12 +69,6 @@ const App = () => {
         <Route path="schedule" element={<SchedulePage />} />
         <Route path="admin" element={<AdminPage />} />
       </Route>
-
-      <Route path="/test" element={<Test />} />
-      <Route path="/test/write" element={<TestPostPage />} />
-      <Route path="/test/:postId" element={<TestDetailPage />} />
-      <Route path="/test/:postId/edit" element={<TestEditorPage />} />
-      <Route path="/input" element={<ProjectForm />} />
 
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
