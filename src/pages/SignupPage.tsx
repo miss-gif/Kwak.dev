@@ -4,13 +4,12 @@ import { Link } from "react-router-dom";
 
 function SignupPage() {
   const {
-    username,
-    setUsername,
+    displayName,
+    setDisplayName,
     email,
     setEmail,
     password,
     setPassword,
-    error,
     handleSignup,
   } = useSignup();
 
@@ -25,16 +24,16 @@ function SignupPage() {
         <form onSubmit={handleSignup} className="space-y-4">
           <div>
             <label
-              htmlFor="username"
+              htmlFor="displayName"
               className="block text-sm font-medium text-gray-600"
             >
               사용자 이름
             </label>
             <input
               type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              id="displayName"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
               className="mt-2 w-full rounded-md border px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
               required
             />
@@ -71,7 +70,6 @@ function SignupPage() {
               required
             />
           </div>
-          {error && <p className="text-red-500">{error}</p>}
           <button
             type="submit"
             className="w-full rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"

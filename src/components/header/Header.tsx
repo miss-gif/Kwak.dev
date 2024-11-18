@@ -60,7 +60,7 @@ const Header = ({ toggleTheme }: Theme) => {
                     to={"/accountinfo"}
                     className="hover:text-fire hover:underline"
                   >
-                    {user?.email}
+                    {user?.displayName}
                   </Link>
                   <div onClick={logout}>
                     <BasicButtons>로그아웃</BasicButtons>
