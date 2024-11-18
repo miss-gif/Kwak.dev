@@ -34,7 +34,7 @@ const Header = ({ toggleTheme }: Theme) => {
             <h1 className="text-2xl font-bold">Portfolio</h1>
           </Link>
 
-          <nav className="hidden md:block">
+          <nav className="hidden lg:block">
             <ul className="flex gap-6">
               {linkItems.map((item, index) => (
                 <li key={index}>
@@ -61,6 +61,7 @@ const Header = ({ toggleTheme }: Theme) => {
                     className="hover:text-fire hover:underline"
                   >
                     {user?.displayName}
+                    <div className="h-3 w-3 rounded-full bg-slate-200"></div>
                   </Link>
                   <div onClick={logout}>
                     <BasicButtons>로그아웃</BasicButtons>

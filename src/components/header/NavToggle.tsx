@@ -1,49 +1,49 @@
-import { linkItems } from '@/mocks/data'
-import { capitalizeFirstLetter } from '@/utils/utils'
-import MenuIcon from '@mui/icons-material/Menu'
-import classNames from 'classnames'
-import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
-import CloseIcon from '@mui/icons-material/Close'
+import { linkItems } from "@/mocks/data";
+import { capitalizeFirstLetter } from "@/utils/utils";
+import MenuIcon from "@mui/icons-material/Menu";
+import classNames from "classnames";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 
 type NavToggleProps = {
-  toggleDrawer: () => void
-  isOpen: boolean
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-}
+  toggleDrawer: () => void;
+  isOpen: boolean;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 const NavToggle = ({ toggleDrawer, isOpen, setIsOpen }: NavToggleProps) => {
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = "auto";
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   const closeMenu = () => {
-    setIsOpen(false)
-  }
+    setIsOpen(false);
+  };
 
   return (
     <>
-      <button className="block md:hidden p-2" onClick={toggleDrawer}>
+      <button className="block p-2 lg:hidden" onClick={toggleDrawer}>
         <MenuIcon />
       </button>
 
       <ul
         className={classNames(
-          'fixed top-0 right-0 w-full h-full bg-black bg-opacity-90 z-50 overflow-hidden transform transition-transform duration-500 ease-in-out text-white text-xl uppercase font-medium flex flex-col justify-center items-center',
+          "fixed right-0 top-0 z-50 flex h-dvh w-full transform flex-col items-center justify-center overflow-hidden bg-black bg-opacity-90 text-xl font-medium uppercase text-white transition-transform duration-500 ease-in-out",
           {
-            'translate-x-0': isOpen,
-            'translate-x-full': !isOpen,
+            "translate-x-0": isOpen,
+            "translate-x-full": !isOpen,
           },
         )}
       >
         {linkItems.map((item, index) => (
-          <li key={index} className="text-center py-4">
+          <li key={index} className="py-4 text-center">
             <Link
-              className="block py-4 text-3xl text-white hover:text-fire font-bold transition-colors duration-100"
+              className="block py-4 text-3xl font-bold text-white transition-colors duration-100 hover:text-fire"
               to={item.path}
               onClick={closeMenu}
             >
@@ -53,14 +53,14 @@ const NavToggle = ({ toggleDrawer, isOpen, setIsOpen }: NavToggleProps) => {
         ))}
         {/* 닫기 버튼 */}
         <button
-          className="absolute top-6 right-8 text-white text-3xl"
+          className="absolute right-8 top-6 text-3xl text-white"
           onClick={closeMenu}
         >
           <CloseIcon />
         </button>
       </ul>
     </>
-  )
-}
+  );
+};
 
-export default NavToggle
+export default NavToggle;
