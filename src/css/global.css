@@ -1,0 +1,3 @@
+.shadow-style {
+  @apply shadow-sm transition-shadow duration-200 hover:shadow-lg;
+}

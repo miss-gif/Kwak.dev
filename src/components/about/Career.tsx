@@ -11,10 +11,10 @@ const Career = () => {
           className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-center"
         >
           {/* 기업로고 영역 */}
-          <div className="m-auto md:m-0 md:my-4">
-            <div className="flex h-40 w-40 items-center justify-center overflow-hidden rounded-full shadow-md">
+          <div className="m-auto md:my-4 lg:m-0">
+            <div className="flex h-44 w-44 items-center justify-center overflow-hidden rounded-full shadow-md">
               <img
-                className="h-40 w-40 object-cover"
+                className="h-32 w-32 object-contain"
                 src={training.logo}
                 alt={`${training.institution} logo`}
               />
@@ -22,7 +22,7 @@ const Career = () => {
           </div>
 
           {/* 활동내역 영역 */}
-          <div className="w-full border-l-4 py-4 pl-12 lg:border-gray-100">
+          <div className="w-full py-4 lg:border-l-4 lg:border-gray-100 lg:pl-12">
             <div>
               <div className="mb-4 flex flex-col gap-2">
                 <h4 className="text-2xl font-semibold">

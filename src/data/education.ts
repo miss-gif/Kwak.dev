@@ -1,3 +1,6 @@
+import logo1 from "../assets/images/about/logo1.png";
+import logo2 from "../assets/images/about/logo2.png";
+
 const education = [
   {
     institution: "대구가톨릭대학교(4년제)",
@@ -7,7 +10,7 @@ const education = [
   {
     training: [
       {
-        logo: "https://green-computer.co.kr/images/logo.png",
+        logo: logo1,
         institution: "그린컴퓨터아트학원 대구캠퍼스",
         course:
           "기업 요구를 반영한 프로젝트 중심 프론트엔드 React(리액트) 개발자 양성",
@@ -63,7 +66,7 @@ const education = [
         ],
       },
       {
-        logo: "https://visla.kr/wp/wp-content/uploads/2014/10/Lacoste1.jpg",
+        logo: logo2,
         institution: "라인컴퓨터아트학원",
         course:
           "[과정평가형]정보처리산업기사(자바(Java)프로그래밍 활용 웹개발)A",
