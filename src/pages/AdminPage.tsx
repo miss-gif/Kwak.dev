@@ -1,6 +1,9 @@
-import { useState } from "react";
-import { verifyPassword } from "@/utils/verifyPassword";
+import AdminTab from "@/components/admin/AdminTab";
+import PageLayout from "@/components/common/PageLayout";
+import SectionWrapper from "@/components/common/SectionWrapper";
 import { useRequireLogin } from "@/hooks/useLoginCheck";
+import { verifyPassword } from "@/utils/verifyPassword";
+import { useState } from "react";
 
 const AdminPage = () => {
   useRequireLogin();
@@ -23,20 +26,27 @@ const AdminPage = () => {
     }
   };
 
+  const props = {
+    title: "관리자 페이지",
+    subtitle: "사이트 관리를 위한 페이지입니다.",
+  };
+
   if (isVerified) {
     return (
-      <div className="flex h-dvh w-full items-center justify-center bg-slate-100">
-        <p>관리자 페이지에 오신 것을 환영합니다!</p>
-      </div>
+      <PageLayout title={props.title} subtitle={props.subtitle}>
+        <SectionWrapper>
+          <AdminTab />
+        </SectionWrapper>
+      </PageLayout>
     );
   }
 
   return (
     <div className="flex h-dvh w-full flex-col items-center justify-center bg-slate-100">
       <div className="w-96 rounded-lg bg-white p-6 shadow-md">
-        <h1 className="mb-4 text-xl font-semibold text-gray-700">
+        <h2 className="mb-4 text-xl font-semibold text-gray-700">
           관리자 인증
-        </h1>
+        </h2>
         <input
           type="password"
           placeholder="비밀번호를 입력하세요"
