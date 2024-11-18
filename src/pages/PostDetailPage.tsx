@@ -4,6 +4,7 @@ import UpDownButton from "@/components/board/UpDownButton";
 import UrlCopyButton from "@/components/board/UrlCopyButton";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
+import StickyWrapper from "@/components/common/StickyWrapper";
 import ToBackButton from "@/components/common/ToBackButton";
 import { useAuthStore } from "@/components/stores/authStore";
 import { db } from "@/firebaseConfig";
@@ -88,7 +89,7 @@ const PostDetailPage = () => {
       <SectionWrapper>
         <div className="flex flex-col">
           {/* 버튼들 */}
-          <div className="sticky top-20 mb-4 flex w-full items-center justify-between rounded-lg border-2 border-blue-300 bg-white px-2 py-4">
+          <StickyWrapper>
             <ToBackButton title="목록" />
             {post?.author !== user?.email ? null : (
               <div className="flex gap-2">
@@ -103,7 +104,7 @@ const PostDetailPage = () => {
                 </button>
               </div>
             )}
-          </div>
+          </StickyWrapper>
 
           {/* 게시글 내용 */}
           <div className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-sm">

@@ -2,6 +2,7 @@ import { useFilteredProjects } from "@/hooks/useFilteredProjects";
 import { ProjectData } from "@/types/projectData";
 import FilterInput from "./FilterInput";
 import ProjectCard from "./ProjectCard";
+import StickyWrapper from "../common/StickyWrapper";
 
 interface ProjectProps {
   projectData: ProjectData[];
@@ -21,7 +22,7 @@ const Project = ({ projectData }: ProjectProps) => {
   return (
     <>
       {/* 검색 및 필터 UI */}
-      <div className="sticky top-20 z-10 flex w-full items-center gap-4">
+      <StickyWrapper>
         <FilterInput
           placeholder="프로젝트 제목 검색"
           value={query}
@@ -43,7 +44,7 @@ const Project = ({ projectData }: ProjectProps) => {
           onClear={() => setKeywords("")}
           borderColor="border-green-300"
         />
-      </div>
+      </StickyWrapper>
 
       {/* 프로젝트 카드 리스트 */}
       <ul className="grid w-full gap-5 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">

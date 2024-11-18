@@ -8,6 +8,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthStore } from "./components/stores/authStore";
+import StickyWrapper from "./components/common/StickyWrapper";
 
 const TestDetailPage = () => {
   const { postId } = useParams<{ postId: string }>();
@@ -62,7 +63,7 @@ const TestDetailPage = () => {
       <SectionWrapper>
         <div className="flex flex-col">
           {/* 버튼들 */}
-          <div className="sticky top-20 mb-4 flex w-full items-center justify-between rounded-lg border-2 border-blue-300 bg-white px-2 py-4">
+          <StickyWrapper>
             <button
               onClick={() => navigate(-1)}
               className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
@@ -85,7 +86,7 @@ const TestDetailPage = () => {
                 </button>
               </div>
             )}
-          </div>
+          </StickyWrapper>
 
           {/* 게시글 내용 */}
           <div className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-sm">

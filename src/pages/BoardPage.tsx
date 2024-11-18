@@ -6,6 +6,7 @@ import useFetchPosts from "@/hooks/useFetchPosts";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSearchParams } from "react-router-dom";
+import StickyWrapper from "@/components/common/StickyWrapper";
 
 const BoardPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -60,7 +61,7 @@ const BoardPage = () => {
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
         <div className="min-h-[40vh] w-full">
-          <div className="sticky top-20 mb-4 flex items-center justify-between rounded-lg border-2 border-gray-300 bg-gray-200 px-2 py-4">
+          <StickyWrapper>
             <ToAddPost />
             <form onSubmit={handleSearch}>
               <input
@@ -77,7 +78,7 @@ const BoardPage = () => {
                 검색
               </button>
             </form>
-          </div>
+          </StickyWrapper>
 
           <PostTable posts={posts} />
 

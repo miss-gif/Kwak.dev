@@ -1,5 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
+import StickyWrapper from "@/components/common/StickyWrapper";
 import interviewQuestions from "@/data/interviewQuestions";
 import CloseIcon from "@mui/icons-material/Close";
 import Fuse from "fuse.js";
@@ -38,7 +39,7 @@ const InterviewPage = () => {
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
         {/* 검색 입력 필드 */}
-        <div className="sticky top-20 z-10 flex w-full items-center">
+        <StickyWrapper>
           <input
             type="text"
             placeholder="키워드를 입력해 인터뷰 질문을 찾아보세요"
@@ -55,7 +56,7 @@ const InterviewPage = () => {
               <CloseIcon />
             </button>
           )}
-        </div>
+        </StickyWrapper>
 
         <ul className="mt-4 flex flex-col gap-4">
           {filteredQuestions.length > 0 ? (
