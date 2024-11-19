@@ -1,5 +1,4 @@
 import { home } from "@/mocks/data";
-import styled from "@emotion/styled";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import GitHubIcon from "@mui/icons-material/GitHub";

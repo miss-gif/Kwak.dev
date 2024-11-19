@@ -1,19 +1,12 @@
-const HomeNotice = () => {
+interface HomeNoticeProps {
+  title: string;
+  image: string;
+}
+
+const HomeNotice = ({ title, image }: HomeNoticeProps) => {
   return (
-    <div className="flex max-h-80 flex-col gap-2 rounded border border-gray-400 p-3">
-      <h3 className="line-clamp-1 text-sm">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique,
-        odio tempora. Cum rerum, quis pariatur blanditiis corrupti saepe.
-        Excepturi blanditiis esse repellat pariatur non ex nemo minima porro
-        dicta ut.
-      </h3>
-      <p className="line-clamp-2 text-xs">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique,
-        odio tempora. Cum rerum, quis pariatur blanditiis corrupti saepe.
-        Excepturi blanditiis esse repellat pariatur non ex nemo minima porro
-        dicta ut.
-      </p>
-      <span className="text-sm">2022-12-22</span>
+    <div className="overflow-hidden rounded-lg bg-white bg-opacity-90">
+      <img src={image} alt={title} />
     </div>
   );
 };
