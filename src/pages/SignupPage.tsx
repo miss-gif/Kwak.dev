@@ -1,4 +1,4 @@
-import { useSignupAndReturn } from "@/hooks/useLoginCheck";
+import { usePageGuard } from "@/hooks/useLoginCheck";
 import { useSignup } from "@/hooks/useSignup";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ function SignupPage() {
     handleSignup,
   } = useSignup();
 
-  useSignupAndReturn();
+  usePageGuard();
 
   return (
     <div className="flex min-h-screen items-center justify-center">

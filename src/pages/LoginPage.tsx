@@ -1,4 +1,5 @@
 import { useLogin } from "@/hooks/useLogin";
+import { usePageGuard } from "@/hooks/useLoginCheck";
 import { Link } from "react-router-dom";
 
 const test = {
@@ -19,6 +20,8 @@ const LoginPage = () => {
     initialEmail: test.email,
     initialPassword: test.password,
   });
+
+  usePageGuard();
 
   return (
     <div className="flex min-h-screen items-center justify-center">

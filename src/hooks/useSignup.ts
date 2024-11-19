@@ -44,7 +44,7 @@ export const useSignup = () => {
       });
 
       toast.success("회원가입 되었습니다.");
-      navigate("/");
+      navigate(-2);
     } catch (error: any) {
       toast.error("회원가입에 실패했습니다.");
     }
