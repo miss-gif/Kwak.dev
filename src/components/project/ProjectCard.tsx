@@ -11,7 +11,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   const { id } = project;
 
   return (
-    <li className="relative overflow-hidden rounded-lg bg-white shadow-md transition-shadow duration-200 hover:shadow-lg">
+    <li className="shadow-style relative overflow-hidden rounded-lg border bg-white shadow-md">
       {/* 썸네일 */}
       <img
         src={thumbnail}
@@ -21,7 +21,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
 
       {/* 호버 시 딤드 효과 */}
       <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-gray-900 opacity-0 transition-opacity duration-200 hover:opacity-100">
-        <div className="flex flex-col items-center justify-center gap-5">
+        <div className="flex flex-col items-center justify-center gap-3">
           <p className="pb-3 text-2xl font-semibold text-white">{title}</p>
           <Link
             to={`/project/${id}`}

@@ -18,16 +18,16 @@ const PostTable = ({ posts }: { posts: Post[] }) => {
         </tr>
       </thead>
       <tbody>
-        <tr className="h-10 cursor-pointer border-b bg-gray-300 text-black hover:bg-orange-200">
+        <tr className="h-10 cursor-pointer border-b bg-gray-100 text-black hover:bg-orange-200">
           <td className="px-4">
             현재 게시판은 작업중입니다. 최대한 빠른 시일 내에 작업을
             완료하겠습니다.
           </td>
           <td>운영자</td>
-          <td className="text-center text-blue-500">1</td>
-          <td className="text-center text-red-500">1</td>
-          <td className="text-center">1</td>
-          <td className="text-center text-xs">{formatDate(Date())}</td>
+          <td className="text-center text-blue-500">-</td>
+          <td className="text-center text-red-500">-</td>
+          <td className="text-center">-</td>
+          <td className="text-center text-xs">-</td>
         </tr>
       </tbody>
       <tbody>

@@ -1,11 +1,12 @@
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
-export default function BasicButtons({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+interface BasicButtonProps {
+  title: string;
+  onClick?: () => void;
+}
+
+export default function BasicButton({ title, onClick }: BasicButtonProps) {
   return (
     <Stack spacing={2} direction="row">
       <Button
@@ -19,8 +20,9 @@ export default function BasicButtons({
             backgroundColor: "#EE8130",
           },
         }}
+        onClick={onClick}
       >
-        {children}
+        {title}
       </Button>
       {/* <Button
         variant="contained"
@@ -29,9 +31,9 @@ export default function BasicButtons({
           backgroundColor: 'black',
         }}
       >
-        {children}
+        {title}
       </Button> */}
-      {/* <Button variant="outlined">{children}</Button> */}
+      {/* <Button variant="outlined">{title}</Button> */}
     </Stack>
   );
 }

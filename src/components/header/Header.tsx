@@ -2,19 +2,22 @@ import Container from "@/components/common/Container";
 import useHeaderScroll from "@/hooks/useHeaderScroll";
 import { Theme } from "@/types/theme";
 import { linkItems } from "@mocks/data";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { capitalizeFirstLetter } from "@utils/utils";
 import classNames from "classnames";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import BasicButtons from "../common/Button";
+import { Link, useNavigate } from "react-router-dom";
+import UserModal from "../common/UserModal";
+import BasicButton from "../common/Button";
+import { useAuthStore } from "../stores/authStore";
 import NavToggle from "./NavToggle";
 import ToggleThemeSwitch from "./ToggleThemeSwitch";
-import { useAuthStore } from "../stores/authStore";
 
 const Header = ({ toggleTheme }: Theme) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const { user, isLoggedIn, logout } = useAuthStore();
+  const { isLoggedIn, logout } = useAuthStore();
+  const navigeit = useNavigate();
 
   const handleClick = (itemName: string | null) => {
     setSelectedItem(itemName);
@@ -55,21 +58,22 @@ const Header = ({ toggleTheme }: Theme) => {
           <div className="flex items-center gap-2 md:gap-6">
             <div className="flex items-center gap-2 md:gap-2">
               {isLoggedIn ? (
-                <>
-                  <Link
-                    to={"/accountinfo"}
-                    className="hover:text-fire hover:underline"
-                  >
-                    {user?.displayName}
-                    <div className="h-3 w-3 rounded-full bg-slate-200"></div>
-                  </Link>
-                  <div onClick={logout}>
-                    <BasicButtons>로그아웃</BasicButtons>
-                  </div>
-                </>
+                <UserModal
+                  title={<AccountCircleIcon sx={{ fontSize: 40 }} />}
+                  logout={<BasicButton title="로그아웃" onClick={logout} />}
+                  link={
+                    <BasicButton
+                      title="마이페이지"
+                      onClick={() => {
+                        navigeit("/mypage");
+                        handleClick(null);
+                      }}
+                    />
+                  }
+                />
               ) : (
                 <Link to="login" onClick={() => handleClick(null)}>
-                  <BasicButtons>로그인</BasicButtons>
+                  <BasicButton title="로그인" />
                 </Link>
               )}
               <ToggleThemeSwitch onClick={toggleTheme} />

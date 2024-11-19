@@ -71,12 +71,6 @@ const BoardPage = () => {
                 className="search-input-style flex-1"
                 placeholder="제목으로 검색"
               />
-              <button
-                type="submit"
-                className="rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600"
-              >
-                검색
-              </button>
             </form>
           </StickyWrapper>
 

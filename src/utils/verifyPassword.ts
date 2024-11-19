@@ -1,6 +1,7 @@
 import { db } from "@/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 
+// 관리자 페이지 비밀번호 확인
 export const verifyPassword = async (
   inputPassword: string,
 ): Promise<boolean> => {

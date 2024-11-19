@@ -59,7 +59,7 @@ const App = () => {
         {/* auth */}
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<SignupPage />} />
-        <Route path="accountinfo" element={<AccountInfoPage />} />
+        <Route path="mypage" element={<AccountInfoPage />} />
         {/* 게시판 */}
         <Route path="board" element={<BoardPage />} />
         <Route path="post/write" element={<CreatePostPage />} />

@@ -102,7 +102,7 @@ const CreatePostPage = () => {
                 className="mt-1 w-full rounded-md border border-gray-300 p-2"
                 placeholder="제목을 입력하세요"
                 {...register("title")}
-                value={"테스트 제목1"}
+                value={""}
               />
               {errors.title && (
                 <p className="mt-1 text-xs text-red-500">
@@ -121,7 +121,7 @@ const CreatePostPage = () => {
                 placeholder="내용을 입력하세요"
                 rows={6}
                 {...register("content")}
-                value={"테스트 내용1"}
+                value={""}
               />
               {errors.content && (
                 <p className="mt-1 text-xs text-red-500">
@@ -130,7 +130,7 @@ const CreatePostPage = () => {
               )}
             </div>
 
-            <div>
+            <div className="hidden">
               <label htmlFor="author" className="block text-gray-700">
                 작성자
               </label>

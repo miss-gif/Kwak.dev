@@ -2,6 +2,7 @@ import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import StickyWrapper from "@/components/common/StickyWrapper";
 import interviewQuestions from "@/data/interviewQuestions";
+import { formatTextByDot } from "@/utils/formatTextByDot";
 import CloseIcon from "@mui/icons-material/Close";
 import Fuse from "fuse.js";
 import { useEffect, useState } from "react";
@@ -63,22 +64,22 @@ const InterviewPage = () => {
             filteredQuestions.map((question, index) => (
               <li
                 key={index}
-                className="rounded-lg border border-gray-300 p-6 shadow-sm transition-shadow duration-200 hover:border-2 hover:border-blue-300 hover:shadow-lg"
+                className="shadow-style rounded-lg border border-gray-300 p-6 shadow-sm hover:border-blue-300"
               >
                 <h3 className="text-xl font-semibold">
                   Q. {question.question}
                 </h3>
                 <p
-                  className={`mt-2 leading-relaxed transition-all duration-300 ${
+                  className={`my-4 whitespace-pre-line leading-loose transition-all duration-300 ${
                     query ? "blur-0" : "blur-sm"
                   } hover:blur-0`}
                 >
-                  {question.answer}
+                  {formatTextByDot(question.answer)}
                 </p>
               </li>
             ))
           ) : (
-            <p className="py-10 text-center text-2xl">검색 결과가 없습니다.</p>
+            <p className="text-gray-500">검색 결과가 없습니다.</p>
           )}
         </ul>
       </SectionWrapper>
