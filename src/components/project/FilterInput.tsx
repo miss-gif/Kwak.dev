@@ -5,7 +5,6 @@ interface FilterInputProps {
   value: string;
   onChange: (value: string) => void;
   onClear: () => void;
-  borderColor: string;
 }
 
 const FilterInput = ({
@@ -13,16 +12,15 @@ const FilterInput = ({
   value,
   onChange,
   onClear,
-  borderColor,
 }: FilterInputProps) => {
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <input
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className={`w-full rounded-lg border-2 px-4 py-2 ${borderColor}`}
+        className="search-input-style"
       />
       {value && (
         <button

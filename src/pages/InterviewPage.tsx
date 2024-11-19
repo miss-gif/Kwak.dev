@@ -45,7 +45,7 @@ const InterviewPage = () => {
             placeholder="키워드를 입력해 인터뷰 질문을 찾아보세요"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full rounded-lg border-2 border-blue-300 px-4 py-6"
+            className="search-input-style"
           />
           {/* 검색어 초기화 버튼 */}
           {query && (

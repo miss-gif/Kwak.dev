@@ -2,6 +2,11 @@ import HomeLeft from "@/components/home/HomeLeft";
 import HomeNotice from "./HomeNotice";
 
 const HomeInfoData = {
+  streakStats: {
+    title: "streakStats",
+    image:
+      "https://streak-stats.demolab.com?user=miss-gif&theme=transparent&hide_border=true&border_radius=0&locale=ko&card_width=467",
+  },
   statsCard: {
     title: "statsCard",
     image:
@@ -11,11 +16,6 @@ const HomeInfoData = {
     title: "mostLanguages",
     image:
       "https://github-readme-stats.vercel.app/api/top-langs/?username=miss-gif&layout=compact&locale=kr&hide=less,html,php,css&langs_count=8&bg_color=ffffff00&hide_border=true&title_color=000000&hide_title=true&card_width=467",
-  },
-  streakStats: {
-    title: "streakStats",
-    image:
-      "https://streak-stats.demolab.com?user=miss-gif&theme=transparent&hide_border=true&border_radius=0&locale=ko&card_width=467",
   },
 };
 

@@ -1,3 +1,9 @@
+/* hover 일 때, 옅은 그림자 */
 .shadow-style {
-  @apply shadow-sm transition-shadow duration-200 hover:shadow-lg;
+  @apply transition-shadow duration-200 hover:shadow-md;
+}
+
+/* 검색창 인풋 */
+.search-input-style {
+  @apply w-full rounded-lg border border-gray-300 px-2 py-2;
 }

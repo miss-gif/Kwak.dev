@@ -30,9 +30,9 @@ const Header = ({ toggleTheme }: Theme) => {
     <header className="header fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between transition-shadow duration-300">
       <Container>
         <div className="flex w-full items-center justify-between">
-          <Link to={"/"} onClick={() => handleClick(null)}>
+          <a href="/" onClick={() => handleClick(null)}>
             <h1 className="text-2xl font-bold">Portfolio</h1>
-          </Link>
+          </a>
 
           <nav className="hidden lg:block">
             <ul className="flex gap-6">

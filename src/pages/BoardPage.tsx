@@ -63,17 +63,17 @@ const BoardPage = () => {
         <div className="min-h-[40vh] w-full">
           <StickyWrapper>
             <ToAddPost />
-            <form onSubmit={handleSearch}>
+            <form onSubmit={handleSearch} className="flex w-1/2 gap-2">
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="mr-2 rounded-md border px-4 py-2"
-                placeholder="검색어를 입력하세요"
+                className="search-input-style flex-1"
+                placeholder="제목으로 검색"
               />
               <button
                 type="submit"
-                className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+                className="rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600"
               >
                 검색
               </button>

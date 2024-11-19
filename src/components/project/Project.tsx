@@ -28,21 +28,18 @@ const Project = ({ projectData }: ProjectProps) => {
           value={query}
           onChange={setQuery}
           onClear={() => setQuery("")}
-          borderColor="border-blue-300"
         />
         <FilterInput
           placeholder="기술 스택 필터 (예: React)"
           value={techFilter}
           onChange={setTechFilter}
           onClear={() => setTechFilter("")}
-          borderColor="border-green-300"
         />
         <FilterInput
-          placeholder="키워드 필터"
+          placeholder="키워드 필터 (예: 반응형, 작업영역, 작업형태)"
           value={keywords}
           onChange={setKeywords}
           onClear={() => setKeywords("")}
-          borderColor="border-green-300"
         />
       </StickyWrapper>
 
