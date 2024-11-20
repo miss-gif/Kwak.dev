@@ -5,6 +5,7 @@ import { useState } from "react";
 import PorojectDocsForm from "./ProjectForm/PorojectDocsForm";
 import ProjectForm from "./ProjectForm/ProjectForm";
 import UserManagement from "./UserManagement";
+import useJoinAndPost from "./ProjectForm/hooks/useJoinAndPost";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -37,6 +38,9 @@ function a11yProps(index: number) {
 
 export default function AdminTab() {
   const [value, setValue] = useState(0);
+  const [projectData, setProjectData] = useState({});
+  const [docsData, setDocsData] = useState({});
+  const { joinAndPost, isSubmitting } = useJoinAndPost();
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -60,8 +64,14 @@ export default function AdminTab() {
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <div className="flex flex-col gap-6">
-          <ProjectForm />
-          <PorojectDocsForm />
+          <ProjectForm joinFormData={setProjectData} />
+          <PorojectDocsForm joinFormData={setDocsData} />
+          <button
+            onClick={() => joinAndPost(projectData, docsData)}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Submit"}
+          </button>
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>

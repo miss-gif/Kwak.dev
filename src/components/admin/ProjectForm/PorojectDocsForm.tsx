@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PorojectDocsInput from "./components/PorojectDocsInput";
 
 interface Item {
@@ -14,6 +14,10 @@ interface FormData {
   results: Item[];
 }
 
+interface PorojectDocsFormProps {
+  joinFormData: (formData: FormData) => void;
+}
+
 const initFormData = {
   achievements: [{ title: "", text: "" }],
   goals: [{ title: "", text: "" }],
@@ -22,7 +26,7 @@ const initFormData = {
   results: [{ title: "", text: "" }],
 };
 
-const PorojectDocsForm = () => {
+const PorojectDocsForm = ({ joinFormData }: PorojectDocsFormProps) => {
   const [formData, setFormData] = useState<FormData>(initFormData);
 
   // 특정 항목 추가
@@ -65,7 +69,12 @@ const PorojectDocsForm = () => {
     e.preventDefault();
     console.log(formData);
     setFormData(initFormData);
+    joinFormData(formData);
   };
+
+  useEffect(() => {
+    console.log("formData changed:", formData);
+  }, [formData]);
 
   return (
     <form

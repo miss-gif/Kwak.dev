@@ -28,7 +28,11 @@ const initFormData = {
   development: "",
 };
 
-const ProjectForm = () => {
+interface ProjectFormProps {
+  joinFormData: (formData: FormData) => void;
+}
+
+const ProjectForm = ({ joinFormData }: ProjectFormProps) => {
   const [formData, setFormData] = useState<FormData>(initFormData);
 
   // 값 초기화 함수
@@ -61,6 +65,7 @@ const ProjectForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
+    joinFormData(formData);
     setFormData(initFormData);
   };
 
