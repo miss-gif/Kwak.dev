@@ -42,18 +42,11 @@ export const getAllPosts = async (): Promise<Posts[]> => {
 };
 
 // 게시물 상세 조회
-export const getPostById = async (postId: string): Promise<Posts> => {
-  try {
-    const docRef = doc(db, "posts", postId);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      return { id: docSnap.id, ...docSnap.data() } as Posts;
-    } else {
-      throw new Error("게시물을 찾을 수 없습니다.");
-    }
-  } catch (error) {
-    console.error("Error fetching post by id:", error);
-    throw new Error("게시물 조회 실패");
+export const getPostById = async (postId: string) => {
+  const docRef = doc(db, "posts", postId);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return { id: docSnap.id, ...docSnap.data() };
   }
 };
 

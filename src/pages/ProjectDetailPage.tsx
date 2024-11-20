@@ -5,6 +5,7 @@ import ProjectOverview from "@/components/project/ProjectOverview";
 import { projectData } from "@/data/projectData";
 
 import { useParams } from "react-router-dom";
+import NotFoundPage from "./NotFoundPage";
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const ProjectDetailPage = () => {
 
   // 데이터가 없는 경우 처리
   if (!project) {
-    return <div>Project not found</div>;
+    return <NotFoundPage />;
   }
 
   const props = {

@@ -3,6 +3,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
 import UserManagement from "./UserManagement";
+import ProjectForm from "./ProjectForm";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -48,8 +49,8 @@ export default function AdminTab() {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="유저 관리" {...a11yProps(0)} />
+          <Tab label="프로젝트 등록" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </Box>
@@ -57,7 +58,7 @@ export default function AdminTab() {
         <UserManagement />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <ProjectForm />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
