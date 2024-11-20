@@ -67,7 +67,7 @@ const ProjectForm = () => {
     >
       <LabelInput
         label="ID"
-        type="text"
+        type="number"
         placeholder="고유 ID 입력"
         name="id"
         value={formData.id}
@@ -80,6 +80,53 @@ const ProjectForm = () => {
         placeholder="프로젝트명을 입력하세요"
         name="projectName"
         value={formData.projectName}
+        onChange={handleInputChange}
+        onEscKeyDown={resetFormDataValue}
+      />
+      <LabelInput
+        label="프로젝트 설명"
+        type="text"
+        placeholder="간단한 설명 입력"
+        name="description"
+        value={formData.description}
+        onChange={handleInputChange}
+        onEscKeyDown={resetFormDataValue}
+      />
+
+      <LabelInput
+        label="썸네일"
+        type="text"
+        placeholder="썸네일 URL 입력"
+        name="thumbnail"
+        value={formData.thumbnail}
+        onChange={handleInputChange}
+        onEscKeyDown={resetFormDataValue}
+      />
+
+      <LabelInput
+        label="작업 인원"
+        type="text"
+        placeholder="작업 참여 인원"
+        name="teamSize"
+        value={formData.teamSize}
+        onChange={handleInputChange}
+        onEscKeyDown={resetFormDataValue}
+      />
+      <LabelInput
+        label="작업 시작"
+        type="text"
+        placeholder="작업 시작 날짜"
+        name="startDate"
+        value={formData.startDate}
+        onChange={handleInputChange}
+        onEscKeyDown={resetFormDataValue}
+      />
+      <LabelInput
+        label="작업 종료"
+        type="text"
+        placeholder="작업 종료 날짜"
+        name="endDate"
+        value={formData.endDate}
         onChange={handleInputChange}
         onEscKeyDown={resetFormDataValue}
       />
@@ -105,52 +152,6 @@ const ProjectForm = () => {
         name="badgeParticipation"
         value={formData.badgeParticipation}
         onChange={handleInputChange}
-      />
-
-      <LabelInput
-        label="썸네일"
-        type="text"
-        placeholder="썸네일 URL 입력"
-        name="thumbnail"
-        value={formData.thumbnail}
-        onChange={handleInputChange}
-        onEscKeyDown={resetFormDataValue}
-      />
-      <LabelInput
-        label="작업 시작"
-        type="text"
-        placeholder="작업 시작 날짜"
-        name="startDate"
-        value={formData.startDate}
-        onChange={handleInputChange}
-        onEscKeyDown={resetFormDataValue}
-      />
-      <LabelInput
-        label="작업 종료"
-        type="text"
-        placeholder="작업 종료 날짜"
-        name="endDate"
-        value={formData.endDate}
-        onChange={handleInputChange}
-        onEscKeyDown={resetFormDataValue}
-      />
-      <LabelInput
-        label="작업 인원"
-        type="text"
-        placeholder="작업 참여 인원"
-        name="teamSize"
-        value={formData.teamSize}
-        onChange={handleInputChange}
-        onEscKeyDown={resetFormDataValue}
-      />
-      <LabelInput
-        label="프로젝트 설명"
-        type="text"
-        placeholder="간단한 설명 입력"
-        name="description"
-        value={formData.description}
-        onChange={handleInputChange}
-        onEscKeyDown={resetFormDataValue}
       />
 
       <CheckboxGroup

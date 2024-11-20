@@ -6,6 +6,7 @@ export const linkItems = [
   { name: "게시판", path: "board" },
   { name: "통계", path: "charts" },
   { name: "일정", path: "schedule" },
+  { name: "갤러리", path: "gallery" },
   { name: "관리자", path: "admin" },
 ];
 

@@ -33,7 +33,7 @@ const NavToggle = ({ toggleDrawer, isOpen, setIsOpen }: NavToggleProps) => {
 
       <ul
         className={classNames(
-          "fixed right-0 top-0 z-50 flex h-dvh w-full transform flex-col items-center justify-center overflow-hidden bg-black bg-opacity-90 text-xl font-medium uppercase text-white transition-transform duration-500 ease-in-out",
+          "fixed right-0 top-0 z-50 flex min-h-dvh w-full transform flex-col items-center justify-center gap-4 overflow-hidden bg-black bg-opacity-90 transition-transform duration-500 ease-in-out",
           {
             "translate-x-0": isOpen,
             "translate-x-full": !isOpen,
@@ -41,9 +41,9 @@ const NavToggle = ({ toggleDrawer, isOpen, setIsOpen }: NavToggleProps) => {
         )}
       >
         {linkItems.map((item, index) => (
-          <li key={index} className="py-4 text-center">
+          <li key={index} className="text-center">
             <Link
-              className="block py-4 text-3xl font-bold text-white transition-colors duration-100 hover:text-fire"
+              className="block p-2 text-3xl font-bold text-white transition-colors duration-100 hover:text-fire"
               to={item.path}
               onClick={closeMenu}
             >
@@ -53,10 +53,10 @@ const NavToggle = ({ toggleDrawer, isOpen, setIsOpen }: NavToggleProps) => {
         ))}
         {/* 닫기 버튼 */}
         <button
-          className="absolute right-8 top-6 text-3xl text-white"
+          className="absolute right-0 top-0 p-4 text-white"
           onClick={closeMenu}
         >
-          <CloseIcon />
+          <CloseIcon sx={{ fontSize: "40px" }} />
         </button>
       </ul>
     </>
