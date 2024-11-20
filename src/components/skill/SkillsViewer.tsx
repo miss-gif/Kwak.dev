@@ -4,7 +4,6 @@ import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
 import SkillsCanvas from "./SkillsCanvas";
 import SkillsList from "./SkillsList";
-import ViewModuleIcon from "@mui/icons-material/ViewModule";
 
 interface TabPanelProps {
   children?: React.ReactNode;

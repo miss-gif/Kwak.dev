@@ -19,10 +19,16 @@ const UserManagement = () => {
     try {
       const usersCollection = collection(db, "users"); // 'users'라는 Firestore 컬렉션
       const snapshot = await getDocs(usersCollection);
-      const usersData = snapshot.docs.map((doc) => ({
-        id: doc.id, // Firestore 문서 ID
-        ...doc.data(), // 문서 데이터
-      }));
+      const usersData = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        return {
+          uid: doc.id, // Firestore 문서 ID
+          creationTime: data.creationTime,
+          displayName: data.displayName,
+          email: data.email,
+          lastSignInTime: data.lastSignInTime,
+        };
+      });
       setUsers(usersData);
     } catch (error) {
       console.error("사용자 데이터를 불러오는 중 에러 발생:", error);
