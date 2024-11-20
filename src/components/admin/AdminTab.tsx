@@ -3,7 +3,7 @@ import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
 import UserManagement from "./UserManagement";
-import ProjectForm from "./ProjectForm";
+import ProjectForm from "./ProjectForm/ProjectForm";
 
 interface TabPanelProps {
   children?: React.ReactNode;
