@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import LabelInput from "./components/LabelInput";
 import RadioGroup from "./components/RadioGroup";
 import CheckboxGroup from "./components/CheckboxGroup";
+import { PorojectDocsInput } from "./PorojectDocsInput";
+import { FormData } from "./type/type";
 
 const ProjectForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     id: "",
     projectName: "",
     badgeProjectDevice: "",
@@ -26,6 +28,11 @@ const ProjectForm = () => {
     design: "",
     publishing: "",
     development: "",
+    achievements: [{ title: "", content: "" }],
+    goals: [{ title: "", content: "" }],
+    mainFeatures: [{ title: "", content: "" }],
+    technologies: [{ title: "", content: "" }],
+    results: [{ title: "", content: "" }],
   });
 
   // 값 초기화 함수
@@ -252,10 +259,36 @@ const ProjectForm = () => {
         onChange={handleInputChange}
         onEscKeyDown={resetFormDataValue}
       />
+      {/*  */}
+      <PorojectDocsInput
+        label="성과"
+        sectionKey="achievements"
+        value={formData.achievements}
+      />
+      <PorojectDocsInput
+        label="목표"
+        sectionKey="goals"
+        value={formData.goals}
+      />
+      <PorojectDocsInput
+        label="주요기능"
+        sectionKey="mainFeatures"
+        value={formData.mainFeatures}
+      />
+      <PorojectDocsInput
+        label="사용기술"
+        sectionKey="technologies"
+        value={formData.technologies}
+      />
+      <PorojectDocsInput
+        label="결과"
+        sectionKey="results"
+        value={formData.results}
+      />
 
       <button
         type="submit"
-        className="mt-4 w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600"
+        className="w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600"
       >
         등록
       </button>
