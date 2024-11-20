@@ -61,6 +61,7 @@ const ProjectForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
+    setFormData(initFormData);
   };
 
   return (
@@ -159,7 +160,51 @@ const ProjectForm = () => {
 
       <CheckboxGroup
         label="기술 스택"
-        options={["HTML", "CSS", "JavaScript", "TypeScript", "React"]}
+        options={[
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "TypeScript",
+          "React",
+          "Vue",
+          "Next.js",
+          "React Router",
+          "Redux",
+          "Zustand",
+          "Recoil",
+          "React Query",
+          "Axios",
+          "Sass",
+          "Emotion",
+          "Tailwind CSS",
+          "Material-UI",
+          "Figma",
+          "Swagger",
+          "Postman",
+          "Firebase",
+          "Supabase",
+          "Node.js",
+          "Express",
+          "NestJS",
+          "MongoDB",
+          "Prisma",
+          "Notion",
+          "Slack",
+          "Discord",
+          "Vite",
+          "Babel",
+          "ESBuild",
+          "ESLint",
+          "Prettier",
+          "Netlify",
+          "Vercel",
+          "GSAP",
+          "anime.js",
+          "Framer Motion",
+          "D3.js",
+          "Chart.js",
+          "Three.js",
+        ]}
         values={formData.techStack}
         onChange={handleCheckboxChange}
       />

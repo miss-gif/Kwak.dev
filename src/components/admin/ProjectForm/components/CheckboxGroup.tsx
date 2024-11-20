@@ -8,7 +8,7 @@ const CheckboxGroup = ({
 }: CheckboxGroupProps) => (
   <div className="flex items-center">
     <p className="min-w-32">{label}</p>
-    <div className="flex items-center py-2">
+    <div className="flex flex-wrap items-center gap-4 py-2">
       {options.map((option, index) => (
         <label key={index} className="min-w-32">
           <input

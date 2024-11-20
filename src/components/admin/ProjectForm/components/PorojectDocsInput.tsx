@@ -20,7 +20,7 @@ const PorojectDocsInput = ({
   onEscKeyDown,
 }: PorojectDocsInputProps) => (
   <div className="flex items-center py-2">
-    <label className="block min-w-32 text-sm font-medium">{label}</label>
+    <label className="block min-w-32">{label}</label>
     <input
       type={type}
       name={name}
