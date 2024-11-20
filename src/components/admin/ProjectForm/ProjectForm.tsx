@@ -1,39 +1,35 @@
 import React, { useState } from "react";
+import CheckboxGroup from "./components/CheckboxGroup";
 import LabelInput from "./components/LabelInput";
 import RadioGroup from "./components/RadioGroup";
-import CheckboxGroup from "./components/CheckboxGroup";
-import { PorojectDocsInput } from "./PorojectDocsInput";
 import { FormData } from "./type/type";
 
+const initFormData = {
+  id: "",
+  projectName: "",
+  badgeProjectDevice: "",
+  badgeProjectType: "",
+  badgeParticipation: "",
+  thumbnail: "",
+  startDate: "",
+  endDate: "",
+  teamSize: "",
+  description: "",
+  techStack: [] as string[],
+  demoUrl: "",
+  githubUrl: "",
+  canvaUrl: "",
+  figmaUrl: "",
+  swaggerUrl: "",
+  client: "",
+  planning: "",
+  design: "",
+  publishing: "",
+  development: "",
+};
+
 const ProjectForm = () => {
-  const [formData, setFormData] = useState<FormData>({
-    id: "",
-    projectName: "",
-    badgeProjectDevice: "",
-    badgeProjectType: "",
-    badgeParticipation: "",
-    thumbnail: "",
-    startDate: "",
-    endDate: "",
-    teamSize: "",
-    description: "",
-    techStack: [] as string[],
-    demoUrl: "",
-    githubUrl: "",
-    canvaUrl: "",
-    figmaUrl: "",
-    swaggerUrl: "",
-    client: "",
-    planning: "",
-    design: "",
-    publishing: "",
-    development: "",
-    achievements: [{ title: "", content: "" }],
-    goals: [{ title: "", content: "" }],
-    mainFeatures: [{ title: "", content: "" }],
-    technologies: [{ title: "", content: "" }],
-    results: [{ title: "", content: "" }],
-  });
+  const [formData, setFormData] = useState<FormData>(initFormData);
 
   // 값 초기화 함수
   const resetFormDataValue = (key: string) => {
@@ -69,7 +65,7 @@ const ProjectForm = () => {
 
   return (
     <form
-      className="mx-auto rounded-md bg-neutral-100 p-4 shadow"
+      className="mx-auto w-full rounded-md bg-neutral-100 p-4 shadow"
       onSubmit={handleSubmit}
     >
       <LabelInput
@@ -259,36 +255,10 @@ const ProjectForm = () => {
         onChange={handleInputChange}
         onEscKeyDown={resetFormDataValue}
       />
-      {/*  */}
-      <PorojectDocsInput
-        label="성과"
-        sectionKey="achievements"
-        value={formData.achievements}
-      />
-      <PorojectDocsInput
-        label="목표"
-        sectionKey="goals"
-        value={formData.goals}
-      />
-      <PorojectDocsInput
-        label="주요기능"
-        sectionKey="mainFeatures"
-        value={formData.mainFeatures}
-      />
-      <PorojectDocsInput
-        label="사용기술"
-        sectionKey="technologies"
-        value={formData.technologies}
-      />
-      <PorojectDocsInput
-        label="결과"
-        sectionKey="results"
-        value={formData.results}
-      />
 
       <button
         type="submit"
-        className="w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600"
+        className="mt-2 w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600"
       >
         등록
       </button>

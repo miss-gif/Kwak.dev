@@ -2,8 +2,9 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
-import UserManagement from "./UserManagement";
+import PorojectDocsForm from "./ProjectForm/PorojectDocsForm";
 import ProjectForm from "./ProjectForm/ProjectForm";
+import UserManagement from "./UserManagement";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -58,7 +59,10 @@ export default function AdminTab() {
         <UserManagement />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <ProjectForm />
+        <div className="flex flex-col gap-6">
+          <ProjectForm />
+          <PorojectDocsForm />
+        </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
