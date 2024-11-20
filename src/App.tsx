@@ -20,7 +20,6 @@ import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
 import SchedulePage from "./pages/SchedulePage";
 import SignupPage from "./pages/SignupPage";
-import ProjectFormTest from "./pages/ProjectFormTest";
 import { Theme } from "./types/theme";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
@@ -71,7 +70,6 @@ const App = () => {
         <Route path="admin" element={<AdminPage />} />
       </Route>
 
-      <Route path="ProjectFormTest" element={<ProjectFormTest />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
