@@ -5,5 +5,5 @@
 
 /* 검색창 인풋 */
 .search-input-style {
-  @apply w-full rounded-lg border border-gray-300 px-2 py-2;
+  @apply w-full rounded-md border border-gray-300 px-2 py-2;
 }

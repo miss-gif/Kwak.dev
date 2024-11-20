@@ -1,6 +1,6 @@
 const ContactInfo = () => {
   return (
-    <div className="w-96 rounded-lg p-4 shadow-md">
+    <div className="w-96 rounded-md p-4 shadow-md">
       <div>
         <img
           src="https://www.printrobo.co.kr/cdn/blog/870x531-pb10008.jpg"

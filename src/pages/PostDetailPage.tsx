@@ -107,7 +107,7 @@ const PostDetailPage = () => {
           </StickyWrapper>
 
           {/* 게시글 내용 */}
-          <div className="w-full rounded-lg border border-gray-300 bg-white p-6 shadow-sm">
+          <div className="w-full rounded-md border border-gray-300 bg-white p-6 shadow-sm">
             <h3 className="mb-4 text-3xl font-bold text-gray-800">
               {post.title}
             </h3>

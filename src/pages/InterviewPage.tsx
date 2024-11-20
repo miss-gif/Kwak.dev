@@ -64,7 +64,7 @@ const InterviewPage = () => {
             filteredQuestions.map((question, index) => (
               <li
                 key={index}
-                className="shadow-style rounded-lg border border-gray-300 p-6 shadow-sm hover:border-blue-300"
+                className="shadow-style rounded-md border border-gray-300 p-6 shadow-sm hover:border-blue-300"
               >
                 <h3 className="text-xl font-semibold">
                   Q. {question.question}

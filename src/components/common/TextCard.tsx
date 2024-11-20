@@ -1,14 +1,14 @@
-import { personalInfo } from '@/data'
+import { personalInfo } from "@/data";
 
 const TextCard = () => {
-  const certifications = personalInfo.certifications
+  const certifications = personalInfo.certifications;
 
   return (
-    <ul className="grid gap-8 mt-16">
+    <ul className="mt-16 grid gap-8">
       {certifications.map((certification, index) => (
         <li
           key={index}
-          className="p-6 border border-gray-300 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-200"
+          className="rounded-md border border-gray-300 p-6 shadow-sm transition-shadow duration-200 hover:shadow-lg"
         >
           <h3 className="text-xl font-semibold">{certification.name}</h3>
           <div className="mt-2">
@@ -20,7 +20,7 @@ const TextCard = () => {
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
-export default TextCard
+export default TextCard;

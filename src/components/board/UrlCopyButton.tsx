@@ -12,7 +12,7 @@ const UrlCopyButton = () => {
 
   return (
     <button
-      className="rounded px-2 py-3 text-sm hover:bg-fire hover:text-white"
+      className="rounded-md px-2 py-3 text-sm hover:bg-fire hover:text-white"
       onClick={handleCopyUrl}
     >
       URL 복사

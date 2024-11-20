@@ -39,7 +39,7 @@ const SkillCard = ({ img, name, percentage, description }: SkillCardProps) => {
             className="relative block h-[2px] bg-cyan-800"
             style={{ width: `${currentPercentage}%` }}
           >
-            <span className="absolute right-0 top-[-12px] h-[25px] w-[25px] rounded-3xl border-2 bg-cyan-800"></span>
+            <span className="absolute right-0 top-[-12px] h-[25px] w-[25px] rounded-full border-2 bg-cyan-800"></span>
           </span>
         </div>
       </div>

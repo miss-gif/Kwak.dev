@@ -5,7 +5,7 @@ interface HomeNoticeProps {
 
 const HomeNotice = ({ title, image }: HomeNoticeProps) => {
   return (
-    <div className="overflow-hidden rounded-lg bg-white bg-opacity-90">
+    <div className="overflow-hidden rounded-md bg-white bg-opacity-90">
       <img src={image} alt={title} />
     </div>
   );

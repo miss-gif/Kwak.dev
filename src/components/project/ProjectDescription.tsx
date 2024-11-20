@@ -6,9 +6,9 @@ type ProjectDescriptionProps = {
 
 const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
   return (
-    <div className="rounded-lg">
+    <div className="rounded-md">
       {/* 성과 */}
-      <div className="my-6 rounded-xl bg-slate-800 px-4 py-4">
+      <div className="my-6 rounded-md bg-slate-800 p-4">
         <p className="mb-2 text-xl font-semibold">성과</p>
         <ul className="mb-4 list-inside list-disc">
           {data.achievement.map((item, index) => (

@@ -17,7 +17,7 @@ function SignupPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-md space-y-6 rounded-lg bg-white p-8 shadow-md">
+      <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8 shadow-md">
         <h2 className="text-center text-2xl font-bold text-gray-700">
           회원가입
         </h2>

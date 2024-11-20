@@ -37,7 +37,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
 
   return (
     <form
-      className="w-full max-w-lg rounded-lg bg-white p-6 shadow-md"
+      className="w-full max-w-lg rounded-md bg-white p-6 shadow-md"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="space-y-6">

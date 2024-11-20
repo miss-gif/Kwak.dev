@@ -23,7 +23,7 @@ const AccountInfoPage = () => {
   }, []);
 
   return (
-    <div className="mx-auto mt-10 max-w-md rounded-lg bg-white p-6 shadow-lg">
+    <div className="mx-auto mt-10 max-w-md rounded-md bg-white p-6 shadow-lg">
       <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">
         회원정보
       </h2>
@@ -63,7 +63,7 @@ const AccountInfoPage = () => {
         </p>
       </div>
 
-      <div className="mb-6 rounded-lg border bg-gray-50 p-4">
+      <div className="mb-6 rounded-md border bg-gray-50 p-4">
         <h2 className="mb-3 text-lg font-semibold text-gray-700">
           아이디(이메일) 변경
         </h2>
@@ -82,7 +82,7 @@ const AccountInfoPage = () => {
         </button>
       </div>
 
-      <div className="mb-6 rounded-lg border bg-gray-50 p-4">
+      <div className="mb-6 rounded-md border bg-gray-50 p-4">
         <h2 className="mb-3 text-lg font-semibold text-gray-700">
           비밀번호 변경
         </h2>
@@ -101,7 +101,7 @@ const AccountInfoPage = () => {
         </button>
       </div>
 
-      <div className="rounded-lg border bg-red-50 p-4">
+      <div className="rounded-md border bg-red-50 p-4">
         <h2 className="mb-3 text-lg font-semibold text-red-600">계정 탈퇴</h2>
         <button
           onClick={handleAccountDelete}

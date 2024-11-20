@@ -13,7 +13,7 @@ function NotFoundPage() {
         </p>
         <Link
           to="/"
-          className="mt-6 inline-block rounded-lg bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"
+          className="mt-6 inline-block rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"
         >
           홈으로 돌아가기
         </Link>

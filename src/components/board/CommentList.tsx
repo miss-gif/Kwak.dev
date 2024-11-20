@@ -1,6 +1,6 @@
 const CommentList = () => {
   return (
-    <div className="mt-8 w-full rounded-lg border border-gray-300 bg-white p-6 shadow-sm">
+    <div className="mt-8 w-full rounded-md border border-gray-300 bg-white p-6 shadow-sm">
       <h2 className="mb-4 text-xl font-semibold text-gray-800">댓글</h2>
       <div className="space-y-4">
         {/* {comments.map((comment) => (

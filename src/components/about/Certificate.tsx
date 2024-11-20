@@ -8,7 +8,7 @@ const Certificate = () => {
       {certifications.map((certification, index) => (
         <li
           key={index}
-          className="shadow-style rounded-lg border border-gray-300 p-6"
+          className="shadow-style rounded-md border border-gray-300 p-6"
         >
           <h3 className="text-xl font-semibold">{certification.name}</h3>
           <div className="mt-2">
