@@ -1,4 +1,4 @@
-import HomeLeft from "@/components/home/HomeLeft";
+import HomeLeft from "@/features/Home/components/HomeLeft";
 import HomeNotice from "./HomeNotice";
 
 const HomeInfoData = {

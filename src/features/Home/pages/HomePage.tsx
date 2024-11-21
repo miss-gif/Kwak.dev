@@ -1,7 +1,7 @@
 import SectionWrapper from "@/components/common/SectionWrapper";
-import HeroVideo from "@/components/home/HeroVideo";
+import HeroVideo from "@/features/Home/components/HeroVideo";
 import SkillsViewer from "@/components/skill/SkillsViewer";
-import HomeInfo from "./../components/home/HomeInfo";
+import HomeInfo from "../components/HomeInfo";
 
 const HomePage = () => {
   return (
