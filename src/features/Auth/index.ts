@@ -1,4 +1,4 @@
-export { default as AboutPage } from "./pages/AboutPage";
-export { default as AboutDetailPage } from "./pages/AboutDetailPage";
+export { default as LoginPage } from "./pages/LoginPage";
+export { default as SignupPage } from "./pages/SignupPage";
 
 export { authRoutes } from "./routes";

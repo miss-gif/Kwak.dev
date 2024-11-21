@@ -3,9 +3,9 @@ import { lazy } from "react";
 const TimelinePage = lazy(() => import("./pages/TimelinePage"));
 
 const ROUTES = {
-  ABOUT: "/about",
+  TIMELINE: "/timeline",
 };
 
 export const timelineRoutes = [
-  { path: ROUTES.ABOUT, element: <TimelinePage /> },
+  { path: ROUTES.TIMELINE, element: <TimelinePage /> },
 ];

@@ -1,4 +1,4 @@
-import Preview from "@/features/Preview/pages";
+import Preview from "../components";
 
 const PreviewPage = () => {
   return (

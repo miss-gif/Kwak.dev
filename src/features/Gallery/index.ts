@@ -1,4 +1,3 @@
-export { default as AboutPage } from "./pages/AboutPage";
-export { default as AboutDetailPage } from "./pages/AboutDetailPage";
+export { default as GalleryPage } from "./pages/GalleryPage";
 
 export { galleryRoutes } from "./routes";

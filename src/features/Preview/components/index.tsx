@@ -1,6 +1,6 @@
 import "./style.css";
 
-const index = () => {
+const Preview = () => {
   const url = "https://via.placeholder.com/500.jpg";
 
   return (
@@ -251,4 +251,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Preview;

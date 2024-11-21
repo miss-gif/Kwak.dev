@@ -1,4 +1,3 @@
-export { default as AboutPage } from "./pages/AboutPage";
-export { default as AboutDetailPage } from "./pages/AboutDetailPage";
+export { default as PaymentPage } from "./pages/PaymentPage";
 
 export { paymentRoutes } from "./routes";
