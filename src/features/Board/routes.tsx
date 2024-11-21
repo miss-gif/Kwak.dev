@@ -1,14 +1,20 @@
 import { lazy } from "react";
 
-const AboutPage = lazy(() => import("./pages/AboutPage"));
-const AboutDetailPage = lazy(() => import("./pages/AboutDetailPage"));
+const BoardPage = lazy(() => import("./pages/BoardPage"));
+const CreatePostPage = lazy(() => import("./pages/CreatePostPage"));
+const PostDetailPage = lazy(() => import("./pages/PostDetailPage"));
+const PostEditorPage = lazy(() => import("./pages/PostEditorPage"));
 
 const ROUTES = {
-  ABOUT: "/about",
-  ABOUT_DETAIL: "/about/:id",
+  BOARD: "/board",
+  POST_WRITE: "/post/write",
+  POST_DETAIL: "/post/:postId",
+  POST_EDIT: "/post/:postId/edit",
 };
 
 export const boardRoutes = [
-  { path: ROUTES.ABOUT, element: <AboutPage /> },
-  { path: ROUTES.ABOUT_DETAIL, element: <AboutDetailPage /> },
+  { path: ROUTES.BOARD, element: <BoardPage /> },
+  { path: ROUTES.POST_WRITE, element: <CreatePostPage /> },
+  { path: ROUTES.POST_DETAIL, element: <PostDetailPage /> },
+  { path: ROUTES.POST_EDIT, element: <PostEditorPage /> },
 ];

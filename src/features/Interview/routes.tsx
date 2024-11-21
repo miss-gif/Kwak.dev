@@ -1,14 +1,11 @@
 import { lazy } from "react";
 
-const AboutPage = lazy(() => import("./pages/AboutPage"));
-const AboutDetailPage = lazy(() => import("./pages/AboutDetailPage"));
+const InterviewPage = lazy(() => import("./pages/InterviewPage"));
 
 const ROUTES = {
-  ABOUT: "/about",
-  ABOUT_DETAIL: "/about/:id",
+  INTERVIEW: "/interview",
 };
 
 export const interviewRoutes = [
-  { path: ROUTES.ABOUT, element: <AboutPage /> },
-  { path: ROUTES.ABOUT_DETAIL, element: <AboutDetailPage /> },
+  { path: ROUTES.INTERVIEW, element: <InterviewPage /> },
 ];

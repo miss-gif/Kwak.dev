@@ -1,19 +1,19 @@
 import { homeRoutes } from "../features/Home";
 import { aboutRoutes } from "../features/About";
 import { projectRoutes } from "../features/Project";
+import { interviewRoutes } from "../features/Interview";
+import { contactRoutes } from "../features/Contact";
+import { boardRoutes } from "../features/Board";
 // 작업중
+import { chartsRoutes } from "../features/Charts";
+import { scheduleRoutes } from "../features/Schedule";
 // 대기
 import { adminRoutes } from "../features/Admin";
 import { authRoutes } from "../features/Auth";
-import { boardRoutes } from "../features/Board";
-import { contactRoutes } from "../features/Contact";
 import { galleryRoutes } from "../features/Gallery";
-import { interviewRoutes } from "../features/Interview";
 import { mapRoutes } from "../features/Map";
 import { paymentRoutes } from "../features/Payment";
-import { scheduleRoutes } from "../features/Schedule";
 import { previewRoutes } from "../features/Preview";
-import { chartsRoutes } from "../features/Charts";
 import { mypageRoutes } from "../features/Mypage";
 import { timelineRoutes } from "../features/Timeline";
 
