@@ -1,12 +1,12 @@
-import CommentList from "@/components/board/CommentList";
-import ToEditPost from "@/components/board/ToEditPost";
-import UpDownButton from "@/components/board/UpDownButton";
-import UrlCopyButton from "@/components/board/UrlCopyButton";
+import CommentList from "@/features/Board/components/CommentList";
+import ToEditPost from "@/features/Board/components/ToEditPost";
+import UpDownButton from "@/features/Board/components/UpDownButton";
+import UrlCopyButton from "@/features/Board/components/UrlCopyButton";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import StickyWrapper from "@/components/common/StickyWrapper";
 import ToBackButton from "@/components/common/ToBackButton";
-import { useAuthStore } from "@/components/stores/authStore";
+import { useAuthStore } from "@/stores/authStore";
 import { db } from "@/firebaseConfig";
 import useGetPosts from "@/hooks/postbody/useGetPosts";
 import { handleDislike, handleLike } from "@/utils/utils";

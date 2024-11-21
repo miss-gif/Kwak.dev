@@ -1,6 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import { useAuthStore } from "@/components/stores/authStore";
+import { useAuthStore } from "@/stores/authStore";
 import { db } from "@/firebaseConfig";
 import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { postSchema } from "@/schema/validationSchema";

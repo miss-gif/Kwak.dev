@@ -1,7 +1,7 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import Contact from "@/components/contact/Contact";
-import ContactInfo from "@/components/contact/ContactInfo";
+import Contact from "@/features/Contact/components/Contact";
+import ContactInfo from "@/features/Contact/components/ContactInfo";
 
 const ContactPage = () => {
   const props = {

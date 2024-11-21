@@ -1,5 +1,5 @@
-import ToAddPost from "@/components/board/ToAddPost";
-import PostTable from "@/components/board/PostTable";
+import ToAddPost from "@/features/Board/components/ToAddPost";
+import PostTable from "@/features/Board/components/PostTable";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import useFetchPosts from "@/hooks/useFetchPosts";

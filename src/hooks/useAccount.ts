@@ -1,4 +1,4 @@
-import { useAuthStore } from "@/components/stores/authStore";
+import { useAuthStore } from "@/stores/authStore";
 import { format } from "date-fns";
 import { useState } from "react";
 

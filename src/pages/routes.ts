@@ -1,6 +1,6 @@
 import { homeRoutes } from "../features/Home";
-// 작업중
 import { aboutRoutes } from "../features/About";
+// 작업중
 import { adminRoutes } from "../features/Admin";
 import { authRoutes } from "../features/Auth";
 import { boardRoutes } from "../features/Board";
@@ -14,6 +14,7 @@ import { scheduleRoutes } from "../features/Schedule";
 import { previewRoutes } from "../features/Preview";
 import { chartsRoutes } from "../features/Charts";
 import { mypageRoutes } from "../features/Mypage";
+import { timelineRoutes } from "../features/Timeline";
 
 export const routes = [
   ...aboutRoutes,
@@ -31,4 +32,5 @@ export const routes = [
   ...previewRoutes,
   ...chartsRoutes,
   ...mypageRoutes,
+  ...timelineRoutes,
 ];

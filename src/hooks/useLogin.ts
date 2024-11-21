@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuthStore } from "@/components/stores/authStore";
+import { useAuthStore } from "@/stores/authStore";
 
 interface UseLoginProps {
   initialEmail?: string;

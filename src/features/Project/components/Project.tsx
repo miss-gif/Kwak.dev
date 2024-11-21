@@ -2,7 +2,7 @@ import { useFilteredProjects } from "@/hooks/useFilteredProjects";
 import { ProjectData } from "@/types/projectData";
 import FilterInput from "./FilterInput";
 import ProjectCard from "./ProjectCard";
-import StickyWrapper from "../common/StickyWrapper";
+import StickyWrapper from "@/components/common/StickyWrapper";
 
 interface ProjectProps {
   projectData: ProjectData[];

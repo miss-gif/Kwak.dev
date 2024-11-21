@@ -1,11 +1,11 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import ProjectDescription from "@/components/project/ProjectDescription";
-import ProjectOverview from "@/components/project/ProjectOverview";
 import { projectData } from "@/data/projectData";
 
 import { useParams } from "react-router-dom";
 import NotFoundPage from "../../../pages/NotFoundPage";
+import ProjectOverview from "../components/ProjectOverview";
+import ProjectDescription from "../components/ProjectDescription";
 
 const ProjectDetailPage = () => {
   const { id } = useParams();

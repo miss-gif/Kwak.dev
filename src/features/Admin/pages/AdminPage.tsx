@@ -1,9 +1,9 @@
-import AdminTab from "@/components/admin/AdminTab";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { verifyPassword } from "@/utils/verifyPassword";
 import { useState } from "react";
+import AdminTab from "../components/AdminTab";
 
 const AdminPage = () => {
   useRequireLogin();

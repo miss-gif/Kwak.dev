@@ -9,7 +9,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UserModal from "../common/UserModal";
 import BasicButton from "../common/Button";
-import { useAuthStore } from "../stores/authStore";
+import { useAuthStore } from "../../stores/authStore";
 import NavToggle from "./NavToggle";
 import ToggleThemeSwitch from "./ToggleThemeSwitch";
 

@@ -1,4 +1,4 @@
-import UserStats from "@/components/charts/UserStats";
+import UserStats from "@/features/Charts/components/UserStats";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import useWarning from "@/hooks/useWarning";

@@ -14,7 +14,7 @@ const TimelineEvent = ({ date, description }: TimelineEventProps) => (
 );
 
 // 전체 타임라인 컴포넌트
-const Timeline = () => {
+const TimelinePage = () => {
   // 연혁 데이터를 배열로 관리
   const events = [
     { date: "2021년 1월", description: "회사 설립 및 초기 팀 구성 완료" },
@@ -39,4 +39,4 @@ const Timeline = () => {
   );
 };
 
-export default Timeline;
+export default TimelinePage;

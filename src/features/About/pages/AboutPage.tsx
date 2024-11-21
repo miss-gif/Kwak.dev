@@ -3,7 +3,7 @@ import Certificate from "@/features/About/components/Certificate";
 import Intro from "@/features/About/components/Intro";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import SkillsViewer from "@/components/skill/SkillsViewer";
+import SkillsViewer from "@/features/About/components/skill/SkillsViewer";
 
 const AboutPage = () => {
   const props = {
