@@ -1,10 +1,10 @@
-import { linkItems } from "@/mocks/data";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import MenuIcon from "@mui/icons-material/Menu";
 import classNames from "classnames";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
+import { BOTTOM_MENU_ITEMS, TOP_MENU_ITEMS } from "./gnb";
 
 type NavToggleProps = {
   toggleDrawer: () => void;
@@ -40,7 +40,7 @@ const NavToggle = ({ toggleDrawer, isOpen, setIsOpen }: NavToggleProps) => {
           },
         )}
       >
-        {linkItems.map((item, index) => (
+        {BOTTOM_MENU_ITEMS.map((item, index) => (
           <li key={index} className="text-center">
             <Link
               className="block p-2 text-3xl font-bold text-white transition-colors duration-100 hover:text-fire"
@@ -51,6 +51,18 @@ const NavToggle = ({ toggleDrawer, isOpen, setIsOpen }: NavToggleProps) => {
             </Link>
           </li>
         ))}
+        {TOP_MENU_ITEMS.map((item, index) => (
+          <li key={index}>
+            <Link
+              className="block p-2 text-3xl font-bold text-white transition-colors duration-100 hover:text-fire"
+              to={item.path}
+              onClick={closeMenu}
+            >
+              {capitalizeFirstLetter(item.name)}
+            </Link>
+          </li>
+        ))}
+
         {/* 닫기 버튼 */}
         <button
           className="absolute right-0 top-0 p-4 text-white"

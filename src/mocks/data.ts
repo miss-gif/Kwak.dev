@@ -1,15 +1,3 @@
-export const linkItems = [
-  { name: "소개", path: "about" },
-  { name: "프로젝트", path: "project" },
-  { name: "인터뷰", path: "interview" },
-  { name: "문의", path: "contact" },
-  { name: "게시판", path: "board" },
-  { name: "통계", path: "charts" },
-  { name: "일정", path: "schedule" },
-  { name: "갤러리", path: "gallery" },
-  { name: "관리자", path: "admin" },
-];
-
 export const home = {
   name: "곽도억",
   description:

@@ -1,5 +1,5 @@
 import BasicSpeedDial from "@/components/common/BasicSpeedDial";
-import Header from "@/components/header/Header";
+import Header from "@/layouts/header/Header";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Footer from "./Footer";

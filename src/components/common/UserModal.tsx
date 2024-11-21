@@ -28,7 +28,9 @@ export default function UserModal({ title, logout, link }: UserModalProps) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>{title}</Button>
+      <Button sx={{ padding: 0, minWidth: 0 }} onClick={handleOpen}>
+        {title}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
