@@ -55,8 +55,6 @@ const AppRoutes = () => {
           path="/"
           element={<Layout toggleTheme={toggleTheme} theme={theme} />}
         >
-          <Route path="project" element={<ProjectPage />} />
-          <Route path="project/:id" element={<ProjectDetailPage />} />
           <Route path="interview" element={<InterviewPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="gallery" element={<GalleryPage />} />
