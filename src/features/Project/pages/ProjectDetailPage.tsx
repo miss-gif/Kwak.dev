@@ -5,7 +5,7 @@ import ProjectOverview from "@/components/project/ProjectOverview";
 import { projectData } from "@/data/projectData";
 
 import { useParams } from "react-router-dom";
-import NotFoundPage from "./NotFoundPage";
+import NotFoundPage from "../../../pages/NotFoundPage";
 
 const ProjectDetailPage = () => {
   const { id } = useParams();

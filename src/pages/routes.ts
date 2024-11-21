@@ -13,6 +13,7 @@ import { projectRoutes } from "../features/Project";
 import { scheduleRoutes } from "../features/Schedule";
 import { previewRoutes } from "../features/Preview";
 import { chartsRoutes } from "../features/Charts";
+import { mypageRoutes } from "../features/Mypage";
 
 export const routes = [
   ...aboutRoutes,
@@ -29,4 +30,5 @@ export const routes = [
   ...scheduleRoutes,
   ...previewRoutes,
   ...chartsRoutes,
+  ...mypageRoutes,
 ];
