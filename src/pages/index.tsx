@@ -1,23 +1,25 @@
 import Layout from "@/layouts/Layout";
 import { Suspense } from "react";
-import { Route, Routes, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
 import { routes } from "./routes";
 
 const Loading = () => <div>Loading...</div>;
 
 const AppRoutes = () => {
-  const element = useRoutes(routes);
+  const allRoutes = useRoutes([
+    {
+      path: "/",
+      element: <Layout />,
+      children: routes,
+    },
+    {
+      path: "*",
+      element: <NotFoundPage />,
+    },
+  ]);
 
-  return (
-    <Suspense fallback={<Loading />}>
-      {element}
-      <Routes>
-        <Route path="/" element={<Layout />}></Route>
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
-  );
+  return <Suspense fallback={<Loading />}>{allRoutes}</Suspense>;
 };
 
 export default AppRoutes;
