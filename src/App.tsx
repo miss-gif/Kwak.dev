@@ -10,17 +10,20 @@ import BoardPage from "./pages/BoardPage";
 import ChartsPage from "./pages/ChartsPage";
 import ContactPage from "./pages/ContactPage";
 import CreatePostPage from "./pages/CreatePostPage";
+import GalleryPage from "./pages/GalleryPage";
 import HomePage from "./pages/HomePage";
 import InterviewPage from "./pages/InterviewPage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import PostDetailPage from "./pages/PostDetailPage";
 import PostEditorPage from "./pages/PostEditorPage";
+import PreviewPage from "./pages/PreviewPage";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import ProjectPage from "./pages/ProjectPage";
 import SchedulePage from "./pages/SchedulePage";
 import SignupPage from "./pages/SignupPage";
 import { Theme } from "./types/theme";
+import MapPage from "./pages/MapPage";
 
 const Layout = ({ toggleTheme, theme }: Theme) => (
   <>
@@ -55,11 +58,15 @@ const App = () => {
         <Route path="project/:id" element={<ProjectDetailPage />} />
         <Route path="interview" element={<InterviewPage />} />
         <Route path="contact" element={<ContactPage />} />
+        <Route path="gallery" element={<GalleryPage />} />
         <Route path="charts" element={<ChartsPage />} />
+        <Route path="preview" element={<PreviewPage />} />
+        <Route path="map" element={<MapPage />} />
         {/* auth */}
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<SignupPage />} />
         <Route path="mypage" element={<AccountInfoPage />} />
+
         {/* 게시판 */}
         <Route path="board" element={<BoardPage />} />
         <Route path="post/write" element={<CreatePostPage />} />
