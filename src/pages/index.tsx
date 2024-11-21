@@ -4,7 +4,6 @@ import BasicSpeedDial from "../components/common/BasicSpeedDial";
 import Footer from "../components/Footer";
 import Header from "../components/header/Header";
 import { Theme } from "../types/theme";
-import AboutPage from "./AboutPage";
 import AccountInfoPage from "./AccountInfoPage";
 import AdminPage from "./AdminPage";
 import BoardPage from "./BoardPage";
@@ -12,7 +11,6 @@ import ChartsPage from "./ChartsPage";
 import ContactPage from "./ContactPage";
 import CreatePostPage from "./CreatePostPage";
 import GalleryPage from "./GalleryPage";
-import HomePage from "../features/Home/pages/HomePage";
 import InterviewPage from "./InterviewPage";
 import LoginPage from "./LoginPage";
 import MapPage from "./MapPage";
@@ -22,9 +20,9 @@ import PostEditorPage from "./PostEditorPage";
 import PreviewPage from "./PreviewPage";
 import ProjectDetailPage from "./ProjectDetailPage";
 import ProjectPage from "./ProjectPage";
+import { routes } from "./routes";
 import SchedulePage from "./SchedulePage";
 import SignupPage from "./SignupPage";
-import { routes } from "./routes";
 
 const Loading = () => <div>Loading...</div>;
 
@@ -57,8 +55,6 @@ const AppRoutes = () => {
           path="/"
           element={<Layout toggleTheme={toggleTheme} theme={theme} />}
         >
-          <Route path="home" element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
           <Route path="project" element={<ProjectPage />} />
           <Route path="project/:id" element={<ProjectDetailPage />} />
           <Route path="interview" element={<InterviewPage />} />

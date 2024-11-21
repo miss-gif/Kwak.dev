@@ -1,15 +1,15 @@
-import Article from '../articles/Article'
+import Article from "../../../components/articles/Article";
 
 const Experience = () => {
   return (
     <Article>
-      <h3 className="text-xl font-bold mb-4">Education</h3>
+      <h3 className="mb-4 text-xl font-bold">Education</h3>
       <div className="mb-6">
         <h4 className="text-lg font-semibold">
           주문이요 (음식주문 플랫폼) 협업 3차 프로젝트
         </h4>
         <p className="text-sm">Web Developer | 2024-06-23 ~ 2024-07-23</p>
-        <ul className="list-disc list-inside ml-4">
+        <ul className="ml-4 list-inside list-disc">
           <li>
             음식 주문 플랫폼을 개발하며 프로젝트를 총괄하고 UI/UX 디자인, 공통
             컴포넌트 및 레이아웃 설계, 라우터 설정, 깃허브 관리, 사용자 기능
@@ -28,10 +28,10 @@ const Experience = () => {
           지속적으로 서비스를 개선하고 있습니다.
         </p>
         <p className="text-sm">Web Developer | 20.06 - 22.11</p>
-        <ul className="list-disc list-inside ml-4"></ul>
+        <ul className="ml-4 list-inside list-disc"></ul>
       </div>
     </Article>
-  )
-}
+  );
+};
 
-export default Experience
+export default Experience;

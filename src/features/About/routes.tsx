@@ -1,14 +1,9 @@
-import { lazy } from 'react'
+import { lazy } from "react";
 
-const AboutPage = lazy(() => import('./pages/AboutPage'))
-const AboutDetailPage = lazy(() => import('./pages/AboutDetailPage'))
+const AboutPage = lazy(() => import("./pages/AboutPage"));
 
 const ROUTES = {
-  ABOUT: '/about',
-  ABOUT_DETAIL: '/about/:id',
-}
+  ABOUT: "/about",
+};
 
-export const aboutRoutes = [
-  { path: ROUTES.ABOUT, element: <AboutPage /> },
-  { path: ROUTES.ABOUT_DETAIL, element: <AboutDetailPage /> },
-]
+export const aboutRoutes = [{ path: ROUTES.ABOUT, element: <AboutPage /> }];
