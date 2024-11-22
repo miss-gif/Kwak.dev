@@ -24,6 +24,8 @@ const DimmedCard = ({ title, id, links }: DimmedCardProps) => {
           </Link>
           <a
             href={links.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-52 rounded bg-none px-4 py-3 text-center text-black transition-colors duration-300 ease-in-out hover:bg-white hover:text-black"
           >
             사이트 바로가기

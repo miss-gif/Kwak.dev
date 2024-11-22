@@ -44,7 +44,7 @@ const Project = ({ projectData }: ProjectProps) => {
       </StickyWrapper>
 
       {/* 프로젝트 카드 리스트 */}
-      <ul className="grid w-full gap-4 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+      <ul className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {filteredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}

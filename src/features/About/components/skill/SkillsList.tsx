@@ -9,7 +9,7 @@ const SkillsList = () => {
 
   return (
     <div>
-      <ul className="grid gap-5 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {skills?.map(({ img, name, percentage, description, id }) => (
           <SkillCard
             key={id}
