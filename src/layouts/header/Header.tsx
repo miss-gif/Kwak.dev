@@ -4,7 +4,7 @@ import { Theme } from "@/types/theme";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import HeaderActions from "./components/HeaderActions";
-import Gnb from "./components/gnb";
+import Gnb from "./components/Gnb";
 
 const Header = ({ toggleTheme }: Theme) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
