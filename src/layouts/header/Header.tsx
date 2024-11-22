@@ -2,8 +2,8 @@ import Container from "@/components/common/Container";
 import useHeaderScroll from "@/hooks/useHeaderScroll";
 import { Theme } from "@/types/theme";
 import { useState } from "react";
-import Gnb from "./components/gnb";
 import HeaderActions from "./components/HeaderActions";
+import Gnb from "./components/gnb";
 
 const Header = ({ toggleTheme }: Theme) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);

@@ -1,5 +1,4 @@
-import HomeLeft from "@/features/Home/components/HomeLeft";
-import HomeNotice from "./HomeNotice";
+import HomeTitle from "@/features/Home/components/HomeTitle";
 
 const HomeInfoData = {
   streakStats: {
@@ -19,12 +18,25 @@ const HomeInfoData = {
   },
 };
 
+interface HomeNoticeProps {
+  title: string;
+  image: string;
+}
+
+const HomeNotice = ({ title, image }: HomeNoticeProps) => {
+  return (
+    <div className="overflow-hidden rounded-md bg-white bg-opacity-90 shadow-lg">
+      <img src={image} alt={title} />
+    </div>
+  );
+};
+
 const HomeInfo = () => {
   return (
-    <div className="flex w-full flex-col justify-center gap-10 md:min-h-svh md:flex-none">
-      <div className="flex flex-col items-center justify-center gap-10 md:flex-row md:justify-between">
-        <HomeLeft />
-        <div className="flex gap-2 md:flex md:flex-col">
+    <div className="flex min-h-dvh w-full items-center justify-center py-40">
+      <div className="flex w-full max-w-screen-xl flex-col gap-20 px-4 lg:flex-row lg:justify-between xl:items-center">
+        <HomeTitle />
+        <div className="flex flex-col justify-center gap-2">
           {Object.values(HomeInfoData).map(({ title, image }) => (
             <HomeNotice key={title} title={title} image={image} />
           ))}
