@@ -1,4 +1,4 @@
-import { ProjectData } from "@/types/projectData";
+import { ProjectData } from "@/features/Project/types/type";
 import Fuse from "fuse.js";
 import { useEffect, useState } from "react";
 

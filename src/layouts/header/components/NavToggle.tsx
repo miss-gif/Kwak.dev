@@ -1,10 +1,10 @@
 import { capitalizeFirstLetter } from "@/utils/utils";
+import CloseIcon from "@mui/icons-material/Close";
 import MenuIcon from "@mui/icons-material/Menu";
 import classNames from "classnames";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import CloseIcon from "@mui/icons-material/Close";
-import { BOTTOM_MENU_ITEMS, TOP_MENU_ITEMS } from "./gnb";
+import { BOTTOM_MENU_ITEMS, TOP_MENU_ITEMS } from "./Gnb";
 
 type NavToggleProps = {
   toggleDrawer: () => void;

@@ -1,4 +1,4 @@
-import { ProjectData } from "@/types/projectData";
+import { ProjectData } from "../types/type";
 
 type ProjectDescriptionProps = {
   data: ProjectData["detail"];
