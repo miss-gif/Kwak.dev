@@ -4,7 +4,7 @@ const Certificate = () => {
   const certifications = personalInfo.certifications;
 
   return (
-    <ul className="mt-16 flex w-full flex-col gap-8">
+    <ul className="mt-16 flex w-full flex-col gap-4">
       {certifications.map((certification, index) => (
         <li
           key={index}

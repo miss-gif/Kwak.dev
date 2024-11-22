@@ -1,32 +1,36 @@
-import styled from '@emotion/styled'
+const text = {
+  title: "안녕하세요! 프론트엔드 개발자 곽도억입니다.",
+  subTitle: "웹 개발의 매력을 발견하고 뒤늦게 이 길을 선택하게 되었습니다.",
+  content: [
+    "저는 항상 도전하고 성장하는 과정에 큰 가치를 두고 있습니다.",
+    "다양한 기술을 배우고, 실험하며 실제 프로젝트에서 적용해보는 경험을 쌓았습니다.",
+  ],
+  conclusion: [
+    "끊임없이 새로운 기술을 탐구하고, 팀원들과의 협업을 통해 최고의 결과를 만들어내는 데 기여하고 싶습니다.",
+  ],
+};
 
 const Intro = () => {
   return (
-    <IntroStyled>
-      <h3 className="text-2xl mb-4">
-        안녕하세요! 프론트엔드 개발자 <strong>곽도억</strong>입니다.
-      </h3>
-      <p className="leading-8  mb-4">
-        저는 사용자 중심의 웹 개발을 통해 더 나은 디지털 경험을 제공하고자
-        노력하는 개발자입니다. <br />웹 개발은 단순한 기술 구현을 넘어,
-        사용자와의 소통을 위한 중요한 매개체라고 생각합니다. <br /> 다양한
-        프로젝트를 수행하며,
-        <strong>[구체적인 프로젝트 예시]</strong>와 같은 경험을 통해 사용자 행동
-        패턴 분석, 디자인 시스템 구축 등을 수행했습니다.
-        <br /> 이를 바탕으로 직관적이고 효율적인 사용자 인터페이스를 설계하고
-        개발하며,
-        <strong>[구체적인 성과]</strong>를 달성했습니다.
+    <div className="p-24">
+      <h3 className="mb-4 text-3xl font-semibold">{text.title}</h3>
+      <p className="mb-4 leading-8">
+        {text.subTitle}
+        <br />
+        {text.content.map((content, index) => (
+          <>
+            <span key={index}>{content}</span>
+            <br />
+          </>
+        ))}
       </p>
       <p>
-        끊임없이 새로운 기술을 탐구하고, 팀원들과의 협업을 통해 최고의 결과를
-        만들어내는 데 기여하고 싶습니다.
+        {text.conclusion.map((conclusion, index) => (
+          <span key={index}>{conclusion}</span>
+        ))}
       </p>
-    </IntroStyled>
-  )
-}
+    </div>
+  );
+};
 
-export default Intro
-
-const IntroStyled = styled.div`
-  padding: 100px 30px;
-`
+export default Intro;

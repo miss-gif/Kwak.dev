@@ -47,8 +47,8 @@ export default function SkillsViewer() {
       <div className="mb-10 flex items-center justify-end">
         {/* 탭 영역 */}
         <Tabs value={value} onChange={handleChange}>
-          <Tab label="캔버스" {...a11yProps(0)} />
-          <Tab label="리스트" {...a11yProps(1)} />
+          <Tab label="캔버스" sx={{ color: "inherit" }} {...a11yProps(0)} />
+          <Tab label="리스트" sx={{ color: "inherit" }} {...a11yProps(1)} />
         </Tabs>
       </div>
       {/* 콘텐츠 영역 */}

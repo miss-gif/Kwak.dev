@@ -7,8 +7,8 @@ import SkillsViewer from "@/features/About/components/skill/SkillsViewer";
 
 const AboutPage = () => {
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "About Me",
+    subtitle: "✨ 개발자의 길을 향한 열정과 성장",
   };
 
   return (

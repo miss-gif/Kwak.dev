@@ -19,13 +19,13 @@ const SectionWrapper = ({
   title?: string;
 }) => {
   return (
-    <section className="mx-auto mb-10 flex w-full max-w-screen-xl flex-col items-center gap-5 px-4 py-10">
+    <section className="mx-auto mb-10 mt-10 flex w-full max-w-screen-xl flex-col items-center gap-5 rounded-xl bg-zinc-100 bg-opacity-10 px-4 py-4 shadow-xl">
       {title && (
-        <div className="relative flex items-center justify-center">
+        <div className="relative flex items-center justify-center py-10">
           <div className="absolute -left-10 hidden -translate-x-1/2 transform md:block">
             <LinkIcon sx={{ fontSize: "4rem", transform: "rotate(-45deg)" }} />
           </div>
-          <h3 className="border-b-4 border-b-black py-2 text-center text-6xl font-semibold uppercase">
+          <h3 className="border-b-4 py-2 text-center text-6xl font-semibold uppercase">
             {title}
           </h3>
         </div>

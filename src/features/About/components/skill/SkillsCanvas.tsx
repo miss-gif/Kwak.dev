@@ -204,16 +204,16 @@ const SkillsCanvas = () => {
   }, []);
 
   return (
-    <div className="flex h-full w-full flex-col items-center justify-between gap-10 md:flex-row md:gap-20">
+    <div className="flex h-full w-full flex-col items-center justify-between gap-10 lg:flex-row lg:gap-4">
       <canvas
         ref={canvasRef}
         className="h-[50vmin] w-[50vmin] rounded-full"
       ></canvas>
       {selected && (
         // 우측 사이드 영역
-        <div className="flex h-[50vmin] w-full flex-col items-center justify-center">
-          <div className="flex h-full w-full flex-col items-center justify-center gap-3 md:items-start md:justify-start">
-            <h4 className="w-full pb-2 text-center text-5xl font-semibold md:mb-4 md:border-b-2 md:text-left md:text-8xl">
+        <div className="flex min-h-[400px] w-full flex-col">
+          <div className="flex flex-col items-center gap-4">
+            <h4 className="rounded-xl bg-red-500 p-4 text-center text-5xl font-semibold text-white">
               {selected.name}
             </h4>
             <p>

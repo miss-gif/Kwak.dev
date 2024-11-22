@@ -9,9 +9,9 @@ const text = {
   subTitle2: "WEB DEVELOPER",
   content: [
     "사이트에 방문해 주셔서 감사합니다",
-    "이곳에서 저의 작업물과 역량을 확인하실 수 있습니다.",
-    "더 전문적인 프론트엔드 개발자로 성장하고자 노력하고 있습니다.",
-    "사용자 중심의 접근과 디테일을 살린 개발로 더 나은 경험을 제공하겠습니다.",
+    "이곳에서 제 작업물과 역량을 확인하실 수 있습니다.",
+    "더 전문적인 프론트엔드 개발자가 되기 위해 노력하고 있습니다.",
+    "사용자 중심의 접근성과 디테일을 살린 개발로 더 나은 경험을 제공하겠습니다.",
   ],
 };
 
@@ -23,7 +23,7 @@ interface LinkButtonProps {
 
 const LinkButton = ({ href, icon: Icon, label }: LinkButtonProps) => (
   <a
-    className="flex items-center gap-1 rounded-md px-2 py-3 transition duration-300 ease-in-out hover:bg-fire hover:text-white"
+    className="flex items-center gap-1 rounded-md border border-white px-2 py-3 shadow-md transition duration-300 ease-in-out hover:bg-fire hover:text-white"
     href={href}
     target="_blank"
     rel="noopener noreferrer"
