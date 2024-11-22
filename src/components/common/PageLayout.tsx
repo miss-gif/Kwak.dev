@@ -23,7 +23,7 @@ const PageLayout = ({
           />
           <div className="m-auto w-full max-w-screen-xl px-4">
             <h2 className="mt-16 text-7xl font-bold">{title}</h2>
-            <p className="mt-3">{subtitle}</p>
+            <p className="pt-5">{subtitle}</p>
           </div>
         </div>
       )}

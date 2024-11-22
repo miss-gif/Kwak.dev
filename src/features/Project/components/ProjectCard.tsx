@@ -11,7 +11,7 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
   const { id } = project;
 
   return (
-    <li className="shadow-style relative overflow-hidden rounded-md border bg-white shadow-md">
+    <li className="shadow-style relative overflow-hidden rounded-md border bg-white">
       {/* 썸네일 */}
       <img
         src={thumbnail}
