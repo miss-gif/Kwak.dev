@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-const TimelinePage = lazy(() => import("./pages/TimelinePage"));
+const TimelinePage = lazy(() => import("./components/Timeline"));
 
 const ROUTES = {
   TIMELINE: "/timeline",

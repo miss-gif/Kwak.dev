@@ -53,8 +53,8 @@ const BoardPage = () => {
   };
 
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "게시판",
+    subtitle: "✨ 게시판을 통해 소통하세요.",
   };
 
   return (

@@ -2,9 +2,9 @@ import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import { useState } from "react";
+import AdminUserPage from "../pages/AdminUserPage";
 import PorojectDocsForm from "./ProjectForm/PorojectDocsForm";
 import ProjectForm from "./ProjectForm/ProjectForm";
-import UserManagement from "./UserManagement";
 import useJoinAndPost from "./ProjectForm/hooks/useJoinAndPost";
 
 interface TabPanelProps {
@@ -60,7 +60,7 @@ export default function AdminTab() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <UserManagement />
+        <AdminUserPage />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <div className="flex flex-col gap-6">

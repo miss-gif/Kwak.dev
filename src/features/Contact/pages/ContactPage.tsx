@@ -5,8 +5,8 @@ import ContactInfo from "@/features/Contact/components/ContactInfo";
 
 const ContactPage = () => {
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "Contact",
+    subtitle: "✨ 문의사항을 남겨주세요.",
   };
 
   return (

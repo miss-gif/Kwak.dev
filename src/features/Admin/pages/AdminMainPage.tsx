@@ -1,20 +1,20 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import Calendar from "@/features/Schedule/pages/Calendar";
+import AdminTab from "../components/AdminTab";
 
-const SchedulePage = () => {
+const AdminMainPage = () => {
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "Admin",
+    subtitle: "✨ 사이트 관리를 담당합니다.",
   };
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <Calendar />
+        <AdminTab />
       </SectionWrapper>
     </PageLayout>
   );
 };
 
-export default SchedulePage;
+export default AdminMainPage;

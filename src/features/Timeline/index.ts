@@ -1,3 +1,3 @@
-export { default as TimelinePage } from "./pages/TimelinePage";
+export { default as TimelinePage } from "./components/Timeline";
 
 export { timelineRoutes } from "./routes";

@@ -64,8 +64,8 @@ const CreatePostPage = () => {
   };
 
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "게시글 작성",
+    subtitle: "✨ 새로운 게시글을 작성하세요.",
   };
 
   return (

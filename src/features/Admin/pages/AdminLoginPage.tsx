@@ -1,11 +1,9 @@
-import PageLayout from "@/components/common/PageLayout";
-import SectionWrapper from "@/components/common/SectionWrapper";
 import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { verifyPassword } from "@/utils/verifyPassword";
 import { useState } from "react";
-import AdminTab from "../components/AdminTab";
+import AdminMainPage from "./AdminMainPage";
 
-const AdminPage = () => {
+const AdminLoginPage = () => {
   useRequireLogin();
 
   const [password, setPassword] = useState("");
@@ -26,19 +24,8 @@ const AdminPage = () => {
     }
   };
 
-  const props = {
-    title: "관리자 페이지",
-    subtitle: "사이트 관리를 위한 페이지입니다.",
-  };
-
   if (isVerified) {
-    return (
-      <PageLayout title={props.title} subtitle={props.subtitle}>
-        <SectionWrapper>
-          <AdminTab />
-        </SectionWrapper>
-      </PageLayout>
-    );
+    return <AdminMainPage />;
   }
 
   return (
@@ -66,4 +53,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default AdminLoginPage;

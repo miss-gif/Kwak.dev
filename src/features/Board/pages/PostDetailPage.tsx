@@ -80,8 +80,8 @@ const PostDetailPage = () => {
   // TODO : 조회수 증가 기능 필요
 
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "게시글 상세",
+    subtitle: "✨ 게시글을 자세히 확인하세요.",
   };
 
   return (

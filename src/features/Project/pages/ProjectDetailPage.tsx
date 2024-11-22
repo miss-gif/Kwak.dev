@@ -18,8 +18,8 @@ const ProjectDetailPage = () => {
   }
 
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "프로젝트 상세",
+    subtitle: "✨ 프로젝트 상세 내용을 확인하세요.",
   };
 
   return (

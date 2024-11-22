@@ -32,8 +32,8 @@ const InterviewPage = () => {
   const clearQuery = () => setQuery("");
 
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "인터뷰 질문",
+    subtitle: "✨ 인터뷰 질문을 확인하세요.",
   };
 
   return (

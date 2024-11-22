@@ -10,7 +10,7 @@ interface User {
   uid: string;
 }
 
-const UserManagement = () => {
+const UserList = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -84,4 +84,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement;
+export default UserList;

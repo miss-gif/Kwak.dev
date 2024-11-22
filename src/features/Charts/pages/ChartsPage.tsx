@@ -7,8 +7,8 @@ const ChartsPage = () => {
   useWarning({ text: "현재 서비스 준비중입니다." });
 
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "통계",
+    subtitle: "✨ 사용자 통계를 확인하세요.",
   };
 
   return (

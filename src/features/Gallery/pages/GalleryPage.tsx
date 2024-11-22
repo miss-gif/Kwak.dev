@@ -4,8 +4,8 @@ import Gallery from "@/features/Gallery/pages";
 
 const GalleryPage = () => {
   const props = {
-    title: "소개",
-    subtitle: "✨ 서브타이틀",
+    title: "갤러리",
+    subtitle: "✨ 사진을 감상하세요.",
   };
 
   return (
