@@ -23,7 +23,9 @@ const PreviewCard = ({ project }: PreviewCardProps) => {
 
         {/* 작업 기간과 작업 인원 */}
         <div className="mb-4 flex items-center justify-between text-sm text-gray-600">
-          <span className="font-semibold">{`${duration.startDate.toLocaleDateString()} ~ ${duration.endDate.toLocaleDateString()}`}</span>
+          <span className="font-semibold">
+            {duration.startDate} ~ {duration.endDate}
+          </span>
           <div className="flex gap-1">
             {badge?.map((badge: string, index: number) => (
               <span

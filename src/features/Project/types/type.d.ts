@@ -15,8 +15,8 @@ interface ProjectCard {
 
 // 기간 정보를 담는 인터페이스
 interface Duration {
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
 }
 
 // 프로젝트 링크 관련 인터페이스
