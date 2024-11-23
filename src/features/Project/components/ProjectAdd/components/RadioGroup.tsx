@@ -1,4 +1,4 @@
-import { RadioGroupProps } from "./type";
+import { RadioGroupProps } from "../type";
 
 const RadioGroup = ({
   label,

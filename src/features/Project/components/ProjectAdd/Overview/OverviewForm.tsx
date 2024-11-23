@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LabelInput from "../LabelInput";
+import LabelInput from "../components/LabelInput";
 import { FormData } from "../type";
 
 const initFormData = {
