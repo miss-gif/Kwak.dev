@@ -1,5 +1,7 @@
+import ProjectAdd from "../components/ProjectAdd";
+
 const ProjectAddPage = () => {
-  return <div>ProjectAddPage</div>;
+  return <ProjectAdd />;
 };
 
 export default ProjectAddPage;

@@ -1,20 +1,22 @@
-import { CheckboxGroupProps } from "../type/type";
+import { RadioGroupProps } from "./type";
 
-const CheckboxGroup = ({
+const RadioGroup = ({
   label,
   options,
-  values,
+  name,
+  value,
   onChange,
-}: CheckboxGroupProps) => (
+}: RadioGroupProps) => (
   <div className="flex items-center">
-    <p className="min-w-32">{label}</p>
-    <div className="flex flex-wrap items-center gap-4 py-2">
+    <p className="min-w-32 text-sm font-medium">{label}</p>
+    <div className="flex items-center py-2">
       {options.map((option, index) => (
         <label key={index} className="min-w-32">
           <input
-            type="checkbox"
+            type="radio"
+            name={name}
             value={option}
-            checked={values.includes(option)}
+            checked={value === option}
             onChange={onChange}
             className="mr-2"
           />
@@ -25,4 +27,4 @@ const CheckboxGroup = ({
   </div>
 );
 
-export default CheckboxGroup;
+export default RadioGroup;

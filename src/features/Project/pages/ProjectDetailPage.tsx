@@ -15,7 +15,7 @@ const ProjectDetailPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <div className="flex justify-end">
+        <div className="mb-4 flex justify-end">
           <LinkButton title="프로젝트 수정" link={`/project/edit/${id}`} />
         </div>
         <ProjectDetail />

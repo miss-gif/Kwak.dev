@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PorojectDocsInput from "./components/PorojectDocsInput";
+import PorojectDocsInput from "./PorojectDocsInput";
 
 interface Item {
   title: string;

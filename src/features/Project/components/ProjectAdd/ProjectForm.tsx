@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import CheckboxGroup from "./components/CheckboxGroup";
-import LabelInput from "./components/LabelInput";
-import RadioGroup from "./components/RadioGroup";
-import { FormData } from "./type/type";
+import CheckboxGroup from "./CheckboxGroup";
+import LabelInput from "./LabelInput";
+import RadioGroup from "./RadioGroup";
+import { FormData } from "./type";
 
 const initFormData = {
   id: "",
