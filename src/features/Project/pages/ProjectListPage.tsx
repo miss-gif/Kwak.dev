@@ -1,14 +1,15 @@
 import StickyWrapper from "@/components/common/StickyWrapper";
+import LinkButton from "@/components/LinkButton";
 import { useFilteredProjects } from "@/hooks/useFilteredProjects";
+import FilterInput from "../components/FilterInput";
+import ProjectCard from "../components/ProjectCard";
 import { ProjectData } from "../types/type";
-import FilterInput from "./FilterInput";
-import ProjectCard from "./ProjectCard";
 
-interface ProjectProps {
+interface ProjectListPageProps {
   projectData: ProjectData[];
 }
 
-const Project = ({ projectData }: ProjectProps) => {
+const ProjectListPage = ({ projectData }: ProjectListPageProps) => {
   const {
     query,
     setQuery,
@@ -43,6 +44,11 @@ const Project = ({ projectData }: ProjectProps) => {
         />
       </StickyWrapper>
 
+      {/* 링크 버튼 */}
+      <div className="mb-4 flex justify-end">
+        <LinkButton title="프로젝트 추가" link="/project/add" />
+      </div>
+
       {/* 프로젝트 카드 리스트 */}
       <ul className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {filteredProjects.map((project) => (
@@ -53,4 +59,4 @@ const Project = ({ projectData }: ProjectProps) => {
   );
 };
 
-export default Project;
+export default ProjectListPage;

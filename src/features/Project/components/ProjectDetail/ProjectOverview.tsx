@@ -1,5 +1,5 @@
 import { useAuthStore } from "@/stores/authStore";
-import { ProjectData } from "../types/type";
+import { ProjectData } from "../../types/type";
 
 type ProjectOverviewProps = {
   data: ProjectData["card"];

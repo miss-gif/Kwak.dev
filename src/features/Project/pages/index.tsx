@@ -2,7 +2,7 @@ import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import PageIntro from "@/components/PageIntro";
 import { projectData } from "@/data/projectData";
-import Project from "../components/Project";
+import ProjectListPage from "./ProjectListPage";
 
 const ProjectPage = () => {
   const props = {
@@ -24,7 +24,7 @@ const ProjectPage = () => {
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <PageIntro text={text} />
       <SectionWrapper>
-        <Project projectData={projectData} />
+        <ProjectListPage projectData={projectData} />
       </SectionWrapper>
     </PageLayout>
   );
