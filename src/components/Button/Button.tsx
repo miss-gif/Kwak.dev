@@ -1,6 +1,6 @@
 interface ButtonProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   type?: "button" | "submit" | "reset";
   color?: string;
 }
@@ -14,7 +14,7 @@ const Button = ({
   <button
     type={type}
     onClick={onClick}
-    className={`bg-${color}-500 hover:bg-${color}-600 rounded-md px-4 py-2 text-white`}
+    className={`bg-${color}-500 hover:bg-${color}-600 rounded-md px-4 py-3 text-sm text-white`}
   >
     {label}
   </button>

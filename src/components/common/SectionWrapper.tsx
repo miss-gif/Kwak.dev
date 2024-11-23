@@ -19,7 +19,7 @@ const SectionWrapper = ({
   title?: string;
 }) => {
   return (
-    <section className="mx-auto mb-10 mt-10 flex w-full max-w-screen-xl flex-col items-center gap-5 rounded-xl bg-zinc-100 bg-opacity-10 px-4 py-4 shadow-md">
+    <section className="mx-auto mb-10 mt-10 flex w-full max-w-screen-xl flex-col items-center gap-5 rounded-xl p-4">
       {title && (
         <div className="relative flex items-center justify-center py-10">
           <div className="absolute -left-10 hidden -translate-x-1/2 transform md:block">

@@ -2,7 +2,7 @@ const url = "https://via.placeholder.com/500.jpg";
 
 const PreviewArea = () => {
   return (
-    <div className="w-1/5 bg-red-400">
+    <div className="w-1/2 bg-red-400">
       {/* 썸네일 */}
       <img src={url} alt="" className="h-48 w-full object-cover" />
       {/* 카드 내용 */}

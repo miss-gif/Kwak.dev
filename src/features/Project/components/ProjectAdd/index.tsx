@@ -5,17 +5,23 @@
 // 4. 저장하기 버튼, 취소하기 버튼
 // 입력 중인 데이터 저장
 
-import LinkButton from "@/components/LinkButton";
+import Button, { LinkButton } from "@/components/Button";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Description from "./Description";
 import Overview from "./Overview";
 import Preview from "./Preview";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const ProjectAdd = () => {
   return (
     <div className="flex flex-col">
-      <div>
+      <div className="mb-4 flex justify-between">
+        <LinkButton label="취소" to="/project" color="red" />
+        <Button label="저장" />
+      </div>
+
+      {/*  */}
+      <div className="mb-4">
         <Preview />
         <Overview />
         <Description />
@@ -23,8 +29,8 @@ const ProjectAdd = () => {
 
       {/* 링크 버튼 */}
       <div className="flex justify-center gap-2">
-        <LinkButton title={<ArrowBackIosNewIcon />} link="" />
-        <LinkButton title={<ArrowForwardIosIcon />} link="" />
+        <LinkButton label={<ArrowBackIosNewIcon />} to="" />
+        <LinkButton label={<ArrowForwardIosIcon />} to="" />
       </div>
     </div>
   );

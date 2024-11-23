@@ -1,8 +1,8 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import LinkButton from "@/components/LinkButton";
 import { useParams } from "react-router-dom";
 import ProjectDetail from "../components/ProjectDetail";
+import { LinkButton } from "@/components/Button";
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -16,7 +16,7 @@ const ProjectDetailPage = () => {
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
         <div className="mb-4 flex justify-end">
-          <LinkButton title="프로젝트 수정" link={`/project/edit/${id}`} />
+          <LinkButton label="프로젝트 수정" to={`/project/edit/${id}`} />
         </div>
         <ProjectDetail />
       </SectionWrapper>

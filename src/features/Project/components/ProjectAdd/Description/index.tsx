@@ -1,5 +1,11 @@
+import DescriptionForm from "./DescriptionForm";
+
 const Description = () => {
-  return <div>Description</div>;
+  return (
+    <div>
+      <DescriptionForm />
+    </div>
+  );
 };
 
 export default Description;

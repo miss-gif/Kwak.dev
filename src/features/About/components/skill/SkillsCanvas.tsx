@@ -213,7 +213,7 @@ const SkillsCanvas = () => {
         // 우측 사이드 영역
         <div className="flex min-h-[400px] w-full flex-col">
           <div className="flex flex-col items-center gap-4">
-            <h4 className="rounded-xl bg-red-500 p-4 text-center text-5xl font-semibold text-white">
+            <h4 className="rounded-xl bg-blue-500 px-8 py-4 text-center text-5xl font-semibold text-white">
               {selected.name}
             </h4>
             <p>
