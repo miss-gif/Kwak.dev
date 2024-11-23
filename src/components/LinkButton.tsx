@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 interface LinkButtonProps {
-  title: string;
+  title: string | JSX.Element;
   link: string;
 }
 

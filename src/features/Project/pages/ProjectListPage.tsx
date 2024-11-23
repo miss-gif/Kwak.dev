@@ -1,9 +1,9 @@
 import StickyWrapper from "@/components/common/StickyWrapper";
-import LinkButton from "@/components/LinkButton";
 import { useFilteredProjects } from "@/hooks/useFilteredProjects";
 import FilterInput from "../components/FilterInput";
 import ProjectCard from "../components/ProjectCard";
 import { ProjectData } from "../types/type";
+import { LinkButton } from "@/components/Button";
 
 interface ProjectListPageProps {
   projectData: ProjectData[];
@@ -46,7 +46,8 @@ const ProjectListPage = ({ projectData }: ProjectListPageProps) => {
 
       {/* 링크 버튼 */}
       <div className="mb-4 flex justify-end">
-        <LinkButton title="프로젝트 추가" link="/project/add" />
+        {/* <Link to={"/project/add"}>프로젝트 추가</Link> */}
+        <LinkButton label="프로젝트 추가" to="/project/add" />
       </div>
 
       {/* 프로젝트 카드 리스트 */}
