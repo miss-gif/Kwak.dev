@@ -11,6 +11,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import Description from "./Description";
 import Overview from "./Overview";
 import Preview from "./Preview";
+import Swiper from "./Swiper";
 
 const ProjectAdd = () => {
   return (
@@ -26,6 +27,8 @@ const ProjectAdd = () => {
         <Overview />
         <Description />
       </div>
+
+      <Swiper />
 
       {/* 링크 버튼 */}
       <div className="flex justify-center gap-2">
