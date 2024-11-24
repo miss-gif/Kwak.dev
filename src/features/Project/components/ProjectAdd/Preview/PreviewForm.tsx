@@ -1,86 +1,23 @@
-import React, { useState } from "react";
+import Button from "@/components/Button";
+import { techStack } from "@/features/Project/data/techStack";
+import CheckboxGroup from "../components/CheckboxGroup";
 import LabelInput from "../components/LabelInput";
 import RadioGroup from "../components/RadioGroup";
-import { FormData } from "../type";
-import CheckboxGroup from "../components/CheckboxGroup";
-import Button from "@/components/Button";
+import usePreviewForm from "../use-PreviewForm";
 
-const initFormData = {
-  id: "",
-  projectName: "",
-  badgeProjectDevice: "",
-  badgeProjectType: "",
-  badgeParticipation: "",
-  thumbnail: "",
-  startDate: "",
-  endDate: "",
-  teamSize: "",
-  description: "",
-  techStack: [] as string[],
-  demoUrl: "",
-  githubUrl: "",
-  canvaUrl: "",
-  figmaUrl: "",
-  swaggerUrl: "",
-  client: "",
-  planning: "",
-  design: "",
-  publishing: "",
-  development: "",
-};
-
-interface PreviewFormProps {
-  joinFormData: (formData: FormData) => void;
-}
-
-// 프로젝트 추가 폼
-const PreviewForm = ({ joinFormData }: PreviewFormProps) => {
-  const [formData, setFormData] = useState<FormData>(initFormData);
-
-  // 폼 데이터 초기화
-  const reset = () => {
-    setFormData(initFormData);
-  };
-
-  // 폼 데이터 값 초기화
-  const resetFormDataValue = (key: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [key]: "",
-    }));
-  };
-
-  // 값 변경 핸들러
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  // 체크박스 변경 핸들러
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      techStack: prev.techStack.includes(value)
-        ? prev.techStack.filter((item) => item !== value)
-        : [...prev.techStack, value],
-    }));
-  };
-
-  // 폼 제출 핸들러
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    joinFormData(formData);
-    setFormData(initFormData);
-  };
+const PreviewForm = () => {
+  const {
+    formData,
+    handleInputChange,
+    handleCheckboxChange,
+    handleSubmit,
+    resetFormDataValue,
+    reset,
+  } = usePreviewForm();
 
   return (
     <form
-      className="mx-auto w-full rounded-md bg-neutral-100 p-4 shadow"
+      className="mx-auto w-2/3 rounded-md bg-neutral-100 p-4 shadow"
       onSubmit={handleSubmit}
     >
       <LabelInput
@@ -121,15 +58,6 @@ const PreviewForm = ({ joinFormData }: PreviewFormProps) => {
         onEscKeyDown={resetFormDataValue}
       />
 
-      <LabelInput
-        label="작업 인원"
-        type="text"
-        placeholder="작업 참여 인원"
-        name="teamSize"
-        value={formData.teamSize}
-        onChange={handleInputChange}
-        onEscKeyDown={resetFormDataValue}
-      />
       <LabelInput
         label="작업 시작"
         type="text"
@@ -174,37 +102,7 @@ const PreviewForm = ({ joinFormData }: PreviewFormProps) => {
 
       <CheckboxGroup
         label="기술 스택"
-        options={[
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "TypeScript",
-          "React",
-          "Vue",
-          "Next.js",
-          "React Router",
-          "Redux",
-          "Zustand",
-          "Recoil",
-          "React Query",
-          "Axios",
-          "Sass",
-          "Emotion",
-          "Tailwind CSS",
-          "Material-UI",
-          "Figma",
-          "Swagger",
-          "Postman",
-          "Firebase",
-          "Supabase",
-          // "Node.js",
-          // "Express",
-          // "NestJS",
-          // "Prisma",
-          "GSAP",
-          "anime.js",
-          "Framer Motion",
-        ]}
+        options={techStack}
         values={formData.techStack}
         onChange={handleCheckboxChange}
       />

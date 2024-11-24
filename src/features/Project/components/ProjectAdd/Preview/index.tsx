@@ -3,7 +3,7 @@ import PreviewForm from "./PreviewForm";
 
 const Preview = () => {
   return (
-    <div className="flex">
+    <div className="flex gap-4">
       <PreviewArea />
       <PreviewForm />
     </div>

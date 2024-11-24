@@ -77,6 +77,16 @@ const OverviewForm = ({ joinFormData }: OverviewFormProps) => {
         onChange={handleInputChange}
         onEscKeyDown={resetFormDataValue}
       />
+
+      <LabelInput
+        label="작업 인원"
+        type="text"
+        placeholder="작업 참여 인원"
+        name="teamSize"
+        value={formData.teamSize}
+        onChange={handleInputChange}
+        onEscKeyDown={resetFormDataValue}
+      />
       <LabelInput
         label="기획"
         type="text"

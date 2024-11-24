@@ -23,7 +23,7 @@ export interface CheckboxGroupProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface FormData {
+export interface PreviewFormData {
   id: string;
   projectName: string;
   badgeProjectDevice: string;
