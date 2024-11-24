@@ -1,5 +1,5 @@
 import { handleEscKeyDown } from "@/utils/handleKeyDown";
-import { LabelInputProps } from "../type";
+import { LabelInputProps } from "../../../types/type";
 
 const LabelInput = ({
   label,

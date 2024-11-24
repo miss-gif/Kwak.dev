@@ -1,4 +1,4 @@
-import { PreviewFormData } from "@/features/Project/components/ProjectAdd/type";
+import { PreviewFormData } from "@/features/Project/types/type";
 import { initFormData } from "@/features/Project/data/initFormData";
 import { create } from "zustand";
 

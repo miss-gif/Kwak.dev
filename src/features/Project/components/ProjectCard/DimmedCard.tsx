@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 interface DimmedCardProps {
   title: string; // 프로젝트 제목
   id: number;
-  links: {
-    demoUrl: string; // 프로젝트 데모 URL
-    githubUrl: string; // 프로젝트 깃허브 URL
-  };
+  link: string; // 프로젝트 링크
 }
 
-const DimmedCard = ({ title, id, links }: DimmedCardProps) => {
+const DimmedCard = ({ title, id, link }: DimmedCardProps) => {
   return (
     <>
       {/* 호버 시 딤드 효과 */}
@@ -23,7 +20,7 @@ const DimmedCard = ({ title, id, links }: DimmedCardProps) => {
             자세히 보기
           </Link>
           <a
-            href={links.demoUrl}
+            href={link}
             target="_blank"
             rel="noopener noreferrer"
             className="w-52 rounded bg-none px-4 py-3 text-center text-black transition-colors duration-300 ease-in-out hover:bg-white hover:text-black"

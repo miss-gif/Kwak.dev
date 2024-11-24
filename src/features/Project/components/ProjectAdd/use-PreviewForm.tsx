@@ -1,7 +1,7 @@
 import { useFormStore } from "@/stores/projectStore";
 import { useState } from "react";
 import { initFormData } from "../../data/initFormData";
-import { PreviewFormData } from "./type";
+import { PreviewFormData } from "../../types/type";
 
 const usePreviewForm = () => {
   const [formData, setFormData] = useState<PreviewFormData>(initFormData);

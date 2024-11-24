@@ -1,4 +1,4 @@
-import { CheckboxGroupProps } from "../type";
+import { CheckboxGroupProps } from "../../../types/type";
 
 const CheckboxGroup = ({
   label,

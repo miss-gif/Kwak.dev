@@ -1,7 +1,7 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import PageIntro from "@/components/PageIntro";
-import { mockProject } from "../mock/mockProject";
+import { mockProject } from "../data/mockProject";
 import ProjectListPage from "./ProjectListPage";
 
 const ProjectPage = () => {

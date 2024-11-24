@@ -1,63 +1,101 @@
-// 프로젝트 카드 데이터 인터페이스
-interface ProjectCard {
-  thumbnail: string;
-  title: string;
-  duration: Duration;
-  teamSize: number | string;
-  description: string;
-  techStack: string[];
-  links: ProjectLinks;
-  client: string;
-  team: ProjectTeam;
-  badge?: string[];
-  keywords?: string[];
+// 라벨과 인풋을 포함한 컴포넌트의 타입 정의
+export interface LabelInputProps {
+  label: string;
+  type: string;
+  placeholder: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onEscKeyDown: (key: string) => void;
 }
 
-// 기간 정보를 담는 인터페이스
-interface Duration {
+// 라디오버튼 그룹 컴포넌트의 타입 정의
+export interface RadioGroupProps {
+  label: string;
+  options: string[];
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+// 체크박스 그룹 컴포넌트의 타입 정의
+export interface CheckboxGroupProps {
+  label: string;
+  options: string[];
+  values: string[];
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+// Preview 컴포넌트의 타입 정의
+export interface PreviewData {
+  id: string;
+  projectName: string;
+  description: string;
+  badgeProjectDevice: string;
+  badgeProjectType: string;
+  badgeParticipation: string;
+  thumbnail: string;
   startDate: string;
   endDate: string;
+  techStack: string[];
 }
 
-// 프로젝트 링크 관련 인터페이스
-interface ProjectLinks {
+// Overview 컴포넌트의 타입 정의
+export interface OverviewData {
+  client: string;
+  teamSize: string;
+  planning: string;
+  design: string;
+  publishing: string;
+  development: string;
   demoUrl: string;
   githubUrl: string;
-  additionalUrls?: LinkItem[];
-}
-
-// 추가 링크를 위한 인터페이스
-interface LinkItem {
-  name: string;
-  url: string;
-}
-
-// 프로젝트 상세 정보 인터페이스
-interface ProjectDetail {
-  goal: DetailSection[];
-  features: DetailSection[];
-  technology: DetailSection[];
-  result: DetailSection[];
-  achievement: DetailSection[];
-}
-
-// 팀원 정보를 담는 인터페이스
-interface ProjectTeam {
-  planner: string | number;
-  designer: string | number;
-  publisher: string | number;
-  developer: string | number;
+  canvaUrl: string;
+  figmaUrl: string;
+  swaggerUrl: string;
 }
 
 // 상세 섹션 인터페이스
-interface DetailSection {
+interface DescriptionTest {
   title: string;
   details: string[];
 }
 
-// 최종 프로젝트 데이터 인터페이스
+// Description 컴포넌트의 타입 정의
+export interface DescriptionData {
+  goal: DescriptionTest[];
+  features: DescriptionTest[];
+  technology: DescriptionTest[];
+  result: DescriptionTest[];
+  achievement: DescriptionTest[];
+}
+
+// 프로젝트 데이터 타입 정의
 export interface ProjectData {
   id: number;
-  card: ProjectCard;
-  detail: ProjectDetail;
+  projectName: string;
+  description: string;
+  badgeProjectDevice: string;
+  badgeProjectType: string;
+  badgeParticipation: string;
+  thumbnail: string;
+  startDate: string;
+  endDate: string;
+  techStack: string[];
+  client: string;
+  teamSize: string;
+  planning: string;
+  design: string;
+  publishing: string;
+  development: string;
+  demoUrl: string;
+  githubUrl: string;
+  canvaUrl: string;
+  figmaUrl: string;
+  swaggerUrl: string;
+  goal: DescriptionTest[];
+  features: DescriptionTest[];
+  technology: DescriptionTest[];
+  result: DescriptionTest[];
+  achievement: DescriptionTest[];
 }
