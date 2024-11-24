@@ -1,3 +1,4 @@
+// import { ProjectData } from "@/features/Project/types/type";
 import { ProjectData } from "@/features/Project/types/type";
 import Fuse from "fuse.js";
 import { useEffect, useState } from "react";
@@ -30,7 +31,7 @@ export const useFilteredProjects = (projectData: ProjectData[]) => {
 
     if (techFilter) {
       results = results.filter((project) =>
-        project.card.techStack.some((tech) =>
+        project.techStack.some((tech) =>
           tech.toLowerCase().includes(techFilter.toLowerCase()),
         ),
       );
@@ -38,7 +39,7 @@ export const useFilteredProjects = (projectData: ProjectData[]) => {
 
     if (keywords) {
       results = results.filter((project) =>
-        project.card.keywords?.some((keyword) =>
+        project.techStack?.some((keyword) =>
           keyword.toLowerCase().includes(keywords.toLowerCase()),
         ),
       );

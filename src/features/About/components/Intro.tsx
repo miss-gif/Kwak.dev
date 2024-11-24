@@ -2,7 +2,7 @@ const text = {
   title: "안녕하세요! 프론트엔드 개발자 곽도억입니다.",
   subTitle: "웹 개발의 매력을 뒤늦게 발견하고 이 길을 선택하게 되었습니다.",
   content: [
-    "저는 항상 도전하고 성장하는 과정에 큰 가치를 두고 있으며,",
+    "저는 항상 도전하고 성장하는 과정에 큰 가치를 두고,",
     "다양한 기술을 배우고 실험하며 실제 프로젝트에서 적용해서 경험을 쌓았습니다.",
   ],
   conclusion: [
@@ -12,23 +12,18 @@ const text = {
 
 const Intro = () => {
   return (
-    <div className="p-24">
-      <h3 className="mb-4 text-3xl font-semibold">{text.title}</h3>
-      <p className="mb-4 leading-8">
-        {text.subTitle}
-        <br />
-        {text.content.map((content, index) => (
-          <>
-            <span key={index}>{content}</span>
-            <br />
-          </>
-        ))}
-      </p>
-      <p>
-        {text.conclusion.map((conclusion, index) => (
-          <span key={index}>{conclusion}</span>
-        ))}
-      </p>
+    <div className="flex flex-col gap-4 p-24">
+      <h3 className="text-3xl font-semibold">{text.title}</h3>
+
+      <p>{text.subTitle}</p>
+
+      {text.content.map((content, index) => (
+        <p key={index}>{content}</p>
+      ))}
+
+      {text.conclusion.map((conclusion, index) => (
+        <p key={index}>{conclusion}</p>
+      ))}
     </div>
   );
 };

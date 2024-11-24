@@ -1,7 +1,7 @@
 import { ProjectData } from "../../types/type";
 
 type ProjectDescriptionProps = {
-  data: ProjectData["detail"];
+  data: ProjectData;
 };
 
 const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
