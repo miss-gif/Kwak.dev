@@ -1,3 +1,5 @@
+import Button from "@/components/Button";
+
 const DescriptionForm = () => {
   return (
     <div className="rounded-md">
@@ -44,6 +46,11 @@ const DescriptionForm = () => {
           <strong className="text-blue-500">내용</strong>
         </li>
       </ul>
+
+      <div className="mt-2 flex gap-2">
+        <Button label="취소" type="reset" width="w-full" color="red" />
+        <Button label="저장" type="submit" width="w-full" />
+      </div>
     </div>
   );
 };

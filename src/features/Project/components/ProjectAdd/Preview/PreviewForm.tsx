@@ -3,6 +3,7 @@ import LabelInput from "../components/LabelInput";
 import RadioGroup from "../components/RadioGroup";
 import { FormData } from "../type";
 import CheckboxGroup from "../components/CheckboxGroup";
+import Button from "@/components/Button";
 
 const initFormData = {
   id: "",
@@ -32,10 +33,16 @@ interface PreviewFormProps {
   joinFormData: (formData: FormData) => void;
 }
 
+// 프로젝트 추가 폼
 const PreviewForm = ({ joinFormData }: PreviewFormProps) => {
   const [formData, setFormData] = useState<FormData>(initFormData);
 
-  // 값 초기화 함수
+  // 폼 데이터 초기화
+  const reset = () => {
+    setFormData(initFormData);
+  };
+
+  // 폼 데이터 값 초기화
   const resetFormDataValue = (key: string) => {
     setFormData((prev) => ({
       ...prev,
@@ -52,6 +59,7 @@ const PreviewForm = ({ joinFormData }: PreviewFormProps) => {
     }));
   };
 
+  // 체크박스 변경 핸들러
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setFormData((prev) => ({
@@ -62,6 +70,7 @@ const PreviewForm = ({ joinFormData }: PreviewFormProps) => {
     }));
   };
 
+  // 폼 제출 핸들러
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
@@ -200,12 +209,16 @@ const PreviewForm = ({ joinFormData }: PreviewFormProps) => {
         onChange={handleCheckboxChange}
       />
 
-      <button
-        type="submit"
-        className="mt-2 w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600"
-      >
-        등록
-      </button>
+      <div className="mt-2 flex gap-2">
+        <Button
+          label="초기화"
+          type="reset"
+          width="w-full"
+          color="red"
+          onClick={reset}
+        />
+        <Button label="저장" type="submit" width="w-full" />
+      </div>
     </form>
   );
 };

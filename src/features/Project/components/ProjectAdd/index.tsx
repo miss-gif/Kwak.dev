@@ -6,35 +6,17 @@
 // 입력 중인 데이터 저장
 
 import Button, { LinkButton } from "@/components/Button";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Description from "./Description";
-import Overview from "./Overview";
-import Preview from "./Preview";
-import Swiper from "./Swiper";
+import MultiStepForm from "./MultiStepForm";
 
 const ProjectAdd = () => {
   return (
     <div className="flex flex-col">
       <div className="mb-4 flex justify-between">
         <LinkButton label="취소" to="/project" color="red" />
-        <Button label="저장" />
+        <Button label="프로젝트 등록" />
       </div>
 
-      {/*  */}
-      <div className="mb-4">
-        <Preview />
-        <Overview />
-        <Description />
-      </div>
-
-      <Swiper />
-
-      {/* 링크 버튼 */}
-      <div className="flex justify-center gap-2">
-        <LinkButton label={<ArrowBackIosNewIcon />} to="" />
-        <LinkButton label={<ArrowForwardIosIcon />} to="" />
-      </div>
+      <MultiStepForm />
     </div>
   );
 };

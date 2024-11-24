@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LabelInput from "../components/LabelInput";
 import { FormData } from "../type";
+import Button from "@/components/Button";
 
 const initFormData = {
   id: "",
@@ -32,6 +33,11 @@ interface OverviewFormProps {
 
 const OverviewForm = ({ joinFormData }: OverviewFormProps) => {
   const [formData, setFormData] = useState<FormData>(initFormData);
+
+  // 폼 데이터 초기화
+  const reset = () => {
+    setFormData(initFormData);
+  };
 
   // 값 초기화 함수
   const resetFormDataValue = (key: string) => {
@@ -154,12 +160,16 @@ const OverviewForm = ({ joinFormData }: OverviewFormProps) => {
         onEscKeyDown={resetFormDataValue}
       />
 
-      <button
-        type="submit"
-        className="mt-2 w-full rounded-md bg-blue-500 py-2 text-white hover:bg-blue-600"
-      >
-        등록
-      </button>
+      <div className="mt-2 flex gap-2">
+        <Button
+          label="초기화"
+          type="reset"
+          width="w-full"
+          color="red"
+          onClick={reset}
+        />
+        <Button label="저장" type="submit" width="w-full" />
+      </div>
     </form>
   );
 };
