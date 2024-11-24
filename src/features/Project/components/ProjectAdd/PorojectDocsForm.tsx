@@ -14,10 +14,6 @@ interface FormData {
   results: Item[];
 }
 
-interface PorojectDocsFormProps {
-  joinFormData: (formData: FormData) => void;
-}
-
 const initFormData = {
   achievements: [{ title: "", text: "" }],
   goals: [{ title: "", text: "" }],
@@ -26,7 +22,7 @@ const initFormData = {
   results: [{ title: "", text: "" }],
 };
 
-const PorojectDocsForm = ({ joinFormData }: PorojectDocsFormProps) => {
+const PorojectDocsForm = () => {
   const [formData, setFormData] = useState<FormData>(initFormData);
 
   // 특정 항목 추가
@@ -69,7 +65,6 @@ const PorojectDocsForm = ({ joinFormData }: PorojectDocsFormProps) => {
     e.preventDefault();
     console.log(formData);
     setFormData(initFormData);
-    joinFormData(formData);
   };
 
   useEffect(() => {

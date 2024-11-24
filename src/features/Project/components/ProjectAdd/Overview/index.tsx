@@ -1,11 +1,11 @@
+import { mockProject } from "@/features/Project/data/mockProject";
 import OverviewArea from "./OverviewArea";
-import OverviewForm from "./OverviewForm";
 
 const Overview = () => {
   return (
     <div className="flex gap-4">
-      <OverviewArea />
-      <OverviewForm />
+      <OverviewArea data={mockProject[0]} />
+      {/* <OverviewForm /> */}
     </div>
   );
 };
