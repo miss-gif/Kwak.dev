@@ -37,9 +37,7 @@ const ProjectOverview = ({ data }: ProjectOverviewProps) => {
           {/* 작업기간 */}
           <div>
             <div className="font-semibold">작업기간</div>
-            <div className="text-gray-600">
-              {`${data.duration.startDate.toLocaleDateString()} ~ ${data.duration.endDate.toLocaleDateString()}`}
-            </div>
+            <div className="text-gray-600">{`${data.startDate} ~ ${data.endDate}`}</div>
           </div>
 
           {/* 작업 인원 */}

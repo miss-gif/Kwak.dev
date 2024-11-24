@@ -1,71 +1,19 @@
-import React, { useState } from "react";
-import LabelInput from "../components/LabelInput";
-import { FormData } from "../type";
 import Button from "@/components/Button";
+import LabelInput from "../components/LabelInput";
+import usePreviewForm from "../use-PreviewForm";
 
-const initFormData = {
-  id: "",
-  projectName: "",
-  badgeProjectDevice: "",
-  badgeProjectType: "",
-  badgeParticipation: "",
-  thumbnail: "",
-  startDate: "",
-  endDate: "",
-  teamSize: "",
-  description: "",
-  techStack: [] as string[],
-  demoUrl: "",
-  githubUrl: "",
-  canvaUrl: "",
-  figmaUrl: "",
-  swaggerUrl: "",
-  client: "",
-  planning: "",
-  design: "",
-  publishing: "",
-  development: "",
-};
-
-interface OverviewFormProps {
-  joinFormData: (formData: FormData) => void;
-}
-
-const OverviewForm = ({ joinFormData }: OverviewFormProps) => {
-  const [formData, setFormData] = useState<FormData>(initFormData);
-
-  // 폼 데이터 초기화
-  const reset = () => {
-    setFormData(initFormData);
-  };
-
-  // 값 초기화 함수
-  const resetFormDataValue = (key: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [key]: "",
-    }));
-  };
-
-  // 값 변경 핸들러
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(formData);
-    joinFormData(formData);
-    setFormData(initFormData);
-  };
+const OverviewForm = () => {
+  const {
+    formData,
+    handleInputChange,
+    handleSubmit,
+    resetFormDataValue,
+    reset,
+  } = usePreviewForm();
 
   return (
     <form
-      className="mx-auto w-full rounded-md bg-neutral-100 p-4 shadow"
+      className="mx-auto w-2/3 rounded-md bg-neutral-100 p-4 shadow"
       onSubmit={handleSubmit}
     >
       <LabelInput

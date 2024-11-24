@@ -9,7 +9,7 @@ export const initFormData = {
   endDate: "",
   teamSize: "",
   description: "",
-  techStack: [] as string[],
+  techStack: [],
   demoUrl: "",
   githubUrl: "",
   canvaUrl: "",

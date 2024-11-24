@@ -3,7 +3,7 @@ import OverviewForm from "./OverviewForm";
 
 const Overview = () => {
   return (
-    <div className="flex">
+    <div className="flex gap-4">
       <OverviewArea />
       <OverviewForm />
     </div>
