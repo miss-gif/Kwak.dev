@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ProjectData } from "../../types/type";
 import LabelInput from "../ProjectForm/LabelInput";
 import RadioGroup from "../ProjectForm/RadioGroup";
+import BasicModal from "@/components/Modal";
 
 interface OverviewProps {
   data: ProjectData;
@@ -27,6 +28,16 @@ const Overview = ({ data, editMode }: OverviewProps) => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      techStack: prev.techStack.includes(value)
+        ? prev.techStack.filter((item) => item !== value)
+        : [...prev.techStack, value],
     }));
   };
 
@@ -145,7 +156,11 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 <label className="min-w-24 shrink-0 text-sm font-medium">
                   기술스택
                 </label>
-                <Button label="모달창 열기" width="w-full" py="py-2" />
+                {/* 모달 열기 */}
+                <BasicModal
+                  techStack={formData.techStack}
+                  handleCheckboxChange={handleCheckboxChange}
+                />
               </div>
             </>
           )}

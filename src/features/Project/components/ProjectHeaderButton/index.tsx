@@ -17,6 +17,7 @@ const ProjectButtonHeader = ({ children }: ProjectButtonHeaderProps) => {
 export const ProjectAdd = () => {
   return (
     <ProjectButtonHeader>
+      <span></span>
       <LinkButton label="프로젝트 추가" to="add" />
     </ProjectButtonHeader>
   );
