@@ -1,16 +1,7 @@
 import { handleEscKeyDown } from "@/utils/handleKeyDown";
+import { LabelInputProps } from "../../types/type";
 
-interface PorojectDocsInputProps {
-  label: string;
-  type: string;
-  placeholder: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onEscKeyDown: (key: string) => void;
-}
-
-const PorojectDocsInput = ({
+const LabelInput = ({
   label,
   type,
   placeholder,
@@ -18,10 +9,18 @@ const PorojectDocsInput = ({
   value,
   onChange,
   onEscKeyDown,
-}: PorojectDocsInputProps) => (
+}: LabelInputProps) => (
   <div className="flex items-center py-2">
-    <label className="block min-w-32">{label}</label>
+    {label && (
+      <label
+        className="block min-w-24 shrink-0 text-sm font-medium"
+        htmlFor={name}
+      >
+        {label}
+      </label>
+    )}
     <input
+      id={name}
       type={type}
       name={name}
       placeholder={placeholder}
@@ -33,4 +32,4 @@ const PorojectDocsInput = ({
   </div>
 );
 
-export default PorojectDocsInput;
+export default LabelInput;

@@ -1,4 +1,4 @@
-import { CheckboxGroupProps } from "../../../types/type";
+import { CheckboxGroupProps } from "../../types/type";
 
 const CheckboxGroup = ({
   label,
@@ -7,10 +7,10 @@ const CheckboxGroup = ({
   onChange,
 }: CheckboxGroupProps) => (
   <div className="flex items-center">
-    <p className="min-w-32">{label}</p>
+    <p className="min-w-24 shrink-0">{label}</p>
     <div className="flex flex-wrap items-center gap-4 py-2">
       {options?.map((option, index) => (
-        <label key={index} className="min-w-32">
+        <label key={index} className="min-w-24 shrink-0">
           <input
             type="checkbox"
             value={option}

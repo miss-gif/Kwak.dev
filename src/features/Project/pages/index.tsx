@@ -1,7 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import PageIntro from "@/components/PageIntro";
-import { mockProject } from "../data/mockProject";
 import ProjectListPage from "./ProjectListPage";
 
 const ProjectPage = () => {
@@ -24,7 +23,7 @@ const ProjectPage = () => {
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <PageIntro text={text} />
       <SectionWrapper>
-        <ProjectListPage projectData={mockProject} />
+        <ProjectListPage />
       </SectionWrapper>
     </PageLayout>
   );

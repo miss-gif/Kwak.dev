@@ -1,15 +1,18 @@
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useState } from "react";
-import { mockProject } from "../../data/mockProject";
-import ProjectDescription from "./ProjectDescription";
-import ProjectHeader from "./ProjectHeader";
-import ProjectOverview from "./ProjectOverview";
+import { ProjectData } from "../../types/type";
+import { ProjectEdit } from "../ProjectHeaderButton";
+import Overview from "./Overview";
+import Description from "./Description";
 
-const ProjectDetail = () => {
-  const project = mockProject[0];
+interface ProjectDetailProps {
+  data?: ProjectData;
+}
+
+const ProjectDetail = ({ data }: ProjectDetailProps) => {
   const [editMode, setEditMode] = useState(false);
 
-  if (!project) {
+  if (!data) {
     return <NotFoundPage />;
   }
 
@@ -19,9 +22,9 @@ const ProjectDetail = () => {
 
   return (
     <>
-      <ProjectHeader editMode={editMode} onToggleEditMode={handleEditMode} />
-      <ProjectOverview data={project} editMode={editMode} />
-      <ProjectDescription data={project} editMode={editMode} />
+      <ProjectEdit editMode={editMode} onToggleEditMode={handleEditMode} />
+      <Overview data={data} editMode={editMode} />
+      <Description data={data} editMode={editMode} />
     </>
   );
 };

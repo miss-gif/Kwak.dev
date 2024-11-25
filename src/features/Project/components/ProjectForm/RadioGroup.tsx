@@ -1,4 +1,4 @@
-import { RadioGroupProps } from "../../../types/type";
+import { RadioGroupProps } from "../../types/type";
 
 const RadioGroup = ({
   label,
@@ -8,10 +8,10 @@ const RadioGroup = ({
   onChange,
 }: RadioGroupProps) => (
   <div className="flex items-center">
-    <p className="min-w-32 text-sm font-medium">{label}</p>
+    <p className="min-w-24 shrink-0 text-sm font-medium">{label}</p>
     <div className="flex items-center py-2">
       {options.map((option, index) => (
-        <label key={index} className="min-w-32">
+        <label key={index} className="min-w-24 shrink-0">
           <input
             type="radio"
             name={name}

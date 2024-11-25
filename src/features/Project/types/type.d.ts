@@ -58,7 +58,7 @@ export interface OverviewData {
 // 상세 섹션 인터페이스
 interface DescriptionTest {
   title: string;
-  details: string[];
+  text: string[];
 }
 
 // Description 컴포넌트의 타입 정의

@@ -5,6 +5,7 @@ interface ButtonProps {
   color?: string;
   width?: string;
   py?: string;
+  mt?: string;
 }
 
 const Button = ({
@@ -14,11 +15,12 @@ const Button = ({
   color = "blue",
   width = "",
   py = "py-3",
+  mt = "",
 }: ButtonProps) => (
   <button
     type={type}
     onClick={onClick}
-    className={`bg-${color}-500 hover:bg-${color}-600 ${py} rounded-md px-4 text-sm text-white ${width} focus:outline-none`}
+    className={`bg-${color}-500 hover:bg-${color}-600 ${py} rounded-md px-4 text-sm text-white ${width} focus:outline-none ${mt}`}
   >
     {label}
   </button>

@@ -1,16 +1,17 @@
-import Button from "@/components/Button";
 import { useAuthStore } from "@/stores/authStore";
 import { ProjectData } from "../../types/type";
-import LabelInput from "../ProjectAdd/components/LabelInput";
-import RadioGroup from "../ProjectAdd/components/RadioGroup";
-import usePreviewForm from "../ProjectAdd/use-PreviewForm";
+import LabelInput from "../ProjectForm/LabelInput";
+import RadioGroup from "../ProjectForm/RadioGroup";
+import Button from "@/components/Button";
+import { useState } from "react";
+import { initFormData } from "../../data/initFormData";
 
-type ProjectOverviewProps = {
+interface OverviewProps {
   data: ProjectData;
   editMode: boolean;
-};
+}
 
-const ProjectOverview = ({ data, editMode }: ProjectOverviewProps) => {
+const Overview = ({ data, editMode }: OverviewProps) => {
   const {
     projectName,
     description,
@@ -32,7 +33,22 @@ const ProjectOverview = ({ data, editMode }: ProjectOverviewProps) => {
   } = data;
   const { user } = useAuthStore();
 
-  const { handleInputChange, resetFormDataValue } = usePreviewForm();
+  const [formData, setFormData] = useState(initFormData);
+
+  const resetFormDataValue = (key: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [key]: "",
+    }));
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="">
@@ -64,7 +80,6 @@ const ProjectOverview = ({ data, editMode }: ProjectOverviewProps) => {
           />
         )}
       </div>
-
       {/* 썸네일과 주요 정보 */}
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="overflow-hidden">
@@ -108,13 +123,19 @@ const ProjectOverview = ({ data, editMode }: ProjectOverviewProps) => {
               />
 
               <div className="flex items-center">
-                <label className="min-w-32 text-sm font-medium">기술스택</label>
-                <Button label="모달창 열기" width="w-full" py="py-2" />
+                <label className="min-w-24 shrink-0 text-sm font-medium">
+                  기술스택
+                </label>
+                <Button
+                  label="모달창 열기"
+                  width="w-full"
+                  py="py-2"
+                  color="teal"
+                />
               </div>
             </>
           )}
         </div>
-
         {/* 프로젝트 세부 정보 */}
         <div className="flex flex-col gap-8">
           {/* 클라이언트 */}
@@ -143,7 +164,7 @@ const ProjectOverview = ({ data, editMode }: ProjectOverviewProps) => {
             </div>
           ) : (
             <div className="flex items-center py-2">
-              <label className="block min-w-32 text-sm font-medium">
+              <label className="block min-w-24 shrink-0 text-sm font-medium">
                 작업기간
               </label>
               <div className="flex items-center gap-2 text-gray-600">
@@ -392,8 +413,9 @@ const ProjectOverview = ({ data, editMode }: ProjectOverviewProps) => {
           </div>
         </div>
       </div>
+      {editMode && <Button label="저장하기" width="w-full" mt="mt-4" />}
     </div>
   );
 };
 
-export default ProjectOverview;
+export default Overview;
