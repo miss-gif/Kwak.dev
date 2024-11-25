@@ -14,6 +14,8 @@ const Description = ({ data, editMode }: DescriptionProps) => {
 
   const [formData, setFormData] = useState(initFormData);
 
+  console.log(formData);
+
   const resetFormDataValue = (key: string) => {
     setFormData((prev) => ({
       ...prev,
@@ -69,7 +71,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
           {goal.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="text-blue-500">{item.title}</strong>
-              {item.text.join(", ")}
+              {item.text}
             </li>
           ))}
         </ul>
@@ -108,7 +110,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
           {features.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="shrink-0 text-blue-500">{item.title}</strong>
-              {item.text.join(", ")}
+              {item.text}
             </li>
           ))}
         </ul>
@@ -146,7 +148,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
           {technology.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="text-blue-500">{item.title}</strong>
-              {item.text.join(", ")}
+              {item.text}
             </li>
           ))}
         </ul>
@@ -184,7 +186,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
           {result.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="text-blue-500">{item.title}</strong>
-              {item.text.join(", ")}
+              {item.text}
             </li>
           ))}
         </ul>
