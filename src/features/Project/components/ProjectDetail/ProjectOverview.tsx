@@ -1,6 +1,5 @@
 import Button from "@/components/Button";
 import { useAuthStore } from "@/stores/authStore";
-import { useState } from "react";
 import { ProjectData } from "../../types/type";
 import LabelInput from "../ProjectAdd/components/LabelInput";
 import RadioGroup from "../ProjectAdd/components/RadioGroup";
@@ -8,9 +7,10 @@ import usePreviewForm from "../ProjectAdd/use-PreviewForm";
 
 type ProjectOverviewProps = {
   data: ProjectData;
+  editMode: boolean;
 };
 
-const ProjectOverview = ({ data }: ProjectOverviewProps) => {
+const ProjectOverview = ({ data, editMode }: ProjectOverviewProps) => {
   const {
     projectName,
     description,
@@ -32,30 +32,10 @@ const ProjectOverview = ({ data }: ProjectOverviewProps) => {
   } = data;
   const { user } = useAuthStore();
 
-  const [editMode, setEditMode] = useState(false);
-
-  const handleEditMode = () => {
-    setEditMode((prev) => !prev);
-  };
-
   const { handleInputChange, resetFormDataValue } = usePreviewForm();
 
   return (
     <div className="">
-      <div>
-        {!editMode ? (
-          <Button
-            label="프로젝트 수정"
-            color="green"
-            onClick={handleEditMode}
-          />
-        ) : (
-          <div className="flex gap-2">
-            <Button label="수정 취소" color="green" onClick={handleEditMode} />
-            <Button label="수정 저장" color="green" onClick={handleEditMode} />
-          </div>
-        )}
-      </div>
       <div>
         {!editMode ? (
           <h3 className="mb-2 text-xl font-bold">{projectName}</h3>

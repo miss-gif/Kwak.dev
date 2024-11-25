@@ -2,9 +2,10 @@ import { ProjectData } from "../../types/type";
 
 type ProjectDescriptionProps = {
   data: ProjectData;
+  editMode: boolean;
 };
 
-const ProjectDescription = ({ data }: ProjectDescriptionProps) => {
+const ProjectDescription = ({ data, editMode }: ProjectDescriptionProps) => {
   return (
     <div className="rounded-md">
       {/* 성과 */}
