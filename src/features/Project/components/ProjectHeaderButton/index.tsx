@@ -1,4 +1,5 @@
-import Button, { LinkButton } from "@/components/Button";
+import Button, { BackButton, LinkButton } from "@/components/Button";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 interface ProjectButtonHeaderProps {
   children: React.ReactNode;
@@ -10,7 +11,7 @@ interface ProjectEditProps {
 }
 
 const ProjectButtonHeader = ({ children }: ProjectButtonHeaderProps) => {
-  return <div className="mb-4 flex justify-end">{children}</div>;
+  return <div className="mb-4 flex justify-between">{children}</div>;
 };
 
 export const ProjectAdd = () => {
@@ -27,8 +28,9 @@ export const ProjectEdit = ({
 }: ProjectEditProps) => {
   return (
     <ProjectButtonHeader>
+      <BackButton label={<ArrowBackIosNewIcon />} color="blue" />
       {!editMode ? (
-        <Button label="프로젝트 수정" color="teal" onClick={onToggleEditMode} />
+        <Button label="프로젝트 수정" onClick={onToggleEditMode} />
       ) : (
         <div className="flex gap-2">
           <Button label="수정 취소" color="red" onClick={onToggleEditMode} />

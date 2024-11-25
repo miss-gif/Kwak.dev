@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 interface BackButtonProps {
-  label: string;
+  label: string | JSX.Element;
   color?: string;
 }
 

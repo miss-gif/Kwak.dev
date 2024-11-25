@@ -1,10 +1,9 @@
+import Button from "@/components/Button";
 import { useAuthStore } from "@/stores/authStore";
+import { useState } from "react";
 import { ProjectData } from "../../types/type";
 import LabelInput from "../ProjectForm/LabelInput";
 import RadioGroup from "../ProjectForm/RadioGroup";
-import Button from "@/components/Button";
-import { useState } from "react";
-import { initFormData } from "../../data/initFormData";
 
 interface OverviewProps {
   data: ProjectData;
@@ -12,34 +11,14 @@ interface OverviewProps {
 }
 
 const Overview = ({ data, editMode }: OverviewProps) => {
-  const {
-    id,
-    projectName,
-    description,
-    thumbnail,
-    client,
-    startDate,
-    endDate,
-    techStack,
-    teamSize,
-    planning,
-    demoUrl,
-    githubUrl,
-    design,
-    publishing,
-    development,
-    badgeProjectDevice,
-    badgeProjectType,
-    badgeParticipation,
-  } = data;
   const { user } = useAuthStore();
 
-  const [formData, setFormData] = useState(initFormData);
+  const [formData, setFormData] = useState({ ...data });
 
-  const resetFormDataValue = (key: string) => {
+  const resetFormDataValue = (key: string, defaultValue: string = "") => {
     setFormData((prev) => ({
       ...prev,
-      [key]: "",
+      [key]: defaultValue,
     }));
   };
 
@@ -51,43 +30,72 @@ const Overview = ({ data, editMode }: OverviewProps) => {
     }));
   };
 
+  const fields = [
+    { label: "ID", name: "id", value: formData.id, placeholder: "ID 입력" },
+    {
+      label: "프로젝트",
+      name: "projectName",
+      value: formData.projectName,
+      placeholder: "프로젝트 입력",
+    },
+    {
+      label: "프로젝트 설명",
+      name: "description",
+      value: formData.description,
+      placeholder: "프로젝트 설명 입력",
+    },
+  ];
+
+  const urls = [
+    { label: "데모", name: "demoUrl", value: formData.demoUrl },
+    { label: "깃허브", name: "githubUrl", value: formData.githubUrl },
+    { label: "Canva", name: "canvaUrl", value: formData.canvaUrl },
+    { label: "Figma", name: "figmaUrl", value: formData.figmaUrl },
+    { label: "Swagger", name: "swaggerUrl", value: formData.swaggerUrl },
+  ];
+
+  const handleSave = () => {
+    console.log("저장된 데이터: ", formData);
+  };
+
+  const renderLink = (label: string, url: string) => (
+    <a
+      href={user ? url : "#"}
+      className={`rounded bg-gray-600 py-2 text-center text-white ${
+        !user ? "cursor-not-allowed opacity-50" : ""
+      }`}
+      target={user ? "_blank" : "_self"}
+      rel="noopener noreferrer"
+      onClick={() => {
+        if (!user) alert("로그인이 필요합니다.");
+      }}
+    >
+      {label} 바로가기
+    </a>
+  );
+
   return (
-    <div className="">
+    <div className="overview">
       <div>
         {!editMode ? (
           <>
-            <h3 className="mb-2 text-xl font-bold">{projectName}</h3>
-            <p className="mb-4 text-gray-700">{description}</p>
+            <h3 className="mb-2 text-xl font-bold">{formData.projectName}</h3>
+            <p className="mb-4 text-gray-700">{formData.description}</p>
           </>
         ) : (
           <>
-            <LabelInput
-              label="ID"
-              type="text"
-              placeholder="ID 입력"
-              name="id"
-              value={id}
-              onChange={handleInputChange}
-              onEscKeyDown={resetFormDataValue}
-            />
-            <LabelInput
-              label="프로젝트"
-              type="text"
-              placeholder="프로젝트 입력"
-              name="projectName"
-              value={projectName}
-              onChange={handleInputChange}
-              onEscKeyDown={resetFormDataValue}
-            />
-            <LabelInput
-              label="프로젝트 설명"
-              type="text"
-              placeholder="프로젝트 설명 입력"
-              name="description"
-              value={description}
-              onChange={handleInputChange}
-              onEscKeyDown={resetFormDataValue}
-            />
+            {fields.map((field) => (
+              <LabelInput
+                key={field.name}
+                label={field.label}
+                type="text"
+                placeholder={field.placeholder}
+                name={field.name}
+                value={field.value}
+                onChange={handleInputChange}
+                onEscKeyDown={resetFormDataValue}
+              />
+            ))}
           </>
         )}
       </div>
@@ -95,8 +103,8 @@ const Overview = ({ data, editMode }: OverviewProps) => {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="overflow-hidden">
           <img
-            src={thumbnail}
-            alt={`${projectName} thumbnail`}
+            src={formData.thumbnail}
+            alt={`${formData.projectName} thumbnail`}
             className="w-full rounded-md"
           />
           {editMode && (
@@ -106,7 +114,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 type="text"
                 placeholder="썸네일 URL 입력"
                 name="thumbnail"
-                value={thumbnail}
+                value={formData.thumbnail}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
@@ -114,7 +122,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 label="디바이스 지원"
                 options={["반응형", "데스크탑"]}
                 name="badgeProjectDevice"
-                value={badgeProjectDevice}
+                value={formData.badgeProjectDevice}
                 onChange={handleInputChange}
               />
 
@@ -122,14 +130,14 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 label="프로젝트 유형"
                 options={["퍼블리싱", "프론트엔드", "풀스택"]}
                 name="badgeProjectType"
-                value={badgeProjectType}
+                value={formData.badgeProjectType}
                 onChange={handleInputChange}
               />
               <RadioGroup
                 label="참여 형태"
                 options={["개인", "협업", "스터디"]}
                 name="badgeParticipation"
-                value={badgeParticipation}
+                value={formData.badgeParticipation}
                 onChange={handleInputChange}
               />
 
@@ -137,12 +145,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 <label className="min-w-24 shrink-0 text-sm font-medium">
                   기술스택
                 </label>
-                <Button
-                  label="모달창 열기"
-                  width="w-full"
-                  py="py-2"
-                  color="teal"
-                />
+                <Button label="모달창 열기" width="w-full" py="py-2" />
               </div>
             </>
           )}
@@ -153,7 +156,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           {!editMode ? (
             <div>
               <div className="font-semibold">클라이언트</div>
-              <div className="text-gray-600">{client}</div>
+              <div className="text-gray-600">{formData.client}</div>
             </div>
           ) : (
             <LabelInput
@@ -161,7 +164,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
               type="text"
               placeholder="클라이언트 입력"
               name="client"
-              value={client}
+              value={formData.client}
               onChange={handleInputChange}
               onEscKeyDown={resetFormDataValue}
             />
@@ -171,7 +174,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           {!editMode ? (
             <div>
               <div className="font-semibold">작업기간</div>
-              <div className="text-gray-600">{`${startDate} ~ ${endDate}`}</div>
+              <div className="text-gray-600">{`${formData.startDate} ~ ${formData.endDate}`}</div>
             </div>
           ) : (
             <div className="flex items-center py-2">
@@ -183,7 +186,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                   type="text"
                   placeholder="시작 입력"
                   name="startDate"
-                  value={startDate}
+                  value={formData.startDate}
                   onChange={handleInputChange}
                   onEscKeyDown={resetFormDataValue}
                 />
@@ -192,7 +195,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                   type="text"
                   placeholder="종료 입력"
                   name="endDate"
-                  value={endDate}
+                  value={formData.endDate}
                   onChange={handleInputChange}
                   onEscKeyDown={resetFormDataValue}
                 />
@@ -204,7 +207,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           {!editMode ? (
             <div>
               <div className="font-semibold">작업인원</div>
-              <div className="text-gray-600">{`${teamSize}명`}</div>
+              <div className="text-gray-600">{`${formData.teamSize}명`}</div>
             </div>
           ) : (
             <div>
@@ -213,7 +216,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 type="text"
                 placeholder="작업 참여 인원"
                 name="teamSize"
-                value={teamSize}
+                value={formData.teamSize}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
@@ -223,7 +226,9 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           {!editMode ? (
             <div>
               <div className="font-semibold">기술스택</div>
-              <div className="text-gray-600">{techStack.join(", ")}</div>
+              <div className="text-gray-600">
+                {formData.techStack.join(", ")}
+              </div>
             </div>
           ) : (
             <div>
@@ -232,7 +237,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 type="text"
                 placeholder="기술스택 입력"
                 name="techStack"
-                value={techStack}
+                value={formData.techStack}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
@@ -244,7 +249,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             {!editMode ? (
               <div>
                 <div className="font-semibold">기획</div>
-                <div className="text-gray-600">{planning}</div>
+                <div className="text-gray-600">{formData.planning}</div>
               </div>
             ) : (
               <LabelInput
@@ -252,7 +257,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 type="text"
                 placeholder="기획 입력"
                 name="planning"
-                value={planning}
+                value={formData.planning}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
@@ -260,7 +265,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             {!editMode ? (
               <div>
                 <div className="font-semibold">디자인</div>
-                <div className="text-gray-600">{design}</div>
+                <div className="text-gray-600">{formData.design}</div>
               </div>
             ) : (
               <LabelInput
@@ -268,7 +273,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 type="text"
                 placeholder="디자인 입력"
                 name="design"
-                value={design}
+                value={formData.design}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
@@ -276,7 +281,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             {!editMode ? (
               <div>
                 <div className="font-semibold">퍼블리싱</div>
-                <div className="text-gray-600">{publishing}</div>
+                <div className="text-gray-600">{formData.publishing}</div>
               </div>
             ) : (
               <LabelInput
@@ -284,7 +289,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 type="text"
                 placeholder="퍼블리싱 입력"
                 name="publishing"
-                value={publishing}
+                value={formData.publishing}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
@@ -292,7 +297,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             {!editMode ? (
               <div>
                 <div className="font-semibold">개발</div>
-                <div className="text-gray-600">{development}</div>
+                <div className="text-gray-600">{formData.development}</div>
               </div>
             ) : (
               <LabelInput
@@ -300,7 +305,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 type="text"
                 placeholder="개발 입력"
                 name="development"
-                value={development}
+                value={formData.development}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
@@ -310,121 +315,40 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           {/* 링크 */}
           <div className="grid grid-cols-2 gap-4">
             {!editMode ? (
-              <a
-                href={demoUrl}
-                className="rounded bg-gray-600 py-2 text-center text-white"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                사이트 바로가기
-              </a>
+              <>
+                {renderLink("깃허브", formData.githubUrl)}
+                {renderLink("깃허브", formData.githubUrl)}
+                {renderLink("Canva", formData.githubUrl)}
+                {renderLink("Figma", formData.githubUrl)}
+                {renderLink("Swagger", formData.githubUrl)}
+              </>
             ) : (
-              <LabelInput
-                label="데모 URL"
-                type="text"
-                placeholder="데모 URL 입력"
-                name="demoUrl"
-                value={demoUrl}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-              />
-            )}
-            {!editMode ? (
-              <a
-                href={user ? githubUrl : "#"}
-                className={`rounded bg-gray-600 py-2 text-center text-white ${!user ? "cursor-not-allowed opacity-50" : ""}`}
-                target={user ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                onClick={() => {
-                  if (!user) alert("로그인이 필요합니다.");
-                }}
-              >
-                깃허브 바로가기
-              </a>
-            ) : (
-              <LabelInput
-                label="깃허브 URL"
-                type="text"
-                placeholder="깃허브 URL 입력"
-                name="githubUrl"
-                value={githubUrl}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-              />
-            )}
-            {!editMode ? (
-              <a
-                href={user ? githubUrl : "#"}
-                className={`rounded bg-gray-600 py-2 text-center text-white ${!user ? "cursor-not-allowed opacity-50" : ""}`}
-                target={user ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                onClick={() => {
-                  if (!user) alert("로그인이 필요합니다.");
-                }}
-              >
-                Canva 바로가기
-              </a>
-            ) : (
-              <LabelInput
-                label="깃허브 URL"
-                type="text"
-                placeholder="깃허브 URL 입력"
-                name="githubUrl"
-                value={githubUrl}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-              />
-            )}
-            {!editMode ? (
-              <a
-                href={user ? githubUrl : "#"}
-                className={`rounded bg-gray-600 py-2 text-center text-white ${!user ? "cursor-not-allowed opacity-50" : ""}`}
-                target={user ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                onClick={() => {
-                  if (!user) alert("로그인이 필요합니다.");
-                }}
-              >
-                Figma 바로가기
-              </a>
-            ) : (
-              <LabelInput
-                label="깃허브 URL"
-                type="text"
-                placeholder="깃허브 URL 입력"
-                name="githubUrl"
-                value={githubUrl}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-              />
-            )}
-            {!editMode ? (
-              <a
-                href={user ? githubUrl : "#"}
-                className={`rounded bg-gray-600 py-2 text-center text-white ${!user ? "cursor-not-allowed opacity-50" : ""}`}
-                target={user ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                onClick={() => {
-                  if (!user) alert("로그인이 필요합니다.");
-                }}
-              >
-                Swagger 바로가기
-              </a>
-            ) : (
-              <LabelInput
-                label="깃허브 URL"
-                type="text"
-                placeholder="깃허브 URL 입력"
-                name="githubUrl"
-                value={githubUrl}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-              />
+              <>
+                {urls.map((url) => (
+                  <LabelInput
+                    key={url.name}
+                    label={url.label}
+                    type="text"
+                    placeholder={`${url.label} URL 입력`}
+                    name={url.name}
+                    value={url.value}
+                    onChange={handleInputChange}
+                    onEscKeyDown={resetFormDataValue}
+                  />
+                ))}
+              </>
             )}
           </div>
         </div>
       </div>
-      {editMode && <Button label="저장하기" width="w-full" mt="mt-4" />}
+      {editMode && (
+        <Button
+          label="저장하기"
+          width="w-full"
+          mt="mt-4"
+          onClick={handleSave}
+        />
+      )}
     </div>
   );
 };

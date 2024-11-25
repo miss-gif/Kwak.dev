@@ -1,10 +1,10 @@
-import { PreviewFormData } from "@/features/Project/types/type";
 import { initFormData } from "@/features/Project/data/initFormData";
+import { ProjectData } from "@/features/Project/types/type";
 import { create } from "zustand";
 
 interface FormStore {
-  forms: PreviewFormData;
-  setForm: (form: PreviewFormData) => void;
+  forms: ProjectData;
+  setForm: (form: ProjectData) => void;
 }
 
 export const useFormStore = create<FormStore>((set) => ({
