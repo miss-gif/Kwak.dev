@@ -11,9 +11,11 @@ const LabelInput = ({
   onEscKeyDown,
 }: LabelInputProps) => (
   <div className="flex items-center py-2">
-    <label className="block min-w-32 text-sm font-medium" htmlFor={name}>
-      {label}
-    </label>
+    {label && (
+      <label className="block min-w-32 text-sm font-medium" htmlFor={name}>
+        {label}
+      </label>
+    )}
     <input
       id={name}
       type={type}

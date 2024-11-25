@@ -1,10 +1,10 @@
 // 라벨과 인풋을 포함한 컴포넌트의 타입 정의
 export interface LabelInputProps {
-  label: string;
+  label?: string;
   type: string;
   placeholder: string;
   name: string;
-  value: string;
+  value: string | string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onEscKeyDown: (key: string) => void;
 }
@@ -21,7 +21,7 @@ export interface RadioGroupProps {
 // 체크박스 그룹 컴포넌트의 타입 정의
 export interface CheckboxGroupProps {
   label: string;
-  options: string[];
+  options?: string[];
   values: string[];
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
