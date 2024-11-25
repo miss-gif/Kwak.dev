@@ -7,6 +7,7 @@ export interface LabelInputProps {
   value: string | string[] | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onEscKeyDown: (key: string) => void;
+  read?: boolean;
 }
 
 // 라디오버튼 그룹 컴포넌트의 타입 정의

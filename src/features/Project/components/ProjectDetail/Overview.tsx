@@ -255,6 +255,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 value={formData.techStack}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
+                read={true}
               />
             </div>
           )}

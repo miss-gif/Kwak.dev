@@ -9,6 +9,7 @@ const LabelInput = ({
   value,
   onChange,
   onEscKeyDown,
+  read = false,
 }: LabelInputProps) => (
   <div className="flex items-center py-2">
     {label && (
@@ -28,6 +29,7 @@ const LabelInput = ({
       onChange={onChange}
       onKeyDown={(e) => handleEscKeyDown(e, onEscKeyDown, name)}
       className="w-full rounded-md border border-gray-300 p-2 focus:ring focus:ring-blue-500"
+      readOnly={read}
     />
   </div>
 );
