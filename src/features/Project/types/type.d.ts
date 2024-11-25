@@ -4,7 +4,7 @@ export interface LabelInputProps {
   type: string;
   placeholder: string;
   name: string;
-  value: string | string[];
+  value: string | string[] | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onEscKeyDown: (key: string) => void;
 }

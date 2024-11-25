@@ -180,9 +180,9 @@ const Description = ({ data, editMode }: DescriptionProps) => {
       {/* 결과 */}
       <p className="mb-2 text-xl font-semibold">4. 결과</p>
       {!editMode ? (
-        <ul className="mb-4 list-inside list-disc">
+        <ul className="mb-4">
           {result.map((item, index) => (
-            <li key={index}>
+            <li key={index} className="flex gap-1">
               <strong className="text-blue-500">{item.title}</strong>
               {item.text.join(", ")}
             </li>

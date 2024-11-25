@@ -13,6 +13,7 @@ interface OverviewProps {
 
 const Overview = ({ data, editMode }: OverviewProps) => {
   const {
+    id,
     projectName,
     description,
     thumbnail,
@@ -54,30 +55,40 @@ const Overview = ({ data, editMode }: OverviewProps) => {
     <div className="">
       <div>
         {!editMode ? (
-          <h3 className="mb-2 text-xl font-bold">{projectName}</h3>
+          <>
+            <h3 className="mb-2 text-xl font-bold">{projectName}</h3>
+            <p className="mb-4 text-gray-700">{description}</p>
+          </>
         ) : (
-          <LabelInput
-            label="프로젝트"
-            type="text"
-            placeholder="프로젝트 입력"
-            name="projectName"
-            value={projectName}
-            onChange={handleInputChange}
-            onEscKeyDown={resetFormDataValue}
-          />
-        )}
-        {!editMode ? (
-          <p className="mb-4 text-gray-700">{description}</p>
-        ) : (
-          <LabelInput
-            label="프로젝트 설명"
-            type="text"
-            placeholder="프로젝트 설명 입력"
-            name="description"
-            value={description}
-            onChange={handleInputChange}
-            onEscKeyDown={resetFormDataValue}
-          />
+          <>
+            <LabelInput
+              label="ID"
+              type="text"
+              placeholder="ID 입력"
+              name="id"
+              value={id}
+              onChange={handleInputChange}
+              onEscKeyDown={resetFormDataValue}
+            />
+            <LabelInput
+              label="프로젝트"
+              type="text"
+              placeholder="프로젝트 입력"
+              name="projectName"
+              value={projectName}
+              onChange={handleInputChange}
+              onEscKeyDown={resetFormDataValue}
+            />
+            <LabelInput
+              label="프로젝트 설명"
+              type="text"
+              placeholder="프로젝트 설명 입력"
+              name="description"
+              value={description}
+              onChange={handleInputChange}
+              onEscKeyDown={resetFormDataValue}
+            />
+          </>
         )}
       </div>
       {/* 썸네일과 주요 정보 */}
