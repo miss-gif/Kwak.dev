@@ -42,18 +42,16 @@ const Overview = ({ data, editMode }: OverviewProps) => {
   };
 
   const fields = [
-    { label: "ID", name: "id", value: formData.id, placeholder: "ID 입력" },
+    { label: "ID", name: "id", value: formData.id },
     {
       label: "프로젝트",
       name: "projectName",
       value: formData.projectName,
-      placeholder: "프로젝트 입력",
     },
     {
       label: "프로젝트 설명",
       name: "description",
       value: formData.description,
-      placeholder: "프로젝트 설명 입력",
     },
   ];
 
@@ -99,8 +97,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
               <LabelInput
                 key={field.name}
                 label={field.label}
-                type="text"
-                placeholder={field.placeholder}
                 name={field.name}
                 value={field.value}
                 onChange={handleInputChange}
@@ -122,8 +118,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             <>
               <LabelInput
                 label="썸네일 URL"
-                type="text"
-                placeholder="썸네일 URL 입력"
                 name="thumbnail"
                 value={formData.thumbnail}
                 onChange={handleInputChange}
@@ -176,8 +170,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           ) : (
             <LabelInput
               label="클라이언트"
-              type="text"
-              placeholder="클라이언트 입력"
               name="client"
               value={formData.client}
               onChange={handleInputChange}
@@ -193,13 +185,9 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             </div>
           ) : (
             <div className="flex items-center py-2">
-              <label className="block min-w-24 shrink-0 text-sm font-medium">
-                작업기간
-              </label>
               <div className="flex items-center gap-2 text-gray-600">
                 <LabelInput
-                  type="text"
-                  placeholder="시작 입력"
+                  label="작업기간"
                   name="startDate"
                   value={formData.startDate}
                   onChange={handleInputChange}
@@ -207,8 +195,7 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                 />
                 ~
                 <LabelInput
-                  type="text"
-                  placeholder="종료 입력"
+                  // label="작업종료"
                   name="endDate"
                   value={formData.endDate}
                   onChange={handleInputChange}
@@ -228,8 +215,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             <div>
               <LabelInput
                 label="작업 인원"
-                type="text"
-                placeholder="작업 참여 인원"
                 name="teamSize"
                 value={formData.teamSize}
                 onChange={handleInputChange}
@@ -249,8 +234,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             <div>
               <LabelInput
                 label="기술스택"
-                type="text"
-                placeholder="기술스택 입력"
                 name="techStack"
                 value={formData.techStack}
                 onChange={handleInputChange}
@@ -270,8 +253,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             ) : (
               <LabelInput
                 label="기획"
-                type="text"
-                placeholder="기획 입력"
                 name="planning"
                 value={formData.planning}
                 onChange={handleInputChange}
@@ -286,8 +267,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             ) : (
               <LabelInput
                 label="디자인"
-                type="text"
-                placeholder="디자인 입력"
                 name="design"
                 value={formData.design}
                 onChange={handleInputChange}
@@ -302,8 +281,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             ) : (
               <LabelInput
                 label="퍼블리싱"
-                type="text"
-                placeholder="퍼블리싱 입력"
                 name="publishing"
                 value={formData.publishing}
                 onChange={handleInputChange}
@@ -318,8 +295,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
             ) : (
               <LabelInput
                 label="개발"
-                type="text"
-                placeholder="개발 입력"
                 name="development"
                 value={formData.development}
                 onChange={handleInputChange}
@@ -344,8 +319,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
                   <LabelInput
                     key={url.name}
                     label={url.label}
-                    type="text"
-                    placeholder={`${url.label} URL 입력`}
                     name={url.name}
                     value={url.value}
                     onChange={handleInputChange}

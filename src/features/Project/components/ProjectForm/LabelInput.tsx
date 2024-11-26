@@ -3,8 +3,8 @@ import { LabelInputProps } from "../../types/type";
 
 const LabelInput = ({
   label,
-  type,
-  placeholder,
+  type = "text",
+  placeholder = `${label} 입력하세요.`,
   name,
   value,
   onChange,

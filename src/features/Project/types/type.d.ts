@@ -1,8 +1,8 @@
 // 라벨과 인풋을 포함한 컴포넌트의 타입 정의
 export interface LabelInputProps {
   label?: string;
-  type: string;
-  placeholder: string;
+  type?: string;
+  placeholder?: string;
   name: string;
   value: string | string[] | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

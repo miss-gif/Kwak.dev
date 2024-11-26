@@ -1,8 +1,7 @@
+import Button from "@/components/Button";
 import { useState } from "react";
 import { ProjectData } from "../../types/type";
 import LabelInput from "../ProjectForm/LabelInput";
-import { initFormData } from "../../data/initFormData";
-import Button from "@/components/Button";
 
 interface DescriptionProps {
   data: ProjectData;
@@ -10,16 +9,12 @@ interface DescriptionProps {
 }
 
 const Description = ({ data, editMode }: DescriptionProps) => {
-  const { achievement, goal, features, technology, result } = data;
+  const [formData, setFormData] = useState(data);
 
-  const [formData, setFormData] = useState(initFormData);
-
-  console.log(formData);
-
-  const resetFormDataValue = (key: string) => {
+  const resetFormDataValue = (key: string, defaultValue: string = "") => {
     setFormData((prev) => ({
       ...prev,
-      [key]: "",
+      [key]: defaultValue,
     }));
   };
 
@@ -31,6 +26,10 @@ const Description = ({ data, editMode }: DescriptionProps) => {
     }));
   };
 
+  const handleSave = () => {
+    console.log("저장된 데이터: ", formData);
+  };
+
   return (
     <div className="rounded-md">
       {/* 성과 */}
@@ -38,7 +37,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
         <p className="text-xl font-semibold">성과</p>
         {!editMode ? (
           <ul>
-            {achievement.map((item, index) => (
+            {formData.achievement.map((item, index) => (
               <li key={index} className="flex gap-1">
                 {item.text}
               </li>
@@ -46,7 +45,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
           </ul>
         ) : (
           <ul>
-            {achievement.map((item, index) => (
+            {formData.achievement.map((item, index) => (
               <li key={index} className="text-blue-500">
                 <LabelInput
                   type="text"
@@ -68,7 +67,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
       <p className="mb-2 text-xl font-semibold">1. 목표</p>
       {!editMode ? (
         <ul className="mb-4 list-inside list-disc">
-          {goal.map((item, index) => (
+          {formData.goal.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="text-blue-500">{item.title}</strong>
               {item.text}
@@ -77,7 +76,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
         </ul>
       ) : (
         <ul className="mb-4 list-inside list-disc">
-          {goal.map((item, index) => (
+          {formData.goal.map((item, index) => (
             <li key={index} className="list-none">
               <LabelInput
                 label="제목"
@@ -107,7 +106,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
 
       {!editMode ? (
         <ul className="mb-4 list-inside list-disc">
-          {features.map((item, index) => (
+          {formData.features.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="shrink-0 text-blue-500">{item.title}</strong>
               {item.text}
@@ -116,7 +115,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
         </ul>
       ) : (
         <ul className="mb-4 list-inside list-disc">
-          {features.map((item, index) => (
+          {formData.features.map((item, index) => (
             <li key={index} className="list-none">
               <LabelInput
                 label="제목"
@@ -145,7 +144,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
       <p className="mb-2 text-xl font-semibold">3. 사용 기술</p>
       {!editMode ? (
         <ul className="mb-4 list-inside list-disc">
-          {technology.map((item, index) => (
+          {formData.technology.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="text-blue-500">{item.title}</strong>
               {item.text}
@@ -154,7 +153,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
         </ul>
       ) : (
         <ul className="mb-4 list-inside list-disc">
-          {technology.map((item, index) => (
+          {formData.technology.map((item, index) => (
             <li key={index} className="list-none">
               <LabelInput
                 label="제목"
@@ -183,7 +182,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
       <p className="mb-2 text-xl font-semibold">4. 결과</p>
       {!editMode ? (
         <ul className="mb-4">
-          {result.map((item, index) => (
+          {formData.result.map((item, index) => (
             <li key={index} className="flex gap-1">
               <strong className="text-blue-500">{item.title}</strong>
               {item.text}
@@ -192,7 +191,7 @@ const Description = ({ data, editMode }: DescriptionProps) => {
         </ul>
       ) : (
         <ul className="mb-4 list-inside list-disc">
-          {result.map((item, index) => (
+          {formData.result.map((item, index) => (
             <li key={index} className="list-none">
               <LabelInput
                 label="제목"
@@ -216,7 +215,14 @@ const Description = ({ data, editMode }: DescriptionProps) => {
           ))}
         </ul>
       )}
-      {editMode && <Button label="저장하기" width="w-full" mt="mt-4" />}
+      {editMode && (
+        <Button
+          label="저장하기"
+          width="w-full"
+          mt="mt-4"
+          onClick={handleSave}
+        />
+      )}
     </div>
   );
 };
