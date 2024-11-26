@@ -1,4 +1,5 @@
 import Button, { BackButton, LinkButton } from "@/components/Button";
+import StickyWrapper from "@/components/common/StickyWrapper";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 interface ProjectButtonHeaderProps {
@@ -28,16 +29,15 @@ export const ProjectEdit = ({
   onToggleEditMode,
 }: ProjectEditProps) => {
   return (
-    <ProjectButtonHeader>
+    <StickyWrapper>
       <BackButton label={<ArrowBackIosNewIcon />} color="blue" />
       {!editMode ? (
         <Button label="프로젝트 수정" onClick={onToggleEditMode} />
       ) : (
         <div className="flex gap-2">
-          <Button label="수정 취소" color="red" onClick={onToggleEditMode} />
-          <Button label="수정 저장" onClick={onToggleEditMode} />
+          <Button label="취소" color="red" onClick={onToggleEditMode} />
         </div>
       )}
-    </ProjectButtonHeader>
+    </StickyWrapper>
   );
 };

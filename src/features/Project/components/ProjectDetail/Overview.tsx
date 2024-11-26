@@ -330,14 +330,14 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           </div>
         </div>
       </div>
-      {editMode && (
+      {/* {editMode && (
         <Button
           label="저장하기"
           width="w-full"
           mt="mt-4"
           onClick={handleSave}
         />
-      )}
+      )} */}
     </div>
   );
 };

@@ -50,9 +50,9 @@ const Description = ({ data, editMode }: DescriptionProps) => {
   };
 
   return (
-    <div className="rounded-md">
+    <div className="flex flex-col items-center justify-center rounded-md">
       {/* 성과 */}
-      <div className="my-6 flex flex-col gap-2 rounded-md bg-slate-800 p-4 text-white">
+      <div className="my-6 flex w-full flex-col gap-2 rounded-md bg-slate-800 p-4 text-white">
         <p className="text-xl font-semibold">성과</p>
         {!editMode ? (
           <ul>
@@ -82,167 +82,186 @@ const Description = ({ data, editMode }: DescriptionProps) => {
         )}
       </div>
 
-      <p className="mb-4 text-2xl font-bold">프로젝트 문서</p>
-      <p className="mb-2 text-xl font-semibold">1. 목표</p>
-      {!editMode ? (
-        <ul className="mb-4 list-inside list-disc">
-          {formData.goal.map((item, index) => (
-            <li key={index} className="flex gap-1">
-              <strong className="text-blue-500">{item.title}</strong>
-              {item.text}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ul className="mb-4 list-inside list-disc">
-          {formData.goal.map((item, index) => (
-            <li key={index} className="list-none">
-              <LabelInput
-                label="제목"
-                name={`goal-title-${index}`}
-                value={item.title || ""}
-                onChange={(e) => handleInputChange(e, "goal", index, "title")}
-                onEscKeyDown={() => resetFormDataValue("goal", index, "title")}
-              />
-              <LabelInput
-                label="내용"
-                name={`goal-text-${index}`}
-                value={item.text || ""}
-                onChange={(e) => handleInputChange(e, "goal", index, "text")}
-                onEscKeyDown={() => resetFormDataValue("goal", index, "text")}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="w-full">
+        <p className="mb-4 text-2xl font-bold">프로젝트 문서</p>
+        <p className="mb-2 text-xl font-semibold">1. 목표</p>
+        {!editMode ? (
+          <ul className="mb-4 list-inside list-disc">
+            {formData.goal.map((item, index) => (
+              <li key={index} className="flex gap-1">
+                <strong className="text-blue-500">{item.title}</strong>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul className="mb-4 list-inside list-disc">
+            {formData.goal.map((item, index) => (
+              <li key={index} className="list-none">
+                <LabelInput
+                  label="제목"
+                  name={`goal-title-${index}`}
+                  value={item.title || ""}
+                  onChange={(e) => handleInputChange(e, "goal", index, "title")}
+                  onEscKeyDown={() =>
+                    resetFormDataValue("goal", index, "title")
+                  }
+                />
+                <LabelInput
+                  label="내용"
+                  name={`goal-text-${index}`}
+                  value={item.text || ""}
+                  onChange={(e) => handleInputChange(e, "goal", index, "text")}
+                  onEscKeyDown={() => resetFormDataValue("goal", index, "text")}
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
-      {/* 주요 기능 */}
-      <p className="mb-2 text-xl font-semibold">2. 주요 기능</p>
+      <div className="w-full">
+        {/* 주요 기능 */}
+        <p className="mb-2 text-xl font-semibold">2. 주요 기능</p>
 
-      {!editMode ? (
-        <ul className="mb-4 list-inside list-disc">
-          {formData.goal.map((item, index) => (
-            <li key={index} className="flex gap-1">
-              <strong className="text-blue-500">{item.title}</strong>
-              {item.text}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ul className="mb-4 list-inside list-disc">
-          {formData.features.map((item, index) => (
-            <li key={index} className="list-none">
-              <LabelInput
-                label="제목"
-                name={`features-title-${index}`}
-                value={item.title || ""}
-                onChange={(e) =>
-                  handleInputChange(e, "features", index, "title")
-                }
-                onEscKeyDown={() =>
-                  resetFormDataValue("features", index, "title")
-                }
-              />
-              <LabelInput
-                label="내용"
-                name={`features-text-${index}`}
-                value={item.text || ""}
-                onChange={(e) =>
-                  handleInputChange(e, "features", index, "text")
-                }
-                onEscKeyDown={() =>
-                  resetFormDataValue("features", index, "text")
-                }
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+        {!editMode ? (
+          <ul className="mb-4 list-inside list-disc">
+            {formData.goal.map((item, index) => (
+              <li key={index} className="flex gap-1">
+                <strong className="text-blue-500">{item.title}</strong>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul className="mb-4 list-inside list-disc">
+            {formData.features.map((item, index) => (
+              <li key={index} className="list-none">
+                <LabelInput
+                  label="제목"
+                  name={`features-title-${index}`}
+                  value={item.title || ""}
+                  onChange={(e) =>
+                    handleInputChange(e, "features", index, "title")
+                  }
+                  onEscKeyDown={() =>
+                    resetFormDataValue("features", index, "title")
+                  }
+                />
+                <LabelInput
+                  label="내용"
+                  name={`features-text-${index}`}
+                  value={item.text || ""}
+                  onChange={(e) =>
+                    handleInputChange(e, "features", index, "text")
+                  }
+                  onEscKeyDown={() =>
+                    resetFormDataValue("features", index, "text")
+                  }
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
-      {/* 사용 기술 */}
-      <p className="mb-2 text-xl font-semibold">3. 사용 기술</p>
-      {!editMode ? (
-        <ul className="mb-4 list-inside list-disc">
-          {formData.technology.map((item, index) => (
-            <li key={index} className="flex gap-1">
-              <strong className="text-blue-500">{item.title}</strong>
-              {item.text}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ul className="mb-4 list-inside list-disc">
-          {formData.technology.map((item, index) => (
-            <li key={index} className="list-none">
-              <LabelInput
-                label="제목"
-                name={`technology-title-${index}`}
-                value={item.title}
-                onChange={(e) =>
-                  handleInputChange(e, "technology", index, "title")
-                }
-                onEscKeyDown={() =>
-                  resetFormDataValue("technology", index, "title")
-                }
-              />
-              <LabelInput
-                label="내용"
-                name={`technology-text-${index}`}
-                value={item.text}
-                onChange={(e) =>
-                  handleInputChange(e, "technology", index, "text")
-                }
-                onEscKeyDown={() =>
-                  resetFormDataValue("technology", index, "text")
-                }
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="w-full">
+        {/* 사용 기술 */}
+        <p className="mb-2 text-xl font-semibold">3. 사용 기술</p>
+        {!editMode ? (
+          <ul className="mb-4 list-inside list-disc">
+            {formData.technology.map((item, index) => (
+              <li key={index} className="flex gap-1">
+                <strong className="text-blue-500">{item.title}</strong>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul className="mb-4 list-inside list-disc">
+            {formData.technology.map((item, index) => (
+              <li key={index} className="list-none">
+                <LabelInput
+                  label="제목"
+                  name={`technology-title-${index}`}
+                  value={item.title}
+                  onChange={(e) =>
+                    handleInputChange(e, "technology", index, "title")
+                  }
+                  onEscKeyDown={() =>
+                    resetFormDataValue("technology", index, "title")
+                  }
+                />
+                <LabelInput
+                  label="내용"
+                  name={`technology-text-${index}`}
+                  value={item.text}
+                  onChange={(e) =>
+                    handleInputChange(e, "technology", index, "text")
+                  }
+                  onEscKeyDown={() =>
+                    resetFormDataValue("technology", index, "text")
+                  }
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
 
-      {/* 결과 */}
-      <p className="mb-2 text-xl font-semibold">4. 결과</p>
-      {!editMode ? (
-        <ul className="mb-4">
-          {formData.result.map((item, index) => (
-            <li key={index} className="flex gap-1">
-              <strong className="text-blue-500">{item.title}</strong>
-              {item.text}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <ul className="mb-4 list-inside list-disc">
-          {formData.result.map((item, index) => (
-            <li key={index} className="list-none">
-              <LabelInput
-                label="제목"
-                name={`result-title-${index}`}
-                value={item.title}
-                onChange={(e) => handleInputChange(e, "result", index, "title")}
-                onEscKeyDown={() =>
-                  resetFormDataValue("result", index, "title")
-                }
-              />
-              <LabelInput
-                label="내용"
-                name={`result-text-${index}`}
-                value={item.text}
-                onChange={(e) => handleInputChange(e, "result", index, "text")}
-                onEscKeyDown={() => resetFormDataValue("result", index, "text")}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      <div className="w-full">
+        {/* 결과 */}
+        <p className="mb-2 text-xl font-semibold">4. 결과</p>
+        {!editMode ? (
+          <ul className="mb-4">
+            {formData.result.map((item, index) => (
+              <li key={index} className="flex gap-1">
+                <strong className="text-blue-500">{item.title}</strong>
+                {item.text}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul className="mb-4 list-inside list-disc">
+            {formData.result.map((item, index) => (
+              <li key={index} className="list-none">
+                <LabelInput
+                  label="제목"
+                  name={`result-title-${index}`}
+                  value={item.title}
+                  onChange={(e) =>
+                    handleInputChange(e, "result", index, "title")
+                  }
+                  onEscKeyDown={() =>
+                    resetFormDataValue("result", index, "title")
+                  }
+                />
+                <LabelInput
+                  label="내용"
+                  name={`result-text-${index}`}
+                  value={item.text}
+                  onChange={(e) =>
+                    handleInputChange(e, "result", index, "text")
+                  }
+                  onEscKeyDown={() =>
+                    resetFormDataValue("result", index, "text")
+                  }
+                />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
       {editMode && (
-        <Button
-          label="저장하기"
-          width="w-full"
-          mt="mt-4"
-          onClick={handleSave}
-        />
+        <div className="sticky bottom-2 w-full max-w-screen-xl">
+          <Button
+            label="저장하기"
+            width="w-full"
+            mt="mt-4"
+            onClick={handleSave}
+          />
+        </div>
       )}
     </div>
   );
