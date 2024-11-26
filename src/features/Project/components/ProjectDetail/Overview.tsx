@@ -1,33 +1,30 @@
-import Button from "@/components/Button";
+import BasicModal from "@/components/Modal";
 import { useAuthStore } from "@/stores/authStore";
-import { useState } from "react";
 import { ProjectData } from "../../types/type";
 import LabelInput from "../ProjectForm/LabelInput";
 import RadioGroup from "../ProjectForm/RadioGroup";
-import BasicModal from "@/components/Modal";
 
 interface OverviewProps {
-  data: ProjectData;
+  formData: ProjectData;
   editMode: boolean;
+  setFormData: React.Dispatch<React.SetStateAction<ProjectData>>;
 }
 
-const Overview = ({ data, editMode }: OverviewProps) => {
+const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
   const { user } = useAuthStore();
-
-  const [formData, setFormData] = useState({ ...data });
-
-  const resetFormDataValue = (key: string, defaultValue: string = "") => {
-    setFormData((prev) => ({
-      ...prev,
-      [key]: defaultValue,
-    }));
-  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+    }));
+  };
+
+  const resetFormDataValue = (key: string, defaultValue: string = "") => {
+    setFormData((prev) => ({
+      ...prev,
+      [key]: defaultValue,
     }));
   };
 
@@ -62,10 +59,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
     { label: "Figma", name: "figmaUrl", value: formData.figmaUrl },
     { label: "Swagger", name: "swaggerUrl", value: formData.swaggerUrl },
   ];
-
-  const handleSave = () => {
-    console.log("저장된 데이터: ", formData);
-  };
 
   const renderLink = (label: string, url: string) => (
     <a
@@ -330,14 +323,6 @@ const Overview = ({ data, editMode }: OverviewProps) => {
           </div>
         </div>
       </div>
-      {/* {editMode && (
-        <Button
-          label="저장하기"
-          width="w-full"
-          mt="mt-4"
-          onClick={handleSave}
-        />
-      )} */}
     </div>
   );
 };

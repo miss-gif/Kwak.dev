@@ -1,16 +1,13 @@
-import Button from "@/components/Button";
-import { useState } from "react";
 import { ProjectData } from "../../types/type";
 import LabelInput from "../ProjectForm/LabelInput";
 
 interface DescriptionProps {
-  data: ProjectData;
+  formData: ProjectData;
   editMode: boolean;
+  setFormData: React.Dispatch<React.SetStateAction<ProjectData>>;
 }
 
-const Description = ({ data, editMode }: DescriptionProps) => {
-  const [formData, setFormData] = useState(data);
-
+const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     key: keyof typeof formData,
@@ -38,15 +35,6 @@ const Description = ({ data, editMode }: DescriptionProps) => {
       updatedArray[index] = { ...updatedArray[index], [field]: "" };
       return { ...prev, [key]: updatedArray };
     });
-  };
-
-  const handleSave = async () => {
-    try {
-      console.log("저장된 데이터: ", formData);
-      alert("데이터가 성공적으로 저장되었습니다!");
-    } catch (error) {
-      console.error("저장 중 오류 발생: ", error);
-    }
   };
 
   return (
@@ -252,17 +240,6 @@ const Description = ({ data, editMode }: DescriptionProps) => {
           </ul>
         )}
       </div>
-
-      {editMode && (
-        <div className="sticky bottom-2 w-full max-w-screen-xl">
-          <Button
-            label="저장하기"
-            width="w-full"
-            mt="mt-4"
-            onClick={handleSave}
-          />
-        </div>
-      )}
     </div>
   );
 };
