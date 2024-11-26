@@ -40,7 +40,7 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
           width="w-full"
           mt="mt-4"
           onClick={() =>
-            onSubmit({ collectionName: "Project", data: formData })
+            onSubmit({ collectionName: "project", data: formData })
           }
         />
       </div>

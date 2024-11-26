@@ -15,7 +15,7 @@ const ProjectListPage = () => {
     const loadProjects = async () => {
       try {
         const projectData = await fetchCollection({
-          collectionName: "Project",
+          collectionName: "project",
         });
         console.log("projectData", projectData);
         setProjects(projectData);

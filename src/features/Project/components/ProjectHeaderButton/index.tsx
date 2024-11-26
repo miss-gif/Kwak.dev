@@ -34,7 +34,7 @@ export const ProjectEdit = ({
 }: ProjectEditProps) => {
   return (
     <StickyWrapper>
-      <BackButton label={<ArrowBackIosNewIcon />} color="blue" />
+      <LinkButton label={<ArrowBackIosNewIcon />} color="blue" to="/project" />
       {!editMode ? (
         <Button label="프로젝트 수정" onClick={onToggleEditMode} />
       ) : (

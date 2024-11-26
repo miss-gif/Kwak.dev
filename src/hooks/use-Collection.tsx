@@ -1,6 +1,12 @@
 import { ProjectData } from "@/features/Project/types/type";
 import { db } from "@/firebaseConfig";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -14,12 +20,13 @@ const useCollection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  // 전체 리스트 호출
   const fetchCollection = async ({
     collectionName,
   }: {
     collectionName: string;
   }): Promise<ProjectData[]> => {
-    const list = collection(db, collectionName);
+    const list = query(collection(db, collectionName), orderBy("id"));
     const snapshot = await getDocs(list);
     const data = snapshot.docs.map((doc) => ({
       id: doc.id,
