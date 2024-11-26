@@ -12,7 +12,7 @@ interface ProjectEditProps {
 }
 
 interface ProjectCreateProps {
-  handleCreate: () => void;
+  handleFormReset: () => void;
 }
 
 const ProjectButtonHeader = ({ children }: ProjectButtonHeaderProps) => {
@@ -46,11 +46,11 @@ export const ProjectEdit = ({
   );
 };
 
-export const ProjectCreate = ({ handleCreate }: ProjectCreateProps) => {
+export const ProjectCreate = ({ handleFormReset }: ProjectCreateProps) => {
   return (
     <StickyWrapper>
       <BackButton label={<ArrowBackIosNewIcon />} color="blue" />
-      <Button label="프로젝트 등록" onClick={handleCreate} />
+      <Button label="초기화" color="red" onClick={handleFormReset} />
     </StickyWrapper>
   );
 };

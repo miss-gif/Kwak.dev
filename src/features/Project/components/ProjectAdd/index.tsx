@@ -6,24 +6,24 @@ import { ProjectData } from "../../types/type";
 import Description from "../ProjectDetail/Description";
 import Overview from "../ProjectDetail/Overview";
 import { ProjectCreate } from "../ProjectHeaderButton";
+import useCollection from "@/hooks/use-Collection";
 
 interface ProjectAddProps {
   data: ProjectData;
 }
 
 const ProjectAdd = ({ data }: ProjectAddProps) => {
-  const [editMode, _] = useState(true);
+  const [editMode] = useState(true);
   const [formData, setFormData] = useState<ProjectData>(initFormData);
+  const { onSubmit } = useCollection();
 
   if (!data) return <NotFoundPage />;
 
-  const handleSave = async () => console.log("저장하기", formData);
-
-  const handleCreate = () => console.log("프로젝트 등록");
+  const handleFormReset = () => setFormData(initFormData);
 
   return (
     <>
-      <ProjectCreate handleCreate={handleCreate} />
+      <ProjectCreate handleFormReset={handleFormReset} />
       <Overview
         formData={formData}
         setFormData={setFormData}
@@ -34,13 +34,14 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
         setFormData={setFormData}
         editMode={editMode}
       />
-
       <div className="sticky bottom-2 w-full max-w-screen-xl">
         <Button
           label="저장하기"
           width="w-full"
           mt="mt-4"
-          onClick={handleSave}
+          onClick={() =>
+            onSubmit({ collectionName: "Project", data: formData })
+          }
         />
       </div>
     </>
