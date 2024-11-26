@@ -5,7 +5,7 @@ export const initFormData = {
   badgeProjectDevice: "",
   badgeProjectType: "",
   badgeParticipation: "",
-  thumbnail: "",
+  thumbnail: "https://via.placeholder.com/500.jpg",
   startDate: "",
   endDate: "",
   techStack: [],

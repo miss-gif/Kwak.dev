@@ -11,6 +11,10 @@ interface ProjectEditProps {
   onToggleEditMode: () => void;
 }
 
+interface ProjectCreateProps {
+  handleCreate: () => void;
+}
+
 const ProjectButtonHeader = ({ children }: ProjectButtonHeaderProps) => {
   return <div className="mb-4 flex justify-between">{children}</div>;
 };
@@ -38,6 +42,15 @@ export const ProjectEdit = ({
           <Button label="취소" color="red" onClick={onToggleEditMode} />
         </div>
       )}
+    </StickyWrapper>
+  );
+};
+
+export const ProjectCreate = ({ handleCreate }: ProjectCreateProps) => {
+  return (
+    <StickyWrapper>
+      <BackButton label={<ArrowBackIosNewIcon />} color="blue" />
+      <Button label="프로젝트 등록" onClick={handleCreate} />
     </StickyWrapper>
   );
 };
