@@ -24,20 +24,23 @@ const PostAdd = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue, // 입력 값 제어
+    setValue,
   } = useForm<PostFormData>({
     resolver: zodResolver(postSchema),
+    defaultValues: {
+      author: user?.email ?? "", // 초기값 설정
+      id: Math.floor(Math.random() * 10000), // 랜덤 id 값 설정
+    },
   });
 
   const handleCreateData = async (data: PostFormData) => {
     try {
-      // 폼 데이터로 전달된 값으로 업데이트
       const docID = await createData({
         collectionName: "posts",
         formData: data,
       });
       toast.success("프로젝트가 성공적으로 저장되었습니다.");
-      navigate(`/post/${docID}`); // 생성된 문서의 고유 ID로 페이지 이동
+      navigate(`/post/${docID}`);
     } catch (error) {
       toast.error("프로젝트 저장에 실패했습니다. 다시 시도해주세요.");
       console.error(error);
@@ -61,7 +64,7 @@ const PostAdd = () => {
             className="mt-1 w-full rounded-md border border-gray-300 p-2"
             placeholder="제목을 입력하세요"
             {...register("title")}
-            onChange={(e) => setValue("title", e.target.value)} // 입력 값 업데이트
+            onChange={(e) => setValue("title", e.target.value)}
           />
           {errors.title && (
             <p className="mt-1 text-xs text-red-500">{errors.title.message}</p>
@@ -77,7 +80,7 @@ const PostAdd = () => {
             placeholder="내용을 입력하세요"
             rows={15}
             {...register("content")}
-            onChange={(e) => setValue("content", e.target.value)} // 입력 값 업데이트
+            onChange={(e) => setValue("content", e.target.value)}
           />
           {errors.content && (
             <p className="mt-1 text-xs text-red-500">
@@ -85,23 +88,16 @@ const PostAdd = () => {
             </p>
           )}
         </div>
-        <div className="hidden">
-          <label htmlFor="author" className="block text-gray-700">
-            작성자
-          </label>
-          <input
-            type="text"
-            id="author"
-            className="mt-1 w-full rounded-md border border-gray-300 p-2"
-            placeholder="작성자를 입력하세요"
-            value={user?.email ?? ""}
-            readOnly
-            {...register("author")}
-          />
-          {errors.author && (
-            <p className="mt-1 text-xs text-red-500">{errors.author.message}</p>
-          )}
-        </div>
+        <input
+          type="hidden"
+          {...register("author")}
+          value={user?.email ?? ""}
+        />
+        <input
+          type="hidden"
+          {...register("id")}
+          value={Math.floor(Math.random() * 10000)} // 임의의 id 생성
+        />
         <StickyBottomSubmit>
           <Button label="작성하기" width="w-full" mt="mt-4" type="submit" />
         </StickyBottomSubmit>

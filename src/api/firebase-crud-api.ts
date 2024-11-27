@@ -1,4 +1,3 @@
-import { ProjectData } from "@/features/Project/types/type";
 import { db } from "@/firebaseConfig";
 import {
   addDoc,
@@ -35,12 +34,12 @@ const createData = async ({
 };
 
 // Read: 모든 데이터 조회
-const readData = async ({
+const readData = async <T>({
   collectionName,
-}: firebaseCrudApiProps): Promise<ProjectData[]> => {
+}: firebaseCrudApiProps): Promise<T[]> => {
   const collectionQuery = query(
     collection(db, collectionName),
-    orderBy("id"),
+    orderBy("id", "asc"),
     limit(10),
   );
 
@@ -57,7 +56,7 @@ const readData = async ({
     };
   });
 
-  return result as ProjectData[];
+  return result as T[];
 };
 
 // Read by ID: 특정 ID로 문서 조회

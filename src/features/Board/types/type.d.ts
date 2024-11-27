@@ -1,6 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 
 export interface PostData {
+  id?: number;
   docID: string;
   title: string;
   content: string;

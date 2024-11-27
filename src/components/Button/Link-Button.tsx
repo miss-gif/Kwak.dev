@@ -10,7 +10,7 @@ const LinkButton = ({ label, to, color = "blue" }: LinkButtonProps) => {
   return (
     <Link
       to={to}
-      className={`bg-${color}-500 hover:bg-${color}-600 rounded-md px-4 py-3 text-sm text-white`}
+      className={`bg-${color}-500 hover:bg-${color}-600 shrink-0 rounded-md px-4 py-3 text-sm text-white`}
     >
       {label}
     </Link>

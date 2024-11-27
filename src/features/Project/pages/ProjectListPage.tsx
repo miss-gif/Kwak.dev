@@ -12,7 +12,7 @@ const ProjectListPage = () => {
   useEffect(() => {
     const loadProjects = async () => {
       try {
-        const projectData = await readData({
+        const projectData = await readData<ProjectData>({
           collectionName: "projects",
         });
         setProjects(projectData);

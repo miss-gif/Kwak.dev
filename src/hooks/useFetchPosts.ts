@@ -82,7 +82,7 @@ const useFetchPosts = (searchTerm: string, pageSize: number) => {
       setHasMore(querySnapshot.docs.length === pageSize);
     } catch (error) {
       setError("Error fetching posts");
-      console.error("Error fetching posts:", error); // 추가: 콘솔에 상세 오류 로그 출력
+      console.error("에러:", error); // 추가: 콘솔에 상세 오류 로그 출력
     } finally {
       setLoading(false);
     }
