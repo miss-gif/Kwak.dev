@@ -13,8 +13,10 @@ const ProjectListPage = () => {
     const loadProjects = async () => {
       try {
         const projectData = await readData({
-          collectionName: "project",
+          collectionName: "projects",
         });
+        console.log("프로젝트 불러오기 성공", projectData);
+
         setProjects(projectData);
       } catch (error) {
         console.error("프로젝트 불러오기 실패", error);
@@ -41,7 +43,7 @@ const ProjectListPage = () => {
 
       <ul className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {filteredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCard key={project.docID} project={project} />
         ))}
       </ul>
     </>

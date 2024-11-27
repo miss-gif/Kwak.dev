@@ -7,6 +7,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  limit,
   orderBy,
   query,
   updateDoc,
@@ -36,13 +37,26 @@ const createData = async ({
 const readData = async ({
   collectionName,
 }: firebaseCrudApiProps): Promise<ProjectData[]> => {
-  const querySnapshot = await getDocs(
-    query(collection(db, collectionName), orderBy("id")),
+  const collectionQuery = query(
+    collection(db, collectionName),
+    orderBy("id"),
+    limit(6),
   );
-  return querySnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  })) as ProjectData[]; // 타입 명시
+
+  const querySnapshot = await getDocs(collectionQuery);
+
+  // Firestore 문서 데이터를 변환
+  const result = querySnapshot.docs.map((doc) => {
+    const data = doc.data(); // 문서 데이터 가져오기
+    // console.log("Firestore 문서 키 (id):", doc.id); // 디버깅용
+
+    return {
+      docID: doc.id, // 문서 키 포함
+      ...data, // 문서 데이터 병합
+    };
+  });
+
+  return result as ProjectData[];
 };
 
 // Read by ID: 특정 ID로 문서 조회
@@ -86,4 +100,4 @@ const deleteData = async ({
   console.log("Document deleted");
 };
 
-export { createData, readData, getDocumentById, updateData, deleteData };
+export { createData, deleteData, getDocumentById, readData, updateData };

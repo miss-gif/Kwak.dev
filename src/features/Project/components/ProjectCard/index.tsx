@@ -7,12 +7,10 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
-  const { projectName, demoUrl, id } = project;
-
   return (
     <li className="shadow-style relative h-[450px] flex-1 list-none overflow-hidden rounded-md border bg-white">
       {/* 호버 시 딤드 효과 */}
-      <DimmedCard title={projectName} id={id} link={demoUrl} />
+      <DimmedCard project={project} />
       <PreviewCard project={project} />
     </li>
   );
