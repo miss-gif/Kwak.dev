@@ -1,19 +1,22 @@
+import Button from "@/components/Button";
 import NotFoundPage from "@/pages/NotFoundPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProjectData } from "../../types/type";
 import { ProjectEdit } from "../ProjectHeaderButton";
-import Overview from "./Overview";
 import Description from "./Description";
-import Button from "@/components/Button";
-import { initFormData } from "../../data/initFormData";
+import Overview from "./Overview";
 
 interface ProjectDetailProps {
-  data?: ProjectData;
+  data: ProjectData;
 }
 
 const ProjectDetail = ({ data }: ProjectDetailProps) => {
   const [editMode, setEditMode] = useState(false);
-  const [formData, setFormData] = useState<ProjectData>(data || initFormData);
+  const [formData, setFormData] = useState<ProjectData>(data);
+
+  useEffect(() => {
+    setFormData(data);
+  }, [data]);
 
   if (!data) return <NotFoundPage />;
 

@@ -1,5 +1,5 @@
 export const initFormData = {
-  id: 0,
+  id: null,
   projectName: "",
   description: "",
   badgeProjectDevice: "",
