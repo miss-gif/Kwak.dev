@@ -26,10 +26,14 @@ const PostEdit = () => {
   const {
     register,
     handleSubmit,
-    setValue,
     formState: { errors },
+    setValue,
   } = useForm<PostFormData>({
     resolver: zodResolver(postSchema),
+    defaultValues: {
+      author: user?.email ?? "", // 초기값 설정
+      id: 0, // 랜덤 id 값 설정
+    },
   });
 
   useEffect(() => {
@@ -119,18 +123,12 @@ const PostEdit = () => {
             )}
           </div>
 
-          <div>
-            <label htmlFor="author" className="block text-gray-700">
-              작성자
-            </label>
-            <input
-              type="text"
-              id="author"
-              className="mt-1 w-full rounded-md border border-gray-300 p-2"
-              value={user?.email ?? ""}
-              readOnly
-            />
-          </div>
+          <input
+            type="hidden"
+            {...register("author")}
+            value={user?.email ?? ""}
+          />
+          <input type="hidden" {...register("id")} value="0" />
           <StickyBottomSubmit>
             <Button label="수정하기" width="w-full" mt="mt-4" type="submit" />
           </StickyBottomSubmit>

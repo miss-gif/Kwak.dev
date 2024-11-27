@@ -29,7 +29,7 @@ const PostAdd = () => {
     resolver: zodResolver(postSchema),
     defaultValues: {
       author: user?.email ?? "", // 초기값 설정
-      id: Math.floor(Math.random() * 10000), // 랜덤 id 값 설정
+      id: 0, // 랜덤 id 값 설정
     },
   });
 
@@ -93,11 +93,7 @@ const PostAdd = () => {
           {...register("author")}
           value={user?.email ?? ""}
         />
-        <input
-          type="hidden"
-          {...register("id")}
-          value={Math.floor(Math.random() * 10000)} // 임의의 id 생성
-        />
+        <input type="hidden" {...register("id")} value="0" />
         <StickyBottomSubmit>
           <Button label="작성하기" width="w-full" mt="mt-4" type="submit" />
         </StickyBottomSubmit>

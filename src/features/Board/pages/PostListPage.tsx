@@ -22,8 +22,6 @@ const PostListPage = () => {
     loadPosts();
   }, []);
 
-  console.log("posts", posts);
-
   return (
     <div>
       <StickyWrapper>
@@ -36,13 +34,6 @@ const PostListPage = () => {
       </StickyWrapper>
 
       <PostList posts={posts} />
-      {/* <PostTable posts={posts} />
-      {loading && <p>Loading...</p>}
-      {error && <p className="text-red-500">{error}</p>}
-      {!hasMore && !loading && (
-        <p className="mt-4 text-gray-500">더 이상 게시물이 없습니다.</p>
-      )} */}
-      {/* <div ref={ref}></div> */}
     </div>
   );
 };

@@ -1,15 +1,15 @@
-import CommentList from "@/features/Board/components/CommentList";
-import ToEditPost from "@/features/Board/components/ToEditPost";
-import UpDownButton from "@/features/Board/components/UpDownButton";
-import UrlCopyButton from "@/features/Board/components/UrlCopyButton";
+import Button, { LinkButton } from "@/components/Button";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import StickyWrapper from "@/components/common/StickyWrapper";
-import ToBackButton from "@/components/common/ToBackButton";
-import { useAuthStore } from "@/stores/authStore";
+import CommentList from "@/features/Board/components/CommentList";
+import UpDownButton from "@/features/Board/components/UpDownButton";
+import UrlCopyButton from "@/features/Board/components/UrlCopyButton";
 import { db } from "@/firebaseConfig";
 import useGetPosts from "@/hooks/postbody/useGetPosts";
+import { useAuthStore } from "@/stores/authStore";
 import { handleDislike, handleLike } from "@/utils/utils";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import { deleteDoc, doc } from "firebase/firestore";
@@ -90,18 +90,17 @@ const PostDetailPage = () => {
         <div className="flex flex-col">
           {/* 버튼들 */}
           <StickyWrapper>
-            <ToBackButton title="목록" />
+            <LinkButton label={<ArrowBackIosNewIcon />} to="/board" />
             {post?.author !== user?.email ? null : (
               <div className="flex gap-2">
-                <ToEditPost onEdit={handleEdit} />
-                <button
+                <Button label="수정" onClick={handleEdit} />
+                <Button
+                  label="삭제"
                   onClick={() => {
                     handleDelete(postId, user, navigate);
                   }}
-                  className="rounded-md bg-gray-500 px-4 py-2 text-white hover:bg-gray-600"
-                >
-                  삭제
-                </button>
+                  color="red"
+                />
               </div>
             )}
           </StickyWrapper>
