@@ -1,5 +1,5 @@
 interface ButtonProps {
-  label: string;
+  label: string | React.ReactNode;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   color?: string;

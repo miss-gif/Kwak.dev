@@ -1,12 +1,16 @@
+import { deleteData } from "@/api/firebase-crud-api";
 import Button, { BackButton, LinkButton } from "@/components/Button";
 import StickyWrapper from "@/components/common/StickyWrapper";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface ProjectButtonHeaderProps {
   children: React.ReactNode;
 }
 
 interface ProjectEditProps {
+  formData: Record<string, any>;
   editMode: boolean;
   onToggleEditMode: () => void;
 }
@@ -29,17 +33,46 @@ export const ProjectAdd = () => {
 };
 
 export const ProjectEdit = ({
+  formData,
   editMode,
   onToggleEditMode,
 }: ProjectEditProps) => {
+  const navigete = useNavigate();
+
+  // 삭제 버튼 클릭 시 실행되는 함수
+  const handleDelete = async () => {
+    try {
+      if (!formData.docID) {
+        throw new Error("Document ID is required for update");
+      }
+      await deleteData({
+        collectionName: "projects",
+        docID: formData.docID,
+      });
+      toast.success("삭제 성공"); // 성공 피드백
+      onToggleEditMode(); // 삭제 모드 종료
+      navigete("/project"); // 목록 페이지로 이동
+    } catch (error) {
+      toast.error("삭제 실패"); // 사용자에게 에러 메시지 표시
+      console.error("Error in handleUpdate:", error); // 디버깅을 위한 에러 로그
+    }
+  };
+
   return (
     <StickyWrapper>
-      <LinkButton label={<ArrowBackIosNewIcon />} color="blue" to="/project" />
       {!editMode ? (
-        <Button label="프로젝트 수정" onClick={onToggleEditMode} />
+        <>
+          <LinkButton
+            label={<ArrowBackIosNewIcon />}
+            color="blue"
+            to="/project"
+          />
+          <Button label="프로젝트 수정" onClick={onToggleEditMode} />
+        </>
       ) : (
-        <div className="flex gap-2">
-          <Button label="취소" color="red" onClick={onToggleEditMode} />
+        <div className="flex w-full justify-between">
+          <Button label={<ArrowBackIosNewIcon />} onClick={onToggleEditMode} />
+          <Button label="삭제" color="red" onClick={handleDelete} />
         </div>
       )}
     </StickyWrapper>

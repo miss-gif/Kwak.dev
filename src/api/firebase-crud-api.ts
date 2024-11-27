@@ -84,13 +84,11 @@ const updateData = async ({
   formData,
 }: firebaseIDProps): Promise<void> => {
   if (!formData) {
-    console.log("No data provided for update");
+    console.log("데이터가 없습니다.");
     return;
   }
-
   const userRef = doc(db, collectionName, docID);
   await updateDoc(userRef, formData);
-  console.log("Document updated");
 };
 
 // Delete: 특정 ID로 데이터 삭제
