@@ -50,7 +50,7 @@ const PostAdd = () => {
         onSubmit={handleSubmit(handleCreateData)}
         className="w-full space-y-4"
       >
-        <PostHeader />
+        <PostHeader label="새 글 작성" />
         <div>
           <label htmlFor="title" className="block text-gray-700">
             제목
@@ -103,7 +103,7 @@ const PostAdd = () => {
           )}
         </div>
         <StickyBottomSubmit>
-          <Button label="저장하기" width="w-full" mt="mt-4" type="submit" />
+          <Button label="작성하기" width="w-full" mt="mt-4" type="submit" />
         </StickyBottomSubmit>
       </form>
     </div>

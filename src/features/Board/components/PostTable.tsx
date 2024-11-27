@@ -1,8 +1,8 @@
-import Post from "@/types/post";
 import { formatDate } from "@/utils/formatDate";
 import { useNavigate } from "react-router-dom";
+import { PostData } from "../types/type";
 
-const PostTable = ({ posts }: { posts: Post[] }) => {
+const PostTable = ({ posts }: { posts: PostData[] }) => {
   const navigate = useNavigate();
 
   return (
@@ -33,9 +33,9 @@ const PostTable = ({ posts }: { posts: Post[] }) => {
       <tbody>
         {posts.map((post) => (
           <tr
-            key={post.postId}
+            key={post.docID}
             className="h-10 cursor-pointer border-b hover:bg-orange-200"
-            onClick={() => navigate(`/post/${post.postId}`)}
+            onClick={() => navigate(`/post/${post.docID}`)}
           >
             <td className="px-4">{post.title}</td>
             <td>{post.author}</td>

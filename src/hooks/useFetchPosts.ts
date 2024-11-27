@@ -11,10 +11,10 @@ import {
   QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
-import Post from "@/types/post";
+import { PostData } from "@/features/Board/types/type";
 
 const useFetchPosts = (searchTerm: string, pageSize: number) => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostData[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [lastDoc, setLastDoc] =
     useState<QueryDocumentSnapshot<DocumentData> | null>(null);
@@ -57,7 +57,7 @@ const useFetchPosts = (searchTerm: string, pageSize: number) => {
       const fetchedPosts = querySnapshot.docs.map((doc) => {
         const data = doc.data();
         return {
-          postId: doc.id,
+          docID: doc.id,
           title: data.title,
           content: data.content,
           author: data.author,

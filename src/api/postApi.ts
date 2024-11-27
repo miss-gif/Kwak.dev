@@ -1,5 +1,5 @@
+import { PostData } from "@/features/Board/types/type";
 import { db } from "@/firebaseConfig";
-import Posts from "@/types/posts";
 import {
   addDoc,
   arrayRemove,
@@ -16,7 +16,7 @@ import {
 } from "firebase/firestore";
 
 // 게시물 목록 조회
-export const getAllPosts = async (): Promise<Posts[]> => {
+export const getAllPosts = async (): Promise<PostData[]> => {
   try {
     // 쿼리 생성: 'createdAt' 필드를 기준으로 내림차순 정렬
     const postsQuery = query(
@@ -30,9 +30,9 @@ export const getAllPosts = async (): Promise<Posts[]> => {
 
     // 쿼리 결과를 Posts 타입으로 변환
     const posts = querySnapshot.docs.map((doc) => ({
-      postId: doc.id,
+      docID: doc.id,
       ...doc.data(),
-    })) as Posts[];
+    })) as PostData[];
 
     return posts;
   } catch (error) {
@@ -42,11 +42,11 @@ export const getAllPosts = async (): Promise<Posts[]> => {
 };
 
 // 게시물 상세 조회
-export const getPostById = async (postId: string): Promise<Posts> => {
-  const docRef = doc(db, "posts", postId);
+export const getPostById = async (docID: string): Promise<PostData> => {
+  const docRef = doc(db, "posts", docID);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) {
-    return { id: docSnap.id, ...docSnap.data() } as Posts;
+    return { docID: docSnap.id, ...docSnap.data() } as PostData;
   } else {
     throw new Error("게시물을 찾을 수 없습니다.");
   }
@@ -78,13 +78,13 @@ export const createPost = async (postData: {
 
 // 게시물 수정
 export const updatePost = async (
-  postId: string,
+  docID: string,
   updatedData: { title?: string; content?: string; likes?: number },
 ) => {
   try {
-    const postRef = doc(db, "posts", postId);
+    const postRef = doc(db, "posts", docID);
     await updateDoc(postRef, updatedData);
-    return { id: postId, ...updatedData };
+    return { id: docID, ...updatedData };
   } catch (error) {
     console.error("Error updating post:", error);
     throw new Error("게시물 수정 실패");
@@ -92,11 +92,11 @@ export const updatePost = async (
 };
 
 // 게시물 삭제
-export const deletePost = async (postId: string) => {
+export const deletePost = async (docID: string) => {
   try {
-    const postRef = doc(db, "posts", postId);
+    const postRef = doc(db, "posts", docID);
     await deleteDoc(postRef);
-    return { message: "게시물 삭제 성공", postId };
+    return { message: "게시물 삭제 성공", docID };
   } catch (error) {
     console.error("Error deleting post:", error);
     throw new Error("게시물 삭제 실패");
@@ -104,9 +104,9 @@ export const deletePost = async (postId: string) => {
 };
 
 // 게시물 좋아요 API
-export const likePost = async (postId: string, userId: string) => {
+export const likePost = async (docID: string, userId: string) => {
   try {
-    const postRef = doc(db, "posts", postId);
+    const postRef = doc(db, "posts", docID);
     // 게시물의 likedBy 배열에 사용자의 ID를 추가
     await updateDoc(postRef, {
       likedBy: arrayUnion(userId),
@@ -120,9 +120,9 @@ export const likePost = async (postId: string, userId: string) => {
 };
 
 // 게시물 좋아요 취소 API
-export const unlikePost = async (postId: string, userId: string) => {
+export const unlikePost = async (docID: string, userId: string) => {
   try {
-    const postRef = doc(db, "posts", postId);
+    const postRef = doc(db, "posts", docID);
     // 게시물의 likedBy 배열에서 사용자의 ID를 제거
     await updateDoc(postRef, {
       likedBy: arrayRemove(userId),
@@ -135,9 +135,9 @@ export const unlikePost = async (postId: string, userId: string) => {
 };
 
 // 게시물 싫어요 API
-export const dislikePost = async (postId: string, userId: string) => {
+export const dislikePost = async (docID: string, userId: string) => {
   try {
-    const postRef = doc(db, "posts", postId);
+    const postRef = doc(db, "posts", docID);
     // 게시물의 dislikedBy 배열에 사용자의 ID를 추가
     await updateDoc(postRef, {
       dislikedBy: arrayUnion(userId),
@@ -151,9 +151,9 @@ export const dislikePost = async (postId: string, userId: string) => {
 };
 
 // 게시물 싫어요 취소 API
-export const undislikePost = async (postId: string, userId: string) => {
+export const undislikePost = async (docID: string, userId: string) => {
   try {
-    const postRef = doc(db, "posts", postId);
+    const postRef = doc(db, "posts", docID);
     // 게시물의 dislikedBy 배열에서 사용자의 ID를 제거
     await updateDoc(postRef, {
       dislikedBy: arrayRemove(userId),

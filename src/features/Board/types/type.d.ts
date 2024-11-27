@@ -1,7 +1,7 @@
 import { Timestamp } from "firebase/firestore";
 
-interface Post {
-  postId: string;
+export interface PostData {
+  docID: string;
   title: string;
   content: string;
   author: string;
@@ -12,5 +12,3 @@ interface Post {
   likedBy: [string];
   dislikedBy: [string];
 }
-
-export default Post;
