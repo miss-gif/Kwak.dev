@@ -9,7 +9,7 @@ const ToAddPost = () => {
   return (
     <>
       <button
-        className="rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600"
+        className="shrink-0 rounded-md bg-blue-500 px-2 py-2 text-white hover:bg-blue-600"
         onClick={() =>
           user ? navigate("/post/write") : toast.warning("로그인이 필요합니다.")
         }

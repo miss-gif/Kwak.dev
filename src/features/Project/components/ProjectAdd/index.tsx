@@ -9,6 +9,7 @@ import Overview from "../ProjectDetail/Overview";
 import { ProjectCreate } from "../ProjectHeaderButton";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 
 interface ProjectAddProps {
   data: ProjectData;
@@ -47,14 +48,14 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
         setFormData={setFormData}
         editMode={editMode}
       />
-      <div className="sticky bottom-2 w-full max-w-screen-xl">
+      <StickyBottomSubmit>
         <Button
           label="프로젝트 저장하기"
           width="w-full"
           mt="mt-4"
           onClick={() => handleCreateData()}
         />
-      </div>
+      </StickyBottomSubmit>
     </>
   );
 };

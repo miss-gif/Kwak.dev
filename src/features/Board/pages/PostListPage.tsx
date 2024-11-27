@@ -1,14 +1,12 @@
-import ToAddPost from "@/features/Board/components/ToAddPost";
+import StickyWrapper from "@/components/common/StickyWrapper";
 import PostTable from "@/features/Board/components/PostTable";
-import PageLayout from "@/components/common/PageLayout";
-import SectionWrapper from "@/components/common/SectionWrapper";
+import ToAddPost from "@/features/Board/components/ToAddPost";
 import useFetchPosts from "@/hooks/useFetchPosts";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useSearchParams } from "react-router-dom";
-import StickyWrapper from "@/components/common/StickyWrapper";
 
-const BoardPage = () => {
+const PostListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialSearchTerm = searchParams.get("search") || "";
   const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
@@ -52,40 +50,30 @@ const BoardPage = () => {
     setSearchTerm(searchTerm.trim());
   };
 
-  const props = {
-    title: "게시판",
-    subtitle: "✨ 게시판을 통해 소통하세요.",
-  };
-
   return (
-    <PageLayout title={props.title} subtitle={props.subtitle}>
-      <SectionWrapper>
-        <div className="min-h-[40vh] w-full">
-          <StickyWrapper>
-            <ToAddPost />
-            <form onSubmit={handleSearch} className="flex w-1/2 gap-2">
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="search-input-style flex-1"
-                placeholder="제목으로 검색"
-              />
-            </form>
-          </StickyWrapper>
+    <div>
+      <StickyWrapper>
+        <form onSubmit={handleSearch} className="flex w-full gap-2">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input-style flex-1"
+            placeholder="제목으로 검색"
+          />
+        </form>
+        <ToAddPost />
+      </StickyWrapper>
 
-          <PostTable posts={posts} />
-
-          {loading && <p>Loading...</p>}
-          {error && <p className="text-red-500">{error}</p>}
-          {!hasMore && !loading && (
-            <p className="mt-4 text-gray-500">더 이상 게시물이 없습니다.</p>
-          )}
-          <div ref={ref}></div>
-        </div>
-      </SectionWrapper>
-    </PageLayout>
+      <PostTable posts={posts} />
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      {!hasMore && !loading && (
+        <p className="mt-4 text-gray-500">더 이상 게시물이 없습니다.</p>
+      )}
+      <div ref={ref}></div>
+    </div>
   );
 };
 
-export default BoardPage;
+export default PostListPage;
