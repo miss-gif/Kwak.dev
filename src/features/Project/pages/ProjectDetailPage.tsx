@@ -1,10 +1,9 @@
+import { getDocumentById } from "@/api/firebase-crud-api";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import useCollection from "@/hooks/use-Collection";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProjectDetail from "../components/ProjectDetail";
-import { initFormData } from "../data/initFormData";
 import { ProjectData } from "../types/type";
 
 const ProjectDetailPage = () => {
@@ -13,34 +12,35 @@ const ProjectDetailPage = () => {
     subtitle: "✨ 프로젝트 상세 내용을 확인하세요.",
   };
 
-  const { id } = useParams(); // URL에서 가져온 필드 키 값
-  const [project, setProject] = useState<ProjectData>(initFormData);
-  const { fetchProject } = useCollection();
+  const { id } = useParams(); // URL에서 가져온 문서 키
+  const [project, setProject] = useState<ProjectData | null>(null);
 
   useEffect(() => {
     const loadProject = async () => {
       try {
-        const projectData = await fetchProject({
-          collectionName: "project",
-          id: id, // 필드 키 값 전달
-          isFieldKey: true, // 필드 키로 검색
+        const projectData = await getDocumentById({
+          collectionName: "projects",
+          docID: id as string, // Firestore 문서 키를 전달
         });
-        console.log("프로젝트 데이터:", projectData);
-        setProject(projectData);
+        setProject(projectData); // 문서 데이터 설정
       } catch (error) {
         console.error("데이터 로드 에러:", error);
       }
     };
 
     if (id) {
-      loadProject(); // ID가 있을 경우에만 호출
+      loadProject(); // ID가 있을 경우에만 데이터 로드
     }
   }, [id]);
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <ProjectDetail data={project} />
+        {project ? (
+          <ProjectDetail data={project} /> // 로드된 프로젝트 데이터 전달
+        ) : (
+          <p>프로젝트 데이터를 불러오는 중입니다...</p>
+        )}
       </SectionWrapper>
     </PageLayout>
   );

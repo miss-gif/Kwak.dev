@@ -16,12 +16,12 @@ import {
 interface firebaseCrudApiProps {
   collectionName: string;
   formData?: Record<string, any>;
-  docId?: string;
+  docID?: string;
 }
 
 interface firebaseIDProps {
   collectionName: string;
-  docId: string;
+  docID: string;
   formData?: Record<string, any>;
 }
 
@@ -29,8 +29,9 @@ interface firebaseIDProps {
 const createData = async ({
   collectionName,
   formData,
-}: firebaseCrudApiProps): Promise<void> => {
-  await addDoc(collection(db, collectionName), formData);
+}: firebaseCrudApiProps): Promise<string> => {
+  const docRef = await addDoc(collection(db, collectionName), formData); // 문서 추가
+  return docRef.id; // Firestore에서 생성한 고유 문서 ID 반환
 };
 
 // Read: 모든 데이터 조회
@@ -40,7 +41,7 @@ const readData = async ({
   const collectionQuery = query(
     collection(db, collectionName),
     orderBy("id"),
-    limit(6),
+    limit(10),
   );
 
   const querySnapshot = await getDocs(collectionQuery);
@@ -62,23 +63,24 @@ const readData = async ({
 // Read by ID: 특정 ID로 문서 조회
 const getDocumentById = async ({
   collectionName,
-  docId,
+  docID,
 }: firebaseIDProps): Promise<any | null> => {
-  const docRef = doc(db, collectionName, docId);
-  const docSnap = await getDoc(docRef);
+  const docRef = doc(db, collectionName, docID); // 문서 참조 생성
+  const docSnap = await getDoc(docRef); // 문서 가져오기
 
   if (docSnap.exists()) {
-    return docSnap.data();
-  } else {
-    console.log("No such document!");
-    return null;
+    return {
+      docID: docSnap.id, // Firestore 문서 키 추가
+      ...docSnap.data(), // 문서 데이터 병합
+    };
   }
+  return null; // 문서가 없을 경우 null 반환
 };
 
 // Update: 특정 ID로 데이터 수정
 const updateData = async ({
   collectionName,
-  docId,
+  docID,
   formData,
 }: firebaseIDProps): Promise<void> => {
   if (!formData) {
@@ -86,7 +88,7 @@ const updateData = async ({
     return;
   }
 
-  const userRef = doc(db, collectionName, docId);
+  const userRef = doc(db, collectionName, docID);
   await updateDoc(userRef, formData);
   console.log("Document updated");
 };
@@ -94,9 +96,9 @@ const updateData = async ({
 // Delete: 특정 ID로 데이터 삭제
 const deleteData = async ({
   collectionName,
-  docId,
+  docID,
 }: firebaseIDProps): Promise<void> => {
-  await deleteDoc(doc(db, collectionName, docId));
+  await deleteDoc(doc(db, collectionName, docID));
   console.log("Document deleted");
 };
 

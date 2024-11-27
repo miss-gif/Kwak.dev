@@ -23,11 +23,11 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
 
   const handleFormReset = () => setFormData(initFormData);
 
-  const handleCreateData = () => {
+  const handleCreateData = async () => {
     try {
-      createData({ collectionName: "projects", formData });
+      const docID = await createData({ collectionName: "projects", formData });
       toast.success("프로젝트가 성공적으로 저장되었습니다.");
-      navigate(`/project/${formData.id}`);
+      navigate(`/project/${docID}`); // 생성된 문서의 고유 ID로 페이지 이동
     } catch (error) {
       toast.error("프로젝트 저장에 실패했습니다. 다시 시도해주세요.");
       console.error(error);
