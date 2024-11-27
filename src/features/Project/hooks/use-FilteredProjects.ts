@@ -1,26 +1,29 @@
-// import { ProjectData } from "@/features/Project/types/type";
 import { ProjectData } from "@/features/Project/types/type";
 import Fuse from "fuse.js";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 export const useFilteredProjects = (projectData: ProjectData[]) => {
   const [query, setQuery] = useState("");
   const [techFilter, setTechFilter] = useState("");
-  const [keywords, setKeywords] = useState("");
   const [filteredProjects, setFilteredProjects] = useState(projectData);
 
-  const fuse = new Fuse(projectData, {
-    keys: [
-      "card.title",
-      "card.techStack",
-      "card.badge",
-      "card.duration",
-      "card.keywords",
-    ],
-    threshold: 0.3,
-  });
+  // Fuse 객체를 useMemo로 캐싱
+  const fuse = useMemo(
+    () =>
+      new Fuse(projectData, {
+        keys: [
+          "projectName",
+          "techStack",
+          "badgeProjectDevice",
+          "badgeProjectType",
+          "badgeParticipation",
+          "startDate",
+        ],
+        threshold: 0.3,
+      }),
+    [projectData], // projectData가 변경될 때만 Fuse 객체를 다시 생성
+  );
 
-  // 검색 및 필터링 로직
   useEffect(() => {
     let results = projectData;
 
@@ -37,24 +40,14 @@ export const useFilteredProjects = (projectData: ProjectData[]) => {
       );
     }
 
-    if (keywords) {
-      results = results.filter((project) =>
-        project.techStack?.some((keyword) =>
-          keyword.toLowerCase().includes(keywords.toLowerCase()),
-        ),
-      );
-    }
-
     setFilteredProjects(results);
-  }, [query, techFilter, keywords, projectData, fuse]);
+  }, [query, techFilter, fuse]); // 의존성 배열에 필요한 값들 추가
 
   return {
     query,
     setQuery,
     techFilter,
     setTechFilter,
-    keywords,
-    setKeywords,
     filteredProjects,
   };
 };

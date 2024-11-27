@@ -6,34 +6,25 @@ interface ProjectHeaderFilterProps {
   setQuery: (value: string) => void;
   techFilter: string;
   setTechFilter: (value: string) => void;
-  keywords: string;
-  setKeywords: (value: string) => void;
 }
 
 const ProjectHeaderFilter = ({ ...filterData }: ProjectHeaderFilterProps) => {
   console.log(filterData);
-  const { query, setQuery, techFilter, setTechFilter, keywords, setKeywords } =
-    filterData;
+  const { query, setQuery, techFilter, setTechFilter } = filterData;
 
   return (
     <StickyWrapper>
       <FilterInput
-        placeholder="프로젝트 제목 검색"
+        placeholder="통합 검색 (예: 반응형, 2024)"
         value={query}
         onChange={setQuery}
         onClear={() => setQuery("")}
       />
       <FilterInput
-        placeholder="기술 스택 필터 (예: React)"
+        placeholder="기술스택 필터 (예: React)"
         value={techFilter}
         onChange={setTechFilter}
         onClear={() => setTechFilter("")}
-      />
-      <FilterInput
-        placeholder="키워드 필터 (예: 반응형, 작업영역, 작업형태)"
-        value={keywords}
-        onChange={setKeywords}
-        onClear={() => setKeywords("")}
       />
     </StickyWrapper>
   );
