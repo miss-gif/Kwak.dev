@@ -36,7 +36,7 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
       />
       <div className="sticky bottom-2 w-full max-w-screen-xl">
         <Button
-          label="저장하기"
+          label="프로젝트 저장하기"
           width="w-full"
           mt="mt-4"
           onClick={() =>

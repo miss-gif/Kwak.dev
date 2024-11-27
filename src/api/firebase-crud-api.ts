@@ -29,8 +29,7 @@ const createData = async ({
   collectionName,
   formData,
 }: firebaseCrudApiProps): Promise<void> => {
-  const docRef = await addDoc(collection(db, collectionName), formData);
-  console.log("Document written with ID: ", docRef.id);
+  await addDoc(collection(db, collectionName), formData);
 };
 
 // Read: 모든 데이터 조회

@@ -15,7 +15,6 @@ const ProjectListPage = () => {
         const projectData = await readData({
           collectionName: "project",
         });
-        console.log("projectData", projectData);
         setProjects(projectData);
       } catch (error) {
         console.error("프로젝트 불러오기 실패", error);

@@ -9,7 +9,6 @@ interface ProjectHeaderFilterProps {
 }
 
 const ProjectHeaderFilter = ({ ...filterData }: ProjectHeaderFilterProps) => {
-  console.log(filterData);
   const { query, setQuery, techFilter, setTechFilter } = filterData;
 
   return (
