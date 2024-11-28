@@ -1,5 +1,4 @@
 import useAccount from "@/hooks/useAccount";
-import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { useEffect } from "react";
 
 const AccountInfoPage = () => {
@@ -15,8 +14,6 @@ const AccountInfoPage = () => {
     handlePasswordUpdate,
     handleAccountDelete,
   } = useAccount();
-
-  useRequireLogin(); // 로그인 상태가 아닐 경우 리다이렉트 실행
 
   useEffect(() => {
     console.log("user", user);

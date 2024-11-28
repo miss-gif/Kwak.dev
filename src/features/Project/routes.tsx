@@ -1,3 +1,4 @@
+import ProtectedRoute from "@/routes/ProtectedRoute";
 import { lazy } from "react";
 
 const ProjectPage = lazy(() => import("./pages"));
@@ -8,6 +9,13 @@ const ProjectAddPage = lazy(() => import("./pages/ProjectAddPage"));
 export const projectRoutes = [
   { path: "/project", element: <ProjectPage /> },
   { path: "/project/:id", element: <ProjectDetailPage /> },
-  { path: "/project/add", element: <ProjectAddPage /> },
+  {
+    path: "/project/add",
+    element: (
+      <ProtectedRoute>
+        <ProjectAddPage />
+      </ProtectedRoute>
+    ),
+  },
   // { path: "/project/edit/:id", element: <ProjectEditPage /> },
 ];

@@ -8,38 +8,8 @@ import {
   deleteDoc,
   doc,
   getDoc,
-  getDocs,
-  limit,
-  orderBy,
-  query,
   updateDoc,
 } from "firebase/firestore";
-
-// 게시물 목록 조회
-export const getAllPosts = async (): Promise<PostData[]> => {
-  try {
-    // 쿼리 생성: 'createdAt' 필드를 기준으로 내림차순 정렬
-    const postsQuery = query(
-      collection(db, "posts"),
-      orderBy("createdAt", "desc"),
-      limit(20),
-    );
-
-    // 쿼리 실행
-    const querySnapshot = await getDocs(postsQuery);
-
-    // 쿼리 결과를 Posts 타입으로 변환
-    const posts = querySnapshot.docs.map((doc) => ({
-      docID: doc.id,
-      ...doc.data(),
-    })) as PostData[];
-
-    return posts;
-  } catch (error) {
-    console.error("Error fetching posts:", error);
-    throw new Error("게시물 목록 조회 실패");
-  }
-};
 
 // 게시물 상세 조회
 export const getPostById = async (docID: string): Promise<PostData> => {

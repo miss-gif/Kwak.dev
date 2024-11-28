@@ -1,11 +1,8 @@
-import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { verifyPassword } from "@/utils/verifyPassword";
 import { useState } from "react";
 import AdminMainPage from "./AdminMainPage";
 
 const AdminLoginPage = () => {
-  useRequireLogin();
-
   const [password, setPassword] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [error, setError] = useState("");

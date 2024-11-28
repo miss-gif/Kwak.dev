@@ -1,7 +1,6 @@
 import Button from "@/components/Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import { db } from "@/firebaseConfig";
-import { useRequireLogin } from "@/hooks/useLoginCheck";
 import { postSchema } from "@/schema/validationSchema";
 import { useAuthStore } from "@/stores/authStore";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,9 +18,6 @@ const PostEdit = () => {
   const navigate = useNavigate();
   const { user } = useAuthStore();
   const { postId } = useParams(); // URL에서 postId 가져오기
-
-  // 로그인 상태 확인
-  useRequireLogin();
 
   const {
     register,

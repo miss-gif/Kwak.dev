@@ -1,3 +1,4 @@
+import ProtectedRoute from "@/routes/ProtectedRoute";
 import { lazy } from "react";
 
 const BoardPage = lazy(() => import("./pages"));
@@ -14,7 +15,21 @@ const ROUTES = {
 
 export const boardRoutes = [
   { path: ROUTES.BOARD, element: <BoardPage /> },
-  { path: ROUTES.POST_WRITE, element: <PostAddPage /> },
+  {
+    path: ROUTES.POST_WRITE,
+    element: (
+      <ProtectedRoute>
+        <PostAddPage />
+      </ProtectedRoute>
+    ),
+  },
   { path: ROUTES.POST_DETAIL, element: <PostDetailPage /> },
-  { path: ROUTES.POST_EDIT, element: <PostEditorPage /> },
+  {
+    path: ROUTES.POST_EDIT,
+    element: (
+      <ProtectedRoute>
+        <PostEditorPage />
+      </ProtectedRoute>
+    ),
+  },
 ];

@@ -1,5 +1,6 @@
 import { createData } from "@/api/firebase-crud-api";
-import { useRequireLogin } from "@/hooks/useLoginCheck";
+import Button from "@/components/Button";
+import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import { postSchema } from "@/schema/validationSchema";
 import { useAuthStore } from "@/stores/authStore";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -8,17 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
 import PostHeader from "./PostHeader";
-import Button from "@/components/Button";
-import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 
 type PostFormData = z.infer<typeof postSchema>;
 
 const PostAdd = () => {
   const navigate = useNavigate();
   const { user } = useAuthStore();
-
-  // useRequireLogin 훅을 사용하여 로그인 상태 확인
-  useRequireLogin();
 
   const {
     register,
