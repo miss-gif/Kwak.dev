@@ -23,7 +23,7 @@ export const usePageGuard = () => {
 
   useEffect(() => {
     if (user) {
-      toast.warning("제한된 페이지입니다.");
+      // toast.warning("제한된 페이지입니다.");
       navigate("/");
     }
   }, [user]);

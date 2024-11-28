@@ -13,6 +13,7 @@ function SignupPage() {
     password,
     setPassword,
     handleSignup,
+    handleCheckDisplayName, // 닉네임 중복 확인 버튼 기능
   } = useSignup();
 
   usePageGuard();
@@ -30,6 +31,9 @@ function SignupPage() {
             type="text"
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
+            checkBox={true}
+            checkLabel="중복확인"
+            checkFunc={handleCheckDisplayName}
           />
           <AuthLabelInput
             name="email"

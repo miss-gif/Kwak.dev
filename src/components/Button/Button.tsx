@@ -20,7 +20,7 @@ const Button = ({
   <button
     type={type}
     onClick={onClick}
-    className={`bg-${color}-500 hover:bg-${color}-600 ${py} rounded-md px-4 text-sm text-white ${width} focus:outline-none ${mt}`}
+    className={`bg-${color}-500 hover:bg-${color}-600 ${py} shrink-0 rounded-md px-4 text-sm text-white ${width} focus:outline-none ${mt}`}
   >
     {label}
   </button>
