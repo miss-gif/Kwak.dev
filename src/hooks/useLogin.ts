@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebaseConfig";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuthStore } from "@/stores/authStore";
 
@@ -19,6 +19,7 @@ export const useLogin = ({
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const setUser = useAuthStore((state) => state.setUser);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,7 +34,10 @@ export const useLogin = ({
         password,
       );
       setUser(userCredential.user); // Zustand 스토어에 로그인 상태 설정
-      navigate(-1);
+
+      // 이전 경로로 이동 (기본값: "/")
+      const from = location.state?.from?.pathname || "/";
+      navigate(from, { replace: true });
       toast.success("로그인 되었습니다.");
     } catch (error: any) {
       setError("로그인 실패");

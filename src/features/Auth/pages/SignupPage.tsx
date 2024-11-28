@@ -1,6 +1,5 @@
 import Button from "@/components/Button";
 import AuthLabelInput from "@/components/form/LabelInput/AuthLabelInput";
-import { usePageGuard } from "@/hooks/useLoginCheck";
 import { useSignup } from "@/hooks/useSignup";
 import { Link } from "react-router-dom";
 
@@ -15,8 +14,6 @@ function SignupPage() {
     handleSignup,
     handleCheckDisplayName, // 닉네임 중복 확인 버튼 기능
   } = useSignup();
-
-  usePageGuard();
 
   return (
     <div className="flex min-h-screen items-center justify-center">
