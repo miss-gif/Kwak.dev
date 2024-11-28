@@ -28,8 +28,8 @@ const LabelInput = ({
       value={value}
       onChange={onChange}
       onKeyDown={(e) => handleEscKeyDown(e, onEscKeyDown, name)}
-      className="w-full rounded-md border border-gray-300 p-2 focus:ring focus:ring-blue-500"
       readOnly={read}
+      className="w-full rounded-md border border-gray-300 p-2 focus:ring focus:ring-blue-500"
     />
   </div>
 );
