@@ -27,8 +27,10 @@ const PostEdit = () => {
   } = useForm<PostFormData>({
     resolver: zodResolver(postSchema),
     defaultValues: {
-      author: user?.email ?? "", // 초기값 설정
-      id: 0, // 랜덤 id 값 설정
+      author: user?.displayName ?? "", // 초기값 설정
+      id: 0,
+      uid: user?.uid ?? "",
+      createdAt: new Date().toISOString(),
     },
   });
 
@@ -43,7 +45,7 @@ const PostEdit = () => {
           const postData = postSnapshot.data();
           setValue("title", postData.title || "");
           setValue("content", postData.content || "");
-          setValue("author", postData.author || user?.email || "");
+          setValue("author", postData.author || user?.displayName || "");
         } else {
           toast.error("게시글을 찾을 수 없습니다.");
           navigate("/board");

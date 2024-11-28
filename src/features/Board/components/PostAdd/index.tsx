@@ -24,8 +24,10 @@ const PostAdd = () => {
   } = useForm<PostFormData>({
     resolver: zodResolver(postSchema),
     defaultValues: {
-      author: user?.email ?? "", // 초기값 설정
-      id: 0, // 랜덤 id 값 설정
+      author: user?.displayName ?? "", // 초기값 설정
+      id: 0,
+      uid: user?.uid ?? "",
+      createdAt: new Date().toISOString(),
     },
   });
 

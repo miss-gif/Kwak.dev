@@ -13,4 +13,6 @@ export const postSchema = z.object({
   content: z.string().min(1, { message: "내용은 최소 1자 이상이어야 합니다." }),
   author: z.string().min(1, { message: "작성자를 입력해주세요." }),
   id: z.number().int(),
+  uid: z.string().min(1),
+  createdAt: z.string().min(1),
 });
