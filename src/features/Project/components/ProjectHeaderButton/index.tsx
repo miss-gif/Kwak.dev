@@ -4,7 +4,6 @@ import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyWrapper from "@/components/common/StickyWrapper";
 import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
