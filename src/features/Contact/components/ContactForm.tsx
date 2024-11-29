@@ -1,4 +1,5 @@
 import { submitContactForm } from "@/api/api";
+import Button from "@/components/Button";
 import { schema } from "@/schema/validationSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -37,23 +38,26 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
 
   return (
     <form
-      className="w-full max-w-lg rounded-md bg-white p-6 shadow-md"
+      className="w-full rounded-md bg-white p-8 shadow-md"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="space-y-6">
+      <div className="w-full space-y-8">
         {/* Name Field */}
-        <fieldset className="flex flex-col">
-          <label htmlFor="name" className="text-sm font-medium text-gray-700">
+        <fieldset className="flex w-full flex-col">
+          <label
+            htmlFor="name"
+            className="w-full text-sm font-semibold text-gray-800"
+          >
             보내시는 분
           </label>
           <input
             id="name"
-            className="mt-2 rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+            className="mt-2 rounded-md border border-gray-300 p-3"
             placeholder="보내시는 분"
             {...register("name")}
           />
           {errors.name?.message && (
-            <p className="mt-1 text-sm text-red-500">
+            <p className="mt-2 text-xs font-medium text-red-500">
               {String(errors.name.message)}
             </p>
           )}
@@ -61,18 +65,21 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
 
         {/* Email Field */}
         <fieldset className="flex flex-col">
-          <label htmlFor="email" className="text-sm font-medium text-gray-700">
+          <label
+            htmlFor="email"
+            className="text-sm font-semibold text-gray-800"
+          >
             이메일 주소
           </label>
           <input
             id="email"
             type="email"
-            className="mt-2 rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+            className="mt-2 rounded-md border border-gray-300 p-3"
             placeholder="이메일 주소를 입력하세요"
             {...register("email")}
           />
           {errors.email?.message && (
-            <p className="mt-1 text-sm text-red-500">
+            <p className="mt-2 text-xs font-medium text-red-500">
               {String(errors.email.message)}
             </p>
           )}
@@ -82,36 +89,29 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
         <fieldset className="flex flex-col">
           <label
             htmlFor="message"
-            className="text-sm font-medium text-gray-700"
+            className="text-sm font-semibold text-gray-800"
           >
             내용
           </label>
           <textarea
             id="message"
-            className="mt-2 h-32 rounded-md border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+            className="mt-2 h-36 resize-none rounded-md border border-gray-300 p-3"
             placeholder="문의 내용을 입력해주세요."
             {...register("message")}
           />
           {errors.message?.message && (
-            <p className="mt-1 text-sm text-red-500">
+            <p className="mt-2 text-xs font-medium text-red-500">
               {String(errors.message.message)}
             </p>
           )}
         </fieldset>
 
-        {/* Honeypot Field for Spam Prevention */}
         <fieldset className="hidden">
           <label htmlFor="honeypot">스팸 방지 숨겨진 필드</label>
           <input id="honeypot" type="text" {...register("honeypot")} />
         </fieldset>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full rounded-md bg-blue-600 py-3 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-        >
-          보내기
-        </button>
+        <Button label="보내기" width="w-full" type="submit" />
       </div>
     </form>
   );
