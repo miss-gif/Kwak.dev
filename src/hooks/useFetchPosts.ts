@@ -11,10 +11,10 @@ import {
   QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
-import { PostData } from "@/features/Board/types/type";
+// import { PostData } from "@/features/Board/types/type";
 
 const useFetchPosts = (searchTerm: string, pageSize: number) => {
-  const [posts, setPosts] = useState<PostData[]>([]);
+  // const [posts, setPosts] = useState<PostData[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [lastDoc, setLastDoc] =
     useState<QueryDocumentSnapshot<DocumentData> | null>(null);
@@ -54,28 +54,28 @@ const useFetchPosts = (searchTerm: string, pageSize: number) => {
       // 쿼리 실행
       const querySnapshot = await getDocs(q);
       // 쿼리 결과를 Post 타입으로 변환
-      const fetchedPosts = querySnapshot.docs.map((doc) => {
-        const data = doc.data();
-        return {
-          docID: doc.id,
-          title: data.title,
-          content: data.content,
-          author: data.author,
-          likes: data.likes ?? 0,
-          dislikes: data.dislikes ?? 0,
-          views: data.views ?? 0,
-          createdAt: data.createdAt.toDate(),
-          likedBy: data.likedBy ?? [],
-          dislikedBy: data.dislikedBy ?? [],
-        };
-      });
+      // const fetchedPosts = querySnapshot.docs.map((doc) => {
+      //   const data = doc.data();
+      //   return {
+      //     docID: doc.id,
+      //     title: data.title,
+      //     content: data.content,
+      //     author: data.author,
+      //     likes: data.likes ?? 0,
+      //     dislikes: data.dislikes ?? 0,
+      //     views: data.views ?? 0,
+      //     createdAt: data.createdAt.toDate(),
+      //     likedBy: data.likedBy ?? [],
+      //     dislikedBy: data.dislikedBy ?? [],
+      //   };
+      // });
 
-      if (isNewSearch) {
-        // 새로운 검색이면 posts를 교체
-        setPosts(fetchedPosts);
-      } else {
-        setPosts((prevPosts) => [...prevPosts, ...fetchedPosts]);
-      }
+      // if (isNewSearch) {
+      //   // 새로운 검색이면 posts를 교체
+      //   setPosts(fetchedPosts);
+      // } else {
+      //   setPosts((prevPosts) => [...prevPosts, ...fetchedPosts]);
+      // }
 
       // 다음 페이지를 위한 마지막 문서와 hasMore 상태 업데이트
       setLastDoc(querySnapshot.docs[querySnapshot.docs.length - 1] || null);
@@ -94,7 +94,7 @@ const useFetchPosts = (searchTerm: string, pageSize: number) => {
   }, [searchTerm, pageSize]);
 
   return {
-    posts,
+    // posts,
     error,
     loading,
     hasMore,
