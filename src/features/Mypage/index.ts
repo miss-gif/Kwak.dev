@@ -1,3 +1,3 @@
-export { default as AccountInfoPage } from "./pages/AccountInfoPage";
+export { default as Mypage } from "./pages/Mypage";
 
 export { mypageRoutes } from "./routes";

@@ -1,14 +1,14 @@
 import ProtectedRoute from "@/routes/ProtectedRoute";
 import { lazy } from "react";
 
-const AccountInfoPage = lazy(() => import("./pages/AccountInfoPage"));
+const Mypage = lazy(() => import("./pages/Mypage"));
 
 export const mypageRoutes = [
   {
     path: "/mypage",
     element: (
       <ProtectedRoute>
-        <AccountInfoPage />
+        <Mypage />
       </ProtectedRoute>
     ),
   },

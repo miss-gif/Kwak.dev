@@ -30,7 +30,7 @@ const AdminLoginPage = () => {
   }
 
   return (
-    <div className="flex h-dvh w-full flex-col items-center justify-center bg-slate-100">
+    <div className="flex h-dvh w-full flex-col items-center justify-center">
       <div className="w-96 rounded-md bg-white p-6 shadow-md">
         <h2 className="mb-4 text-xl font-semibold text-gray-700">
           관리자 인증
