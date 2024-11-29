@@ -1,12 +1,13 @@
-import Button from "@/components/Button";
+import { updateData } from "@/api/firebase-crud-api";
+import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 import { ProjectData } from "../../types/type";
 import { ProjectEdit } from "../ProjectHeaderButton";
 import Description from "./Description";
 import Overview from "./Overview";
-import { updateData } from "@/api/firebase-crud-api";
-import { toast } from "react-toastify";
 
 interface ProjectDetailProps {
   data: ProjectData;
@@ -15,6 +16,7 @@ interface ProjectDetailProps {
 const ProjectDetail = ({ data }: ProjectDetailProps) => {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState<ProjectData>(data);
+  const [cookies] = useCookies(["admin-auth"]);
 
   console.log("ProjectDetail formData:", formData.docID);
 
@@ -27,6 +29,12 @@ const ProjectDetail = ({ data }: ProjectDetailProps) => {
   const handleEditMode = () => setEditMode((prev) => !prev);
 
   const handleUpdate = async () => {
+    // 인증 상태 확인
+    if (!cookies["admin-auth"]) {
+      toast.error("관리자 권한이 필요합니다.");
+      return;
+    }
+
     try {
       if (!formData.docID) {
         throw new Error("Document ID is required for update");
@@ -64,11 +72,13 @@ const ProjectDetail = ({ data }: ProjectDetailProps) => {
 
       {editMode && (
         <div className="sticky bottom-2 w-full max-w-screen-xl">
-          <Button
-            label="저장하기"
+          <AdminAuthButton
+            label="프로젝트 수정하기"
             width="w-full"
             mt="mt-4"
-            onClick={handleUpdate}
+            onClick={() => {
+              handleUpdate();
+            }}
           />
         </div>
       )}

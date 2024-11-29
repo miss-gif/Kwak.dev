@@ -1,5 +1,5 @@
 import { createData } from "@/api/firebase-crud-api";
-import Button from "@/components/Button";
+import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useState } from "react";
@@ -29,9 +29,8 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
   const handleCreateData = async () => {
     // 인증 상태 확인
     if (!cookies["admin-auth"]) {
-      toast.error("관리자 인증이 필요합니다.");
-      navigate("/admin"); // 로그인 페이지로 리다이렉트
-      return; // 함수 실행 중단
+      toast.error("관리자 권한이 필요합니다.");
+      return;
     }
 
     try {
@@ -58,7 +57,7 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
         editMode={editMode}
       />
       <StickyBottomSubmit>
-        <Button
+        <AdminAuthButton
           label="프로젝트 저장하기"
           width="w-full"
           mt="mt-4"

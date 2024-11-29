@@ -1,7 +1,9 @@
 import { deleteData } from "@/api/firebase-crud-api";
 import Button, { BackButton, LinkButton } from "@/components/Button";
+import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyWrapper from "@/components/common/StickyWrapper";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -38,9 +40,16 @@ export const ProjectEdit = ({
   onToggleEditMode,
 }: ProjectEditProps) => {
   const navigete = useNavigate();
+  const [cookies] = useCookies(["admin-auth"]);
 
   // 삭제 버튼 클릭 시 실행되는 함수
   const handleDelete = async () => {
+    // 인증 상태 확인
+    if (!cookies["admin-auth"]) {
+      toast.error("관리자 권한이 필요합니다.");
+      return;
+    }
+
     try {
       if (!formData.docID) {
         throw new Error("Document ID is required for update");
@@ -72,7 +81,7 @@ export const ProjectEdit = ({
       ) : (
         <div className="flex w-full justify-between">
           <Button label={<ArrowBackIosNewIcon />} onClick={onToggleEditMode} />
-          <Button label="삭제" color="red" onClick={handleDelete} />
+          <AdminAuthButton label="삭제" color="red" onClick={handleDelete} />
         </div>
       )}
     </StickyWrapper>
