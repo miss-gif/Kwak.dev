@@ -1,15 +1,16 @@
 import { createData } from "@/api/firebase-crud-api";
 import Button from "@/components/Button";
+import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { initFormData } from "../../data/initFormData";
 import { ProjectData } from "../../types/type";
 import Description from "../ProjectDetail/Description";
 import Overview from "../ProjectDetail/Overview";
 import { ProjectCreate } from "../ProjectHeaderButton";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 
 interface ProjectAddProps {
   data: ProjectData;
@@ -19,12 +20,20 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
   const [editMode] = useState(true);
   const [formData, setFormData] = useState<ProjectData>(initFormData);
   const navigate = useNavigate();
+  const [cookies] = useCookies(["admin-auth"]);
 
   if (!data) return <NotFoundPage />;
 
   const handleFormReset = () => setFormData(initFormData);
 
   const handleCreateData = async () => {
+    // 인증 상태 확인
+    if (!cookies["admin-auth"]) {
+      toast.error("관리자 인증이 필요합니다.");
+      navigate("/admin"); // 로그인 페이지로 리다이렉트
+      return; // 함수 실행 중단
+    }
+
     try {
       const docID = await createData({ collectionName: "projects", formData });
       toast.success("프로젝트가 성공적으로 저장되었습니다.");

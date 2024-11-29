@@ -35,8 +35,6 @@ function a11yProps(index: number) {
 
 export default function AdminTab() {
   const [value, setValue] = useState(0);
-  // const [projectData, setProjectData] = useState({});
-  // const [docsData, setDocsData] = useState({});
 
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -58,18 +56,7 @@ export default function AdminTab() {
       <CustomTabPanel value={value} index={0}>
         <AdminUserPage />
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={1}>
-        <div className="flex flex-col gap-6">
-          {/* <ProjectForm joinFormData={setProjectData} />
-          <PorojectDocsForm joinFormData={setDocsData} />
-          <button
-            onClick={() => joinAndPost(projectData, docsData)}
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Submitting..." : "Submit"}
-          </button> */}
-        </div>
-      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}></CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         Item Three
       </CustomTabPanel>

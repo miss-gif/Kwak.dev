@@ -20,7 +20,7 @@ const Header = ({ toggleTheme }: Theme) => {
       <Container>
         <div className="flex w-full items-center justify-between">
           <Link to="/" onClick={() => handleClick(null)}>
-            <h1 className="text-2xl font-bold">Portfolio</h1>
+            <h1 className="text-2xl font-bold">Kwak.dev</h1>
           </Link>
           <Gnb selectedItem={selectedItem} handleClick={handleClick} />
           <HeaderActions handleClick={handleClick} toggleTheme={toggleTheme} />

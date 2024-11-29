@@ -5,13 +5,13 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 const text = {
   title: "Building Ideas into Reality with Code",
-  subTitle: "PORTFOLIO",
+  subTitle: "FRONT-END",
   subTitle2: "WEB DEVELOPER",
   content: [
-    "사이트에 방문해 주셔서 감사합니다",
-    "이곳에서 제 작업물과 역량을 확인하실 수 있습니다.",
-    "더 전문적인 프론트엔드 개발자가 되기 위해 노력하고 있습니다.",
-    "사용자 중심의 접근성과 디테일을 살린 개발로 더 나은 경험을 제공하겠습니다.",
+    "이곳은 제가 실험하고 배우며 성장하는 공간입니다.",
+    "새로운 기술을 시도하고, 생각을 코드로 풀어냅니다.",
+    "완성된 작업물뿐 아니라 도전과 실수를 기록하고 공유합니다.",
+    "보다 나은 개발자로 나아가기 위한 자유로운 여정을 확인해보세요.",
   ],
 };
 

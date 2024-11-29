@@ -1,17 +1,24 @@
 import { verifyPassword } from "@/utils/verifyPassword";
 import { useState } from "react";
 import AdminMainPage from "./AdminMainPage";
+import { useCookies } from "react-cookie";
 
 const AdminLoginPage = () => {
   const [password, setPassword] = useState("");
-  const [isVerified, setIsVerified] = useState(false);
   const [error, setError] = useState("");
+  const [cookies, setCookie] = useCookies(["admin-auth"]);
 
   const handleSubmit = async () => {
     try {
       const isMatch = await verifyPassword(password);
       if (isMatch) {
-        setIsVerified(true);
+        // 인증 성공: 쿠키 설정
+        setCookie("admin-auth", true, {
+          path: "/",
+          maxAge: 3600, // 1시간
+          secure: true,
+          sameSite: "strict",
+        });
         setError("");
       } else {
         setError("비밀번호가 일치하지 않습니다.");
@@ -21,7 +28,8 @@ const AdminLoginPage = () => {
     }
   };
 
-  if (isVerified) {
+  // 인증 상태 확인
+  if (cookies["admin-auth"]) {
     return <AdminMainPage />;
   }
 
