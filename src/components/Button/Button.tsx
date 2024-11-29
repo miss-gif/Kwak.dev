@@ -6,6 +6,7 @@ interface ButtonProps {
   width?: string;
   py?: string;
   mt?: string;
+  text?: string;
 }
 
 const Button = ({
@@ -16,11 +17,12 @@ const Button = ({
   width = "",
   py = "py-3",
   mt = "",
+  text = "white",
 }: ButtonProps) => (
   <button
     type={type}
     onClick={onClick}
-    className={`bg-${color}-500 hover:bg-${color}-600 ${py} shrink-0 rounded-md px-4 text-sm text-white ${width} focus:outline-none ${mt}`}
+    className={`bg-${color}-500 hover:bg-${color}-600 ${py} shrink-0 rounded-md px-4 text-sm text-${text} ${width} focus:outline-none ${mt}`}
   >
     {label}
   </button>
