@@ -1,11 +1,11 @@
 import Button from "@/components/Button";
 import BasicButton from "@/components/common/Button";
 import UserModal from "@/components/common/UserModal";
+import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import { useAuthStore } from "@/stores/authStore";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AdminPanelSettings from "@mui/icons-material/AdminPanelSettings";
 import { useState } from "react";
-import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import ToggleThemeSwitch from "../ToggleThemeSwitch";
 import NavToggle from "./NavToggle";
@@ -19,7 +19,7 @@ const HeaderActions = ({ handleClick, toggleTheme }: HeaderActionsProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, logout } = useAuthStore();
   const navigeit = useNavigate();
-  const [cookies] = useCookies(["admin-auth"]);
+  const { isAdminAuthenticated, clearAdminAuthCookie } = useAdminAuthCookie();
 
   const toggleDrawer = () => {
     setIsOpen(!isOpen);
@@ -48,12 +48,12 @@ const HeaderActions = ({ handleClick, toggleTheme }: HeaderActionsProps) => {
           </Link>
         )}
 
-        {cookies["admin-auth"] ? (
+        {isAdminAuthenticated() ? (
           <Button
             label={<AdminPanelSettings sx={{ fontSize: 40 }} />}
             color="transparent"
             text="inherit"
-            onClick={() => navigeit("/admin")}
+            onClick={() => clearAdminAuthCookie()}
           />
         ) : (
           ""

@@ -1,4 +1,4 @@
-import { useCookies } from "react-cookie";
+import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 
 interface AdminAuthButtonProps {
   label: string | React.ReactNode;
@@ -19,17 +19,17 @@ const AdminAuthButton = ({
   py = "py-3",
   mt = "",
 }: AdminAuthButtonProps) => {
-  const [cookies] = useCookies(["admin-auth"]);
+  const { isAdminAuthenticated } = useAdminAuthCookie();
 
   return (
     <button
       type={type}
       onClick={onClick}
-      className={` bg-${color}-500 ${
-        !cookies["admin-auth"]
+      className={`bg-${color}-500 ${
+        isAdminAuthenticated() === false
           ? "cursor-not-allowed bg-gray-500 hover:bg-gray-600"
-          : ""
-      } hover:bg-${color}-600 ${py} shrink-0 rounded-md px-4 text-sm text-white ${width} focus:outline-none ${mt}`}
+          : "hover:bg-${color}-600"
+      } ${py} shrink-0 rounded-md px-4 text-sm text-white ${width} focus:outline-none ${mt}`}
     >
       {label}
     </button>

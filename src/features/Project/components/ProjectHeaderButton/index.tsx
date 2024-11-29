@@ -2,6 +2,7 @@ import { deleteData } from "@/api/firebase-crud-api";
 import Button, { BackButton, LinkButton } from "@/components/Button";
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyWrapper from "@/components/common/StickyWrapper";
+import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
@@ -40,13 +41,12 @@ export const ProjectEdit = ({
   onToggleEditMode,
 }: ProjectEditProps) => {
   const navigete = useNavigate();
-  const [cookies] = useCookies(["admin-auth"]);
+  const { isAdminAuthenticated } = useAdminAuthCookie();
 
   // 삭제 버튼 클릭 시 실행되는 함수
   const handleDelete = async () => {
-    // 인증 상태 확인
-    if (!cookies["admin-auth"]) {
-      toast.error("관리자 권한이 필요합니다.");
+    if (!isAdminAuthenticated()) {
+      toast.error("관리자 권한이 필요합니다."); // 인증되지 않은 경우
       return;
     }
 

@@ -1,36 +1,32 @@
+import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import { verifyPassword } from "@/utils/verifyPassword";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import AdminMainPage from "./AdminMainPage";
-import { useCookies } from "react-cookie";
 
 const AdminLoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [cookies, setCookie] = useCookies(["admin-auth"]);
+  const { setAuthCookie, isAdminAuthenticated } = useAdminAuthCookie();
 
   const handleSubmit = async () => {
     try {
-      const isMatch = await verifyPassword(password);
+      const isMatch = await verifyPassword(password); // 비밀번호 확인 로직
       if (isMatch) {
-        // 인증 성공: 쿠키 설정
-        setCookie("admin-auth", true, {
-          path: "/",
-          maxAge: 3600, // 1시간
-          secure: true,
-          sameSite: "strict",
-        });
+        setAuthCookie(true); // 인증 성공 시 쿠키 설정
         setError("");
+        toast.success("로그인 성공!");
       } else {
         setError("비밀번호가 일치하지 않습니다.");
       }
     } catch (err) {
       setError("인증 중 오류가 발생했습니다.");
+      console.error(err);
     }
   };
 
-  // 인증 상태 확인
-  if (cookies["admin-auth"]) {
-    return <AdminMainPage />;
+  if (isAdminAuthenticated()) {
+    return <AdminMainPage />; // 인증된 경우 관리자 페이지로 이동
   }
 
   return (

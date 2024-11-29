@@ -1,8 +1,8 @@
 import { updateData } from "@/api/firebase-crud-api";
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
+import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import { ProjectData } from "../../types/type";
 import { ProjectEdit } from "../ProjectHeaderButton";
@@ -16,7 +16,7 @@ interface ProjectDetailProps {
 const ProjectDetail = ({ data }: ProjectDetailProps) => {
   const [editMode, setEditMode] = useState(false);
   const [formData, setFormData] = useState<ProjectData>(data);
-  const [cookies] = useCookies(["admin-auth"]);
+  const { isAdminAuthenticated } = useAdminAuthCookie();
 
   console.log("ProjectDetail formData:", formData.docID);
 
@@ -29,9 +29,8 @@ const ProjectDetail = ({ data }: ProjectDetailProps) => {
   const handleEditMode = () => setEditMode((prev) => !prev);
 
   const handleUpdate = async () => {
-    // 인증 상태 확인
-    if (!cookies["admin-auth"]) {
-      toast.error("관리자 권한이 필요합니다.");
+    if (!isAdminAuthenticated()) {
+      toast.error("관리자 권한이 필요합니다."); // 인증되지 않은 경우
       return;
     }
 
