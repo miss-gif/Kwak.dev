@@ -27,22 +27,22 @@
 - 프론트엔드
 
   - <b>주요 도구</b>
-    React: 사용자 인터페이스 구축
-    TypeScript: 정적 타입 검사로 안정성과 강화
-    React Router: 라우팅 관리
+    - React: 사용자 인터페이스 구축
+    - TypeScript: 정적 타입 검사로 안정성과 강화
+    - React Router: 라우팅 관리
   - <b>스타일링 및 UI 관련 라이브러리</b>
-    TailwindCSS: 스타일링 프레임워크
-    MUI: 구글 UI 컴포넌트
-    Framer Motion: 애니메이션 및 인터랙션
-    react-toastify: 알림/토스트 메시지 구현
+    - TailwindCSS: 스타일링 프레임워크
+    - MUI: 구글 UI 컴포넌트
+    - Framer Motion: 애니메이션 및 인터랙션
+    - react-toastify: 알림/토스트 메시지 구현
   - <b>폼 및 데이터 처리</b>
-    react-hook-form: 폼 상태 관리
-    zod: 스키마 기반 데이터 검증 라이브러리
+    - react-hook-form: 폼 상태 관리
+    - zod: 스키마 기반 데이터 검증 라이브러리
   - <b>기타 유틸리티</b>
-    fuse.js: 빠르고 간단한 검색 기능 구현
-    classnames: 동적 클래스 이름 관리
-    zustand: 전역 상태 관리 라이브러리
-    fast-xml-parser: XML 데이터를 JSON으로 변환 (캘린더)
+    - fuse.js: 빠르고 간단한 검색 기능 구현
+    - classnames: 동적 클래스 이름 관리
+    - zustand: 전역 상태 관리 라이브러리
+    - fast-xml-parser: XML 데이터를 JSON으로 변환 (캘린더)
 
 - 백엔드: Firebase (Authentication, Firestore)
 - 분석 도구: Google Analytics
@@ -54,34 +54,63 @@
 
 ## ✨ 주요 기능 (도메인)
 
-- 홈(/home):
-- 소개(/about):
-- 프로젝트(/project):
-  - CRUD
-- 인터뷰(/interview):
-  - 인터뷰 신청
-  - 미답변/답변
-- 게시판(/board)
+- 홈(/home)
+- 소개(/about)
+  - 2D 물리엔진을 사용한 캔버스를 사용했습니다.
+- 프로젝트(/project) : 관리자 권한 필요
+  - 프로젝트 CRUD
+- 인터뷰(/interview)
+  - 인터뷰 신청 (준비중)
+  - 미답변/답변 (준비중)
+- 게시판(/board) : 유저 권한 필요
 
-  - CRUD
-  - 댓글/답글
-  - 추천/비추천
-  - 신고
+  - 게시물 CRUD
+  - 댓글 CRUD : 답글이 있는 경우, 댓글이 삭제되지 않고 비공개 처리됩니다.
+  - 답글 CRUD : 답글의 depth는 1회입니다.
+  - 추천/비추천 : 게시물당 1번만 가능합니다.
+  - 신고&블라인드 (준비중)
 
 - 마이페이지(/mypage)
 
-  - 유저 프로필 확인
-  - 유저 프로필 수정
+  - 유저 프로필 : 유저 정보를 확인할 수 있습니다.
+  - 유저 프로필 편집 (준비중)
+
+- 캘린더(/schedule) : [오픈API](https://www.data.go.kr/data/15012690/openapi.do)를 사용해 국경일,기념일,특일 데이터를 불러와 캘린더에 적용됩니다.
+
+  - 일정 공유 (준비중)
+  - 출석부 (준비중)
+
+- 통계(/charts)
+
+  - 사이트 이용 정보를 집계하여 시각적으로 표시하려고 합니다. (준비중)
+
+- 갤러리(/gallery)
+
+  - 사이트 내의 이미지 정보를 모아 이미지 뷰어로 제공하려고 합니다. (준비중)
+
+- 지도(/map)
+
+  - 카카오 지도 API를 사용한 컨텐츠를 기획 중입니다. (준비중)
+
+- 프리뷰(/preview)
+
+  - 사이트 내 도메인 콘텐츠를 전체적으로 볼 수 있는 뷰어를 제공하려고 합니다. (준비중)
+
+- 결제(/payment)
+
+  - 결제 모듈을 사용해서 실제로 결제되는 컨텐츠를 기획 중입니다. (준비중)
+
+- 타임라인(/timeline)
+
+  - 타임라인을 사용한 컨텐츠를 기획 중입니다. (준비중)
 
 - 문의(/contact)
-  - 문의 메일 전송
-- 관리자(/admin)
-  - 유저 관리
-  - 프로젝트 관리
+  - 문의 메일 전송 : Google Apps Mail를 사용해 메일 정보없이도 메일을 보낼 수 있습니다.
+- 관리자(/admin) : 관리자 권한 필요
+  - 유저 관리 (준비중)
+  - 프로젝트 관리 (준비중)
 
 ## 🖼️ 스크린샷 (준비중)
-
-https://www.data.go.kr/data/15012690/openapi.do
 
 데이터 요청: solYear와 solMonth가 변경될 때마다 해당 달의 데이터를 Firebase에서 먼저 확인합니다. Firebase에 데이터가 없으면 API를 호출하여 데이터를 받아오고, 받아온 데이터를 Firebase에 저장합니다.
 Firebase에서 데이터를 사용: Firebase에 데이터가 있을 경우, 해당 데이터를 사용하여 달력을 표시하고, API 요청을 피할 수 있습니다
