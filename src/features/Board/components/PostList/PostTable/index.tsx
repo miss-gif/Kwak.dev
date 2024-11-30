@@ -11,7 +11,7 @@ const PostTable = ({ posts }: PostTableProps) => {
   const navigate = useNavigate();
 
   return (
-    <table>
+    <table className="w-full">
       <thead>
         <tr className="h-12 bg-slate-700 font-semibold text-white">
           <th className="text-center text-sm">제목</th>

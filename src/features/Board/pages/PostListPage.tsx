@@ -1,4 +1,4 @@
-import { readData } from "@/api/firebase-crud-api";
+import { readData } from "@/api/firebase-post-api";
 import { LinkButton } from "@/components/Button";
 import StickyWrapper from "@/components/common/StickyWrapper";
 import { useEffect, useState } from "react";
