@@ -1,25 +1,85 @@
-- react-router-dom
-- tailwindcss
-- postcss
-- autoprefixer
-- mui/material
-- mui/icons-material
+# Kwak.dev
 
-- react-select
-- fuse.js
-- framer-motion
-- zod
-- react-toastify
-- react-hook-form
-- @hookform/resolvers
+이 웹사이트는 제가 실험하고 배우며 성장하는 공간입니다.
+새로운 기술을 시도하고, 아이디어를 코드로 구현하며, 도전과 실수를 기록합니다.
+개발자로서의 여정을 자유롭고 솔직하게 공유하는 플랫폼입니다.
 
-- classnames
+- TypeScript 기반 React 프로젝트로 Firebase를 활용했습니다.
 
-- prettier-plugin-tailwindcss
+## 📂 목차
 
-- zustand
+1. [소개](#)
+2. [기술 스택](#)
+3. [설치 및 실행 방법](#)
+4. [주요 기능](#)
+5. [스크린샷](#)
+6. [문제 해결](#)
+7. [기여 방법](#)
+8. [라이센스](#)
 
-- fast-xml-parser
+## 🔍 소개
+
+이 프로젝트는 제가 배운 것을 정리하고 실무에 적용하며 기술적 숙련도를 높이기 위해 시작했습니다.
+하드 코딩의 한계를 극복하기 위해 Firebase를 백엔드로 활용하여 개발했습니다.
+
+## 🛠️ 기술 스택
+
+- 프론트엔드
+
+  - <b>주요 도구</b>
+    React: 사용자 인터페이스 구축
+    TypeScript: 정적 타입 검사로 안정성과 강화
+    React Router: 라우팅 관리
+  - <b>스타일링 및 UI 관련 라이브러리</b>
+    TailwindCSS: 스타일링 프레임워크
+    MUI: 구글 UI 컴포넌트
+    Framer Motion: 애니메이션 및 인터랙션
+    react-toastify: 알림/토스트 메시지 구현
+  - <b>폼 및 데이터 처리</b>
+    react-hook-form: 폼 상태 관리
+    zod: 스키마 기반 데이터 검증 라이브러리
+  - <b>기타 유틸리티</b>
+    fuse.js: 빠르고 간단한 검색 기능 구현
+    classnames: 동적 클래스 이름 관리
+    zustand: 전역 상태 관리 라이브러리
+    fast-xml-parser: XML 데이터를 JSON으로 변환 (캘린더)
+
+- 백엔드: Firebase (Authentication, Firestore)
+- 분석 도구: Google Analytics
+- 기타 도구: Vite, Git, Chrome, Visual Studio Code
+
+## 🚀 실행 방법
+
+브라우저에서 `https://portfolio-another.vercel.app/`로 접속합니다.
+
+## ✨ 주요 기능 (도메인)
+
+- 홈(/home):
+- 소개(/about):
+- 프로젝트(/project):
+  - CRUD
+- 인터뷰(/interview):
+  - 인터뷰 신청
+  - 미답변/답변
+- 게시판(/board)
+
+  - CRUD
+  - 댓글/답글
+  - 추천/비추천
+  - 신고
+
+- 마이페이지(/mypage)
+
+  - 유저 프로필 확인
+  - 유저 프로필 수정
+
+- 문의(/contact)
+  - 문의 메일 전송
+- 관리자(/admin)
+  - 유저 관리
+  - 프로젝트 관리
+
+## 🖼️ 스크린샷 (준비중)
 
 https://www.data.go.kr/data/15012690/openapi.do
 
@@ -28,6 +88,10 @@ Firebase에서 데이터를 사용: Firebase에 데이터가 있을 경우, 해�
 
 페이지 헤딩 h2 7xl 볼드
 섹션 헤딩 h3 6xl 세미볼드
+
+## 🛠️ 문제 해결
+
+## 📄 라이센스
 
 ### 파이어베이스
 
