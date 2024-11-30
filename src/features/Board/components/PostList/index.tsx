@@ -1,5 +1,5 @@
 import { PostData } from "../../types/type";
-import PostTable from "../PostTable";
+import PostTable from "./PostTable";
 
 interface PostListProps {
   posts: PostData[];
