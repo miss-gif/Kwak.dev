@@ -15,8 +15,6 @@ const PostDetailPage = () => {
   if (error) return <p>Error: {error.message}</p>;
   if (!post) return <p>No post found</p>;
 
-  // TODO : 조회수 증가 기능 필요
-
   const props = {
     title: "게시글 상세",
     subtitle: "✨ 게시글을 자세히 확인하세요.",

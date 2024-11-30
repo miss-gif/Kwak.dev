@@ -1,12 +1,10 @@
 import UpDownButton from "@/features/Board/components/UpDownButton";
 import UrlCopyButton from "@/features/Board/components/UrlCopyButton";
-import { db } from "@/firebaseConfig";
-import { handleDislike, handleLike } from "@/utils/utils";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import DOMPurify from "dompurify";
-import { doc, runTransaction } from "firebase/firestore";
-import { useEffect, useState } from "react";
+
+import usePostDetail from "../../hooks/use-PostDetail";
 import { PostData } from "../../types/type";
 
 interface PostDetailProps {
@@ -15,36 +13,10 @@ interface PostDetailProps {
 }
 
 const PostDetail = ({ post, postId }: PostDetailProps) => {
-  const [views, setViews] = useState(post.views);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchAndUpdateViews = async (postId: string) => {
-      if (!postId) return;
-
-      const postRef = doc(db, "posts", postId);
-
-      try {
-        const updatedViews = await runTransaction(db, async (transaction) => {
-          const postDoc = await transaction.get(postRef);
-          if (!postDoc.exists()) {
-            throw new Error("Document does not exist!");
-          }
-
-          const newViews = (postDoc.data().views || 0) + 1;
-          transaction.update(postRef, { views: newViews });
-          return newViews;
-        });
-
-        setViews(updatedViews);
-      } catch (error) {
-        console.error("Transaction failed: ", error);
-        setError("조회수를 업데이트하는데 문제가 발생했습니다.");
-      }
-    };
-
-    fetchAndUpdateViews(postId);
-  }, [postId]);
+  const { views, error, handleLike, handleDislike } = usePostDetail({
+    post,
+    postId,
+  });
 
   // HTML을 정화하여 렌더링
   const getSanitizedContent = () => {
@@ -72,7 +44,9 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
       <div className="flex items-center justify-center gap-6 pb-10 pt-20">
         <UpDownButton
           postId={postId}
-          onClick={handleLike}
+          onClick={() => {
+            handleLike(postId, post.uid);
+          }}
           post={post}
           rule={"likes"}
         >
@@ -80,7 +54,9 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
         </UpDownButton>
         <UpDownButton
           postId={postId}
-          onClick={handleDislike}
+          onClick={() => {
+            handleDislike(postId, post.uid);
+          }}
           post={post}
           rule={"dislikes"}
         >
