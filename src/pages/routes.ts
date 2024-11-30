@@ -15,6 +15,7 @@ import { projectRoutes } from "../features/Project";
 import { scheduleRoutes } from "../features/Schedule";
 import { timelineRoutes } from "../features/Timeline";
 import { chatRoutes } from "../features/Chat";
+import { pointRoutes } from "../features/Point";
 
 export const routes = [
   ...aboutRoutes,
@@ -35,4 +36,5 @@ export const routes = [
   ...timelineRoutes,
   ...chartsRoutes,
   ...chatRoutes,
+  ...pointRoutes,
 ];

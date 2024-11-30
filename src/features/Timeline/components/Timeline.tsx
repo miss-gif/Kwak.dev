@@ -15,7 +15,9 @@ export default function LeftAlignedTimeline() {
     <Timeline>
       <TimeItem color="inherit" icon={<CelebrationIcon />} year="1991" label="출생" text="대구 출신" />
       <TimeItem color="primary" icon={<SchoolIcon />} year="2007" label="고등학교 입학" text="특성화/마이스터고 멀티미디어과" />
+      <TimeItem color="warning" icon={<WorkIcon />} year="" label="학교도서관" text="근로장학생" />
       <TimeItem color="inherit" icon={<MilitaryTechIcon />} year="2009" label="NAVER POWER 지식iN 선정" text="일본 서브컬쳐 분야" />
+      <TimeItem color="warning" icon={<WorkOffIcon />} year="" label="학교도서관" text="근로장학생" />
       <TimeItem color="primary" icon={<SchoolIcon />} year="2010" label="고등학고 졸업" text="특성화/마이스터고 멀티미디어과" />
       <TimeItem color="primary" icon={<SchoolIcon />} year="" label="대학교 입학" text="문헌정보학과" />
       <TimeItem color="primary" icon={<SchoolIcon />} year="2011" label="복수전공" text="일어일문학과" />

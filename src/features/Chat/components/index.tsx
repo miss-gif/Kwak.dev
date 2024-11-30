@@ -17,6 +17,7 @@ function Chat() {
     // Firestore에서 실시간으로 메시지를 가져옵니다.
     const messagesRef = collection(db, "messages");
     const q = query(messagesRef, orderBy("timestamp"));
+    // onSnapshot은 실시간으로 데이터베이스의 변경 사항을 감지합니다.
     const unsubscribe = onSnapshot(q, (snapshot) => setMessages(snapshot.docs.map((doc) => doc.data() as Message)));
 
     return () => unsubscribe(); // 컴포넌트 언마운트 시 구독 해제
