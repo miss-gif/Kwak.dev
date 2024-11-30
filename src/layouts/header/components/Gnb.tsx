@@ -15,7 +15,7 @@ export const BOTTOM_MENU_ITEMS = [
   // { name: "갤러리", path: "gallery" },
   // { name: "통계", path: "charts" },
   // { name: "일정", path: "schedule" },
-  // { name: "타임라인", path: "timeline" },
+  { name: "타임라인", path: "timeline" },
 ];
 
 export const TOP_MENU_ITEMS = [

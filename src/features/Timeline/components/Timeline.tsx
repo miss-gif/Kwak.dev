@@ -1,42 +1,44 @@
-interface TimelineEventProps {
-  date: string;
-  description: string;
-}
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
+import BatteryCharging60Icon from "@mui/icons-material/BatteryCharging60";
+import CelebrationIcon from "@mui/icons-material/Celebration";
+import FlightLandIcon from "@mui/icons-material/FlightLand";
+import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import MilitaryTechIcon from "@mui/icons-material/MilitaryTech";
+import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
+import WorkOffIcon from "@mui/icons-material/WorkOff";
+import Timeline from "@mui/lab/Timeline";
+import TimeItem from "./TimeItem";
 
-const TimelineEvent = ({ date, description }: TimelineEventProps) => (
-  <div className="flex w-full items-center space-x-4">
-    <div className="h-4 w-4 rounded-full bg-blue-500"></div>
-    <div className="pl-6">
-      <span className="text-lg font-semibold text-blue-500">{date}</span>
-      <p className="text-gray-700">{description}</p>
-    </div>
-  </div>
-);
-
-// 전체 타임라인 컴포넌트
-const Timeline = () => {
-  // 연혁 데이터를 배열로 관리
-  const events = [
-    { date: "2021년 1월", description: "회사 설립 및 초기 팀 구성 완료" },
-    { date: "2021년 6월", description: "첫 번째 제품 출시 및 시장 반응 확보" },
-    { date: "2022년 3월", description: "시리즈 A 투자 유치 및 개발팀 확장" },
-    { date: "2023년 8월", description: "두 번째 제품 출시 및 해외 시장 진출" },
-    { date: "2024년 5월", description: "최신 기술 적용한 혁신 제품 출시 예정" },
-  ];
-
+export default function LeftAlignedTimeline() {
   return (
-    <div className="mx-auto w-full">
-      <div className="space-y-8 border-l-4 border-blue-500">
-        {events.map((event, index) => (
-          <TimelineEvent
-            key={index}
-            date={event.date}
-            description={event.description}
-          />
-        ))}
-      </div>
-    </div>
+    <Timeline>
+      <TimeItem color="inherit" icon={<CelebrationIcon />} year="1991" label="출생" text="대구 출신" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="2007" label="고등학교 입학" text="특성화/마이스터고 멀티미디어과" />
+      <TimeItem color="inherit" icon={<MilitaryTechIcon />} year="2009" label="NAVER POWER 지식iN 선정" text="일본 서브컬쳐 분야" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="2010" label="고등학고 졸업" text="특성화/마이스터고 멀티미디어과" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="" label="대학교 입학" text="문헌정보학과" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="2011" label="복수전공" text="일어일문학과" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="2011" label="대학교 휴학" text="군 휴학 및 아르바이트 병행" />
+      <TimeItem color="inherit" icon={<FlightTakeoffIcon />} year="2014" label="워킹홀리데이 출국" text="일본, 오사카" />
+      <TimeItem color="warning" icon={<WorkIcon />} year="" label="천하일품 (天下一品) 입사" text="일본 요식업 프랜차이즈" />
+      <TimeItem color="warning" icon={<WorkOffIcon />} year="2015" label="천하일품 (天下一品) 퇴사" text="일본 요식업 프랜차이즈" />
+      <TimeItem color="inherit" icon={<FlightLandIcon />} year="" label="워킹홀리데이 귀국" text="일본, 오사카" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="" label="대학교 복학" text="" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="2018" label="대학교 졸업" text="문헌정보학과 / 일어일문학과" />
+      <TimeItem color="warning" icon={<WorkIcon />} year="2019" label="멘야산다이메 입사" text="요식업 프랜차이즈" />
+      <TimeItem color="warning" icon={<WorkOffIcon />} year="" label="멘야산다이메 퇴사" text="요식업 프랜차이즈" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="" label="국비교육" text="생산관리와 회계사무원 양성 과정" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="" label="국비교육 수료" text="생산관리와 회계사무원 양성 과정" />
+      <TimeItem color="warning" icon={<WorkIcon />} year="2020" label="베스트하비 입사" text="일반 사무원" />
+      <TimeItem color="warning" icon={<WorkOffIcon />} year="2021" label="베스트하비 퇴사" text="일반 사무원" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="" label="국비교육" text="node.js기반 풀스택 과정" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="2022" label="국비교육 수료" text="node.js기반 풀스택 과정" />
+      <TimeItem color="inherit" icon={<AutoAwesomeIcon />} year="" label="인터넷 강의 및 개인 프로젝트 작업" text="패캠, 인프런, 유데미 강의를 통해 학습" />
+      <TimeItem color="inherit" icon={<BatteryCharging60Icon />} year="2023" label="아르바이트" text="아르바이트 및 개인 학습" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="2024" label="KDT 국비교육" text="React(리액트) 프론트엔드 과정" />
+      <TimeItem color="primary" icon={<SchoolIcon />} year="" label="KDT 국비교육 수료" text="React(리액트) 프론트엔드 과정" />
+      <TimeItem color="inherit" icon={<AutoAwesomeIcon />} year="" label="인터넷 강의 및 개인 프로젝트 작업" text="패캠, 인프런, 유데미 강의를 통해 학습" />
+    </Timeline>
   );
-};
-
-export default Timeline;
+}
