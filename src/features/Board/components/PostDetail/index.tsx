@@ -4,6 +4,7 @@ import { db } from "@/firebaseConfig";
 import { handleDislike, handleLike } from "@/utils/utils";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import DOMPurify from "dompurify";
 import { doc, runTransaction } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { PostData } from "../../types/type";
@@ -45,6 +46,11 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
     fetchAndUpdateViews(postId);
   }, [postId]);
 
+  // HTML을 정화하여 렌더링
+  const getSanitizedContent = () => {
+    return { __html: DOMPurify.sanitize(post.content) };
+  };
+
   return (
     <div className="w-full rounded-md border border-gray-300 bg-white p-6 shadow-sm">
       <h3 className="mb-4 text-3xl font-bold text-gray-800">{post.title}</h3>
@@ -58,9 +64,11 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
         </div>
         <UrlCopyButton />
       </div>
-      <div className="mb-6 whitespace-pre-wrap text-gray-700">
-        {post.content}
-      </div>
+
+      <div
+        className="mb-6 whitespace-pre-wrap text-gray-700"
+        dangerouslySetInnerHTML={getSanitizedContent()}
+      />
       <div className="flex items-center justify-center gap-6 pb-10 pt-20">
         <UpDownButton
           postId={postId}
