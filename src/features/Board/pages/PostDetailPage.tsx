@@ -1,6 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import CommentList from "@/features/Board/components/CommentList";
+import CommentList from "@/features/Board/components/PostDetail/CommentList";
 import useGetPosts from "@/hooks/postbody/useGetPosts";
 import { useParams } from "react-router-dom";
 import PostDetail from "../components/PostDetail";
@@ -28,7 +28,7 @@ const PostDetailPage = () => {
 
           <PostDetail post={post} postId={postId} />
 
-          <CommentList />
+          <CommentList postId={postId} />
         </div>
       </SectionWrapper>
     </PageLayout>

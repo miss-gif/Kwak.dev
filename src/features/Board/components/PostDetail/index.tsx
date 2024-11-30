@@ -6,6 +6,7 @@ import DOMPurify from "dompurify";
 
 import usePostDetail from "../../hooks/use-PostDetail";
 import { PostData } from "../../types/type";
+import { formatDate } from "@/utils/formatDate";
 
 interface PostDetailProps {
   post: PostData;
@@ -30,7 +31,7 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
         <div className="flex flex-col gap-1 text-sm">
           <span className="font-semibold">{post.author}</span>
           <div className="flex gap-2 text-gray-500">
-            <span>{post.createdAt}</span>
+            <span>{formatDate(post.createdAt)}</span>
             <span className="flex items-center">조회 {views}</span>
           </div>
         </div>
