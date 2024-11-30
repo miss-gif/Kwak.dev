@@ -16,6 +16,7 @@ export const BOTTOM_MENU_ITEMS = [
   // { name: "통계", path: "charts" },
   // { name: "일정", path: "schedule" },
   { name: "타임라인", path: "timeline" },
+  { name: "실시간 채팅", path: "chat" },
 ];
 
 export const TOP_MENU_ITEMS = [

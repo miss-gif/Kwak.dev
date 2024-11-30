@@ -14,6 +14,7 @@ import { previewRoutes } from "../features/Preview";
 import { projectRoutes } from "../features/Project";
 import { scheduleRoutes } from "../features/Schedule";
 import { timelineRoutes } from "../features/Timeline";
+import { chatRoutes } from "../features/Chat";
 
 export const routes = [
   ...aboutRoutes,
@@ -32,4 +33,6 @@ export const routes = [
   ...chartsRoutes,
   ...mypageRoutes,
   ...timelineRoutes,
+  ...chartsRoutes,
+  ...chatRoutes,
 ];
