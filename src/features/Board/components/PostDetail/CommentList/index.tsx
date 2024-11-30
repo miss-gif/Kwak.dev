@@ -1,86 +1,30 @@
-import { db } from "@/firebaseConfig";
+import Button from "@/components/Button";
+import useComment from "@/features/Board/hooks/use-Comment";
 import { useAuthStore } from "@/stores/authStore";
 import { formatDate } from "@/utils/formatDate";
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  getDoc,
-  onSnapshot,
-  updateDoc,
-} from "firebase/firestore";
-import { useEffect, useState } from "react";
-
-interface Comment {
-  id: string;
-  author: string;
-  content: string;
-  date: string;
-  parentId: string | null;
-  uid: string;
-}
 
 interface CommentListProps {
   postId: string;
 }
 
 const CommentList = ({ postId }: CommentListProps) => {
-  const [comments, setComments] = useState<Comment[]>([]);
-  const [newComment, setNewComment] = useState("");
-  const [editingComment, setEditingComment] = useState<string | null>(null);
-  const [editContent, setEditContent] = useState("");
-  const [replyContent, setReplyContent] = useState("");
-  const [replyTo, setReplyTo] = useState<string | null>(null);
+  const {
+    comments,
+    newComment,
+    setNewComment,
+    editingComment,
+    setEditingComment,
+    editContent,
+    setEditContent,
+    replyContent,
+    setReplyContent,
+    replyTo,
+    setReplyTo,
+    handleCreateComment,
+    handleUpdateComment,
+    handleDeleteComment,
+  } = useComment({ postId });
   const { user } = useAuthStore();
-
-  // Fetch comments
-  useEffect(() => {
-    const commentsRef = collection(db, "posts", postId, "comments");
-    const unsubscribe = onSnapshot(commentsRef, (snapshot) => {
-      const updatedComments = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      })) as Comment[];
-      setComments(updatedComments);
-    });
-    return () => unsubscribe();
-  }, [postId]);
-
-  // Create comment
-  const handleCreateComment = async (parentId: string | null = null) => {
-    if (!newComment.trim() && !replyContent.trim()) return;
-    const commentsRef = collection(db, "posts", postId, "comments");
-    const commentData = {
-      author: user?.displayName,
-      content: parentId ? replyContent : newComment,
-      uid: user?.uid,
-      date: new Date(),
-      parentId,
-    };
-    await addDoc(commentsRef, commentData);
-    parentId ? setReplyContent("") : setNewComment("");
-    setReplyTo(null);
-  };
-
-  // Update comment
-  const handleUpdateComment = async (commentId: string) => {
-    const commentRef = doc(db, "posts", postId, "comments", commentId);
-    await updateDoc(commentRef, { content: editContent, date: new Date() });
-    setEditingComment(null);
-    setEditContent("");
-  };
-
-  // Delete comment
-  const handleDeleteComment = async (commentId: string) => {
-    const commentRef = doc(db, "posts", postId, "comments", commentId);
-    const commentSnap = await getDoc(commentRef);
-    if (!commentSnap.exists() || commentSnap.data().uid !== user?.uid) {
-      alert("삭제 권한이 없습니다.");
-      return;
-    }
-    await deleteDoc(commentRef);
-  };
 
   return (
     <div className="mt-8 w-full rounded-md border bg-white p-6 shadow-sm">
@@ -90,11 +34,39 @@ const CommentList = ({ postId }: CommentListProps) => {
           .filter((c) => c.parentId === null)
           .map((comment) => (
             <div key={comment.id} className="border-b pb-4">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between bg-slate-50">
                 <span className="text-sm text-gray-600">{comment.author}</span>
-                <span className="text-xs text-gray-500">
-                  {formatDate(comment.date)}
-                </span>
+                <div className="오른쪽 flex items-center gap-1">
+                  {comment.createdAt == comment.updatedAt ? (
+                    <span className="text-xs text-gray-500">
+                      {formatDate(comment.createdAt)}
+                    </span>
+                  ) : (
+                    <p className="text-xs text-gray-500">
+                      <span className="px-1">수정됨</span>
+                      {formatDate(comment.updatedAt)}
+                    </p>
+                  )}
+                  {comment.uid === user?.uid && (
+                    <div className="flex gap-1">
+                      <Button
+                        label="수정"
+                        onClick={() => {
+                          setEditingComment(comment.id);
+                          setEditContent(comment.content);
+                        }}
+                      />
+                      <Button
+                        label="삭제"
+                        color="red"
+                        onClick={() => {
+                          handleDeleteComment(comment.id);
+                        }}
+                      />
+                    </div>
+                  )}
+                  <Button label="답글" onClick={() => setReplyTo(comment.id)} />
+                </div>
               </div>
               {editingComment === comment.id ? (
                 <div>
@@ -103,47 +75,28 @@ const CommentList = ({ postId }: CommentListProps) => {
                     onChange={(e) => setEditContent(e.target.value)}
                     className="mt-2 w-full rounded-md border p-2"
                   />
-                  <button
-                    className="mt-2 rounded-md bg-blue-500 px-4 py-2 text-white"
-                    onClick={() => handleUpdateComment(comment.id)}
-                  >
-                    저장
-                  </button>
-                  <button
-                    className="ml-2 mt-2 rounded-md bg-gray-300 px-4 py-2"
-                    onClick={() => setEditingComment(null)}
-                  >
-                    취소
-                  </button>
+                  <div className="flex gap-1">
+                    <Button
+                      label="저장"
+                      onClick={() => handleUpdateComment(comment.id)}
+                    />
+                    <Button
+                      label="취소"
+                      onClick={() => setEditingComment(null)}
+                      color="red"
+                    />
+                  </div>
                 </div>
               ) : (
                 <>
-                  <p className="mt-2 text-gray-700">{comment.content}</p>
-                  {comment.uid === user?.uid && (
-                    <div className="flex space-x-2">
-                      <button
-                        className="text-blue-500"
-                        onClick={() => {
-                          setEditingComment(comment.id);
-                          setEditContent(comment.content);
-                        }}
-                      >
-                        수정
-                      </button>
-                      <button
-                        className="text-red-500"
-                        onClick={() => handleDeleteComment(comment.id)}
-                      >
-                        삭제
-                      </button>
-                    </div>
+                  {/* 댓글 삭제된 경우 표시 */}
+                  {!comment.isPrivate ? (
+                    <p className="mt-2 text-gray-700">{comment.content}</p>
+                  ) : (
+                    <p className="mt-2 italic text-gray-400">
+                      삭제된 댓글입니다.
+                    </p>
                   )}
-                  <button
-                    className="text-gray-500"
-                    onClick={() => setReplyTo(comment.id)}
-                  >
-                    답글
-                  </button>
                 </>
               )}
               {/* Render replies */}
@@ -156,31 +109,61 @@ const CommentList = ({ postId }: CommentListProps) => {
                         {reply.author}
                       </span>
                       <span className="text-xs text-gray-500">
-                        {formatDate(reply.date)}
+                        {formatDate(reply.createdAt)}
                       </span>
                     </div>
-                    <p className="mt-2 text-gray-700">{reply.content}</p>
-                    {reply.uid === user?.uid && (
-                      <div className="flex space-x-2">
-                        <button
-                          className="text-blue-500"
-                          onClick={() => {
-                            setEditingComment(reply.id);
-                            setEditContent(reply.content);
-                          }}
-                        >
-                          수정
-                        </button>
-                        <button
-                          className="text-red-500"
-                          onClick={() => handleDeleteComment(reply.id)}
-                        >
-                          삭제
-                        </button>
+                    {editingComment === reply.id ? (
+                      <div>
+                        <textarea
+                          value={editContent}
+                          onChange={(e) => setEditContent(e.target.value)}
+                          className="mt-2 w-full rounded-md border p-2"
+                        />
+                        <div className="mt-2 flex space-x-2">
+                          <button
+                            className="text-blue-500"
+                            onClick={() => handleUpdateComment(reply.id)}
+                          >
+                            저장
+                          </button>
+                          <button
+                            className="text-red-500"
+                            onClick={() => {
+                              setEditingComment(null);
+                              setEditContent("");
+                            }}
+                          >
+                            취소
+                          </button>
+                        </div>
                       </div>
+                    ) : (
+                      <>
+                        <p className="mt-2 text-gray-700">{reply.content}</p>
+                        {reply.uid === user?.uid && (
+                          <div className="flex space-x-2">
+                            <button
+                              className="text-blue-500"
+                              onClick={() => {
+                                setEditingComment(reply.id);
+                                setEditContent(reply.content);
+                              }}
+                            >
+                              답글 수정
+                            </button>
+                            <button
+                              className="text-red-500"
+                              onClick={() => handleDeleteComment(reply.id)}
+                            >
+                              답글 삭제
+                            </button>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
                 ))}
+
               {/* Reply input */}
               {replyTo === comment.id && (
                 <div className="mt-4">
@@ -201,6 +184,7 @@ const CommentList = ({ postId }: CommentListProps) => {
             </div>
           ))}
       </div>
+
       <div className="mt-6">
         <textarea
           placeholder="댓글을 남기세요..."

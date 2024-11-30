@@ -14,3 +14,14 @@ export interface PostData {
   likedBy: [string];
   dislikedBy: [string];
 }
+
+export interface Comment {
+  id: string;
+  author: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  parentId: string | null;
+  uid: string;
+  isPrivate: boolean;
+}
