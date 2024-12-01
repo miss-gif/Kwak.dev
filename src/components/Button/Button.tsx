@@ -13,11 +13,11 @@ const Button = ({
   label,
   onClick,
   type = "button",
-  color = "blue",
   width = "",
   py = "py-3",
   mt = "",
-  text = "white",
+  color = "blue" as "transparent" | "inherit",
+  text = "white" as "transparent" | "inherit",
 }: ButtonProps) => (
   <button
     type={type}

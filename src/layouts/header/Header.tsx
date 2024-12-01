@@ -16,7 +16,7 @@ const Header = ({ toggleTheme }: Theme) => {
   useHeaderScroll();
 
   return (
-    <header className="header fixed left-0 top-0 z-50 flex h-20 w-full items-center justify-between transition-shadow duration-300">
+    <header className="sticky left-0 top-0 z-50 flex h-20 w-full items-center justify-between transition-shadow duration-300">
       <Container>
         <div className="flex w-full items-center justify-between">
           <Link to="/" onClick={() => handleClick(null)}>

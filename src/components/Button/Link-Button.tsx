@@ -7,17 +7,9 @@ interface LinkButtonProps {
   text?: string;
 }
 
-const LinkButton = ({
-  label,
-  to,
-  color = "blue",
-  text = "white",
-}: LinkButtonProps) => {
+const LinkButton = ({ label, to, color = "blue" as "transparent" | "inherit", text = "white" }: LinkButtonProps) => {
   return (
-    <Link
-      to={to}
-      className={`bg-${color}-500 hover:bg-${color}-600 shrink-0 rounded-md px-4 py-3 text-sm text-${text}`}
-    >
+    <Link to={to} className={`bg-${color}-500 hover:bg-${color}-600 shrink-0 rounded-md px-4 py-3 text-sm text-${text}`}>
       {label}
     </Link>
   );
