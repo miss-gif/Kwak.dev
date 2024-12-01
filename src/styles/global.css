@@ -1,6 +1,6 @@
 /* hover 일 때, 옅은 그림자 */
 .shadow-style {
-  @apply transition-shadow duration-200 hover:shadow-md;
+  @apply transition-shadow duration-200;
 }
 
 /* 검색창 인풋 */

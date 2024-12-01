@@ -37,60 +37,29 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
   };
 
   return (
-    <form
-      className="w-full rounded-md bg-white p-8 shadow-md"
-      onSubmit={handleSubmit(onSubmit)}
-    >
+    <form className="w-full rounded-md bg-white p-8" onSubmit={handleSubmit(onSubmit)}>
       <div className="w-full space-y-8">
         {/* Name Field */}
         <fieldset className="flex w-full flex-col">
-          <label
-            htmlFor="name"
-            className="w-full text-sm font-semibold text-gray-800"
-          >
+          <label htmlFor="name" className="w-full text-sm font-semibold text-gray-800">
             보내시는 분
           </label>
-          <input
-            id="name"
-            className="mt-2 rounded-md border border-gray-300 p-3"
-            placeholder="보내시는 분"
-            {...register("name")}
-          />
-          {errors.name?.message && (
-            <p className="mt-2 text-xs font-medium text-red-500">
-              {String(errors.name.message)}
-            </p>
-          )}
+          <input id="name" className="mt-2 rounded-md border border-gray-300 p-3" placeholder="보내시는 분" {...register("name")} />
+          {errors.name?.message && <p className="mt-2 text-xs font-medium text-red-500">{String(errors.name.message)}</p>}
         </fieldset>
 
         {/* Email Field */}
         <fieldset className="flex flex-col">
-          <label
-            htmlFor="email"
-            className="text-sm font-semibold text-gray-800"
-          >
+          <label htmlFor="email" className="text-sm font-semibold text-gray-800">
             이메일 주소
           </label>
-          <input
-            id="email"
-            type="email"
-            className="mt-2 rounded-md border border-gray-300 p-3"
-            placeholder="이메일 주소를 입력하세요"
-            {...register("email")}
-          />
-          {errors.email?.message && (
-            <p className="mt-2 text-xs font-medium text-red-500">
-              {String(errors.email.message)}
-            </p>
-          )}
+          <input id="email" type="email" className="mt-2 rounded-md border border-gray-300 p-3" placeholder="이메일 주소를 입력하세요" {...register("email")} />
+          {errors.email?.message && <p className="mt-2 text-xs font-medium text-red-500">{String(errors.email.message)}</p>}
         </fieldset>
 
         {/* Message Field */}
         <fieldset className="flex flex-col">
-          <label
-            htmlFor="message"
-            className="text-sm font-semibold text-gray-800"
-          >
+          <label htmlFor="message" className="text-sm font-semibold text-gray-800">
             내용
           </label>
           <textarea
@@ -99,11 +68,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
             placeholder="문의 내용을 입력해주세요."
             {...register("message")}
           />
-          {errors.message?.message && (
-            <p className="mt-2 text-xs font-medium text-red-500">
-              {String(errors.message.message)}
-            </p>
-          )}
+          {errors.message?.message && <p className="mt-2 text-xs font-medium text-red-500">{String(errors.message.message)}</p>}
         </fieldset>
 
         <fieldset className="hidden">

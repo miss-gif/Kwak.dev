@@ -25,7 +25,7 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
   };
 
   return (
-    <div className="w-full rounded-md border border-gray-300 bg-white p-6 shadow-sm">
+    <div className="w-full rounded-md border border-gray-300 bg-white p-6">
       <h3 className="mb-4 text-3xl font-bold text-gray-800">{post.title}</h3>
       <div className="mb-6 flex items-center justify-between">
         <div className="flex flex-col gap-1 text-sm">
@@ -38,10 +38,7 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
         <UrlCopyButton />
       </div>
 
-      <div
-        className="mb-6 whitespace-pre-wrap text-gray-700"
-        dangerouslySetInnerHTML={getSanitizedContent()}
-      />
+      <div className="mb-6 whitespace-pre-wrap text-gray-700" dangerouslySetInnerHTML={getSanitizedContent()} />
       <div className="flex items-center justify-center gap-6 pb-10 pt-20">
         <UpDownButton
           postId={postId}

@@ -9,31 +9,18 @@ const test = {
 };
 
 const LoginPage = () => {
-  const { email, setEmail, password, setPassword, error, handleLogin } =
-    useLogin({
-      initialEmail: test.email,
-      initialPassword: test.password,
-    });
+  const { email, setEmail, password, setPassword, error, handleLogin } = useLogin({
+    initialEmail: test.email,
+    initialPassword: test.password,
+  });
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8 shadow-md">
+      <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8">
         <h2 className="text-center text-2xl font-bold text-gray-700">로그인</h2>
         <form onSubmit={handleLogin} className="space-y-4">
-          <AuthLabelInput
-            type="email"
-            label="이메일"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <AuthLabelInput
-            type="password"
-            label="비밀번호"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <AuthLabelInput type="email" label="이메일" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <AuthLabelInput type="password" label="비밀번호" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
           <Button label="로그인" width="w-full" type="submit" py="py-2" />
         </form>

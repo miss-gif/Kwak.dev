@@ -11,14 +11,9 @@ const MypageHome = () => {
   };
 
   return (
-    <div className="mx-auto mt-10 max-w-md rounded-md bg-white p-6 shadow-md">
-      <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">
-        회원정보
-      </h2>
-      <Button
-        label={isEditing ? "취소" : "프로필 수정"}
-        onClick={toggleEditMode}
-      />
+    <div className="mx-auto mt-10 max-w-md rounded-md bg-white p-6">
+      <h2 className="mb-6 text-center text-2xl font-semibold text-gray-800">회원정보</h2>
+      <Button label={isEditing ? "취소" : "프로필 수정"} onClick={toggleEditMode} />
       {isEditing ? <UserProfileEdit /> : <UserProfile />}
     </div>
   );

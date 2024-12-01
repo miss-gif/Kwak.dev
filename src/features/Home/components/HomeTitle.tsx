@@ -23,7 +23,7 @@ interface LinkButtonProps {
 
 const LinkButton = ({ href, icon: Icon, label }: LinkButtonProps) => (
   <a
-    className="flex items-center justify-center gap-1 rounded-md border border-white px-4 py-3 text-sm shadow-md transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white"
+    className="flex items-center justify-center gap-1 rounded-md border border-white px-4 py-3 text-sm transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white"
     href={href}
     target="_blank"
     rel="noopener noreferrer"

@@ -17,10 +17,8 @@ function SignupPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8 shadow-md">
-        <h2 className="text-center text-2xl font-bold text-gray-700">
-          회원가입
-        </h2>
+      <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8">
+        <h2 className="text-center text-2xl font-bold text-gray-700">회원가입</h2>
         <form onSubmit={handleSignup} className="space-y-4">
           <AuthLabelInput
             name="displayName"
@@ -32,20 +30,8 @@ function SignupPage() {
             checkLabel="중복확인"
             checkFunc={handleCheckDisplayName}
           />
-          <AuthLabelInput
-            name="email"
-            label="이메일"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <AuthLabelInput
-            name="password"
-            label="비밀번호"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <AuthLabelInput name="email" label="이메일" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <AuthLabelInput name="password" label="비밀번호" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           <Button label="회원가입" width="w-full" type="submit" py="py-2" />
         </form>
         <p className="text-center text-sm text-gray-600">

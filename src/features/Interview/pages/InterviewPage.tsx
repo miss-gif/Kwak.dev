@@ -9,8 +9,7 @@ import { useEffect, useState } from "react";
 
 const InterviewPage = () => {
   const [query, setQuery] = useState("");
-  const [filteredQuestions, setFilteredQuestions] =
-    useState(interviewQuestions);
+  const [filteredQuestions, setFilteredQuestions] = useState(interviewQuestions);
 
   // fuse.js 설정
   const fuse = new Fuse(interviewQuestions, {
@@ -50,10 +49,7 @@ const InterviewPage = () => {
           />
           {/* 검색어 초기화 버튼 */}
           {query && (
-            <button
-              onClick={clearQuery}
-              className="absolute right-4 text-gray-500 hover:text-gray-700"
-            >
+            <button onClick={clearQuery} className="absolute right-4 text-gray-500 hover:text-gray-700">
               <CloseIcon />
             </button>
           )}
@@ -62,18 +58,9 @@ const InterviewPage = () => {
         <ul className="mt-4 flex flex-col gap-4">
           {filteredQuestions.length > 0 ? (
             filteredQuestions.map((question, index) => (
-              <li
-                key={index}
-                className="shadow-style rounded-md border border-gray-300 p-6 shadow-sm hover:border-blue-300"
-              >
-                <h3 className="text-xl font-semibold">
-                  Q. {question.question}
-                </h3>
-                <p
-                  className={`my-4 whitespace-pre-line leading-loose transition-all duration-300 ${
-                    query ? "blur-0" : "blur-sm"
-                  } hover:blur-0`}
-                >
+              <li key={index} className="shadow-style rounded-md border border-gray-300 p-6 hover:border-blue-300">
+                <h3 className="text-xl font-semibold">Q. {question.question}</h3>
+                <p className={`my-4 whitespace-pre-line leading-loose transition-all duration-300 ${query ? "blur-0" : "blur-sm"} hover:blur-0`}>
                   {formatTextByDot(question.answer)}
                 </p>
               </li>

@@ -3,8 +3,7 @@ import HomeTitle from "@/features/Home/components/HomeTitle";
 const HomeInfoData = {
   streakStats: {
     title: "streakStats",
-    image:
-      "https://streak-stats.demolab.com?user=miss-gif&theme=transparent&hide_border=true&border_radius=0&locale=ko&card_width=467",
+    image: "https://streak-stats.demolab.com?user=miss-gif&theme=transparent&hide_border=true&border_radius=0&locale=ko&card_width=467",
   },
   statsCard: {
     title: "statsCard",
@@ -25,7 +24,7 @@ interface HomeNoticeProps {
 
 const HomeNotice = ({ title, image }: HomeNoticeProps) => {
   return (
-    <div className="overflow-hidden rounded-md bg-white bg-opacity-90 shadow-lg">
+    <div className="overflow-hidden rounded-md bg-white bg-opacity-90">
       <img src={image} alt={title} />
     </div>
   );

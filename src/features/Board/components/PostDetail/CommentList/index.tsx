@@ -27,7 +27,7 @@ const CommentList = ({ postId }: CommentListProps) => {
   const { user } = useAuthStore();
 
   return (
-    <div className="mt-8 w-full rounded-md border bg-white p-6 shadow-sm">
+    <div className="mt-8 w-full rounded-md border bg-white p-6">
       <h2 className="mb-4 text-xl font-semibold text-gray-800">댓글</h2>
       <div className="space-y-4">
         {comments
@@ -38,9 +38,7 @@ const CommentList = ({ postId }: CommentListProps) => {
                 <span className="text-sm text-gray-600">{comment.author}</span>
                 <div className="오른쪽 flex items-center gap-1">
                   {comment.createdAt == comment.updatedAt ? (
-                    <span className="text-xs text-gray-500">
-                      {formatDate(comment.createdAt)}
-                    </span>
+                    <span className="text-xs text-gray-500">{formatDate(comment.createdAt)}</span>
                   ) : (
                     <p className="text-xs text-gray-500">
                       <span className="px-1">수정됨</span>
@@ -70,21 +68,10 @@ const CommentList = ({ postId }: CommentListProps) => {
               </div>
               {editingComment === comment.id ? (
                 <div>
-                  <textarea
-                    value={editContent}
-                    onChange={(e) => setEditContent(e.target.value)}
-                    className="mt-2 w-full rounded-md border p-2"
-                  />
+                  <textarea value={editContent} onChange={(e) => setEditContent(e.target.value)} className="mt-2 w-full rounded-md border p-2" />
                   <div className="flex gap-1">
-                    <Button
-                      label="저장"
-                      onClick={() => handleUpdateComment(comment.id)}
-                    />
-                    <Button
-                      label="취소"
-                      onClick={() => setEditingComment(null)}
-                      color="red"
-                    />
+                    <Button label="저장" onClick={() => handleUpdateComment(comment.id)} />
+                    <Button label="취소" onClick={() => setEditingComment(null)} color="red" />
                   </div>
                 </div>
               ) : (
@@ -93,9 +80,7 @@ const CommentList = ({ postId }: CommentListProps) => {
                   {!comment.isPrivate ? (
                     <p className="mt-2 text-gray-700">{comment.content}</p>
                   ) : (
-                    <p className="mt-2 italic text-gray-400">
-                      삭제된 댓글입니다.
-                    </p>
+                    <p className="mt-2 italic text-gray-400">삭제된 댓글입니다.</p>
                   )}
                 </>
               )}
@@ -105,25 +90,14 @@ const CommentList = ({ postId }: CommentListProps) => {
                 .map((reply) => (
                   <div key={reply.id} className="ml-6 mt-4 border-l pl-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-600">
-                        {reply.author}
-                      </span>
-                      <span className="text-xs text-gray-500">
-                        {formatDate(reply.createdAt)}
-                      </span>
+                      <span className="text-sm text-gray-600">{reply.author}</span>
+                      <span className="text-xs text-gray-500">{formatDate(reply.createdAt)}</span>
                     </div>
                     {editingComment === reply.id ? (
                       <div>
-                        <textarea
-                          value={editContent}
-                          onChange={(e) => setEditContent(e.target.value)}
-                          className="mt-2 w-full rounded-md border p-2"
-                        />
+                        <textarea value={editContent} onChange={(e) => setEditContent(e.target.value)} className="mt-2 w-full rounded-md border p-2" />
                         <div className="mt-2 flex space-x-2">
-                          <button
-                            className="text-blue-500"
-                            onClick={() => handleUpdateComment(reply.id)}
-                          >
+                          <button className="text-blue-500" onClick={() => handleUpdateComment(reply.id)}>
                             저장
                           </button>
                           <button
@@ -151,10 +125,7 @@ const CommentList = ({ postId }: CommentListProps) => {
                             >
                               답글 수정
                             </button>
-                            <button
-                              className="text-red-500"
-                              onClick={() => handleDeleteComment(reply.id)}
-                            >
+                            <button className="text-red-500" onClick={() => handleDeleteComment(reply.id)}>
                               답글 삭제
                             </button>
                           </div>
@@ -173,10 +144,7 @@ const CommentList = ({ postId }: CommentListProps) => {
                     placeholder="답글을 작성하세요..."
                     className="w-full rounded-md border p-2"
                   />
-                  <button
-                    className="mt-2 rounded-md bg-blue-500 px-4 py-2 text-white"
-                    onClick={() => handleCreateComment(comment.id)}
-                  >
+                  <button className="mt-2 rounded-md bg-blue-500 px-4 py-2 text-white" onClick={() => handleCreateComment(comment.id)}>
                     답글 작성
                   </button>
                 </div>
@@ -194,10 +162,7 @@ const CommentList = ({ postId }: CommentListProps) => {
           rows={3}
         />
         <div className="mt-4 flex justify-end">
-          <button
-            className="rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600"
-            onClick={() => handleCreateComment(null)}
-          >
+          <button className="rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600" onClick={() => handleCreateComment(null)}>
             댓글 작성
           </button>
         </div>
