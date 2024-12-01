@@ -1,6 +1,7 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import Chat from "../components";
+import Chat from "../components/PublicChat";
+import RoomChat from "../components/RoomChat";
 
 const ChatPage = () => {
   const props = {
@@ -11,7 +12,10 @@ const ChatPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <Chat />
+        <div className="flex justify-between">
+          <Chat />
+          <RoomChat />
+        </div>
       </SectionWrapper>
     </PageLayout>
   );
