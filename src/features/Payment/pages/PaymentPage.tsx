@@ -1,5 +1,6 @@
-import axios from "axios";
+import { useAuthStore } from "@/stores/authStore";
 import { useState } from "react";
+import usePayment from "../hooks/use-Payment";
 
 declare global {
   interface Window {
@@ -10,6 +11,10 @@ declare global {
 const PaymentPage = () => {
   const [amount, setAmount] = useState(0);
   const [isAgreed, setIsAgreed] = useState(false);
+  const { user } = useAuthStore();
+  const { savePaymentToFirebase } = usePayment();
+
+  console.log(user);
 
   const predefinedAmounts = [1000, 5000, 10000, 20000, 50000, 100000];
 
@@ -34,36 +39,32 @@ const PaymentPage = () => {
       {
         pg: "kakaopay.TC0ONETIME",
         pay_method: "card",
-        merchant_uid: "GPK_" + new Date().getTime(),
-        name: "Kwak.dav 포인트 충전", // 결제할 상품명
+        merchant_uid: "Kwak_" + new Date().getTime(),
+        name: "Kwak.dav 포인트 충전",
         amount: amount,
-        buyer_name: "buyer_name",
-        buyer_tel: "hp",
+        buyer_name: user?.displayName || "익명",
+        buyer_email: user?.email || "unknown_email",
       },
-      function (data: any) {
-        let msg;
-        if (data.success) {
-          msg = "결제 완료";
-          msg += "결제 수단 : Kakao";
-          msg += "상점 거래ID : " + data.merchant_uid;
-          msg += "결제 금액 : " + data.paid_amount;
-          msg += "구매자 이름 : " + data.buyer_name;
 
-          axios
-            .post("/paySuccess", {
-              ID: data.buyer_email,
-              amount: data.paid_amount,
-            })
-            .then((response) => {
-              alert("결제 완료: " + response.data.message);
-            })
-            .catch((error) => {
-              alert("결제 성공 후 처리 중 오류: " + error.message);
-            });
-        } else {
-          msg = "결제 실패";
-          msg += "에러 내용: " + data.error_msg;
-          alert(msg);
+      function (data: any) {
+        if (user === null) {
+          alert("로그인 후 이용해주세요");
+          return;
+        }
+
+        if (data.success) {
+          const paymentData = {
+            merchant_uid: data.merchant_uid,
+            amount: data.paid_amount,
+            buyer_name: user?.displayName || "익명",
+            buyer_email: user?.email,
+            timestamp: new Date().toISOString(),
+          };
+
+          // Firebase 저장 호출
+          savePaymentToFirebase(user.uid, paymentData)
+            .then(() => alert("결제 정보 저장 성공"))
+            .catch((error) => alert("결제 정보 저장 중 오류: " + error.message));
         }
       },
     );
