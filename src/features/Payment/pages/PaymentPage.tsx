@@ -23,8 +23,7 @@ const PaymentPage = () => {
     setIsAgreed(!isAgreed);
   };
 
-  const onPay = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onPay = () => {
     kakaopay();
   };
 
