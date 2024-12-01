@@ -1,6 +1,7 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import Point from "../components/point";
+import { PaymentPage } from "@/features/Payment";
+import Point from "../components/Point";
 
 const PointPage = () => {
   const props = {
@@ -11,6 +12,7 @@ const PointPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
+        <PaymentPage />
         <Point />
       </SectionWrapper>
     </PageLayout>

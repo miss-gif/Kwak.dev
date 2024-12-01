@@ -17,7 +17,7 @@ interface TimeItemProps {
 const TimeItem = ({ year, label, text, icon = <FastfoodIcon />, color = "primary" }: TimeItemProps) => {
   return (
     <TimelineItem>
-      <TimelineOppositeContent sx={{ m: "auto 0" }} variant="body2">
+      <TimelineOppositeContent sx={{ m: "10px 0", fontWeight: "700", fontSize: "20px" }} variant="body2">
         {year}
       </TimelineOppositeContent>
       <TimelineSeparator>
