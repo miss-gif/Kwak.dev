@@ -53,21 +53,9 @@ const ProjectDetail = ({ data }: ProjectDetailProps) => {
 
   return (
     <>
-      <ProjectEdit
-        formData={formData}
-        editMode={editMode}
-        onToggleEditMode={handleEditMode}
-      />
-      <Overview
-        formData={formData}
-        editMode={editMode}
-        setFormData={setFormData}
-      />
-      <Description
-        formData={formData}
-        editMode={editMode}
-        setFormData={setFormData}
-      />
+      <ProjectEdit formData={formData} editMode={editMode} onToggleEditMode={handleEditMode} />
+      <Overview formData={formData} editMode={editMode} setFormData={setFormData} />
+      <Description formData={formData} editMode={editMode} setFormData={setFormData} />
 
       {editMode && (
         <div className="sticky bottom-2 w-full max-w-screen-xl">

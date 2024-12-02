@@ -1,11 +1,8 @@
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useNavigate } from "react-router-dom";
+import { Button } from "../ui/button";
 
-interface BackButtonProps {
-  label: string | JSX.Element;
-  color?: string;
-}
-
-const BackButton = ({ label, color = "red" }: BackButtonProps) => {
+const BackButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -13,13 +10,9 @@ const BackButton = ({ label, color = "red" }: BackButtonProps) => {
   };
 
   return (
-    <button
-      type="button"
-      onClick={handleClick}
-      className={`bg-${color}-500 hover:bg-${color}-600 rounded-md px-4 py-3 text-sm text-white`}
-    >
-      {label}
-    </button>
+    <Button onClick={handleClick} size="icon">
+      <ArrowBackIosNewIcon />
+    </Button>
   );
 };
 

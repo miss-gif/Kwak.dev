@@ -1,10 +1,12 @@
 import { deleteData } from "@/api/firebase-crud-api";
-import Button, { BackButton, LinkButton } from "@/components/Button";
+import { BackButton } from "@/components/Button";
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
+import UserAuthButton from "@/components/Button/User-Auth-Button";
 import StickyWrapper from "@/components/common/StickyWrapper";
+import { Button } from "@/components/ui/button";
 import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface ProjectButtonHeaderProps {
@@ -29,16 +31,14 @@ export const ProjectAdd = () => {
   return (
     <ProjectButtonHeader>
       <span></span>
-      <LinkButton label="프로젝트 추가" to="add" />
+      <Button asChild>
+        <Link to="add">Add</Link>
+      </Button>
     </ProjectButtonHeader>
   );
 };
 
-export const ProjectEdit = ({
-  formData,
-  editMode,
-  onToggleEditMode,
-}: ProjectEditProps) => {
+export const ProjectEdit = ({ formData, editMode, onToggleEditMode }: ProjectEditProps) => {
   const navigete = useNavigate();
   const { isAdminAuthenticated } = useAdminAuthCookie();
 
@@ -70,16 +70,19 @@ export const ProjectEdit = ({
     <StickyWrapper>
       {!editMode ? (
         <>
-          <LinkButton
-            label={<ArrowBackIosNewIcon />}
-            color="blue"
-            to="/project"
-          />
-          <Button label="프로젝트 수정" onClick={onToggleEditMode} />
+          <Button size="icon">
+            <Link to="/project">
+              <ArrowBackIosNewIcon />
+            </Link>
+          </Button>
+          <UserAuthButton label="Edit" onClick={onToggleEditMode} />
         </>
       ) : (
         <div className="flex w-full justify-between">
-          <Button label={<ArrowBackIosNewIcon />} onClick={onToggleEditMode} />
+          <Button size="icon" onClick={onToggleEditMode}>
+            <ArrowBackIosNewIcon />
+          </Button>
+
           <AdminAuthButton label="삭제" color="red" onClick={handleDelete} />
         </div>
       )}
@@ -90,8 +93,10 @@ export const ProjectEdit = ({
 export const ProjectCreate = ({ handleFormReset }: ProjectCreateProps) => {
   return (
     <StickyWrapper>
-      <BackButton label={<ArrowBackIosNewIcon />} color="blue" />
-      <Button label="초기화" color="red" onClick={handleFormReset} />
+      <BackButton />
+      <Button onClick={handleFormReset} variant="destructive">
+        Reset
+      </Button>
     </StickyWrapper>
   );
 };

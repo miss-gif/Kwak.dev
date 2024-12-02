@@ -21,7 +21,6 @@ export const BOTTOM_MENU_ITEMS = [
 
 export const TOP_MENU_ITEMS = [
   { name: "일정", path: "schedule" },
-  { name: "관리자", path: "admin", role: "admin" },
   { name: "문의", path: "contact" },
   { name: "통계", path: "charts" },
 ];

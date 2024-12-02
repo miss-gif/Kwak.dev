@@ -38,6 +38,9 @@ const NavSheet = () => {
                 </li>
               ))}
             </ul>
+            <SheetClose asChild className="absolute bottom-0 right-0 p-2">
+              <Link to="admin">관리자</Link>
+            </SheetClose>
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
