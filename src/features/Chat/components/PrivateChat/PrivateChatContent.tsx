@@ -1,6 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const PrivateChatBody = () => {
+const PrivateChatContent = () => {
   return (
     <div className="내용 py-5">
       <div className="flex gap-2 py-2">
@@ -28,4 +28,4 @@ const PrivateChatBody = () => {
   );
 };
 
-export default PrivateChatBody;
+export default PrivateChatContent;

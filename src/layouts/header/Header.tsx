@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Inner from "../Inner";
 import Gnb from "./components/Gnb";
-import HeaderActions from "./components/HeaderActions";
+import NavSheet from "./components/NavSheet";
 
 const Header = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -22,8 +22,10 @@ const Header = () => {
             <h1 className="text-2xl font-bold">Kwak.dev</h1>
           </Link>
 
-          <Gnb selectedItem={selectedItem} handleClick={handleClick} />
-          <HeaderActions />
+          <div className="flex gap-2">
+            <Gnb selectedItem={selectedItem} handleClick={handleClick} />
+            <NavSheet />
+          </div>
         </div>
       </Inner>
     </header>

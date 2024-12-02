@@ -1,4 +1,4 @@
-import PrivateChatBody from "./PrivateChatBody";
+import PrivateChatContent from "./PrivateChatContent";
 import PrivateChatFooter from "./PrivateChatFooter";
 import PrivateChatHeader from "./PrivateChatHeader";
 
@@ -7,7 +7,7 @@ const PrivateChat = () => {
     <div className="bg-zinc-500 p-5 text-white">
       <PrivateChatHeader />
 
-      <PrivateChatBody />
+      <PrivateChatContent />
 
       <PrivateChatFooter />
     </div>
