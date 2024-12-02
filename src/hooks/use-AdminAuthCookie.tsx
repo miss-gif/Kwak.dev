@@ -1,4 +1,5 @@
 import { useCookies } from "react-cookie";
+import { toast } from "react-toastify";
 
 const useAdminAuthCookie = () => {
   const [cookies, setCookie, removeCookie] = useCookies(["admin-auth"]);
@@ -22,6 +23,7 @@ const useAdminAuthCookie = () => {
   // 인증 상태 삭제 (로그아웃)
   const clearAdminAuthCookie = () => {
     removeCookie("admin-auth", { path: "/" });
+    toast.success("관리자 모드 해제");
   };
 
   return { isAdminAuthenticated, setAuthCookie, clearAdminAuthCookie };

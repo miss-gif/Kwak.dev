@@ -4,8 +4,11 @@ import { BOTTOM_MENU_ITEMS, TOP_MENU_ITEMS } from "./Gnb";
 import { Link } from "react-router-dom";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import { Button } from "@/components/ui/button";
+import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 
 const NavSheet = () => {
+  const { isAdminAuthenticated, clearAdminAuthCookie } = useAdminAuthCookie();
+
   return (
     <Sheet>
       <SheetTrigger>
@@ -39,7 +42,13 @@ const NavSheet = () => {
               ))}
             </ul>
             <SheetClose asChild className="absolute bottom-0 right-0 p-2">
-              <Link to="admin">관리자</Link>
+              <div>
+                {!isAdminAuthenticated() ? (
+                  <Link to="/admin">유저 모드</Link> // 인증되지 않은 경우
+                ) : (
+                  <button onClick={clearAdminAuthCookie}>관리자 모드</button> // 인증된 경우
+                )}
+              </div>
             </SheetClose>
           </SheetDescription>
         </SheetHeader>
