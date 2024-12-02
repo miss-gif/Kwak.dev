@@ -42,7 +42,7 @@ const IsLogin = () => {
 
         <Button variant="ghost">
           <Link to={"/point"} className="flex items-center gap-1">
-            <MonetizationOnIcon />
+            <MonetizationOnIcon sx={{ color: "yellowgreen" }} />
             {point !== null ? point.toLocaleString() : "조회 중..."}
           </Link>
         </Button>
