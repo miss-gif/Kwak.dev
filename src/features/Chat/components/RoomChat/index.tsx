@@ -1,30 +1,41 @@
 import { useState } from "react";
-import RoomCreation from "./RoomCreation";
-import RoomList from "./RoomList";
-import RoomEnter from "./RoomEnter";
 import RoomChatMessages from "./RoomChatMessages";
+import RoomCreation from "./RoomCreation";
 import RoomDelete from "./RoomDelete";
+import RoomEnter from "./RoomEnter";
+import RoomList from "./RoomList";
 
 function RoomChatApp() {
   const [activeRoomId, setActiveRoomId] = useState<string | null>(null);
+  const [nickname, setNickname] = useState<string>(""); // 닉네임 상태 추가
+
+  const handleRoomEnter = (roomId: string, nickname: string) => {
+    setActiveRoomId(roomId);
+    setNickname(nickname);
+  };
 
   return (
-    <div className="space-y-6 p-4">
-      <h1 className="text-2xl font-bold">채팅방</h1>
+    <div className="flex justify-between gap-4">
       {/* 채팅방 생성 */}
-      <RoomCreation onRoomCreated={(id) => setActiveRoomId(id)} />
+      <div className="w-1/4">
+        <RoomCreation onRoomCreated={(id) => setActiveRoomId(id)} />
+      </div>
 
-      {/* 채팅방 리스트 */}
-      <RoomList onSelectRoom={(id) => setActiveRoomId(id)} />
+      {/* 채팅방 번호 입장 */}
+      <div className="w-1/4">
+        <RoomEnter onRoomEntered={(id) => setActiveRoomId(id)} />
+      </div>
 
-      {/* 비공개 채팅방 입장 */}
-      {activeRoomId === null && <RoomEnter onRoomEntered={(id) => setActiveRoomId(id)} />}
+      {/* 채팅방 목록 */}
+      <div className="w-1/4">
+        <RoomList onSelectRoom={(id) => setActiveRoomId(id)} />
+      </div>
 
-      {/* 채팅방 삭제 */}
-      {activeRoomId && <RoomDelete activeRoomId={activeRoomId} onRoomDeleted={() => setActiveRoomId(null)} />}
-
-      {/* 메시지 */}
-      {activeRoomId && <RoomChatMessages activeRoomId={activeRoomId} />}
+      <div className="w-1/4">
+        {/* 채팅방 삭제 */}
+        {activeRoomId && <RoomDelete activeRoomId={activeRoomId} onRoomDeleted={() => setActiveRoomId(null)} />}
+        {activeRoomId && <RoomChatMessages activeRoomId={activeRoomId} nickname={nickname} />}
+      </div>
     </div>
   );
 }

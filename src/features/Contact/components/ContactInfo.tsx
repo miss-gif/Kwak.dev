@@ -23,17 +23,6 @@ const ContactInfo = () => {
 
           <p className="text-sm text-gray-600 opacity-80">@FRONT-END / @WEB DEVELOPER</p>
         </div>
-
-        <div className="flex flex-col gap-4">
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            OPEN KAKAO TALK
-          </a>
-          <a href="https://github.com/miss-gif" target="_blank" rel="noopener noreferrer">
-            @miss-gif
-          </a>
-          <p>010-0000-0000</p>
-          <p>abc@naver.com</p>
-        </div>
       </div>
     </div>
   );

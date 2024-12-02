@@ -13,7 +13,7 @@ const ChatPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <Tabs defaultValue="all" className="w-[400px]">
+        <Tabs defaultValue="all">
           <TabsList>
             <TabsTrigger value="all">All</TabsTrigger>
             <TabsTrigger value="room">Room</TabsTrigger>

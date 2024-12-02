@@ -1,6 +1,8 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import StickyWrapper from "@/components/common/StickyWrapper";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import interviewQuestions from "@/data/interviewQuestions";
 import { formatTextByDot } from "@/utils/formatTextByDot";
 import CloseIcon from "@mui/icons-material/Close";
@@ -37,24 +39,22 @@ const InterviewPage = () => {
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
-      <SectionWrapper>
-        {/* 검색 입력 필드 */}
-        <StickyWrapper>
-          <input
-            type="text"
-            placeholder="키워드를 입력해 인터뷰 질문을 찾아보세요"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="search-input-style"
-          />
+      {/* 검색 입력 필드 */}
+      <StickyWrapper>
+        <div className="relative w-full">
+          <Input placeholder="검색어를 입력해 주세요." value={query} onChange={(e) => setQuery(e.target.value)} />
           {/* 검색어 초기화 버튼 */}
           {query && (
-            <button onClick={clearQuery} className="absolute right-4 text-gray-500 hover:text-gray-700">
-              <CloseIcon />
-            </button>
+            <>
+              <Button type="reset" size="icon" variant="ghost" onClick={clearQuery} className="absolute right-0 top-0">
+                <CloseIcon />
+              </Button>
+            </>
           )}
-        </StickyWrapper>
+        </div>
+      </StickyWrapper>
 
+      <SectionWrapper>
         <ul className="mt-4 flex flex-col gap-4">
           {filteredQuestions.length > 0 ? (
             filteredQuestions.map((question, index) => (
