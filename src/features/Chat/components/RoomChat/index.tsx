@@ -14,6 +14,10 @@ function RoomChatApp() {
     setNickname(nickname);
   };
 
+  console.log("activeRoomId", activeRoomId);
+
+  console.log(handleRoomEnter);
+
   return (
     <div className="flex justify-between gap-4">
       {/* 채팅방 생성 */}

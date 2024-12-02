@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Inner from "../Inner";
 import Gnb from "./components/Gnb";
+import HeaderActions from "./components/HeaderActions";
 
 const Header = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
@@ -22,6 +23,7 @@ const Header = () => {
           </Link>
 
           <Gnb selectedItem={selectedItem} handleClick={handleClick} />
+          <HeaderActions />
         </div>
       </Inner>
     </header>
