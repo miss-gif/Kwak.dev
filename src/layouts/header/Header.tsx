@@ -3,8 +3,8 @@ import useHeaderScroll from "@/hooks/useHeaderScroll";
 import { Theme } from "@/types/theme";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HeaderActions from "./components/HeaderActions";
 import Gnb from "./components/Gnb";
+import HeaderActions from "./components/HeaderActions";
 
 const Header = ({ toggleTheme }: Theme) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);

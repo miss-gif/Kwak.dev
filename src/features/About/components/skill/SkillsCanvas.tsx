@@ -1,14 +1,5 @@
-import skillsData from "@data/skills.ts";
-import {
-  Bodies,
-  Composite,
-  Engine,
-  Events,
-  Mouse,
-  MouseConstraint,
-  Render,
-  Runner,
-} from "matter-js";
+import { skills } from "@/data";
+import { Bodies, Composite, Engine, Events, Mouse, MouseConstraint, Render, Runner } from "matter-js";
 import { useEffect, useRef, useState } from "react";
 
 type SkillData = {
@@ -23,7 +14,7 @@ const SkillsCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
-    const formattedData: Record<string, SkillData> = skillsData.reduce(
+    const formattedData: Record<string, SkillData> = skills.reduce(
       (acc, skill) => {
         acc[skill.name] = {
           img: skill.img,
@@ -94,11 +85,7 @@ const SkillsCanvas = () => {
       // canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
 
       Events.on(mouseConstraint, "mousedown", () => {
-        const newSelected =
-          mouseConstraint.body &&
-          formattedData[
-            mouseConstraint.body.label as keyof typeof formattedData
-          ];
+        const newSelected = mouseConstraint.body && formattedData[mouseConstraint.body.label as keyof typeof formattedData];
         newSelected && setSelected(newSelected);
       });
     };
@@ -166,13 +153,7 @@ const SkillsCanvas = () => {
       });
     };
 
-    const addRect = (
-      x: number,
-      y: number,
-      w: number,
-      h: number,
-      options = {} as any,
-    ) => {
+    const addRect = (x: number, y: number, w: number, h: number, options = {} as any) => {
       const rect = Bodies.rectangle(x, y, w, h, options);
       Composite.add(engine.world, rect);
     };
@@ -187,10 +168,8 @@ const SkillsCanvas = () => {
 
     Events.on(runner, "tick", () => {
       gravityDeg += 1;
-      engine.world.gravity.x =
-        Math.cos((Math.PI / 100) * gravityDeg) * gravityPower;
-      engine.world.gravity.y =
-        Math.sin((Math.PI / 100) * gravityDeg) * gravityPower;
+      engine.world.gravity.x = Math.cos((Math.PI / 100) * gravityDeg) * gravityPower;
+      engine.world.gravity.y = Math.sin((Math.PI / 100) * gravityDeg) * gravityPower;
     });
 
     return () => {
@@ -205,17 +184,12 @@ const SkillsCanvas = () => {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-between gap-10 lg:flex-row lg:gap-4">
-      <canvas
-        ref={canvasRef}
-        className="h-[50vmin] w-[50vmin] rounded-full"
-      ></canvas>
+      <canvas ref={canvasRef} className="h-[50vmin] w-[50vmin] rounded-full"></canvas>
       {selected && (
         // 우측 사이드 영역
         <div className="flex min-h-[400px] w-full flex-col">
           <div className="flex flex-col items-center gap-4">
-            <h4 className="rounded-xl bg-blue-500 px-8 py-4 text-center text-5xl font-semibold text-white">
-              {selected.name}
-            </h4>
+            <h4 className="rounded-xl bg-blue-500 px-8 py-4 text-center text-5xl font-semibold text-white">{selected.name}</h4>
             <p>
               {Array(5)
                 .fill(null)
@@ -232,10 +206,7 @@ const SkillsCanvas = () => {
             </p>
             <p>
               {selected.description.map((item, index) => (
-                <span
-                  key={index}
-                  className="text-md leading-8 md:text-xl md:leading-10"
-                >
+                <span key={index} className="text-md leading-8 md:text-xl md:leading-10">
                   {item}
                   <br />
                 </span>

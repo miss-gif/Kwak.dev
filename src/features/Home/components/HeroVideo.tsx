@@ -1,15 +1,15 @@
-import video from '@assets/video/main.mp4'
-import styled from '@emotion/styled'
+import video from "@/assets/video/main.mp4";
+import styled from "@emotion/styled";
 
 const HeroVideo = () => {
   return (
     <VideoStyled autoPlay muted loop>
       <source src={video} type="video/mp4" />
     </VideoStyled>
-  )
-}
+  );
+};
 
-export default HeroVideo
+export default HeroVideo;
 
 const VideoStyled = styled.video`
   position: absolute;
@@ -20,4 +20,4 @@ const VideoStyled = styled.video`
   object-fit: cover;
   width: 100%;
   height: 100vh;
-`
+`;

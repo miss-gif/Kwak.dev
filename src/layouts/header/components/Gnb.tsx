@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "@utils/utils";
+import { capitalizeFirstLetter } from "@/utils/utils";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 

@@ -1,16 +1,34 @@
 import react from "@vitejs/plugin-react";
+import path from "path";
 import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    react({
-      jsxImportSource: "@emotion/react",
-      babel: {
-        plugins: ["@emotion/babel-plugin"],
-      },
-    }),
-  ],
+  plugins: [react()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@mocks": path.resolve(__dirname, "/src/mocks"),
+      "@components": path.resolve(__dirname, "/src/components"),
+      "@sections": path.resolve(__dirname, "/src/components/sections"),
+      "@layouts": path.resolve(__dirname, "/src/components/layouts"),
+      "@utils": path.resolve(__dirname, "/src/utils"),
+      "@assets": path.resolve(__dirname, "/src/assets"),
+      "@styles": path.resolve(__dirname, "/src/styles"),
+      "@images": path.resolve(__dirname, "/src/images"),
+      "@data": path.resolve(__dirname, "/src/data"),
+      "@hooks": path.resolve(__dirname, "/src/hooks"),
+      "@context": path.resolve(__dirname, "/src/context"),
+      "@pages": path.resolve(__dirname, "/src/pages"),
+      "@templates": path.resolve(__dirname, "/src/templates"),
+      "@config": path.resolve(__dirname, "/src/config"),
+      "@constants": path.resolve(__dirname, "/src/constants"),
+      "@services": path.resolve(__dirname, "/src/services"),
+      "@api": path.resolve(__dirname, "/src/api"),
+      "@types": path.resolve(__dirname, "/src/types"),
+      "@public": path.resolve(__dirname, "/public"),
+    },
+  },
   server: {
     proxy: {
       "/api": {
@@ -19,29 +37,5 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
-  },
-  resolve: {
-    alias: [
-      { find: "@", replacement: "/src" },
-      { find: "@mocks", replacement: "/src/mocks" },
-      { find: "@components", replacement: "/src/components" },
-      { find: "@sections", replacement: "/src/components/sections" },
-      { find: "@layouts", replacement: "/src/components/layouts" },
-      { find: "@utils", replacement: "/src/utils" },
-      { find: "@assets", replacement: "/src/assets" },
-      { find: "@styles", replacement: "/src/styles" },
-      { find: "@images", replacement: "/src/images" },
-      { find: "@data", replacement: "/src/data" },
-      { find: "@hooks", replacement: "/src/hooks" },
-      { find: "@context", replacement: "/src/context" },
-      { find: "@pages", replacement: "/src/pages" },
-      { find: "@templates", replacement: "/src/templates" },
-      { find: "@config", replacement: "/src/config" },
-      { find: "@constants", replacement: "/src/constants" },
-      { find: "@services", replacement: "/src/services" },
-      { find: "@api", replacement: "/src/api" },
-      { find: "@types", replacement: "/src/types" },
-      { find: "@public", replacement: "/public" },
-    ],
   },
 });
