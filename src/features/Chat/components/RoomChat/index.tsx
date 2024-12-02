@@ -51,9 +51,8 @@ function RoomChat() {
       const participants = roomData.participants;
 
       // 과반수 동의를 위한 로직
-      const agreeCount = participants.filter((uid) => () => {
-        // 동의한 참여자의 로직
-        return true;
+      const agreeCount = participants.filter(() => {
+        // 동의 로직 추가
       }).length;
 
       if (agreeCount > participants.length / 2) {
@@ -152,7 +151,7 @@ function RoomChat() {
             className="w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <button
-            onClick={() => enterRoom(selectedRoomId, roomPassword)}
+            onClick={() => enterRoom(roomPassword, roomPassword)}
             className="w-full rounded-lg bg-green-500 px-4 py-2 font-semibold text-white shadow-md transition duration-300 hover:bg-green-600"
           >
             입장
