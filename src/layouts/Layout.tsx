@@ -1,4 +1,5 @@
 import BasicSpeedDial from "@/components/common/BasicSpeedDial";
+import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/layouts/header/Header";
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
@@ -17,13 +18,13 @@ const Layout = () => {
   }, [theme]);
 
   return (
-    <>
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <GlobalHeader />
       <Header toggleTheme={toggleTheme} theme={theme} />
       <Outlet />
       <Footer />
       <BasicSpeedDial />
-    </>
+    </ThemeProvider>
   );
 };
 

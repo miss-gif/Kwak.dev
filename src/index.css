@@ -6,7 +6,7 @@ body {
   font-family: "Roboto";
 }
 
-body.light {
+/* body.light {
   background-color: white;
   color: #191e22;
 }
@@ -14,7 +14,7 @@ body.light {
 body.dark {
   background-color: #191e22;
   color: white;
-}
+} */
 
 .header.scrolled {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
