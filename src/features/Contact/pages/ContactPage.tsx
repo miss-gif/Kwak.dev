@@ -12,7 +12,7 @@ const ContactPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <div className="flex w-full justify-between gap-10">
+        <div className="flex w-full flex-col justify-between md:flex-row">
           <ContactInfo />
           <Contact />
         </div>

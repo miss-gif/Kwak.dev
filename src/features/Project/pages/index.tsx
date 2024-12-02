@@ -1,29 +1,48 @@
+import { readData } from "@/api/firebase-crud-api";
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import PageIntro from "@/components/PageIntro";
+import { useEffect, useState } from "react";
+import ProjectHeaderFilter from "../components/ProjectHeaderFilter";
+import { useFilteredProjects } from "../hooks/use-FilteredProjects";
+import { ProjectData } from "../types/type";
 import ProjectListPage from "./ProjectListPage";
 
 const ProjectPage = () => {
+  const [projects, setProjects] = useState<ProjectData[]>([]); // 초기값과 함께 타입 명시
+  const { query, setQuery, techFilter, setTechFilter, filteredProjects } = useFilteredProjects(projects);
+
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const projectData = await readData<ProjectData>({
+          collectionName: "projects",
+        });
+        setProjects(projectData);
+      } catch (error) {
+        console.error("프로젝트 불러오기 실패", error);
+      }
+    };
+    loadProjects();
+  }, []);
+
   const props = {
     title: "Project",
     subtitle: "✨ 제가 작업한 프로젝트를 만나보세요.",
   };
 
-  const text = {
-    title: "아이디어를 실현하고, 문제를 해결하는 코드의 힘을 믿습니다.",
-
-    content: [
-      "여기에는 제가 작업한 프로젝트와 그 과정에서 배운 점들을 정리했습니다. ",
-      "각 프로젝트는 문제를 해결하거나, 특정 기술을 익히기 위해 도전했던 노력의 결과물입니다.",
-      "실제로 사용자 경험을 개선하거나, 효율적인 코드 작성에 중점을 두고 설계되었습니다.",
-    ],
+  const filterData = {
+    query,
+    setQuery,
+    techFilter,
+    setTechFilter,
   };
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
-      <PageIntro text={text} />
+      <ProjectHeaderFilter {...filterData} />
+
       <SectionWrapper>
-        <ProjectListPage />
+        <ProjectListPage filteredProjects={filteredProjects} />
       </SectionWrapper>
     </PageLayout>
   );
