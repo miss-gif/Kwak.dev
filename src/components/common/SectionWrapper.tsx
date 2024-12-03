@@ -4,9 +4,19 @@
 // 타이틀이 없을 경우 children만 표시합니다.
 
 import Inner from "@/layouts/Inner";
+import { GraduationCapIcon } from "lucide-react";
 
 const Heading = ({ title }: { title: string }) => {
-  return <h3 className="border-b-4 py-2 text-center text-6xl font-semibold uppercase">{title}</h3>;
+  return (
+    <div className="relative flex items-center justify-center py-10">
+      <div className="absolute -left-14 hidden -translate-x-1/2 transform text-5xl md:block">
+        <GraduationCapIcon className="h-20 w-20" />
+      </div>
+      <h3 className="border-b-4 border-black py-2 text-center text-6xl font-semibold uppercase dark:border-white">
+        {title}
+      </h3>
+    </div>
+  );
 };
 
 const SectionWrapper = ({ children, title }: { children?: React.ReactNode; title?: string }) => {

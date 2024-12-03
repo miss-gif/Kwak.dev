@@ -1,6 +1,7 @@
 import { ArrowUpToLineIcon, MailIcon, MessageCircleMoreIcon } from "lucide-react";
-import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
+import { ModeToggle } from "./mode-toggle";
+import { Button } from "./ui/button";
 
 const GlobalSpeedDial = () => {
   const scrollToTop = () => {
@@ -13,6 +14,10 @@ const GlobalSpeedDial = () => {
 
   return (
     <div className="fixed bottom-0 right-0 flex flex-col gap-2 p-5">
+      <Button size="icon">
+        <ModeToggle />
+      </Button>
+
       <Button size="icon" onClick={openChat}>
         <MessageCircleMoreIcon />
       </Button>

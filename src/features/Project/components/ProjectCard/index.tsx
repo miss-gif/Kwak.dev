@@ -8,7 +8,7 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <li className="shadow-style relative h-[450px] flex-1 list-none overflow-hidden rounded-md border bg-white">
+    <li className="relative h-[480px] overflow-hidden rounded-md border dark:bg-neutral-900">
       {/* 호버 시 딤드 효과 */}
       <DimmedCard project={project} />
       <PreviewCard project={project} />

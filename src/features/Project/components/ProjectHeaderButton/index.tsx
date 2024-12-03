@@ -6,12 +6,13 @@ import StickyWrapper from "@/components/common/StickyWrapper";
 import { Button } from "@/components/ui/button";
 import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { RotateCcw } from "lucide-react";
+import { PlusIcon, RotateCcw } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface ProjectButtonHeaderProps {
   children: React.ReactNode;
+  className?: string;
 }
 
 interface ProjectEditProps {
@@ -24,16 +25,18 @@ interface ProjectCreateProps {
   handleFormReset: () => void;
 }
 
-const ProjectButtonHeader = ({ children }: ProjectButtonHeaderProps) => {
-  return <div className="mb-4 flex justify-between">{children}</div>;
+const ProjectButtonHeader = ({ children, className }: ProjectButtonHeaderProps) => {
+  return <div className={`my-4 flex justify-between ${className}`}>{children}</div>;
 };
 
-export const ProjectAdd = () => {
+export const ProjectAdd = ({ className }: { className?: string }) => {
   return (
-    <ProjectButtonHeader>
+    <ProjectButtonHeader className={className}>
       <span></span>
       <Button asChild>
-        <Link to="add">Add</Link>
+        <Link to="add">
+          <PlusIcon /> Project Add
+        </Link>
       </Button>
     </ProjectButtonHeader>
   );
