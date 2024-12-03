@@ -1,18 +1,6 @@
 import { db } from "@/firebaseConfig";
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  sendEmailVerification,
-  updateProfile,
-} from "firebase/auth";
-import {
-  collection,
-  doc,
-  getDocs,
-  query,
-  setDoc,
-  where,
-} from "firebase/firestore";
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
+import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -25,9 +13,7 @@ export const useSignup = () => {
   const auth = getAuth();
 
   // 닉네임 중복 확인 로직 (중복 확인 버튼 및 회원가입 공통 사용)
-  const checkDisplayNameAvailability = async (
-    name: string,
-  ): Promise<boolean> => {
+  const checkDisplayNameAvailability = async (name: string): Promise<boolean> => {
     const displayNamesRef = collection(db, "displayNames");
     const q = query(displayNamesRef, where("name", "==", name));
     const querySnapshot = await getDocs(q);
@@ -70,11 +56,7 @@ export const useSignup = () => {
       }
 
       // Firebase Auth에 사용자 생성
-      const userCredential = await createUserWithEmailAndPassword(
-        auth,
-        email,
-        password,
-      );
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
       // Firebase에 displayName 저장
@@ -90,6 +72,7 @@ export const useSignup = () => {
         displayName: displayName,
         uid: user.uid,
         creationTime: user.metadata.creationTime,
+        points: 0,
       });
 
       // DisplayNames 컬렉션에 닉네임 추가 (중복 체크를 위해)
