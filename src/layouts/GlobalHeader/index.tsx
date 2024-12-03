@@ -10,7 +10,7 @@ const GlobalHeader = () => {
   const { isLoggedIn } = useAuthStore();
 
   return (
-    <div className="w-full bg-white py-2 dark:bg-black">
+    <div className="w-full bg-white bg-opacity-20 py-2 dark:bg-black dark:bg-opacity-20">
       <Inner>
         <Announcement />
         <div className="flex">

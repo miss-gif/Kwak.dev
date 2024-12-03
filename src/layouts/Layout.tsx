@@ -1,4 +1,4 @@
-import BasicSpeedDial from "@/components/common/BasicSpeedDial";
+import GlobalSpeedDial from "@/components/GlobalSpeedDial";
 import { ThemeProvider } from "@/components/theme-provider";
 import Header from "@/layouts/header/Header";
 import { Outlet } from "react-router-dom";
@@ -12,7 +12,7 @@ const Layout = () => {
       <Header />
       <Outlet />
       <Footer />
-      <BasicSpeedDial />
+      <GlobalSpeedDial />
     </ThemeProvider>
   );
 };

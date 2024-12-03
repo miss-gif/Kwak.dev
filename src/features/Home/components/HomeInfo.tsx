@@ -3,7 +3,8 @@ import HomeTitle from "@/features/Home/components/HomeTitle";
 const HomeInfoData = {
   streakStats: {
     title: "streakStats",
-    image: "https://streak-stats.demolab.com?user=miss-gif&theme=transparent&hide_border=true&border_radius=0&locale=ko&card_width=467",
+    image:
+      "https://streak-stats.demolab.com?user=miss-gif&theme=transparent&hide_border=true&border_radius=0&locale=ko&card_width=467",
   },
   statsCard: {
     title: "statsCard",
@@ -32,7 +33,7 @@ const HomeNotice = ({ title, image }: HomeNoticeProps) => {
 
 const HomeInfo = () => {
   return (
-    <div className="flex min-h-dvh w-full items-center justify-center py-40">
+    <div className="flex w-full items-center justify-center py-36">
       <div className="flex w-full max-w-screen-xl flex-col gap-20 px-4 lg:flex-row lg:justify-between xl:items-center">
         <HomeTitle />
         <div className="flex flex-col justify-center gap-2">
