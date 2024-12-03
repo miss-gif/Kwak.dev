@@ -3,7 +3,8 @@ import { CircularProgress } from "@mui/material";
 import { Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
-import { routes } from "./routes";
+import { privateRoutes, routes } from "./routes";
+import AuthLayout from "@/layouts/AuthLayout";
 
 const Loading = () => <CircularProgress />;
 
@@ -13,6 +14,11 @@ const AppRoutes = () => {
       path: "/",
       element: <Layout />,
       children: routes,
+    },
+    {
+      path: "auth",
+      element: <AuthLayout />,
+      children: privateRoutes,
     },
     {
       path: "*",

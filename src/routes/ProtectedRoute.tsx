@@ -15,7 +15,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
 
   // 로그인 상태가 아니라면 로그인 페이지로 이동
   if (!user) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    return <Navigate to="/auth/login" state={{ from: location }} replace />;
   }
 
   return <>{children}</>;

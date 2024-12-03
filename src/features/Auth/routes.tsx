@@ -6,7 +6,7 @@ const SignupPage = lazy(() => import("./pages/SignupPage"));
 
 export const authRoutes = [
   {
-    path: "/login",
+    path: "login",
     element: (
       <PublicRoute>
         <LoginPage />
@@ -14,7 +14,7 @@ export const authRoutes = [
     ),
   },
   {
-    path: "/signup",
+    path: "signup",
     element: (
       <PublicRoute>
         <SignupPage />

@@ -30,13 +30,25 @@ function SignupPage() {
             checkLabel="중복확인"
             checkFunc={handleCheckDisplayName}
           />
-          <AuthLabelInput name="email" label="이메일" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <AuthLabelInput name="password" label="비밀번호" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <AuthLabelInput
+            name="email"
+            label="이메일"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <AuthLabelInput
+            name="password"
+            label="비밀번호"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
           <Button label="회원가입" width="w-full" type="submit" py="py-2" />
         </form>
         <p className="text-center text-sm text-gray-600">
           이미 계정이 있으신가요?
-          <Link to="/login" className="text-blue-500 hover:underline">
+          <Link to="/auth/login" className="text-blue-500 hover:underline">
             로그인
           </Link>
         </p>
