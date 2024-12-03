@@ -15,7 +15,7 @@ const Header = () => {
   useHeaderScroll();
 
   return (
-    <header className="header blur-40 sticky left-0 top-0 z-50 flex h-20 w-full items-center justify-between bg-white bg-opacity-30 transition-shadow duration-300 dark:bg-black dark:bg-opacity-50">
+    <header className="header blur-40 sticky top-0 z-50 flex h-20 w-full items-center justify-between transition-shadow duration-300">
       <Inner>
         <div className="flex w-full items-center justify-between">
           <Link to="/" onClick={() => handleClick(null)}>

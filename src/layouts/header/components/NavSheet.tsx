@@ -19,7 +19,7 @@ const NavSheet = () => {
 
   return (
     <Sheet>
-      <SheetTrigger>
+      <SheetTrigger asChild>
         <Button size="icon" variant="ghost">
           <MenuIcon />
         </Button>
