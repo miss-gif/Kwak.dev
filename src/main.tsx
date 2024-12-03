@@ -29,7 +29,7 @@ createRoot(document.getElementById("root")!).render(
         draggable
         pauseOnHover
       />
-      {/* <ReactQueryDevtools initialIsOpen={true} /> */}
+      <ReactQueryDevtools initialIsOpen={true} />
     </BrowserRouter>
   </QueryClientProvider>,
 );

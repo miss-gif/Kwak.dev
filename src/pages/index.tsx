@@ -1,3 +1,4 @@
+import { PreviewPage } from "@/features/Preview";
 import AuthLayout from "@/layouts/AuthLayout";
 import Layout from "@/layouts/Layout";
 import { CircularProgress } from "@mui/material";
@@ -25,6 +26,10 @@ const AppRoutes = () => {
     {
       path: "new/chat",
       element: <LoginPage />,
+    },
+    {
+      path: "preview",
+      element: <PreviewPage />,
     },
     {
       path: "*",

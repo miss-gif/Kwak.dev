@@ -8,8 +8,6 @@ const Preview = () => {
       <main className="wrap">
         <video src="/src/assets/video/bg.mp4" loop muted />
 
-        <a href="/">버튼</a>
-
         <div className="h-dvh w-full bg-slate-900"></div>
 
         <section id="circle">
@@ -63,12 +61,10 @@ const Preview = () => {
                 <img src={url} />
                 <h3>What is Lorem Ipsum?</h3>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. <br />
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br />
                   Lorem Ipsum has been the industry's standard.
                   <br />
-                  dummy text of the printing and typesetting Lorem Ipsum has
-                  been the industry's standard.
+                  dummy text of the printing and typesetting Lorem Ipsum has been the industry's standard.
                 </p>
               </div>
             </div>
@@ -82,8 +78,7 @@ const Preview = () => {
                 <div className="con">
                   <h2>Member Infomation1</h2>
                   <p>
-                    Here comes Member Infomation contents in detail. Here comes
-                    Member Infomation contents in detail.
+                    Here comes Member Infomation contents in detail. Here comes Member Infomation contents in detail.
                   </p>
                   <span>2018-03-05</span>
                 </div>
@@ -93,8 +88,7 @@ const Preview = () => {
                 <div className="con">
                   <h2>Member Infomation2</h2>
                   <p>
-                    Here comes Member Infomation contents in detail. Here comes
-                    Member Infomation contents in detail.
+                    Here comes Member Infomation contents in detail. Here comes Member Infomation contents in detail.
                   </p>
                   <span>2018-06-18</span>
                 </div>
@@ -104,8 +98,7 @@ const Preview = () => {
                 <div className="con">
                   <h2>Member Infomation3</h2>
                   <p>
-                    Here comes Member Infomation contents in detail. Here comes
-                    Member Infomation contents in detail.
+                    Here comes Member Infomation contents in detail. Here comes Member Infomation contents in detail.
                   </p>
                   <span>2018-07-26</span>
                 </div>
@@ -120,12 +113,11 @@ const Preview = () => {
                 <video src="/src/assets/video/main.mp4" loop controls></video>
                 <h2>Promotion</h2>
                 <p>
-                  Here comes Promotion contents in detail.Here comes Promotion
-                  contents in detail.Here comes Promotion contents in detail.
-                  <br />
-                  <br />
-                  Here comes Promotion contents in detail.Here comes Promotion
+                  Here comes Promotion contents in detail.Here comes Promotion contents in detail.Here comes Promotion
                   contents in detail.
+                  <br />
+                  <br />
+                  Here comes Promotion contents in detail.Here comes Promotion contents in detail.
                 </p>
               </div>
               <div>

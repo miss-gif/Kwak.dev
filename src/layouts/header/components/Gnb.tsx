@@ -11,18 +11,18 @@ export const BOTTOM_MENU_ITEMS = [
   { name: "소개", path: "about" },
   { name: "프로젝트", path: "project" },
   { name: "인터뷰", path: "interview" },
-  { name: "게시판", path: "board" },
-  { name: "갤러리", path: "gallery" },
   { name: "타임라인", path: "timeline" },
-  { name: "실시간 채팅", path: "chat" },
-  { name: "포인트", path: "point" },
-  { name: "프리뷰", path: "preview" },
+  { name: "갤러리", path: "gallery" },
+  { name: "통계", path: "charts" },
+  { name: "문의", path: "contact" },
 ];
 
 export const TOP_MENU_ITEMS = [
-  { name: "일정", path: "schedule" },
-  { name: "문의", path: "contact" },
-  { name: "통계", path: "charts" },
+  { name: "게시판", path: "board" },
+  { name: "실시간 채팅", path: "chat" },
+  { name: "방명록", path: "schedule" },
+  { name: "포인트", path: "point" },
+  { name: "프리뷰", path: "preview" },
 ];
 
 const Gnb = ({ selectedItem, handleClick }: GnbProps) => {

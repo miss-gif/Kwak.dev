@@ -12,7 +12,6 @@ import { mapRoutes } from "../features/Map";
 import { mypageRoutes } from "../features/Mypage";
 import { paymentRoutes } from "../features/Payment";
 import { pointRoutes } from "../features/Point";
-import { previewRoutes } from "../features/Preview";
 import { projectRoutes } from "../features/Project";
 import { scheduleRoutes } from "../features/Schedule";
 import { timelineRoutes } from "../features/Timeline";
@@ -29,7 +28,6 @@ export const routes = [
   ...paymentRoutes,
   ...projectRoutes,
   ...scheduleRoutes,
-  ...previewRoutes,
   ...chartsRoutes,
   ...mypageRoutes,
   ...timelineRoutes,
