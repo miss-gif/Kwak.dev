@@ -1,5 +1,7 @@
 import AuthLabelInput from "@/components/form/LabelInput/AuthLabelInput";
 import { Button } from "@/components/ui/button";
+import { InputWithLabel } from "@/components/ui/InputWithLabel";
+import { InputWithLabelButton } from "@/components/ui/InputWithLabelButton";
 import { useSignup } from "@/hooks/useSignup";
 import { Link } from "react-router-dom";
 
@@ -20,7 +22,7 @@ function SignupPage() {
       <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8">
         <h2 className="py-5 text-center text-2xl font-bold text-gray-700">회원가입</h2>
         <form onSubmit={handleSignup} className="space-y-4">
-          <AuthLabelInput
+          <InputWithLabelButton
             name="displayName"
             label="사용자 이름"
             type="text"
@@ -30,17 +32,19 @@ function SignupPage() {
             checkLabel="중복확인"
             checkFunc={handleCheckDisplayName}
           />
-          <AuthLabelInput
-            name="email"
+
+          <InputWithLabel
             label="이메일"
             type="email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <AuthLabelInput
-            name="password"
+
+          <InputWithLabel
             label="비밀번호"
             type="password"
+            name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

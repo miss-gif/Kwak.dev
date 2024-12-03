@@ -1,5 +1,5 @@
-import AuthLabelInput from "@/components/form/LabelInput/AuthLabelInput";
 import { Button } from "@/components/ui/button";
+import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import { useLogin } from "@/hooks/useLogin";
 import { Link } from "react-router-dom";
 
@@ -23,16 +23,17 @@ const LoginPage = () => {
       <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8">
         <h2 className="py-5 text-center text-2xl font-bold text-gray-700">로그인</h2>
         <form onSubmit={handleLogin} className="space-y-4">
-          <AuthLabelInput
-            type="email"
+          <InputWithLabel
             label="이메일"
+            type="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <AuthLabelInput
-            type="password"
+
+          <InputWithLabel
             label="비밀번호"
+            type="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
