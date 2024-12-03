@@ -5,15 +5,17 @@ const PageLayout = ({
   children,
   title,
   subtitle,
+  className,
 }: {
   children?: React.ReactNode;
   title?: string;
   subtitle?: string;
+  className?: string;
 }) => {
   useScrollTo();
 
   return (
-    <div className="mx-auto flex w-full flex-col">
+    <div className={`mx-auto flex w-full flex-col ${className}`}>
       {title && (
         <div className="relative flex h-[40vh] items-center overflow-hidden">
           <img

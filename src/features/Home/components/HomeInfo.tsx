@@ -33,7 +33,7 @@ const HomeNotice = ({ title, image }: HomeNoticeProps) => {
 
 const HomeInfo = () => {
   return (
-    <div className="flex w-full items-center justify-center py-36">
+    <div className="flex w-full items-center justify-center py-32">
       <div className="flex w-full max-w-screen-xl flex-col gap-20 px-4 lg:flex-row lg:justify-between xl:items-center">
         <HomeTitle />
         <div className="flex flex-col justify-center gap-2">

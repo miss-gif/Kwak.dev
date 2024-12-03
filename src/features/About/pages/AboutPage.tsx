@@ -12,7 +12,7 @@ const AboutPage = () => {
   };
 
   return (
-    <PageLayout title={props.title} subtitle={props.subtitle}>
+    <PageLayout title={props.title} subtitle={props.subtitle} className="grid gap-80">
       <SectionWrapper>
         <Intro />
       </SectionWrapper>
