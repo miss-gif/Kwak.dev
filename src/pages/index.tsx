@@ -1,10 +1,12 @@
+import AuthLayout from "@/layouts/AuthLayout";
 import Layout from "@/layouts/Layout";
 import { CircularProgress } from "@mui/material";
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { useRoutes } from "react-router-dom";
 import NotFoundPage from "./NotFoundPage";
 import { privateRoutes, routes } from "./routes";
-import AuthLayout from "@/layouts/AuthLayout";
+
+const LoginPage = lazy(() => import("../components/ChatWindow/ChatWindow"));
 
 const Loading = () => <CircularProgress />;
 
@@ -19,6 +21,10 @@ const AppRoutes = () => {
       path: "auth",
       element: <AuthLayout />,
       children: privateRoutes,
+    },
+    {
+      path: "new/chat",
+      element: <LoginPage />,
     },
     {
       path: "*",

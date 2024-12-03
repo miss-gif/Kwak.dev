@@ -1,20 +1,12 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Invite from "./Invite";
 import Member from "./Member";
 
 const PrivateChatHeader = () => {
   return (
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-2">
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>CN</AvatarFallback>
-        </Avatar>
-
-        <div>
-          <div className="">채팅방 이름</div>
-          <Member />
-        </div>
+    <div className="fixed top-0 z-50 flex h-20 w-full items-center justify-between gap-2 bg-white p-4 text-black">
+      <div className="flex items-center gap-1">
+        <div className="text-md line-clamp-1">채팅방 Lorem ip1111111111111111111111111111111</div>
+        <Member />
       </div>
 
       <Invite />

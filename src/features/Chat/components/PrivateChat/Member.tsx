@@ -1,13 +1,25 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Member = () => {
   return (
     <Dialog>
-      <DialogTrigger>인원</DialogTrigger>
+      <DialogTrigger asChild>
+        <Badge className="cursor-pointer text-xs" variant="secondary">
+          2
+        </Badge>
+      </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>채팅방 이름</DialogTitle>
+          <DialogTitle>채팅방</DialogTitle>
           <DialogDescription>채팅방 참가자</DialogDescription>
           <div className="flex gap-2">
             <div className="">

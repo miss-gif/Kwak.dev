@@ -7,9 +7,13 @@ const GlobalSpeedDial = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const openChat = () => {
+    window.open("new/chat", "_blank", "width=400,height=600"); // 새 창에서 new/chat 열기
+  };
+
   return (
-    <div className="fixed bottom-0 left-0 flex flex-col gap-2 p-5">
-      <Button size="icon">
+    <div className="fixed bottom-12 right-0 flex flex-col gap-2 p-5">
+      <Button size="icon" onClick={openChat}>
         <MessageCircleMoreIcon />
       </Button>
 
