@@ -46,7 +46,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
       value: formData.projectName,
     },
     {
-      label: "프로젝트 설명",
+      label: "프로젝트 목적",
       name: "description",
       value: formData.description,
     },
@@ -63,9 +63,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
   const renderLink = (label: string, url: string) => (
     <a
       href={user ? url : "#"}
-      className={`rounded bg-gray-600 py-2 text-center text-white ${
-        !user ? "cursor-not-allowed opacity-50" : ""
-      }`}
+      className={`rounded bg-gray-600 py-2 text-center text-white ${!user ? "cursor-not-allowed opacity-50" : ""}`}
       target={user ? "_blank" : "_self"}
       rel="noopener noreferrer"
       onClick={() => {
@@ -102,11 +100,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
       {/* 썸네일과 주요 정보 */}
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="overflow-hidden">
-          <img
-            src={formData.thumbnail}
-            alt={`${formData.projectName} thumbnail`}
-            className="w-full rounded-md"
-          />
+          <img src={formData.thumbnail} alt={`${formData.projectName} thumbnail`} className="w-full rounded-md" />
           {editMode && (
             <>
               <LabelInput
@@ -140,14 +134,9 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
               />
 
               <div className="flex items-center">
-                <label className="min-w-24 shrink-0 text-sm font-medium">
-                  기술스택
-                </label>
+                <label className="min-w-24 shrink-0 text-sm font-medium">기술스택</label>
                 {/* 모달 열기 */}
-                <BasicModal
-                  techStack={formData.techStack}
-                  handleCheckboxChange={handleCheckboxChange}
-                />
+                <BasicModal techStack={formData.techStack} handleCheckboxChange={handleCheckboxChange} />
               </div>
             </>
           )}
@@ -219,9 +208,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
           {!editMode ? (
             <div>
               <div className="font-semibold">기술스택</div>
-              <div className="text-gray-600">
-                {formData.techStack.join(", ")}
-              </div>
+              <div className="text-gray-600">{formData.techStack.join(", ")}</div>
             </div>
           ) : (
             <div>
