@@ -1,10 +1,10 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import usePoints from "@/features/Point/hooks/use-Points";
 import { useAuthStore } from "@/stores/authStore";
+import { CoinsIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 
 const IsLogin = () => {
   const { user, isLoggedIn, logout } = useAuthStore();
@@ -41,8 +41,8 @@ const IsLogin = () => {
         </Button>
 
         <Button variant="ghost">
-          <Link to={"/point"} className="flex items-center gap-1">
-            <MonetizationOnIcon sx={{ color: "yellowgreen" }} />
+          <Link to={"/point"} className="flex items-center gap-2">
+            <CoinsIcon className="text-lime-500" />
             {point !== null ? point.toLocaleString() : "조회 중..."}
           </Link>
         </Button>

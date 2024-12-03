@@ -6,6 +6,7 @@ import StickyWrapper from "@/components/common/StickyWrapper";
 import { Button } from "@/components/ui/button";
 import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { RotateCcw } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -94,8 +95,8 @@ export const ProjectCreate = ({ handleFormReset }: ProjectCreateProps) => {
   return (
     <StickyWrapper>
       <BackButton />
-      <Button onClick={handleFormReset} variant="destructive">
-        Reset
+      <Button onClick={handleFormReset} variant="destructive" size="icon">
+        <RotateCcw />
       </Button>
     </StickyWrapper>
   );

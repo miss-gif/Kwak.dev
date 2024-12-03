@@ -1,5 +1,5 @@
-import Button from "@/components/Button";
 import AuthLabelInput from "@/components/form/LabelInput/AuthLabelInput";
+import { Button } from "@/components/ui/button";
 import { useSignup } from "@/hooks/useSignup";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ function SignupPage() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8">
-        <h2 className="text-center text-2xl font-bold text-gray-700">회원가입</h2>
+        <h2 className="py-5 text-center text-2xl font-bold text-gray-700">회원가입</h2>
         <form onSubmit={handleSignup} className="space-y-4">
           <AuthLabelInput
             name="displayName"
@@ -44,7 +44,9 @@ function SignupPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button label="회원가입" width="w-full" type="submit" py="py-2" />
+          <Button type="submit" className="w-full">
+            회원가입
+          </Button>
         </form>
         <p className="text-center text-sm text-gray-600">
           이미 계정이 있으신가요?
