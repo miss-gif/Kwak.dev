@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const Announcement = () => {
+const TaskNotice = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -26,4 +26,4 @@ const Announcement = () => {
   );
 };
 
-export default Announcement;
+export default TaskNotice;

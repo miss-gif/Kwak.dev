@@ -19,7 +19,7 @@ export const BOTTOM_MENU_ITEMS = [
 
 export const TOP_MENU_ITEMS = [
   { name: "게시판", path: "board" },
-  { name: "실시간 채팅", path: "chat" },
+  // { name: "실시간 채팅", path: "chat" },
   { name: "방명록", path: "schedule" },
   { name: "포인트", path: "point" },
   { name: "프리뷰", path: "preview" },
