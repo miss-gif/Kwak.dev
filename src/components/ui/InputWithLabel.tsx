@@ -7,8 +7,8 @@ interface InputWithLabelProps {
   name: string;
   placeholder?: string;
   value: string | string[] | number | any;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onEscKeyDown: (key: string) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onEscKeyDown?: (key: string) => void;
   readOnly?: boolean;
 }
 

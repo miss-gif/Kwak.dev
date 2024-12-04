@@ -43,7 +43,7 @@ const PreviewCard = ({ project }: PreviewCardProps) => {
         <p className="mb-3 line-clamp-2">{description}</p>
 
         {/* 사용 기술 */}
-        <div className="flex h-24 flex-wrap gap-2 overflow-hidden">
+        <div className="flex flex-wrap gap-2 overflow-hidden">
           {techStack.map((tech: string, index: number) => (
             <span
               key={index}
