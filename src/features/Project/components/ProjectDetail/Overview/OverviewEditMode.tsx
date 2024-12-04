@@ -3,6 +3,7 @@ import ContributionGrid from "./ContributionGrid";
 import ProjectLinks from "./ProjectLinks";
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import { ProjectData } from "@/features/Project/types/type";
+import ProjectInfo from "./ProjectInfo";
 
 const OverviewEditMode = ({
   formData,
@@ -57,6 +58,14 @@ const OverviewEditMode = ({
         </div>
 
         <div className="grid w-full gap-4">
+          <ProjectInfo
+            client={formData.client}
+            startDate={formData.startDate}
+            endDate={formData.endDate}
+            teamSize={formData.teamSize}
+            onChange={handleInputChange}
+            onEscKeyDown={resetFormDataValue}
+          />
           <ContributionGrid
             planning={formData.planning}
             design={formData.design}
