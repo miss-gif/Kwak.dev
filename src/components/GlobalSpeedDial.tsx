@@ -14,8 +14,10 @@ const GlobalSpeedDial = () => {
 
   return (
     <div className="fixed bottom-0 right-0 flex flex-col gap-2 p-5">
-      <Button size="icon">
-        <ModeToggle />
+      <Button size="icon" asChild>
+        <div>
+          <ModeToggle />
+        </div>
       </Button>
 
       <Button size="icon" onClick={openChat}>

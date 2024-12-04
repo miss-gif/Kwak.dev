@@ -1,7 +1,7 @@
 import BasicModal from "@/components/Modal";
+import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import { useAuthStore } from "@/stores/authStore";
 import { ProjectData } from "../../types/type";
-import LabelInput from "../ProjectForm/LabelInput";
 import RadioGroup from "../ProjectForm/RadioGroup";
 
 interface OverviewProps {
@@ -83,9 +83,9 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
             <p className="mb-4 text-gray-700">{formData.description}</p>
           </>
         ) : (
-          <>
+          <div className="grid gap-2 py-2">
             {fields.map((field) => (
-              <LabelInput
+              <InputWithLabel
                 key={field.name}
                 label={field.label}
                 name={field.name}
@@ -94,7 +94,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
                 onEscKeyDown={resetFormDataValue}
               />
             ))}
-          </>
+          </div>
         )}
       </div>
       {/* 썸네일과 주요 정보 */}
@@ -102,14 +102,15 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
         <div className="overflow-hidden">
           <img src={formData.thumbnail} alt={`${formData.projectName} thumbnail`} className="w-full rounded-md" />
           {editMode && (
-            <>
-              <LabelInput
+            <div className="my-4">
+              <InputWithLabel
                 label="썸네일 URL"
                 name="thumbnail"
                 value={formData.thumbnail}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
               />
+
               <RadioGroup
                 label="디바이스 지원"
                 options={["반응형", "데스크탑"]}
@@ -138,11 +139,12 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
                 {/* 모달 열기 */}
                 <BasicModal techStack={formData.techStack} handleCheckboxChange={handleCheckboxChange} />
               </div>
-            </>
+            </div>
           )}
         </div>
+
         {/* 프로젝트 세부 정보 */}
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 py-2">
           {/* 클라이언트 */}
           {!editMode ? (
             <div>
@@ -150,7 +152,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
               <div className="text-gray-600">{formData.client}</div>
             </div>
           ) : (
-            <LabelInput
+            <InputWithLabel
               label="클라이언트"
               name="client"
               value={formData.client}
@@ -167,17 +169,18 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
             </div>
           ) : (
             <div className="flex items-center py-2">
-              <div className="flex items-center gap-2 text-gray-600">
-                <LabelInput
+              <div className="flex w-full items-end gap-2 text-gray-600">
+                <InputWithLabel
+                  placeholder="작업 시작일"
                   label="작업기간"
                   name="startDate"
                   value={formData.startDate}
                   onChange={handleInputChange}
                   onEscKeyDown={resetFormDataValue}
                 />
-                ~
-                <LabelInput
-                  // label="작업종료"
+
+                <InputWithLabel
+                  placeholder="작업 종료일"
                   name="endDate"
                   value={formData.endDate}
                   onChange={handleInputChange}
@@ -195,7 +198,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
             </div>
           ) : (
             <div>
-              <LabelInput
+              <InputWithLabel
                 label="작업 인원"
                 name="teamSize"
                 value={formData.teamSize}
@@ -212,13 +215,13 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
             </div>
           ) : (
             <div>
-              <LabelInput
+              <InputWithLabel
                 label="기술스택"
                 name="techStack"
                 value={formData.techStack}
                 onChange={handleInputChange}
                 onEscKeyDown={resetFormDataValue}
-                read={true}
+                readOnly={true}
               />
             </div>
           )}
@@ -231,7 +234,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
                 <div className="text-gray-600">{formData.planning}</div>
               </div>
             ) : (
-              <LabelInput
+              <InputWithLabel
                 label="기획"
                 name="planning"
                 value={formData.planning}
@@ -245,7 +248,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
                 <div className="text-gray-600">{formData.design}</div>
               </div>
             ) : (
-              <LabelInput
+              <InputWithLabel
                 label="디자인"
                 name="design"
                 value={formData.design}
@@ -259,7 +262,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
                 <div className="text-gray-600">{formData.publishing}</div>
               </div>
             ) : (
-              <LabelInput
+              <InputWithLabel
                 label="퍼블리싱"
                 name="publishing"
                 value={formData.publishing}
@@ -273,7 +276,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
                 <div className="text-gray-600">{formData.development}</div>
               </div>
             ) : (
-              <LabelInput
+              <InputWithLabel
                 label="개발"
                 name="development"
                 value={formData.development}
@@ -296,7 +299,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
             ) : (
               <>
                 {urls.map((url) => (
-                  <LabelInput
+                  <InputWithLabel
                     key={url.name}
                     label={url.label}
                     name={url.name}
