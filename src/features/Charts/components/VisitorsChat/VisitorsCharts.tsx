@@ -1,6 +1,6 @@
 import { Component } from "./Component";
 
-const VisitorsChat = () => {
+const VisitorsCharts = () => {
   return (
     <div>
       <Component />
@@ -8,4 +8,4 @@ const VisitorsChat = () => {
   );
 };
 
-export default VisitorsChat;
+export default VisitorsCharts;

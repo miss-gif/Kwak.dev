@@ -1,7 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import UserStats from "@/features/Charts/components/UserStats";
-import VisitorsChat from "../components/VisitorsChat";
+import { ChartsTabs } from "../components/ChartsTabs/ChartsTabs";
 
 const ChartsPage = () => {
   const props = {
@@ -12,9 +11,7 @@ const ChartsPage = () => {
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
       <SectionWrapper>
-        <h3>통계</h3>
-        <UserStats />
-        <VisitorsChat />
+        <ChartsTabs />
       </SectionWrapper>
     </PageLayout>
   );
