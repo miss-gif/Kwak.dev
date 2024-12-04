@@ -1,4 +1,3 @@
-import AuthLabelInput from "@/components/form/LabelInput/AuthLabelInput";
 import { Button } from "@/components/ui/button";
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import { InputWithLabelButton } from "@/components/ui/InputWithLabelButton";

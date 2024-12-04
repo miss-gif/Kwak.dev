@@ -1,6 +1,5 @@
 import { getDocumentById } from "@/api/firebase-crud-api";
 import PageLayout from "@/components/common/PageLayout";
-import SectionWrapper from "@/components/common/SectionWrapper";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProjectDetail from "../components/ProjectDetail";
