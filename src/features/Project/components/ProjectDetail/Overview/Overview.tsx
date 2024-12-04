@@ -10,7 +10,7 @@ interface OverviewProps {
 
 const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
   return (
-    <div className="overview w-full">
+    <div className="overview mb-8 w-full">
       {editMode ? (
         <OverviewEditMode formData={formData} setFormData={setFormData} />
       ) : (
