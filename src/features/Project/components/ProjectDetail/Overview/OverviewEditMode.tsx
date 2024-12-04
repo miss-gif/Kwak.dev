@@ -45,8 +45,8 @@ const OverviewEditMode = ({
         />
       </div>
 
-      <div className="flex w-full gap-4">
-        <div className="h-1/2 w-2/5 shrink-0">
+      <div className="flex w-full flex-col gap-4 xl:flex-row">
+        <div className="w-full shrink-0 xl:w-2/5">
           <ThumbnailSection
             thumbnail={formData.thumbnail}
             badgeProjectDevice={formData.badgeProjectDevice}
@@ -65,7 +65,6 @@ const OverviewEditMode = ({
             onChange={handleInputChange}
             onEscKeyDown={resetFormDataValue}
           />
-
           <ProjectLinks urls={formData} editable onChange={handleInputChange} />
         </div>
       </div>

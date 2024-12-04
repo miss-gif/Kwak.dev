@@ -1,5 +1,6 @@
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import RadioGroup from "../../ProjectForm/RadioGroup";
+import { TechStackModal } from "./TechStackModal";
 
 interface ThumbnailSectionProps {
   thumbnail: string;
@@ -20,7 +21,6 @@ const ThumbnailSection = ({
     <div className="grid gap-4">
       {/* 썸네일 URL 입력 */}
       <InputWithLabel label="썸네일 URL" name="thumbnail" value={thumbnail} onChange={onChange} />
-
       {/* 디바이스 지원 */}
       <RadioGroup
         label="디바이스 지원"
@@ -29,7 +29,6 @@ const ThumbnailSection = ({
         value={badgeProjectDevice}
         onChange={onChange}
       />
-
       {/* 프로젝트 유형 */}
       <RadioGroup
         label="프로젝트 유형"
@@ -38,7 +37,6 @@ const ThumbnailSection = ({
         value={badgeProjectType}
         onChange={onChange}
       />
-
       {/* 참여 형태 */}
       <RadioGroup
         label="참여 형태"
@@ -47,6 +45,7 @@ const ThumbnailSection = ({
         value={badgeParticipation}
         onChange={onChange}
       />
+      <TechStackModal />
     </div>
   );
 };

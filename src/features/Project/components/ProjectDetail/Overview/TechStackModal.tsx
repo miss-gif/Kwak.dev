@@ -1,19 +1,19 @@
-import React from "react";
-import BasicModal from "@/components/Modal";
+import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { CheckboxTechStack } from "./CheckboxTechStack";
 
-interface TechStackModalProps {
-  techStack: string[];
-  handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const TechStackModal = ({ techStack, handleCheckboxChange }: TechStackModalProps) => {
+export function TechStackModal() {
   return (
-    <div className="flex items-center">
-      <label className="min-w-24 shrink-0 text-sm font-medium">기술 스택</label>
-      {/* BasicModal 컴포넌트를 열어 기술 스택을 선택 */}
-      <BasicModal techStack={techStack} handleCheckboxChange={handleCheckboxChange} />
-    </div>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="secondary">기술스택</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[720px]">
+        <DialogHeader>
+          <DialogTitle>기술스택</DialogTitle>
+        </DialogHeader>
+        <CheckboxTechStack />
+      </DialogContent>
+    </Dialog>
   );
-};
-
-export default TechStackModal;
+}
