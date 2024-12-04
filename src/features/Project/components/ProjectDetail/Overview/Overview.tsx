@@ -76,27 +76,26 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
 
   return (
     <div className="overview w-full">
-      <div>
-        {!editMode ? (
-          <>
-            <h3 className="mb-2 text-xl font-bold">{formData.projectName}</h3>
-            <p className="mb-4 text-gray-700">{formData.description}</p>
-          </>
-        ) : (
-          <div className="grid gap-2 py-2">
-            {fields.map((field) => (
-              <InputWithLabel
-                key={field.name}
-                label={field.label}
-                name={field.name}
-                value={field.value}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      {!editMode ? (
+        <>
+          <h3 className="mb-2 text-xl font-bold">{formData.projectName}</h3>
+          <p className="mb-4 text-gray-700">{formData.description}</p>
+        </>
+      ) : (
+        <div className="grid gap-2 py-2">
+          {fields.map((field) => (
+            <InputWithLabel
+              key={field.name}
+              label={field.label}
+              name={field.name}
+              value={field.value}
+              onChange={handleInputChange}
+              onEscKeyDown={resetFormDataValue}
+            />
+          ))}
+        </div>
+      )}
+
       {/* 썸네일과 주요 정보 */}
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="overflow-hidden">
@@ -163,10 +162,10 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
 
           {/* 작업기간 */}
           {!editMode ? (
-            <div>
+            <>
               <div className="font-semibold">작업기간</div>
               <div className="text-gray-600">{`${formData.startDate} ~ ${formData.endDate}`}</div>
-            </div>
+            </>
           ) : (
             <div className="flex items-center py-2">
               <div className="flex w-full items-end gap-2 text-gray-600">
@@ -192,47 +191,43 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
 
           {/* 작업 인원 */}
           {!editMode ? (
-            <div>
+            <>
               <div className="font-semibold">작업인원</div>
               <div className="text-gray-600">{`${formData.teamSize}명`}</div>
-            </div>
+            </>
           ) : (
-            <div>
-              <InputWithLabel
-                label="작업 인원"
-                name="teamSize"
-                value={formData.teamSize}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-              />
-            </div>
+            <InputWithLabel
+              label="작업 인원"
+              name="teamSize"
+              value={formData.teamSize}
+              onChange={handleInputChange}
+              onEscKeyDown={resetFormDataValue}
+            />
           )}
 
           {!editMode ? (
-            <div>
+            <>
               <div className="font-semibold">기술스택</div>
               <div className="text-gray-600">{formData.techStack.join(", ")}</div>
-            </div>
+            </>
           ) : (
-            <div>
-              <InputWithLabel
-                label="기술스택"
-                name="techStack"
-                value={formData.techStack}
-                onChange={handleInputChange}
-                onEscKeyDown={resetFormDataValue}
-                readOnly={true}
-              />
-            </div>
+            <InputWithLabel
+              label="기술스택"
+              name="techStack"
+              value={formData.techStack}
+              onChange={handleInputChange}
+              onEscKeyDown={resetFormDataValue}
+              readOnly={true}
+            />
           )}
 
           {/* 기여도 */}
           <div className="gap- grid grid-cols-2 gap-4">
             {!editMode ? (
-              <div>
+              <>
                 <div className="font-semibold">기획</div>
                 <div className="text-gray-600">{formData.planning}</div>
-              </div>
+              </>
             ) : (
               <InputWithLabel
                 label="기획"
@@ -243,10 +238,10 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
               />
             )}
             {!editMode ? (
-              <div>
+              <>
                 <div className="font-semibold">디자인</div>
                 <div className="text-gray-600">{formData.design}</div>
-              </div>
+              </>
             ) : (
               <InputWithLabel
                 label="디자인"
@@ -257,10 +252,10 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
               />
             )}
             {!editMode ? (
-              <div>
+              <>
                 <div className="font-semibold">퍼블리싱</div>
                 <div className="text-gray-600">{formData.publishing}</div>
-              </div>
+              </>
             ) : (
               <InputWithLabel
                 label="퍼블리싱"
@@ -271,10 +266,10 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
               />
             )}
             {!editMode ? (
-              <div>
+              <>
                 <div className="font-semibold">개발</div>
                 <div className="text-gray-600">{formData.development}</div>
-              </div>
+              </>
             ) : (
               <InputWithLabel
                 label="개발"

@@ -10,8 +10,8 @@ import { toast } from "react-toastify";
 import { initFormData } from "../../data/initFormData";
 import { ProjectData } from "../../types/type";
 import Description from "../ProjectDetail/Description";
-import Overview from "../ProjectDetail/Overview";
 import { ProjectCreate } from "../ProjectHeaderButton";
+import Overview from "../ProjectDetail/Overview/Overview";
 
 interface ProjectAddProps {
   data: ProjectData;

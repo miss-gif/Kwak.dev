@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { ProjectData } from "../../types/type";
 import { ProjectEdit } from "../ProjectHeaderButton";
 import Description from "./Description";
-import Overview from "./Overview";
+import Overview from "./Overview/Overview";
 
 interface ProjectDetailProps {
   data: ProjectData;

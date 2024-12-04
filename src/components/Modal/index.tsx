@@ -1,9 +1,9 @@
 import CheckboxGroup from "@/features/Project/components/ProjectForm/CheckboxGroup";
 import { techStackListData } from "@/features/Project/data/techStackListData";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 const style = {
   position: "absolute",
@@ -22,17 +22,16 @@ interface BasicModalProps {
   handleCheckboxChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function BasicModal({
-  techStack,
-  handleCheckboxChange,
-}: BasicModalProps) {
+export default function BasicModal({ techStack, handleCheckboxChange }: BasicModalProps) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   return (
-    <div>
-      <Button onClick={handleOpen}>모달창 열기</Button>
+    <>
+      <Button onClick={handleOpen} className="text-xs" variant="secondary">
+        Open
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -48,6 +47,6 @@ export default function BasicModal({
           />
         </Box>
       </Modal>
-    </div>
+    </>
   );
 }
