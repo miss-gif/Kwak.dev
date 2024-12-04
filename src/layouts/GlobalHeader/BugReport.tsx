@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/dialog";
 import { BugIcon } from "lucide-react";
 
+// Todo 버그
+
 const BugReport = () => {
   return (
     <Dialog>
@@ -21,6 +23,8 @@ const BugReport = () => {
         <DialogHeader>
           <DialogTitle>확인되었습니다.</DialogTitle>
           <DialogDescription>- 회원가입 시 유효성 검사 누락</DialogDescription>
+          <DialogDescription>- 게시판 검색 불가</DialogDescription>
+          <DialogDescription>- 포인트 충전 후 충전금액 확인이 실시간이 아님</DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>

@@ -103,22 +103,16 @@ const PostEdit = () => {
             placeholder="제목을 입력하세요"
             {...register("title")}
           />
-          {errors.title && (
-            <p className="mt-1 text-xs text-red-500">{errors.title.message}</p>
-          )}
+          {errors.title && <p className="mt-1 text-xs text-red-500">{errors.title.message}</p>}
         </div>
 
         <div>
           <label htmlFor="content" className="block text-gray-700">
             내용
           </label>
-          <ReactQuill value={content} onChange={handleContentChange} />
+          <ReactQuill value={content} onChange={handleContentChange} className="mb-12 h-96" />
 
-          {errors.content && (
-            <p className="mt-1 text-xs text-red-500">
-              {errors.content.message}
-            </p>
-          )}
+          {errors.content && <p className="mt-1 text-xs text-red-500">{errors.content.message}</p>}
         </div>
 
         <StickyBottomSubmit>

@@ -57,10 +57,7 @@ const PostAdd = () => {
 
   return (
     <div className="flex w-full flex-col">
-      <form
-        onSubmit={handleSubmit(handleCreateData)}
-        className="w-full space-y-4"
-      >
+      <form onSubmit={handleSubmit(handleCreateData)} className="w-full space-y-4">
         <PostHeader label="새 글 작성" />
         <div>
           <label htmlFor="title" className="block text-gray-700">
@@ -73,27 +70,18 @@ const PostAdd = () => {
             placeholder="제목을 입력하세요"
             {...register("title")}
           />
-          {errors.title && (
-            <p className="mt-1 text-xs text-red-500">{errors.title.message}</p>
-          )}
+          {errors.title && <p className="mt-1 text-xs text-red-500">{errors.title.message}</p>}
         </div>
         <div>
           <label htmlFor="content" className="block text-gray-700">
             내용
           </label>
-          <ReactQuill value={content} onChange={handleContentChange} />
+          <ReactQuill value={content} onChange={handleContentChange} className="mb-12 h-96" />
 
-          {errors.content && (
-            <p className="mt-1 text-xs text-red-500">
-              {errors.content.message}
-            </p>
-          )}
+          {errors.content && <p className="mt-1 text-xs text-red-500">{errors.content.message}</p>}
         </div>
-        <input
-          type="hidden"
-          {...register("author")}
-          value={user?.email ?? ""}
-        />
+
+        <input type="hidden" {...register("author")} value={user?.email ?? ""} />
         <input type="hidden" {...register("id")} value="0" />
         <StickyBottomSubmit>
           <Button label="작성하기" width="w-full" mt="mt-4" type="submit" />
