@@ -51,7 +51,7 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
         <Description formData={formData} setFormData={setFormData} editMode={editMode} />
 
         <StickyBottomSubmit>
-          <AdminAuthButton label="프로젝트 저장하기" width="w-full" mt="mt-4" onClick={() => handleCreateData()} />
+          <AdminAuthButton label="프로젝트 저장하기" width="w-full" onClick={() => handleCreateData()} />
         </StickyBottomSubmit>
       </Inner>
     </>

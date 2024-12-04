@@ -1,6 +1,8 @@
 import { updateData } from "@/api/firebase-crud-api";
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
+import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
+import Inner from "@/layouts/Inner";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -8,7 +10,6 @@ import { ProjectData } from "../../types/type";
 import { ProjectEdit } from "../ProjectHeaderButton";
 import Description from "./Description";
 import Overview from "./Overview";
-import Inner from "@/layouts/Inner";
 
 interface ProjectDetailProps {
   data: ProjectData;
@@ -60,16 +61,15 @@ const ProjectDetail = ({ data }: ProjectDetailProps) => {
         <Overview formData={formData} editMode={editMode} setFormData={setFormData} />
         <Description formData={formData} editMode={editMode} setFormData={setFormData} />
         {editMode && (
-          <div className="sticky bottom-2 w-full max-w-screen-xl">
+          <StickyBottomSubmit>
             <AdminAuthButton
               label="프로젝트 수정하기"
               width="w-full"
-              mt="mt-4"
               onClick={() => {
                 handleUpdate();
               }}
             />
-          </div>
+          </StickyBottomSubmit>
         )}
       </Inner>
     </>

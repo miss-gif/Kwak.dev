@@ -3,7 +3,7 @@ interface StickyBottomSubmitProps {
 }
 
 const StickyBottomSubmit = ({ children }: StickyBottomSubmitProps) => {
-  return <div className="sticky bottom-2 mx-auto w-full max-w-screen-xl">{children}</div>;
+  return <div className="sticky bottom-2 w-full max-w-screen-xl">{children}</div>;
 };
 
 export default StickyBottomSubmit;
