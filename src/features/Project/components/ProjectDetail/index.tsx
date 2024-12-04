@@ -8,6 +8,7 @@ import { ProjectData } from "../../types/type";
 import { ProjectEdit } from "../ProjectHeaderButton";
 import Description from "./Description";
 import Overview from "./Overview";
+import Inner from "@/layouts/Inner";
 
 interface ProjectDetailProps {
   data: ProjectData;
@@ -54,21 +55,23 @@ const ProjectDetail = ({ data }: ProjectDetailProps) => {
   return (
     <>
       <ProjectEdit formData={formData} editMode={editMode} onToggleEditMode={handleEditMode} />
-      <Overview formData={formData} editMode={editMode} setFormData={setFormData} />
-      <Description formData={formData} editMode={editMode} setFormData={setFormData} />
 
-      {editMode && (
-        <div className="sticky bottom-2 w-full max-w-screen-xl">
-          <AdminAuthButton
-            label="프로젝트 수정하기"
-            width="w-full"
-            mt="mt-4"
-            onClick={() => {
-              handleUpdate();
-            }}
-          />
-        </div>
-      )}
+      <Inner className="flex-col">
+        <Overview formData={formData} editMode={editMode} setFormData={setFormData} />
+        <Description formData={formData} editMode={editMode} setFormData={setFormData} />
+        {editMode && (
+          <div className="sticky bottom-2 w-full max-w-screen-xl">
+            <AdminAuthButton
+              label="프로젝트 수정하기"
+              width="w-full"
+              mt="mt-4"
+              onClick={() => {
+                handleUpdate();
+              }}
+            />
+          </div>
+        )}
+      </Inner>
     </>
   );
 };

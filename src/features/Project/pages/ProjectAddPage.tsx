@@ -13,9 +13,7 @@ const ProjectAddPage = () => {
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
-      <SectionWrapper>
-        <ProjectAdd data={data} />
-      </SectionWrapper>
+      <ProjectAdd data={data} />
     </PageLayout>
   );
 };

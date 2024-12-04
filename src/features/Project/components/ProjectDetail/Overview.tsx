@@ -75,7 +75,7 @@ const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
   );
 
   return (
-    <div className="overview">
+    <div className="overview w-full">
       <div>
         {!editMode ? (
           <>

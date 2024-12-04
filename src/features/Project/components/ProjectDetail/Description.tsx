@@ -25,11 +25,7 @@ const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
     });
   };
 
-  const resetFormDataValue = (
-    key: keyof typeof formData,
-    index: number,
-    field: "title" | "text",
-  ) => {
+  const resetFormDataValue = (key: keyof typeof formData, index: number, field: "title" | "text") => {
     setFormData((prev) => {
       const updatedArray = Array.isArray(prev[key]) ? [...prev[key]] : [];
       updatedArray[index] = { ...updatedArray[index], [field]: "" };
@@ -38,7 +34,7 @@ const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center rounded-md">
+    <div className="flex w-full flex-col items-center justify-center rounded-md">
       {/* 성과 */}
       <div className="my-6 flex w-full flex-col gap-2 rounded-md bg-slate-800 p-4 text-white">
         <p className="text-xl font-semibold">성과</p>
@@ -57,12 +53,8 @@ const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
                 <LabelInput
                   name="achievement"
                   value={item.text}
-                  onChange={(e) =>
-                    handleInputChange(e, "achievement", index, "text")
-                  }
-                  onEscKeyDown={() =>
-                    resetFormDataValue("achievement", index, "text")
-                  }
+                  onChange={(e) => handleInputChange(e, "achievement", index, "text")}
+                  onEscKeyDown={() => resetFormDataValue("achievement", index, "text")}
                 />
               </li>
             ))}
@@ -91,9 +83,7 @@ const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
                   name={`goal-title-${index}`}
                   value={item.title || ""}
                   onChange={(e) => handleInputChange(e, "goal", index, "title")}
-                  onEscKeyDown={() =>
-                    resetFormDataValue("goal", index, "title")
-                  }
+                  onEscKeyDown={() => resetFormDataValue("goal", index, "title")}
                 />
                 <LabelInput
                   label="내용"
@@ -129,23 +119,15 @@ const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
                   label="제목"
                   name={`features-title-${index}`}
                   value={item.title || ""}
-                  onChange={(e) =>
-                    handleInputChange(e, "features", index, "title")
-                  }
-                  onEscKeyDown={() =>
-                    resetFormDataValue("features", index, "title")
-                  }
+                  onChange={(e) => handleInputChange(e, "features", index, "title")}
+                  onEscKeyDown={() => resetFormDataValue("features", index, "title")}
                 />
                 <LabelInput
                   label="내용"
                   name={`features-text-${index}`}
                   value={item.text || ""}
-                  onChange={(e) =>
-                    handleInputChange(e, "features", index, "text")
-                  }
-                  onEscKeyDown={() =>
-                    resetFormDataValue("features", index, "text")
-                  }
+                  onChange={(e) => handleInputChange(e, "features", index, "text")}
+                  onEscKeyDown={() => resetFormDataValue("features", index, "text")}
                 />
               </li>
             ))}
@@ -173,23 +155,15 @@ const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
                   label="제목"
                   name={`technology-title-${index}`}
                   value={item.title}
-                  onChange={(e) =>
-                    handleInputChange(e, "technology", index, "title")
-                  }
-                  onEscKeyDown={() =>
-                    resetFormDataValue("technology", index, "title")
-                  }
+                  onChange={(e) => handleInputChange(e, "technology", index, "title")}
+                  onEscKeyDown={() => resetFormDataValue("technology", index, "title")}
                 />
                 <LabelInput
                   label="내용"
                   name={`technology-text-${index}`}
                   value={item.text}
-                  onChange={(e) =>
-                    handleInputChange(e, "technology", index, "text")
-                  }
-                  onEscKeyDown={() =>
-                    resetFormDataValue("technology", index, "text")
-                  }
+                  onChange={(e) => handleInputChange(e, "technology", index, "text")}
+                  onEscKeyDown={() => resetFormDataValue("technology", index, "text")}
                 />
               </li>
             ))}
@@ -217,23 +191,15 @@ const Description = ({ formData, editMode, setFormData }: DescriptionProps) => {
                   label="제목"
                   name={`result-title-${index}`}
                   value={item.title}
-                  onChange={(e) =>
-                    handleInputChange(e, "result", index, "title")
-                  }
-                  onEscKeyDown={() =>
-                    resetFormDataValue("result", index, "title")
-                  }
+                  onChange={(e) => handleInputChange(e, "result", index, "title")}
+                  onEscKeyDown={() => resetFormDataValue("result", index, "title")}
                 />
                 <LabelInput
                   label="내용"
                   name={`result-text-${index}`}
                   value={item.text}
-                  onChange={(e) =>
-                    handleInputChange(e, "result", index, "text")
-                  }
-                  onEscKeyDown={() =>
-                    resetFormDataValue("result", index, "text")
-                  }
+                  onChange={(e) => handleInputChange(e, "result", index, "text")}
+                  onEscKeyDown={() => resetFormDataValue("result", index, "text")}
                 />
               </li>
             ))}

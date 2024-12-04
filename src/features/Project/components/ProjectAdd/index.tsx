@@ -2,6 +2,7 @@ import { createData } from "@/api/firebase-crud-api";
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
+import Inner from "@/layouts/Inner";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -45,24 +46,14 @@ const ProjectAdd = ({ data }: ProjectAddProps) => {
   return (
     <>
       <ProjectCreate handleFormReset={handleFormReset} />
-      <Overview
-        formData={formData}
-        setFormData={setFormData}
-        editMode={editMode}
-      />
-      <Description
-        formData={formData}
-        setFormData={setFormData}
-        editMode={editMode}
-      />
-      <StickyBottomSubmit>
-        <AdminAuthButton
-          label="프로젝트 저장하기"
-          width="w-full"
-          mt="mt-4"
-          onClick={() => handleCreateData()}
-        />
-      </StickyBottomSubmit>
+      <Inner className="flex-col">
+        <Overview formData={formData} setFormData={setFormData} editMode={editMode} />
+        <Description formData={formData} setFormData={setFormData} editMode={editMode} />
+
+        <StickyBottomSubmit>
+          <AdminAuthButton label="프로젝트 저장하기" width="w-full" mt="mt-4" onClick={() => handleCreateData()} />
+        </StickyBottomSubmit>
+      </Inner>
     </>
   );
 };

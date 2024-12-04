@@ -74,7 +74,7 @@ export const ProjectEdit = ({ formData, editMode, onToggleEditMode }: ProjectEdi
     <StickyWrapper>
       {!editMode ? (
         <>
-          <Button size="icon">
+          <Button size="icon" asChild>
             <Link to="/project">
               <ArrowBackIosNewIcon />
             </Link>

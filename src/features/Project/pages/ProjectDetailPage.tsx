@@ -35,13 +35,11 @@ const ProjectDetailPage = () => {
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
-      <SectionWrapper>
-        {project ? (
-          <ProjectDetail data={project} /> // 로드된 프로젝트 데이터 전달
-        ) : (
-          <p>프로젝트 데이터를 불러오는 중입니다...</p>
-        )}
-      </SectionWrapper>
+      {project ? (
+        <ProjectDetail data={project} /> // 로드된 프로젝트 데이터 전달
+      ) : (
+        <p>프로젝트 데이터를 불러오는 중입니다...</p>
+      )}
     </PageLayout>
   );
 };
