@@ -45,7 +45,7 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
     <form className="w-full rounded-md bg-white p-8" onSubmit={handleSubmit(onSubmit)}>
       <div className="w-full space-y-8">
         <div className="grid w-full items-center gap-1.5">
-          <Label>문의 유형</Label>
+          <p className="text-sm">문의 유형</p>
 
           <RadioGroup defaultValue="comfortable" className="flex gap-4">
             <div className="flex items-center space-x-2">
@@ -73,7 +73,9 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
             보내시는 분<RedDot />
           </Label>
           <Input type="text" id="name" placeholder="보내시는 분의 성함을 알려주세요." {...register("name")} />
-          {errors.name?.message && <p className="mt-2 text-xs font-medium text-red-500">{String(errors.name.message)}</p>}
+          {errors.name?.message && (
+            <p className="mt-2 text-xs font-medium text-red-500">{String(errors.name.message)}</p>
+          )}
         </div>
 
         {/* Email Field */}
@@ -83,7 +85,9 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
             <RedDot />
           </Label>
           <Input type="email" id="emaill" placeholder="이메일을 입력해 주세요." {...register("email")} />
-          {errors.email?.message && <p className="mt-2 text-xs font-medium text-red-500">{String(errors.email.message)}</p>}
+          {errors.email?.message && (
+            <p className="mt-2 text-xs font-medium text-red-500">{String(errors.email.message)}</p>
+          )}
         </div>
 
         {/* Message Field */}
@@ -93,8 +97,10 @@ const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
             <RedDot />
           </Label>
           <Textarea placeholder="문의 내용을 입력해 주세요." id="message" {...register("message")} />
-          {errors.message?.message && <p className="mt-2 text-xs font-medium text-red-500">{String(errors.message.message)}</p>}
-          <p className="text-muted-foreground text-sm">귀하의 문의 내용은 지원팀에 전달됩니다.</p>
+          {errors.message?.message && (
+            <p className="mt-2 text-xs font-medium text-red-500">{String(errors.message.message)}</p>
+          )}
+          <p className="text-sm text-muted-foreground">귀하의 문의 내용은 지원팀에 전달됩니다.</p>
         </div>
 
         <fieldset className="hidden">

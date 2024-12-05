@@ -4,17 +4,17 @@ import VisitorsCharts from "../VisitorsChat/VisitorsCharts";
 
 export function ChartsTabs() {
   return (
-    <Tabs defaultValue="account" className="w-[400px] py-4">
-      <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="사용자">사용자 통계</TabsTrigger>
-        <TabsTrigger value="방문자">방문자 통계</TabsTrigger>
+    <Tabs defaultValue="userStats" className="py-4">
+      <TabsList className="grid w-[400px] grid-cols-2">
+        <TabsTrigger value="userStats">사용자 통계</TabsTrigger>
+        <TabsTrigger value="visitors">방문자 통계</TabsTrigger>
       </TabsList>
 
-      <TabsContent value="사용자">
+      <TabsContent value="userStats">
         <UserStats />
       </TabsContent>
 
-      <TabsContent value="방문자">
+      <TabsContent value="visitors">
         <VisitorsCharts />
       </TabsContent>
     </Tabs>
