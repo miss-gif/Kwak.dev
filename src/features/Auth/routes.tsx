@@ -3,6 +3,7 @@ import { lazy } from "react";
 
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const SignupPage = lazy(() => import("./pages/SignupPage"));
+const FinishSignupPage = lazy(() => import("./pages/FinishSignupPage"));
 
 export const authRoutes = [
   {
@@ -18,6 +19,14 @@ export const authRoutes = [
     element: (
       <PublicRoute>
         <SignupPage />
+      </PublicRoute>
+    ),
+  },
+  {
+    path: "fin-signup",
+    element: (
+      <PublicRoute>
+        <FinishSignupPage />
       </PublicRoute>
     ),
   },

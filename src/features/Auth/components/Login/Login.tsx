@@ -1,13 +1,16 @@
 import LoginContent from "./Login-Content";
 import LoginFooter from "./Login-Footer";
 import LoginHeader from "./Login-Header";
+import LoginOther from "./Login-Other";
 
 const Login = () => {
   return (
-    <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8">
+    <div className="bg-sky-3001 flex h-[600px] w-full max-w-md flex-col gap-5 p-8">
       <LoginHeader />
 
       <LoginContent />
+
+      <LoginOther />
 
       <LoginFooter />
     </div>

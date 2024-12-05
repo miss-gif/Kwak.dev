@@ -1,45 +1,27 @@
-import { Button } from "@/components/ui/button";
-import { InputWithLabel } from "@/components/ui/InputWithLabel";
-import { useUserLogin } from "@/hooks/auth/use-UserLogin";
-import OtherLogin from "./OtherLogin";
-
-const test = {
-  email: "test1234@naver.com",
-  password: "test1234@naver.com",
-};
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PasswordLogin from "./PasswordLogin";
+import AuthEmail from "./AuthEmail";
 
 const LoginContent = () => {
-  const { email, setEmail, password, setPassword, handleLogin, loading } = useUserLogin({
-    initialEmail: test.email,
-    initialPassword: test.password,
-  });
-
   return (
-    <>
-      <form onSubmit={handleLogin} className="space-y-4">
-        <InputWithLabel
-          label="이메일"
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <Tabs defaultValue="password" className="flex flex-col justify-between gap-2">
+      <TabsList className="grid grid-cols-2">
+        <TabsTrigger value="password" className="text-xs font-semibold">
+          일반
+        </TabsTrigger>
+        <TabsTrigger value="email" className="text-xs font-semibold">
+          이메일 인증
+        </TabsTrigger>
+      </TabsList>
 
-        <InputWithLabel
-          label="비밀번호"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <TabsContent value="password">
+        <PasswordLogin />
+      </TabsContent>
 
-        <Button type="submit" className="w-full">
-          {loading ? "로그인 중..." : "이메일로 로그인"}
-        </Button>
-      </form>
-
-      <OtherLogin />
-    </>
+      <TabsContent value="email">
+        <AuthEmail />
+      </TabsContent>
+    </Tabs>
   );
 };
 

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 
-const OtherLogin = () => {
+const LoginOther = () => {
   const buttons = [
     { label: "카카오", id: "kakao" },
     { label: "네이버", id: "naver" },
@@ -33,4 +33,4 @@ const OtherLogin = () => {
   );
 };
 
-export default OtherLogin;
+export default LoginOther;
