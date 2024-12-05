@@ -34,7 +34,7 @@ const LoginContent = () => {
         />
 
         <Button type="submit" className="w-full">
-          {loading ? "로딩 중..." : "이메일로 로그인"}
+          {loading ? "로그인 중..." : "이메일로 로그인"}
         </Button>
       </form>
 

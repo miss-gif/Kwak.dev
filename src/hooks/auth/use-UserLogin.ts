@@ -1,4 +1,4 @@
-import { userLogin } from "@/api/auth/auth";
+import { userLogin } from "@/api/auth/api-auth";
 import { useAuthStore } from "@/stores/authStore";
 import { InitUserLoginProps } from "@/types/auth/auth";
 import { useState } from "react";
