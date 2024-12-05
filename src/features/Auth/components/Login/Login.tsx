@@ -1,6 +1,6 @@
-import LoginContent from "./Login-content";
+import LoginContent from "./Login-Content";
 import LoginFooter from "./Login-Footer";
-import LoginHeader from "./Login-header";
+import LoginHeader from "./Login-Header";
 
 const Login = () => {
   return (

@@ -9,7 +9,7 @@ interface UseLoginProps {
   initialPassword?: string;
 }
 
-export const useLogin = ({ initialEmail = "", initialPassword = "" }: UseLoginProps) => {
+export const useUserLogin = ({ initialEmail = "", initialPassword = "" }: UseLoginProps) => {
   const [email, setEmail] = useState(initialEmail);
   const [password, setPassword] = useState(initialPassword);
   const [error, setError] = useState("");

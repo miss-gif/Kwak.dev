@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
-import { useLogin } from "@/hooks/useLogin";
+import { useUserLogin } from "@/hooks/auth/use-UserLogin";
 import OtherLogin from "./OtherLogin";
 
 const test = {
@@ -9,7 +9,7 @@ const test = {
 };
 
 const LoginContent = () => {
-  const { email, setEmail, password, setPassword, handleLogin } = useLogin({
+  const { email, setEmail, password, setPassword, handleLogin } = useUserLogin({
     initialEmail: test.email,
     initialPassword: test.password,
   });
