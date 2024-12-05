@@ -31,6 +31,8 @@ export function InputWithLabelButton({
         <Input type={type} id={name} placeholder={placeholder} {...props} />
         <Button
           type="button"
+          variant="secondary"
+          className="border border-gray-300 dark:border-gray-700"
           onClick={() => {
             checkFunc();
           }}

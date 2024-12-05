@@ -5,7 +5,7 @@ import LoginOther from "./Login-Other";
 
 const Login = () => {
   return (
-    <div className="bg-sky-3001 flex h-[600px] w-full max-w-md flex-col gap-5 p-8">
+    <div className="flex h-[600px] w-full max-w-md flex-col gap-5 p-8">
       <LoginHeader />
 
       <LoginContent />

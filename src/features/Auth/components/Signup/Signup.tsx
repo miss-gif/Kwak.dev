@@ -4,7 +4,7 @@ import SignupHeader from "./Signup-Header";
 
 const Signup = () => {
   return (
-    <div className="w-full max-w-md space-y-6 rounded-md bg-white p-8">
+    <div className="flex h-[600px] w-full max-w-md flex-col gap-5 p-8">
       <SignupHeader />
 
       <SignupContent />

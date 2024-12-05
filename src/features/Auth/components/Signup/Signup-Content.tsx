@@ -17,7 +17,7 @@ const SignupContent = () => {
   } = useSignup();
 
   return (
-    <form onSubmit={handleSignup} className="space-y-4">
+    <form onSubmit={handleSignup} className="flex flex-col justify-between gap-6">
       <InputWithLabelButton
         name="displayName"
         label="닉네임"

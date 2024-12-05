@@ -1,12 +1,13 @@
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const LoginFooter = () => {
   return (
-    <p className="text-center text-sm text-gray-600">
+    <p className="text-center text-sm">
       계정이 없으신가요?
-      <Link to="/auth/signup" className="text-blue-500 hover:underline">
-        회원가입
-      </Link>
+      <Button asChild variant="link" className="px-2 text-blue-500">
+        <Link to="/auth/signup">회원가입</Link>
+      </Button>
     </p>
   );
 };
