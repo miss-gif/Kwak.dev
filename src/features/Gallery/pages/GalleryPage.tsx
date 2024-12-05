@@ -1,6 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import Gallery from "@/features/Gallery/pages";
+import Gallery from "../components/Gallery";
 
 const GalleryPage = () => {
   const props = {

@@ -11,7 +11,7 @@ const GlobalHeader = () => {
   const { isLoggedIn } = useAuthStore();
 
   return (
-    <div className="w-full bg-white bg-opacity-20 py-2 dark:bg-black dark:bg-opacity-20">
+    <div className="w-full py-2">
       <Inner>
         <div className="flex items-center gap-1">
           <TaskNotice />
