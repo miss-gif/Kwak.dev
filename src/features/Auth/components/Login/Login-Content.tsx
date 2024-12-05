@@ -9,7 +9,7 @@ const test = {
 };
 
 const LoginContent = () => {
-  const { email, setEmail, password, setPassword, handleLogin } = useUserLogin({
+  const { email, setEmail, password, setPassword, handleLogin, loading } = useUserLogin({
     initialEmail: test.email,
     initialPassword: test.password,
   });
@@ -34,7 +34,7 @@ const LoginContent = () => {
         />
 
         <Button type="submit" className="w-full">
-          이메일로 로그인
+          {loading ? "로딩 중..." : "이메일로 로그인"}
         </Button>
       </form>
 
