@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore";
+import { collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "@/firebaseConfig"; // 이미 설정된 Firebase config
 import { ProjectData } from "@/features/Project/types/type";
 import { getDocumentById } from "../firebase-crud-api";
@@ -50,4 +50,10 @@ export const fetchProjects = async (): Promise<ProjectData[]> => {
     console.error("프로젝트 데이터를 가져오는 중 에러 발생:", error);
     throw error;
   }
+};
+
+// 프로젝트 수정
+export const updateProject = async (docID: string, formData: Record<string, any>) => {
+  const projectRef = doc(db, "projects", docID); // 특정 문서 참조
+  await updateDoc(projectRef, formData);
 };
