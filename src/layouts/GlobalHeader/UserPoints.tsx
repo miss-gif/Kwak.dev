@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import useUserPointsQuery from "@/features/Point/hooks/use-UserPointsQuery";
+import useUserPointsQuery from "@/queries/use-UserPointsQuery";
 import { CoinsIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import usePoints from "./use-Points";
+import usePoints from "../hooks/use-Points";
 
 // 사용자 포인트 조회 쿼리 훅
 const useUserPointsQuery = (userId: string) => {

@@ -1,4 +1,4 @@
-import usePoints from "@/features/Point/hooks/use-Points";
+import usePoints from "@/hooks/use-Points";
 import { db } from "@/firebaseConfig";
 import { addDoc, collection } from "firebase/firestore";
 

@@ -13,7 +13,7 @@ const GlobalHeader = () => {
   return (
     <div className="w-full bg-white bg-opacity-20 py-2 dark:bg-black dark:bg-opacity-20">
       <Inner>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <TaskNotice />
           <BugReport />
         </div>
