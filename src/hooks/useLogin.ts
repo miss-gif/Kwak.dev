@@ -1,19 +1,15 @@
-import { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/firebaseConfig";
-import { useNavigate, useLocation } from "react-router-dom";
-import { toast } from "react-toastify";
+import { userLogin } from "@/api/auth/auth";
 import { useAuthStore } from "@/stores/authStore";
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface UseLoginProps {
   initialEmail?: string;
   initialPassword?: string;
 }
 
-export const useLogin = ({
-  initialEmail = "",
-  initialPassword = "",
-}: UseLoginProps) => {
+export const useLogin = ({ initialEmail = "", initialPassword = "" }: UseLoginProps) => {
   const [email, setEmail] = useState(initialEmail);
   const [password, setPassword] = useState(initialPassword);
   const [error, setError] = useState("");
@@ -28,15 +24,10 @@ export const useLogin = ({
     setLoading(true);
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password,
-      );
-      setUser(userCredential.user); // Zustand 스토어에 로그인 상태 설정
+      const user = await userLogin(email, password);
+      setUser(user); // 로그인 성공 시 user 정보를 저장
 
-      // 이전 경로로 이동 (기본값: "/")
-      const from = location.state?.from?.pathname || "/";
+      const from = location.state?.from?.pathname || "/"; // 이전 페이지로 이동
       navigate(from, { replace: true });
       toast.success("로그인 되었습니다.");
     } catch (error: any) {
