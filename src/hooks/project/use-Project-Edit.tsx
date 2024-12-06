@@ -9,7 +9,7 @@ const useProjectEdit = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleUpdate = async (docID: string, formData: ProjectData) => {
+  const handleUpdate = async (id: string, formData: ProjectData) => {
     if (!isAdminAuthenticated()) {
       toast.error("관리자 권한이 필요합니다.");
       return;
@@ -17,7 +17,7 @@ const useProjectEdit = () => {
 
     try {
       setLoading(true);
-      await updateProject(docID, formData); // API 호출
+      await updateProject(id, formData); // API 호출
       toast.success("수정 성공");
     } catch (error) {
       toast.error("수정 실패");

@@ -36,7 +36,7 @@ export const fetchProjectById = async (id: string): Promise<ProjectData | null> 
   return projectData;
 };
 
-// 프로젝트 데이터 가져오기
+// 프로젝트 전체 데이터 가져오기
 export const fetchProjects = async (): Promise<ProjectData[]> => {
   try {
     const projectCollection = collection(db, "projects"); // "projects" 컬렉션 참조

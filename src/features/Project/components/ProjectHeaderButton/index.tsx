@@ -6,8 +6,8 @@ import StickyWrapper from "@/components/common/StickyWrapper";
 import { Button } from "@/components/ui/button";
 import useAdminAuthCookie from "@/hooks/use-AdminAuthCookie";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { PlusIcon, RotateCcw } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { PencilIcon, PlusIcon, RotateCcw, Trash2Icon } from "lucide-react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface ProjectButtonHeaderProps {
@@ -45,6 +45,7 @@ export const ProjectAdd = ({ className }: { className?: string }) => {
 export const ProjectEdit = ({ formData, editMode, onToggleEditMode }: ProjectEditProps) => {
   const navigete = useNavigate();
   const { isAdminAuthenticated } = useAdminAuthCookie();
+  const { id } = useParams();
 
   // 삭제 버튼 클릭 시 실행되는 함수
   const handleDelete = async () => {
@@ -79,7 +80,31 @@ export const ProjectEdit = ({ formData, editMode, onToggleEditMode }: ProjectEdi
               <ArrowBackIosNewIcon />
             </Link>
           </Button>
-          <UserAuthButton label="Edit" onClick={onToggleEditMode} />
+
+          <div className="flex items-center gap-1">
+            <UserAuthButton
+              label={
+                <>
+                  <PencilIcon /> Project Edit
+                </>
+              }
+              onClick={() => {
+                navigete(`/project/${id}/edit`); // 수정 페이지로 이동
+              }}
+            />
+            <AdminAuthButton
+              label={
+                <>
+                  <Trash2Icon />
+                  Del
+                </>
+              }
+              color="red"
+              onClick={() => {
+                confirm("정말 삭제하시겠습니까?") && handleDelete(); // 삭제 확인 창
+              }}
+            />
+          </div>
         </>
       ) : (
         <div className="flex w-full justify-between">
@@ -87,7 +112,7 @@ export const ProjectEdit = ({ formData, editMode, onToggleEditMode }: ProjectEdi
             <ArrowBackIosNewIcon />
           </Button>
 
-          <AdminAuthButton label="삭제" color="red" onClick={handleDelete} />
+          <AdminAuthButton label={<Trash2Icon />} color="red" onClick={handleDelete} />
         </div>
       )}
     </StickyWrapper>
@@ -98,8 +123,8 @@ export const ProjectCreate = ({ handleFormReset }: ProjectCreateProps) => {
   return (
     <StickyWrapper>
       <BackButton />
-      <Button onClick={handleFormReset} variant="destructive" size="icon">
-        <RotateCcw />
+      <Button onClick={handleFormReset} variant="destructive">
+        <RotateCcw /> Reset
       </Button>
     </StickyWrapper>
   );

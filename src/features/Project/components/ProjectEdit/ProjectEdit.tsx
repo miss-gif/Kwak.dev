@@ -1,21 +1,24 @@
+import { fetchProjectById } from "@/api/firestore/api-firestore";
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import CustomQuillEditor from "@/components/CustomQuillEditor";
 import { Badge } from "@/components/ui/badge";
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
-import useProjectAdd from "@/hooks/project/use-Project-Add";
 import Inner from "@/layouts/Inner";
 import { projectSchema } from "@/schema/project-Schema";
 import { ProjectFormData } from "@/types/ProjectFormData";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 import { TechStackModal } from "../ProjectDetail/Overview/TechStackModal";
 import RadioGroup from "../ProjectForm/RadioGroup";
-import { ProjectCreate } from "../ProjectHeaderButton";
+import useProjectEdit from "@/hooks/project/use-Project-Edit";
 
-const ProjectAdd = () => {
-  const { handleCreateData } = useProjectAdd();
+const ProjectEdit = () => {
+  const { handleUpdate } = useProjectEdit();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const { control, handleSubmit, reset, watch, setValue } = useForm<ProjectFormData>({
     defaultValues: {
@@ -58,9 +61,29 @@ const ProjectAdd = () => {
     setValue("techStack", newSelectedTechStacks);
   };
 
+  useEffect(() => {
+    if (id === undefined) {
+      return;
+    }
+
+    const getData = async (id: string) => {
+      try {
+        const projectData = await fetchProjectById(id);
+        reset(projectData);
+        setSelectedTechStacks(projectData.techStack);
+      } catch (error) {}
+    };
+    getData(id);
+  }, [id]);
+
+  // 폼 제출 핸들러
+  const onSubmit = (data: ProjectFormData) => {
+    handleUpdate(id, data); // 폼 데이터를 전달하여 수정 처리
+  };
+
   return (
-    <form onSubmit={handleSubmit(handleCreateData)}>
-      <ProjectCreate handleFormReset={handleFormReset} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {/* ProjectCreate 컴포넌트 제외 */}
       <Inner className="flex-col">
         <div className="overview mb-8 w-full">
           <div className="grid w-full gap-4 py-4">
@@ -221,11 +244,11 @@ const ProjectAdd = () => {
         <StickyBottomSubmit>
           <AdminAuthButton
             type="submit"
-            label="프로젝트 저장하기"
+            label="프로젝트 수정하기"
             width="w-full"
             onClick={() => {
-              console.log(watch());
-              handleCreateData(watch());
+              onSubmit(watch());
+              navigate(`/project/${id}`);
             }}
           />
         </StickyBottomSubmit>
@@ -234,4 +257,4 @@ const ProjectAdd = () => {
   );
 };
 
-export default ProjectAdd;
+export default ProjectEdit;
