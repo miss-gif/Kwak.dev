@@ -22,7 +22,7 @@ const Header = () => {
             <h1 className="text-2xl font-bold">Kwak.dev</h1>
           </Link>
 
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             <Gnb selectedItem={selectedItem} handleClick={handleClick} />
             <NavSheet />
           </div>

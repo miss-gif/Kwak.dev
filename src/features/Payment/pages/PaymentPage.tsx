@@ -14,8 +14,6 @@ const PaymentPage = () => {
   const { user } = useAuthStore();
   const { savePaymentToFirebase } = usePayment();
 
-  console.log(user);
-
   const predefinedAmounts = [1000, 5000, 10000, 20000, 50000, 100000];
 
   // 결제 금액 선택
@@ -77,7 +75,11 @@ const PaymentPage = () => {
         {/* 금액 선택 버튼 */}
         <div className="mb-4 flex flex-wrap gap-2">
           {predefinedAmounts.map((value) => (
-            <button key={value} className="rounded bg-gray-200 px-4 py-2 hover:bg-gray-300" onClick={() => handlePredefinedAmountClick(value)}>
+            <button
+              key={value}
+              className="rounded bg-gray-200 px-4 py-2 hover:bg-gray-300"
+              onClick={() => handlePredefinedAmountClick(value)}
+            >
               {value.toLocaleString()}원
             </button>
           ))}

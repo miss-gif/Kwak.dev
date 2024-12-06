@@ -3,7 +3,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const Intro = () => {
   return (
-    <div className="flex flex-col gap-5 py-20">
+    <div className="flex flex-col">
       <h3 className="text-5xl font-semibold leading-normal">
         안녕하세요. <br /> 신입 FE 개발자 <br /> <Strong>곽도억</Strong>입니다.
       </h3>

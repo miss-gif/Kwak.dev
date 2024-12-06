@@ -60,7 +60,7 @@ const NavSheet = () => {
             </ul>
           </nav>
 
-          <SheetClose>
+          <SheetClose asChild>
             <Button onClick={logout} variant="secondary" className="text-xs font-semibold text-red-500">
               로그아웃
             </Button>
