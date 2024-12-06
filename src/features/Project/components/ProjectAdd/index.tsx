@@ -5,7 +5,9 @@ import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import useProjectAdd from "@/hooks/project/use-Project-Add";
 import Inner from "@/layouts/Inner";
 import { projectSchema } from "@/schema/project-Schema";
+import { ProjectFormData } from "@/types/ProjectFormData";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import { TechStackModal } from "../ProjectDetail/Overview/TechStackModal";
@@ -15,7 +17,7 @@ import { ProjectCreate } from "../ProjectHeaderButton";
 const ProjectAdd = () => {
   const { handleCreateData } = useProjectAdd();
 
-  const { control, handleSubmit, reset, watch } = useForm({
+  const { control, handleSubmit, reset, watch, setValue } = useForm<ProjectFormData>({
     defaultValues: {
       docId: "",
       id: 0,
@@ -48,6 +50,13 @@ const ProjectAdd = () => {
     reset();
   };
 
+  const [selectedTechStacks, setSelectedTechStacks] = useState<string[]>([]); // 선택된 기술 스택 상태 관리
+
+  const handleTechStackChange = (newSelectedTechStacks: string[]) => {
+    setSelectedTechStacks(newSelectedTechStacks);
+    setValue("techStack", newSelectedTechStacks);
+  };
+
   return (
     <form onSubmit={handleSubmit(handleCreateData)}>
       <ProjectCreate handleFormReset={handleFormReset} />
@@ -67,7 +76,7 @@ const ProjectAdd = () => {
           </div>
 
           <div className="flex w-full flex-col gap-4 xl:flex-row">
-            <div className="w-full shrink-0 bg-red-300 xl:w-2/5">
+            <div className="w-full shrink-0 xl:w-2/5">
               <div className="grid gap-4">
                 <div className="h-48 shrink-0 overflow-hidden rounded-md">
                   <img src="https://via.placeholder.com/500.jpg" alt={`thumbnail`} className="w-full" />
@@ -100,21 +109,24 @@ const ProjectAdd = () => {
                 />
 
                 {/* 기술스택 */}
-                <Controller
-                  name="techStack"
-                  control={control}
-                  render={({ field }) => <TechStackModal label="기술스택" {...field} />}
+                <TechStackModal
+                  label="기술스택"
+                  selectedTechStacks={selectedTechStacks} // 선택된 기술 스택을 전달
+                  onChange={handleTechStackChange} // 선택된 항목 변경 처리 함수 전달
                 />
 
-                <Controller
-                  name="techStack"
-                  control={control}
-                  render={({ field }) => <Badge {...field}>techStack</Badge>}
-                />
+                <div className="gap-1">
+                  <p className="text-xs">미리보기</p>
+                  <div className="flex flex-wrap gap-1">
+                    {selectedTechStacks.map((techStack) => (
+                      <Badge key={techStack}>{techStack}</Badge>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="grid w-full gap-4 bg-sky-300">
+            <div className="grid w-full gap-4">
               <div className="grid gap-2">
                 <Controller
                   name="client"
