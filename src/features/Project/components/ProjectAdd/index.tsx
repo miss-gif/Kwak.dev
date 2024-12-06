@@ -48,6 +48,7 @@ const ProjectAdd = () => {
 
   const handleFormReset = () => {
     reset();
+    setSelectedTechStacks([]);
   };
 
   const [selectedTechStacks, setSelectedTechStacks] = useState<string[]>([]); // 선택된 기술 스택 상태 관리
@@ -113,6 +114,7 @@ const ProjectAdd = () => {
                   label="기술스택"
                   selectedTechStacks={selectedTechStacks} // 선택된 기술 스택을 전달
                   onChange={handleTechStackChange} // 선택된 항목 변경 처리 함수 전달
+                  setSelectedTechStacks={setSelectedTechStacks} // 선택된 기술 스택을 변경하는 함수 전달
                 />
 
                 <div className="gap-1">

@@ -2,14 +2,16 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { techStackListData } from "@/features/Project/data/techStackListData";
+import { RotateCcwIcon } from "lucide-react";
 
 interface TechStackModalProps {
   label: string;
-  onChange: (selectedTechStacks: string[]) => void; // 선택된 기술 스택을 부모로 전달
-  selectedTechStacks: string[]; // 부모에서 전달받은 현재 선택된 기술 스택
+  onChange: (selectedTechStacks: string[]) => void;
+  selectedTechStacks: string[];
+  setSelectedTechStacks: (selectedTechStacks: string[]) => void;
 }
 
-export function TechStackModal({ label, onChange, selectedTechStacks }: TechStackModalProps) {
+export function TechStackModal({ label, onChange, selectedTechStacks, setSelectedTechStacks }: TechStackModalProps) {
   const handleCheckboxChange = (techStack: string, checked: boolean) => {
     // 체크된 항목을 업데이트하는 로직
     if (checked) {
@@ -26,7 +28,19 @@ export function TechStackModal({ label, onChange, selectedTechStacks }: TechStac
       </DialogTrigger>
       <DialogContent className="sm:max-w-[720px]">
         <DialogHeader>
-          <DialogTitle>{label}</DialogTitle>
+          <DialogTitle className="flex items-center gap-2">
+            {label}
+            <Button
+              size="icon"
+              className="h-6 w-6"
+              variant="destructive"
+              onClick={() => {
+                setSelectedTechStacks([]);
+              }}
+            >
+              <RotateCcwIcon />
+            </Button>
+          </DialogTitle>
         </DialogHeader>
         <div className="flex flex-wrap items-center gap-4">
           {techStackListData.map((techStack) => (
