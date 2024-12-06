@@ -7,6 +7,8 @@ interface ProjectListPageProps {
 }
 
 const ProjectListPage = ({ filteredProjects }: ProjectListPageProps) => {
+  console.log(filteredProjects);
+
   return (
     <>
       <ProjectAdd />

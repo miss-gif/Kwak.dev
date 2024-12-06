@@ -1,5 +1,5 @@
 import { collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
-import { db } from "@/firebaseConfig"; // 이미 설정된 Firebase config
+import { db } from "@/firebaseConfig";
 import { ProjectData } from "@/features/Project/types/type";
 import { getDocumentById } from "../firebase-crud-api";
 
@@ -42,7 +42,7 @@ export const fetchProjects = async (): Promise<ProjectData[]> => {
     const projectCollection = collection(db, "projects"); // "projects" 컬렉션 참조
     const querySnapshot = await getDocs(projectCollection); // 컬렉션의 모든 문서 가져오기
     const projects: ProjectData[] = querySnapshot.docs.map((doc) => ({
-      id: doc.id, // 문서 ID 추가
+      docID: doc.id, // 문서 ID 추가
       ...doc.data(), // 문서 데이터 추가
     })) as ProjectData[]; // 타입 명시
     return projects;

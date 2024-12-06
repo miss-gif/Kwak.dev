@@ -1,6 +1,6 @@
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
-import useProjectAdd from "@/hooks/project/use-Project-add";
+import useProjectAdd from "@/hooks/project/use-Project-Add";
 import Inner from "@/layouts/Inner";
 import { useState } from "react";
 import { initFormData } from "../../data/initFormData";

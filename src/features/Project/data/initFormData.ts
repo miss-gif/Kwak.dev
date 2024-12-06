@@ -21,9 +21,4 @@ export const initFormData = {
   canvaUrl: "",
   figmaUrl: "",
   swaggerUrl: "",
-  achievement: [{ title: "", text: [] }],
-  goal: [{ title: "", text: [] }],
-  features: [{ title: "", text: [] }],
-  technology: [{ title: "", text: [] }],
-  result: [{ title: "", text: [] }],
 };
