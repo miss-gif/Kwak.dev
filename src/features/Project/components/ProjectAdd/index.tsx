@@ -6,19 +6,14 @@ import useProjectAdd from "@/hooks/project/use-Project-Add";
 import Inner from "@/layouts/Inner";
 import { projectSchema } from "@/schema/project-Schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { initFormData } from "../../data/initFormData";
-import { ProjectData } from "../../types/type";
-import Description from "../ProjectDetail/Description";
+import ReactQuill from "react-quill";
 import { TechStackModal } from "../ProjectDetail/Overview/TechStackModal";
 import RadioGroup from "../ProjectForm/RadioGroup";
 import { ProjectCreate } from "../ProjectHeaderButton";
 
 const ProjectAdd = () => {
   const { handleCreateData } = useProjectAdd();
-  const [editMode] = useState(true);
-  const [formData, setFormData] = useState<ProjectData>(initFormData);
 
   const { control, handleSubmit, reset, watch } = useForm({
     defaultValues: {
@@ -26,24 +21,25 @@ const ProjectAdd = () => {
       id: 0,
       projectName: "",
       description: "",
-      badgeProjectDevice: "",
-      badgeProjectType: "",
-      badgeParticipation: "",
       thumbnail: "https://via.placeholder.com/500.jpg",
+      client: "",
       startDate: "",
       endDate: "",
-      techStack: [],
-      client: "",
       teamSize: "",
       planning: "",
       design: "",
       publishing: "",
       development: "",
+      badgeProjectDevice: "",
+      badgeProjectType: "",
+      badgeParticipation: "",
       demoUrl: "",
       githubUrl: "",
       canvaUrl: "",
       figmaUrl: "",
       swaggerUrl: "",
+      techStack: [],
+      descriptionDetail: "",
     },
     resolver: zodResolver(projectSchema),
   });
@@ -109,13 +105,11 @@ const ProjectAdd = () => {
                   control={control}
                   render={({ field }) => <TechStackModal label="기술스택" {...field} />}
                 />
-                <div>
-                  <Badge>techStack.ma</Badge>
-                </div>
+
                 <Controller
                   name="techStack"
                   control={control}
-                  render={({ field }) => <InputWithLabel label="기술스택" {...field} />}
+                  render={({ field }) => <Badge {...field}>techStack</Badge>}
                 />
               </div>
             </div>
@@ -202,7 +196,13 @@ const ProjectAdd = () => {
           </div>
         </div>
 
-        <Description formData={formData} setFormData={setFormData} editMode={editMode} />
+        <div className="w-full border-t-2 border-neutral-100 pb-11 pt-8">
+          <Controller
+            name="descriptionDetail"
+            control={control}
+            render={({ field }) => <ReactQuill className="h-[400px] pb-8" {...field} />}
+          />
+        </div>
 
         <StickyBottomSubmit>
           <AdminAuthButton

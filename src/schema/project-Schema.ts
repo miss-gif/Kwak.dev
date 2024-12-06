@@ -15,5 +15,11 @@ export const projectSchema = z.object({
   badgeProjectDevice: z.string().optional(),
   badgeProjectType: z.string().optional(),
   badgeParticipation: z.string().optional(),
-  urls: z.array(z.string().url()).optional(),
+  demoUrl: z.string().optional(),
+  githubUrl: z.string().optional(),
+  canvaUrl: z.string().optional(),
+  figmaUrl: z.string().optional(),
+  swaggerUrl: z.string().optional(),
+  techStack: z.array(z.string()).optional(),
+  descriptionDetail: z.string().optional(),
 });
