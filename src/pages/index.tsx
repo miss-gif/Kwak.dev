@@ -24,7 +24,7 @@ const AppRoutes = () => {
       children: privateRoutes,
     },
     {
-      path: "new/chat",
+      path: "/new/chat",
       element: <LoginPage />,
     },
     {

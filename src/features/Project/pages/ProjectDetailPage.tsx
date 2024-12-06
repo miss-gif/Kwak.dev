@@ -1,4 +1,3 @@
-// src/pages/ProjectDetailPage.tsx
 import PageLayout from "@/components/common/PageLayout";
 import { useProjectDetail } from "@/hooks/project/use-Project-Detail";
 import { useParams } from "react-router-dom";

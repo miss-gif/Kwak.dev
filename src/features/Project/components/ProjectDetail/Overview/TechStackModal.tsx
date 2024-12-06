@@ -48,7 +48,7 @@ export function TechStackModal({ label, onChange, selectedTechStacks, setSelecte
               <Checkbox
                 id={techStack}
                 checked={selectedTechStacks.includes(techStack)}
-                onCheckedChange={(checked) => handleCheckboxChange(techStack, checked)}
+                onCheckedChange={(checked) => handleCheckboxChange(techStack, checked === true)}
               />
               <label
                 htmlFor={techStack}
