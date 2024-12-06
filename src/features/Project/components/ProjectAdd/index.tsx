@@ -13,6 +13,7 @@ import ReactQuill from "react-quill";
 import { TechStackModal } from "../ProjectDetail/Overview/TechStackModal";
 import RadioGroup from "../ProjectForm/RadioGroup";
 import { ProjectCreate } from "../ProjectHeaderButton";
+import CustomQuillEditor from "@/components/CustomQuillEditor";
 
 const ProjectAdd = () => {
   const { handleCreateData } = useProjectAdd();
@@ -214,7 +215,7 @@ const ProjectAdd = () => {
           <Controller
             name="descriptionDetail"
             control={control}
-            render={({ field }) => <ReactQuill className="h-[400px] pb-8" {...field} />}
+            render={({ field }) => <CustomQuillEditor className="h-[400px] pb-8" {...field} />}
           />
         </div>
 
