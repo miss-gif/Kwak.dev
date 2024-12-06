@@ -14,6 +14,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { TechStackModal } from "../ProjectDetail/Overview/TechStackModal";
 import RadioGroup from "../ProjectForm/RadioGroup";
 import useProjectEdit from "@/hooks/project/use-Project-Edit";
+import { ProjectCreate } from "../ProjectHeaderButton";
 
 const ProjectEdit = () => {
   const { handleUpdate } = useProjectEdit();
@@ -83,7 +84,8 @@ const ProjectEdit = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* ProjectCreate 컴포넌트 제외 */}
+      <ProjectCreate handleFormReset={handleFormReset} />
+
       <Inner className="flex-col">
         <div className="overview mb-8 w-full">
           <div className="grid w-full gap-4 py-4">
