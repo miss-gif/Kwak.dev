@@ -1,7 +1,7 @@
 import { createData } from "@/api/firebase-crud-api";
 import Button from "@/components/Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
-import { postSchema } from "@/schema/validationSchema";
+import { postSchema } from "@/schema/validation-Schema";
 import { useAuthStore } from "@/stores/authStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
