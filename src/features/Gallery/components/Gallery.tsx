@@ -3,7 +3,7 @@ import ImageViewer from "./ImageViewer";
 
 const URLS = [
   "https://via.placeholder.com/500.jpg",
-  "https://via.placeholder.com/400.jpg",
+  "https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png",
   "https://via.placeholder.com/300.jpg",
   "https://via.placeholder.com/200.jpg",
   "https://via.placeholder.com/100.jpg",

@@ -25,23 +25,14 @@ interface firebaseIDProps {
 }
 
 // Create: 새 문서 추가
-const createData = async ({
-  collectionName,
-  formData,
-}: firebaseCrudApiProps): Promise<string> => {
+const createData = async ({ collectionName, formData }: firebaseCrudApiProps): Promise<string> => {
   const docRef = await addDoc(collection(db, collectionName), formData); // 문서 추가
   return docRef.id; // Firestore에서 생성한 고유 문서 ID 반환
 };
 
 // Read: 모든 데이터 조회
-const readData = async <T>({
-  collectionName,
-}: firebaseCrudApiProps): Promise<T[]> => {
-  const collectionQuery = query(
-    collection(db, collectionName),
-    orderBy("id", "asc"),
-    limit(10),
-  );
+const readData = async <T>({ collectionName }: firebaseCrudApiProps): Promise<T[]> => {
+  const collectionQuery = query(collection(db, collectionName), orderBy("id", "asc"), limit(10));
 
   const querySnapshot = await getDocs(collectionQuery);
 
@@ -60,10 +51,7 @@ const readData = async <T>({
 };
 
 // Read by ID: 특정 ID로 문서 조회
-const getDocumentById = async ({
-  collectionName,
-  docID,
-}: firebaseIDProps): Promise<any | null> => {
+const getDocumentById = async ({ collectionName, docID }: firebaseIDProps): Promise<any | null> => {
   const docRef = doc(db, collectionName, docID); // 문서 참조 생성
   const docSnap = await getDoc(docRef); // 문서 가져오기
 
@@ -77,11 +65,7 @@ const getDocumentById = async ({
 };
 
 // Update: 특정 ID로 데이터 수정
-const updateData = async ({
-  collectionName,
-  docID,
-  formData,
-}: firebaseIDProps): Promise<void> => {
+const updateData = async ({ collectionName, docID, formData }: firebaseIDProps): Promise<void> => {
   if (!formData) {
     console.log("데이터가 없습니다.");
     return;
@@ -91,10 +75,7 @@ const updateData = async ({
 };
 
 // Delete: 특정 ID로 데이터 삭제
-const deleteData = async ({
-  collectionName,
-  docID,
-}: firebaseIDProps): Promise<void> => {
+const deleteData = async ({ collectionName, docID }: firebaseIDProps): Promise<void> => {
   await deleteDoc(doc(db, collectionName, docID));
   console.log("Document deleted");
 };
