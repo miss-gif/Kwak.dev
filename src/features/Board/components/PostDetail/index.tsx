@@ -1,12 +1,12 @@
 import UpDownButton from "@/features/Board/components/UpDownButton";
 import UrlCopyButton from "@/features/Board/components/UrlCopyButton";
+import { formatDate } from "@/utils/formatDate";
+import { getSanitizedContent } from "@/utils/getSanitizedContent";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
-import DOMPurify from "dompurify";
-
 import usePostDetail from "../../hooks/use-PostDetail";
 import { PostData } from "../../types/type";
-import { formatDate } from "@/utils/formatDate";
+import SanitizedContent from "@/components/Quill/SanitizedContent";
 
 interface PostDetailProps {
   post: PostData;
@@ -18,11 +18,6 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
     post,
     postId,
   });
-
-  // HTML을 정화하여 렌더링
-  const getSanitizedContent = () => {
-    return { __html: DOMPurify.sanitize(post.content) };
-  };
 
   return (
     <div className="w-full rounded-md border border-gray-300 bg-white p-6">
@@ -38,7 +33,8 @@ const PostDetail = ({ post, postId }: PostDetailProps) => {
         <UrlCopyButton />
       </div>
 
-      <div className="mb-6 whitespace-pre-wrap text-gray-700" dangerouslySetInnerHTML={getSanitizedContent()} />
+      <SanitizedContent content={post.content} />
+
       <div className="flex items-center justify-center gap-6 pb-10 pt-20">
         <UpDownButton
           postId={postId}
