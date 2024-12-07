@@ -1,11 +1,13 @@
 import { useEffect, useImperativeHandle, useRef, forwardRef } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { quillModules } from "./quillModules";
 
 interface CustomQuillEditorProps {
   [key: string]: any;
 }
 
+// forwardRef를 사용하여 외부에서 ref로 접근할 수 있도록 함
 const CustomQuillEditor = forwardRef((props: CustomQuillEditorProps, ref) => {
   const quillRef = useRef<ReactQuill | null>(null);
 
@@ -31,7 +33,7 @@ const CustomQuillEditor = forwardRef((props: CustomQuillEditorProps, ref) => {
     return () => observer.disconnect(); // 컴포넌트 언마운트 시 정리
   }, []);
 
-  return <ReactQuill ref={quillRef} theme="snow" {...props} />;
+  return <ReactQuill ref={quillRef} theme="snow" modules={quillModules} {...props} />;
 });
 
 export default CustomQuillEditor;

@@ -1,6 +1,6 @@
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
-import CustomQuillEditor from "@/components/CustomQuillEditor";
+import CustomQuillEditor from "@/components/Quill/CustomQuillEditor";
 import { Badge } from "@/components/ui/badge";
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import useProjectAdd from "@/hooks/project/use-Project-Add";

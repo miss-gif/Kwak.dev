@@ -5,9 +5,7 @@ interface SanitizedContentProps {
 }
 
 const SanitizedContent = ({ content }: SanitizedContentProps) => {
-  return (
-    <p className="mb-6 whitespace-pre-wrap text-gray-700" dangerouslySetInnerHTML={getSanitizedContent(content)} />
-  );
+  return <p className="whitespace-pre-wrap py-6" dangerouslySetInnerHTML={getSanitizedContent(content)} />;
 };
 
 export default SanitizedContent;

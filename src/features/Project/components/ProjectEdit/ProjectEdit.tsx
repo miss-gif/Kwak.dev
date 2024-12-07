@@ -1,7 +1,7 @@
 import { fetchProjectById } from "@/api/firestore/api-firestore";
 import AdminAuthButton from "@/components/Button/Admin-Auth-Button";
 import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
-import CustomQuillEditor from "@/components/CustomQuillEditor";
+import CustomQuillEditor from "@/components/Quill/CustomQuillEditor";
 import { Badge } from "@/components/ui/badge";
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
 import Inner from "@/layouts/Inner";
@@ -70,8 +70,10 @@ const ProjectEdit = () => {
     const getData = async (id: string) => {
       try {
         const projectData = await fetchProjectById(id);
-        reset(projectData);
-        setSelectedTechStacks(projectData.techStack);
+        if (projectData) {
+          reset({ ...projectData, id: Number(projectData.id) });
+          setSelectedTechStacks(projectData.techStack);
+        }
       } catch (error) {}
     };
     getData(id);
@@ -79,7 +81,9 @@ const ProjectEdit = () => {
 
   // 폼 제출 핸들러
   const onSubmit = (data: ProjectFormData) => {
-    handleUpdate(id, data); // 폼 데이터를 전달하여 수정 처리
+    if (id) {
+      handleUpdate(id, data); // 폼 데이터를 전달하여 수정 처리
+    }
   };
 
   return (

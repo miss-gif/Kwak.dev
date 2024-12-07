@@ -13,6 +13,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { z } from "zod";
 import PostHeader from "../PostAdd/PostHeader";
+import { quillModules } from "@/components/Quill/quillModules";
 
 type PostFormData = z.infer<typeof postSchema>;
 
@@ -110,7 +111,7 @@ const PostEdit = () => {
           <label htmlFor="content" className="block text-gray-700">
             내용
           </label>
-          <ReactQuill value={content} onChange={handleContentChange} className="mb-12 h-96" />
+          <ReactQuill value={content} onChange={handleContentChange} modules={quillModules} className="mb-12 h-96" />
 
           {errors.content && <p className="mt-1 text-xs text-red-500">{errors.content.message}</p>}
         </div>
