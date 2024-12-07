@@ -30,7 +30,7 @@ const ProjectEditPage = () => {
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
-      {project ? <ProjectEdit data={project} /> : <p>프로젝트 데이터를 찾을 수 없습니다.</p>}
+      {project ? <ProjectEdit /> : <p>프로젝트 데이터를 찾을 수 없습니다.</p>}
     </PageLayout>
   );
 };

@@ -2,6 +2,7 @@ import { collection, doc, getDocs, query, setDoc, updateDoc, where } from "fireb
 import { db } from "@/firebaseConfig";
 import { ProjectData } from "@/features/Project/types/type";
 import { getDocumentById } from "../firebase-crud-api";
+import { ProjectFormData } from "@/types/ProjectFormData";
 
 // 닉네임 중복 확인
 export const checkDisplayNameAvailability = async (name: string): Promise<boolean> => {
@@ -28,7 +29,7 @@ export const saveUserData = async (user: any, displayName: string) => {
 };
 
 // 문서 ID로 프로젝트 데이터 가져오기
-export const fetchProjectById = async (id: string): Promise<ProjectData | null> => {
+export const fetchProjectById = async (id: string): Promise<ProjectFormData> => {
   const projectData = await getDocumentById({
     collectionName: "projects",
     docID: id,

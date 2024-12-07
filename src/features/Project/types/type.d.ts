@@ -97,9 +97,4 @@ export interface ProjectData {
   canvaUrl: string;
   figmaUrl: string;
   swaggerUrl: string;
-  goal: DescriptionTest[];
-  features: DescriptionTest[];
-  technology: DescriptionTest[];
-  result: DescriptionTest[];
-  achievement: DescriptionTest[];
 }
