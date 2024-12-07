@@ -1,9 +1,9 @@
 import { fetchProjectById } from "@/api/firestore/api-firestore";
-import { ProjectData } from "@/features/Project/types/type";
+import { ProjectFormData } from "@/types/ProjectFormData";
 import { useEffect, useState } from "react";
 
 export const useProjectDetail = (id: string | undefined) => {
-  const [project, setProject] = useState<ProjectData | null>(null);
+  const [project, setProject] = useState<ProjectFormData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
