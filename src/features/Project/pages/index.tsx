@@ -6,7 +6,7 @@ import { useFilteredProjects } from "../hooks/use-FilteredProjects";
 import ProjectListPage from "./ProjectListPage";
 
 const ProjectPage = () => {
-  const { projects, loading, error } = useProjectList();
+  const { projects } = useProjectList();
   const { query, setQuery, techFilter, setTechFilter, filteredProjects } = useFilteredProjects(projects);
 
   const filterData = {
@@ -20,22 +20,6 @@ const ProjectPage = () => {
     title: "Project",
     subtitle: "✨ 제가 작업한 프로젝트를 만나보세요.",
   };
-
-  if (loading) {
-    return (
-      <PageLayout title={props.title} subtitle={props.subtitle}>
-        <p>프로젝트 데이터를 불러오는 중입니다...</p>
-      </PageLayout>
-    );
-  }
-
-  if (error) {
-    return (
-      <PageLayout title={props.title} subtitle={props.subtitle}>
-        <p>{error}</p>
-      </PageLayout>
-    );
-  }
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>

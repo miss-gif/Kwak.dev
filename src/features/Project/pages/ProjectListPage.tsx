@@ -1,5 +1,5 @@
-import ProjectCard from "../components/ProjectCard";
-import { ProjectAdd } from "../components/ProjectHeaderButton";
+import ProjectList from "../components/ProjectList";
+import ProjectListHeader from "../components/ProjectList/ProjectListHeader";
 import { ProjectData } from "../types/type";
 
 interface ProjectListPageProps {
@@ -9,13 +9,9 @@ interface ProjectListPageProps {
 const ProjectListPage = ({ filteredProjects }: ProjectListPageProps) => {
   return (
     <>
-      <ProjectAdd />
+      <ProjectListHeader />
 
-      <ul className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {filteredProjects.map((project) => (
-          <ProjectCard key={project.docID} project={project} />
-        ))}
-      </ul>
+      <ProjectList filteredProjects={filteredProjects} />
     </>
   );
 };
