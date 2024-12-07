@@ -1,21 +1,14 @@
-import OverviewReadMode from "./OverviewReadMode";
-import OverviewEditMode from "./OverviewEditMode";
 import { ProjectData } from "@/features/Project/types/type";
+import OverviewReadMode from "./OverviewReadMode";
 
 interface OverviewProps {
   formData: ProjectData;
-  editMode: boolean;
-  setFormData: React.Dispatch<React.SetStateAction<ProjectData>>;
 }
 
-const Overview = ({ formData, editMode, setFormData }: OverviewProps) => {
+const Overview = ({ formData }: OverviewProps) => {
   return (
     <div className="overview mb-8 w-full">
-      {editMode ? (
-        <OverviewEditMode formData={formData} setFormData={setFormData} />
-      ) : (
-        <OverviewReadMode formData={formData} />
-      )}
+      <OverviewReadMode formData={formData} />
     </div>
   );
 };
