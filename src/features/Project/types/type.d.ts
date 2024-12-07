@@ -73,6 +73,8 @@ export interface DescriptionData {
 
 // 프로젝트 데이터 타입 정의
 export interface ProjectData {
+  docid?: string;
+  descriptionDetail?: string;
   docID?: string;
   id: number | string;
   projectName: string;
@@ -95,4 +97,9 @@ export interface ProjectData {
   canvaUrl: string;
   figmaUrl: string;
   swaggerUrl: string;
+  goal: DescriptionTest[];
+  features: DescriptionTest[];
+  technology: DescriptionTest[];
+  result: DescriptionTest[];
+  achievement: DescriptionTest[];
 }

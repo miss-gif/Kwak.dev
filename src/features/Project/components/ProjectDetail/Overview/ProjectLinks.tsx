@@ -5,7 +5,6 @@ import { ProjectData } from "@/features/Project/types/type";
 const ProjectLinks = ({
   urls,
   editable = false,
-  onChange,
 }: {
   urls: Partial<ProjectData>;
   editable?: boolean;

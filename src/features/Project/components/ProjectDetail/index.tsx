@@ -1,13 +1,13 @@
 // src/components/ProjectDetail.tsx
 import Inner from "@/layouts/Inner";
 import NotFoundPage from "@/pages/NotFoundPage";
-import { ProjectData } from "../../types/type";
+import { ProjectFormData } from "@/types/ProjectFormData";
 import Description from "./Description";
 import Overview from "./Overview/Overview";
 import ProjectDetailHeader from "./ProjectDetailHeader";
 
 interface ProjectDetailProps {
-  data: ProjectData;
+  data: ProjectFormData;
 }
 
 const ProjectDetail = ({ data }: ProjectDetailProps) => {

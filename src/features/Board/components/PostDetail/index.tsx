@@ -1,12 +1,11 @@
+import SanitizedContent from "@/components/Quill/SanitizedContent";
 import UpDownButton from "@/features/Board/components/UpDownButton";
 import UrlCopyButton from "@/features/Board/components/UrlCopyButton";
 import { formatDate } from "@/utils/formatDate";
-import { getSanitizedContent } from "@/utils/getSanitizedContent";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import usePostDetail from "../../hooks/use-PostDetail";
 import { PostData } from "../../types/type";
-import SanitizedContent from "@/components/Quill/SanitizedContent";
 
 interface PostDetailProps {
   post: PostData;
