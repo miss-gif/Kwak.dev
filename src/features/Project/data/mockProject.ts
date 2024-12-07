@@ -1,6 +1,4 @@
-import { ProjectData } from "../types/type";
-
-export const mockProject: ProjectData[] = [
+export const mockProject = [
   {
     id: 1,
     projectName: "주문이요 (음식주문 플랫폼)",
@@ -9,28 +7,18 @@ export const mockProject: ProjectData[] = [
     badgeProjectDevice: "협업",
     badgeProjectType: "협업",
     badgeParticipation: "협업",
-    thumbnail:
-      "https://portfolio-final-neon-psi.vercel.app/assets/1-f857b189.png",
+    thumbnail: "https://portfolio-final-neon-psi.vercel.app/assets/1-f857b189.png",
 
     startDate: "2024-07-24",
     endDate: "2024-08-23",
 
     teamSize: "FE 3명 BE 5",
 
-    techStack: [
-      "React",
-      "React Router",
-      "Redux",
-      "Axios",
-      "Sass",
-      "Emotion",
-      "MUI",
-    ],
+    techStack: ["React", "React Router", "Redux", "Axios", "Sass", "Emotion", "MUI"],
 
     demoUrl: "https://jumuniyo.gybproject.com/",
     githubUrl: "https://github.com/miss-gif/jumunyo",
-    canvaUrl:
-      "https://www.canva.com/design/DAGOX4a8SaE/F06Qj7PFzV0Ck796fnsNLA/edit",
+    canvaUrl: "https://www.canva.com/design/DAGOX4a8SaE/F06Qj7PFzV0Ck796fnsNLA/edit",
     figmaUrl:
       "https://www.figma.com/design/wo9ijijb6eANcrwEzBAFQA/%EC%A3%BC%EB%AC%B8%EC%9D%B4%EC%9A%94-(%EA%B0%80%EC%B9%AD)?node-id=25-2&t=KnhWp6vxL0mDpwiK-1",
     swaggerUrl: "https://jumuniyo.gybproject.com/swagger-ui.html",
@@ -126,9 +114,7 @@ export const mockProject: ProjectData[] = [
       },
       {
         title: "Sass",
-        text: [
-          "CSS 확장 언어로, 변수, 함수, 중첩 등의 기능을 제공하여 CSS 작성을 효율적으로 만들어줍니다.",
-        ],
+        text: ["CSS 확장 언어로, 변수, 함수, 중첩 등의 기능을 제공하여 CSS 작성을 효율적으로 만들어줍니다."],
       },
       {
         title: "Emotion",
@@ -164,28 +150,18 @@ export const mockProject: ProjectData[] = [
     badgeProjectDevice: "협업",
     badgeProjectType: "협업",
     badgeParticipation: "협업",
-    thumbnail:
-      "https://portfolio-final-neon-psi.vercel.app/assets/1-f857b189.png",
+    thumbnail: "https://portfolio-final-neon-psi.vercel.app/assets/1-f857b189.png",
 
     startDate: "2024-07-24",
     endDate: "2024-08-23",
 
     teamSize: "FE 3명 BE 5",
 
-    techStack: [
-      "React",
-      "React Router",
-      "Redux",
-      "Axios",
-      "Sass",
-      "Emotion",
-      "MUI",
-    ],
+    techStack: ["React", "React Router", "Redux", "Axios", "Sass", "Emotion", "MUI"],
 
     demoUrl: "https://jumuniyo.gybproject.com/",
     githubUrl: "https://github.com/miss-gif/jumunyo",
-    canvaUrl:
-      "https://www.canva.com/design/DAGOX4a8SaE/F06Qj7PFzV0Ck796fnsNLA/edit",
+    canvaUrl: "https://www.canva.com/design/DAGOX4a8SaE/F06Qj7PFzV0Ck796fnsNLA/edit",
     figmaUrl:
       "https://www.figma.com/design/wo9ijijb6eANcrwEzBAFQA/%EC%A3%BC%EB%AC%B8%EC%9D%B4%EC%9A%94-(%EA%B0%80%EC%B9%AD)?node-id=25-2&t=KnhWp6vxL0mDpwiK-1",
     swaggerUrl: "https://jumuniyo.gybproject.com/swagger-ui.html",
@@ -281,9 +257,7 @@ export const mockProject: ProjectData[] = [
       },
       {
         title: "Sass",
-        text: [
-          "CSS 확장 언어로, 변수, 함수, 중첩 등의 기능을 제공하여 CSS 작성을 효율적으로 만들어줍니다.",
-        ],
+        text: ["CSS 확장 언어로, 변수, 함수, 중첩 등의 기능을 제공하여 CSS 작성을 효율적으로 만들어줍니다."],
       },
       {
         title: "Emotion",
@@ -319,28 +293,18 @@ export const mockProject: ProjectData[] = [
     badgeProjectDevice: "협업",
     badgeProjectType: "협업",
     badgeParticipation: "협업",
-    thumbnail:
-      "https://portfolio-final-neon-psi.vercel.app/assets/1-f857b189.png",
+    thumbnail: "https://portfolio-final-neon-psi.vercel.app/assets/1-f857b189.png",
 
     startDate: "2024-07-24",
     endDate: "2024-08-23",
 
     teamSize: "FE 3명 BE 5",
 
-    techStack: [
-      "React",
-      "React Router",
-      "Redux",
-      "Axios",
-      "Sass",
-      "Emotion",
-      "MUI",
-    ],
+    techStack: ["React", "React Router", "Redux", "Axios", "Sass", "Emotion", "MUI"],
 
     demoUrl: "https://jumuniyo.gybproject.com/",
     githubUrl: "https://github.com/miss-gif/jumunyo",
-    canvaUrl:
-      "https://www.canva.com/design/DAGOX4a8SaE/F06Qj7PFzV0Ck796fnsNLA/edit",
+    canvaUrl: "https://www.canva.com/design/DAGOX4a8SaE/F06Qj7PFzV0Ck796fnsNLA/edit",
     figmaUrl:
       "https://www.figma.com/design/wo9ijijb6eANcrwEzBAFQA/%EC%A3%BC%EB%AC%B8%EC%9D%B4%EC%9A%94-(%EA%B0%80%EC%B9%AD)?node-id=25-2&t=KnhWp6vxL0mDpwiK-1",
     swaggerUrl: "https://jumuniyo.gybproject.com/swagger-ui.html",
@@ -436,9 +400,7 @@ export const mockProject: ProjectData[] = [
       },
       {
         title: "Sass",
-        text: [
-          "CSS 확장 언어로, 변수, 함수, 중첩 등의 기능을 제공하여 CSS 작성을 효율적으로 만들어줍니다.",
-        ],
+        text: ["CSS 확장 언어로, 변수, 함수, 중첩 등의 기능을 제공하여 CSS 작성을 효율적으로 만들어줍니다."],
       },
       {
         title: "Emotion",
