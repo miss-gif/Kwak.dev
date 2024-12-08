@@ -9,7 +9,7 @@ const Intro = () => {
       </h3>
 
       <div className="leading-loose">
-        <div className="w-[500px] py-10">
+        <div className="py-10">
           <Accordion type="single" collapsible>
             <AccordionItem value="item-1">
               <AccordionTrigger className="text-base">개발자에 매료된 3가지</AccordionTrigger>

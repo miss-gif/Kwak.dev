@@ -8,7 +8,7 @@ const IsLogin = () => {
 
   return (
     <div className="flex items-center justify-center gap-1">
-      <div className="flex items-center">
+      <div className="hidden items-center sm:flex">
         <UserAvatarLink />
 
         <UserPoints userId={user?.uid || ""} />

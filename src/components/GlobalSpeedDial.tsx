@@ -9,7 +9,7 @@ const GlobalSpeedDial = () => {
   };
 
   const openChat = () => {
-    window.open("new/chat", "_blank", "width=500,height=600"); // 새 창에서 new/chat 열기
+    window.open("new/chat", "_blank", "width=500,height=600,noopener,noreferrer");
   };
 
   return (
