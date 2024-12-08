@@ -122,10 +122,12 @@ export const ProjectEdit = ({ formData, editMode, onToggleEditMode }: ProjectEdi
 export const ProjectCreate = ({ handleFormReset }: ProjectCreateProps) => {
   return (
     <StickyWrapper>
-      <BackButton />
-      <Button onClick={handleFormReset} variant="destructive">
-        <RotateCcw /> Reset
-      </Button>
+      <div className="flex justify-between">
+        <BackButton />
+        <Button onClick={handleFormReset} variant="destructive">
+          <RotateCcw /> Reset
+        </Button>
+      </div>
     </StickyWrapper>
   );
 };

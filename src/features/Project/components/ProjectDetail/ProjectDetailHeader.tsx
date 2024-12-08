@@ -14,14 +14,14 @@ const ProjectDetailHeader = () => {
 
   return (
     <StickyWrapper>
-      <>
+      <div className="flex items-center justify-between">
         <Button size="icon" asChild>
           <Link to="/project">
             <ArrowBackIosNewIcon />
           </Link>
         </Button>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center justify-between gap-1">
           <UserAuthButton
             label={
               <>
@@ -43,7 +43,7 @@ const ProjectDetailHeader = () => {
             onClick={handleDelete}
           />
         </div>
-      </>
+      </div>
     </StickyWrapper>
   );
 };
