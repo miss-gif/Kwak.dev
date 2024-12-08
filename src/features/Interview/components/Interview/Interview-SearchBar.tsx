@@ -15,7 +15,11 @@ const InterviewSearchBar = ({ query, setQuery, clearQuery }: InterviewSearchBarP
       {/* 검색 입력 필드 */}
       <StickyWrapper>
         <div className="relative w-full">
-          <Input placeholder="검색어를 입력해 주세요." value={query} onChange={(e) => setQuery(e.target.value)} />
+          <Input
+            placeholder="답변 된 질문을 키워드로 검색할 수 있습니다."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
           {/* 검색어 초기화 버튼 */}
           {query && (
             <>

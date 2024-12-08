@@ -1,10 +1,12 @@
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import interviewQuestions from "@/data/interviewQuestions";
+import Inner from "@/layouts/Inner";
 import Fuse from "fuse.js";
 import { useEffect, useState } from "react";
-import InterviewContent from "./Interview-Content";
+import InterviewAnswered from "./Interview-Answered";
 import InterviewSearchBar from "./Interview-SearchBar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Inner from "@/layouts/Inner";
+import InterviewTabs from "./Interview-Tabs";
+import InterviewUnanswered from "./Interview-Unanswered";
 import OftenQuestion from "./Often-Question";
 
 const Interview = () => {
@@ -41,17 +43,14 @@ const Interview = () => {
       <div className="mt-4">
         <Inner>
           <Tabs defaultValue="answered">
-            <TabsList className="grid w-[400px] grid-cols-2">
-              <TabsTrigger value="answered">답변 된 질문</TabsTrigger>
-              <TabsTrigger value="unanswered">답변을 기다리는 질문</TabsTrigger>
-            </TabsList>
+            <InterviewTabs />
 
             <TabsContent value="answered">
-              <InterviewContent filteredQuestions={filteredQuestions} query={query} />
+              <InterviewAnswered filteredQuestions={filteredQuestions} query={query} />
             </TabsContent>
 
             <TabsContent value="unanswered">
-              <div>123</div>
+              <InterviewUnanswered />
             </TabsContent>
           </Tabs>
         </Inner>

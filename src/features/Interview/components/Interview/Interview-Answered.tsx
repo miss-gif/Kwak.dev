@@ -5,12 +5,12 @@ interface Question {
   answer: string;
 }
 
-interface InterviewContentProps {
+interface InterviewAnsweredProps {
   filteredQuestions: Question[];
   query: string;
 }
 
-const InterviewContent = ({ filteredQuestions, query }: InterviewContentProps) => {
+const InterviewAnswered = ({ filteredQuestions, query }: InterviewAnsweredProps) => {
   return (
     <>
       <ul className="mt-4 flex flex-col gap-4">
@@ -35,4 +35,4 @@ const InterviewContent = ({ filteredQuestions, query }: InterviewContentProps) =
   );
 };
 
-export default InterviewContent;
+export default InterviewAnswered;
