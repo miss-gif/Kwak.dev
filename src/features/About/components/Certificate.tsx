@@ -1,25 +1,43 @@
-import { personalInfo } from "@/data";
+import { useState } from "react";
+import CertificateCard from "./Certificate-Card";
+import { Card } from "@/components/ui/card";
+import { certificateInfos, certificateInfosSub } from "@/data/certificateInfos";
 
 const Certificate = () => {
-  const certifications = personalInfo.certifications;
+  const [isCard, setIsCard] = useState(false);
 
   return (
-    <ul className="mt-16 flex w-full flex-col gap-4">
-      {certifications.map((certification, index) => (
-        <li
+    <div className="grid grid-cols-4 gap-4 py-16">
+      {certificateInfos.map((certificateInfo, index) => (
+        <CertificateCard
           key={index}
-          className="shadow-style rounded-md border border-gray-300 p-6"
-        >
-          <h3 className="text-xl font-semibold">{certification.name}</h3>
-          <div className="mt-2">
-            <time dateTime={certification.date} className="block text-sm">
-              {certification.date}
-            </time>
-            <span className="block text-sm">{certification.organization}</span>
-          </div>
-        </li>
+          type={certificateInfo.certificateType}
+          title={certificateInfo.certificateName}
+          organization={certificateInfo.issuingOrganization}
+          date={certificateInfo.date}
+        />
       ))}
-    </ul>
+      {!isCard && (
+        <Card
+          className="flex h-[320px] cursor-pointer items-center justify-center border-blue-500 bg-white text-blue-500 transition-all delay-100 hover:bg-blue-500 hover:text-white"
+          onClick={() => setIsCard((prev) => !prev)}
+        >
+          그 외 자격증
+        </Card>
+      )}
+
+      {isCard &&
+        certificateInfosSub.map((certificateInfo, index) => (
+          <CertificateCard
+            key={index}
+            type={certificateInfo.certificateType}
+            title={certificateInfo.certificateName}
+            organization={certificateInfo.issuingOrganization}
+            date={certificateInfo.date}
+            color="sky"
+          />
+        ))}
+    </div>
   );
 };
 
