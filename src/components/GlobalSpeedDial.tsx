@@ -10,6 +10,7 @@ const GlobalSpeedDial = () => {
 
   const openChat = () => {
     window.open("new/chat", "_blank", "width=500,height=600,noopener,noreferrer");
+    window.open("https://kwak-dev.vercel.app/new/chat", "_blank", "width=500,height=600,noopener,noreferrer");
   };
 
   return (
