@@ -34,7 +34,7 @@ const Certificate = () => {
             title={certificateInfo.certificateName}
             organization={certificateInfo.issuingOrganization}
             date={certificateInfo.date}
-            color="sky"
+            color={"bg-blue-400"}
           />
         ))}
     </div>

@@ -5,7 +5,7 @@ import Gallery from "../components/Gallery";
 const GalleryPage = () => {
   const props = {
     title: "갤러리",
-    subtitle: "✨ 사진을 감상하세요.",
+    subtitle: "✨ 제가 작업한 프로젝트 일부 사진입니다. 클릭하여 크게 보실 수 있습니다.",
   };
 
   return (

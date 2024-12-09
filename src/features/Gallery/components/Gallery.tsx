@@ -1,13 +1,6 @@
 import { useState } from "react";
 import ImageViewer from "./ImageViewer";
-
-const URLS = [
-  "https://via.placeholder.com/500.jpg",
-  "https://helpx.adobe.com/content/dam/help/en/photoshop/using/quick-actions/remove-background-before-qa1.png",
-  "https://via.placeholder.com/300.jpg",
-  "https://via.placeholder.com/200.jpg",
-  "https://via.placeholder.com/100.jpg",
-];
+import { galleryImageUrl } from "@/data/galleryImageUrl";
 
 const Gallery = () => {
   const [isModal, setIsModal] = useState(false);
@@ -16,17 +9,20 @@ const Gallery = () => {
   const handleModal = (index?: number) => {
     if (index !== undefined) setCurrentIndex(index); // 선택한 이미지의 인덱스를 설정
     setIsModal((prev) => !prev);
+    document.body.style.overflow = "hidden";
   };
 
   return (
     <div>
       <div className="grid grid-cols-2 gap-4 py-4 md:grid-cols-3 xl:grid-cols-4">
-        {URLS.map((url, index) => (
-          <img key={index} src={url} alt="" className="w-full cursor-pointer" onClick={() => handleModal(index)} />
+        {galleryImageUrl.map((url, index) => (
+          <div className="h-[300px] overflow-hidden rounded-sm bg-neutral-50 p-2">
+            <img key={index} src={url} alt="" className="w-full cursor-pointer" onClick={() => handleModal(index)} />
+          </div>
         ))}
       </div>
 
-      {isModal && <ImageViewer handleModal={handleModal} urls={URLS} currentIndex={currentIndex} />}
+      {isModal && <ImageViewer handleModal={handleModal} urls={galleryImageUrl} currentIndex={currentIndex} />}
     </div>
   );
 };

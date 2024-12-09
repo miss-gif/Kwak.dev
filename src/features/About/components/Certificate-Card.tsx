@@ -9,9 +9,9 @@ interface CertificateCardProps {
   color?: string;
 }
 
-function CertificateCard({ type, title, date, organization, color = "blue", clssName }: CertificateCardProps) {
+function CertificateCard({ type, title, date, organization, color = "bg-blue-500", clssName }: CertificateCardProps) {
   return (
-    <Card className={`flex h-[320px] flex-col justify-between overflow-hidden bg-${color}-500 ${clssName}`}>
+    <Card className={`flex h-[320px] flex-col justify-between overflow-hidden ${color} ${clssName}`}>
       <CardHeader className="text-white">
         <CardDescription className="text-white">{type}</CardDescription>
         <CardTitle className="text-xl">{title}</CardTitle>

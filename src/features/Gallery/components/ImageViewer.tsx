@@ -31,7 +31,7 @@ const ImageViewer = ({ handleModal, urls, currentIndex }: ImageViewerProps) => {
       >
         {urls.map((url, index) => (
           <SwiperSlide key={index}>
-            <img src={url} alt="" className="mx-auto h-[100vh] w-auto object-contain" />
+            <img src={url} alt="" className="mx-auto h-[100%]" />
           </SwiperSlide>
         ))}
       </Swiper>
