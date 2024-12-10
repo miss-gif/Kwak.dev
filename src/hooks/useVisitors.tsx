@@ -10,7 +10,7 @@ interface Cookies {
 
 export const useVisitors = (cookies: Cookies, setCookie: any) => {
   const [totalCount, setTotalCount] = useState({ desktopCount: 0, mobileCount: 0 });
-  const [monthCount, setMonthCount] = useState({ desktopCount: 0, mobileCount: 0 });
+  const [monthCount, setMonthCount] = useState<Array<{ date: string; desktop: number; mobile: number }>>([]);
   const [todayCount, setTodayCount] = useState({ desktopCount: 0, mobileCount: 0 });
 
   // 방문자 수 증가
@@ -124,8 +124,8 @@ export const useVisitors = (cookies: Cookies, setCookie: any) => {
       );
       setMonthCount(
         monthlySnap.exists()
-          ? (monthlySnap.data() as { desktopCount: number; mobileCount: number })
-          : { desktopCount: 0, mobileCount: 0 },
+          ? (monthlySnap.data().views as Array<{ date: string; desktop: number; mobile: number }>)
+          : [],
       );
     } catch (error) {
       toast.error("방문자 데이터를 가져오는 데 실패했습니다.");

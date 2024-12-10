@@ -4,7 +4,6 @@ import { useVisitors } from "@/hooks/useVisitors";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
-import { chartData } from "./chartData";
 
 const chartConfig = {
   views: {
@@ -24,11 +23,6 @@ export function Component() {
   const [activeChart, setActiveChart] = useState<keyof typeof chartConfig>("desktop");
   const [cookies, setCookie] = useCookies(["lastVisit"]);
   const { fetchVisitorCounts, totalCount, monthCount } = useVisitors(cookies, setCookie);
-
-  console.log(totalCount.desktopCount);
-  console.log(totalCount.mobileCount);
-
-  console.log(monthCount.views[0]);
 
   useEffect(() => {
     const handleVisitors = async () => {
@@ -75,7 +69,7 @@ export function Component() {
         <ChartContainer config={chartConfig} className="aspect-auto h-[250px] w-full">
           <BarChart
             accessibilityLayer
-            data={chartData}
+            data={monthCount}
             margin={{
               left: 12,
               right: 12,
