@@ -1,10 +1,10 @@
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { chartData } from "./chartData";
-import { useEffect, useMemo, useState } from "react";
 import { useVisitors } from "@/hooks/useVisitors";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { chartData } from "./chartData";
 
 const chartConfig = {
   views: {
@@ -23,18 +23,12 @@ const chartConfig = {
 export function Component() {
   const [activeChart, setActiveChart] = useState<keyof typeof chartConfig>("desktop");
   const [cookies, setCookie] = useCookies(["lastVisit"]);
-  const { fetchVisitorCounts, todayCount, totalCount } = useVisitors(cookies, setCookie);
+  const { fetchVisitorCounts, totalCount, monthCount } = useVisitors(cookies, setCookie);
 
-  console.log(todayCount, totalCount);
-  console.log(todayCount.desktopCount);
+  console.log(totalCount.desktopCount);
+  console.log(totalCount.mobileCount);
 
-  const total = useMemo(
-    () => ({
-      desktop: totalCount.desktopCount,
-      mobile: totalCount.mobileCount,
-    }),
-    [],
-  );
+  console.log(monthCount.views[0]);
 
   useEffect(() => {
     const handleVisitors = async () => {
@@ -43,6 +37,11 @@ export function Component() {
     };
     handleVisitors();
   }, []);
+
+  const total = {
+    desktop: totalCount.desktopCount,
+    mobile: totalCount.mobileCount,
+  };
 
   return (
     <Card>
