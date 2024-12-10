@@ -1,9 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { saveDummyData } from "./saveDummyData";
 
 const AdminCharts = () => {
   return (
     <div>
-      <button onClick={saveDummyData}>더미 데이터 Firestore 저장</button>
+      <Button onClick={saveDummyData}>통계 더미 데이터 추가</Button>
     </div>
   );
 };
