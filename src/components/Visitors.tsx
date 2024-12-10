@@ -4,10 +4,7 @@ import { useCookies } from "react-cookie";
 
 const Visitors = () => {
   const [cookies, setCookie] = useCookies(["lastVisit"]);
-  const { incrementPageViews, fetchVisitorCounts, todayCount, monthCount, totalCount } = useVisitors(
-    cookies,
-    setCookie,
-  );
+  const { incrementPageViews, fetchVisitorCounts, todayCount, totalCount } = useVisitors(cookies, setCookie);
 
   useEffect(() => {
     const handleVisitors = async () => {
@@ -24,11 +21,9 @@ const Visitors = () => {
   }, [cookies, setCookie]);
 
   return (
-    <div>
-      <h3>방문자 통계</h3>
-      <p>오늘 방문자 수: {todayCount ?? "로딩 중..."}</p>
-      <p>이번 달 방문자 수: {monthCount ?? "로딩 중..."}</p>
-      <p>전체 방문자 수: {totalCount ?? "로딩 중..."}</p>
+    <div className="flex justify-end gap-2">
+      <p className="text-xs">TODAY {todayCount.desktopCount + todayCount.mobileCount}</p>
+      <p className="text-xs">TOTAL {totalCount.desktopCount + totalCount.mobileCount}</p>
     </div>
   );
 };

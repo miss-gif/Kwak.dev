@@ -1,6 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import { ChartsTabs } from "../components/ChartsTabs/ChartsTabs";
+import ChartsTabs from "../components/ChartsTabs";
 
 const ChartsPage = () => {
   const props = {

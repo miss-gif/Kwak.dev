@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import UserStats from "../UserStats/UserStats";
 import VisitorsCharts from "../VisitorsChat/VisitorsCharts";
 
-export function ChartsTabs() {
+function ChartsTabs() {
   return (
     <Tabs defaultValue="userStats" className="py-4">
       <TabsList className="grid w-[400px] grid-cols-2">
@@ -20,3 +20,5 @@ export function ChartsTabs() {
     </Tabs>
   );
 }
+
+export default ChartsTabs;

@@ -114,4 +114,20 @@
 
 ## 🛠️ 문제 해결
 
-## 📄 라이센스
+## 📄 데이터 구조 설계
+
+visitors 컬렉션
+
+- totalViews: 전체 방문 수
+
+  - desktopCount: 데스크탑 방문 수
+  - mobileCount: 모바일 방문 수
+
+- dailyViews-{날짜}: 날짜별 방문 수
+
+  - desktopCount: 데스크탑 방문 수
+  - mobileCount: 모바일 방문 수
+
+- monthlyViews-{월}: 월별 방문 수
+  - desktopCount: 데스크탑 방문 수
+  - mobileCount: 모바일 방문 수
