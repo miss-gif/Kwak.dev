@@ -1,20 +1,17 @@
 import { db } from "@/firebaseConfig";
-import { ko } from "date-fns/locale";
 import { XMLParser } from "fast-xml-parser";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { DayPicker } from "react-day-picker";
 import "react-day-picker/style.css";
 
-function Calendar() {
+const useCalendar = () => {
   const [holidays, setHolidays] = useState<Date[]>([]);
   const [selected, setSelected] = useState<Date>();
   const [loading, setLoading] = useState<boolean>(false);
 
   // API를 통해 공휴일 데이터 가져오기
   const fetchHolidays = async (year: string, month: string) => {
-    const API_URL =
-      "https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo";
+    const API_URL = "https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo";
     const ENCODING_KEY = import.meta.env.VITE_PUBLIC_API_KEY;
 
     const params = new URLSearchParams({
@@ -37,24 +34,14 @@ function Calendar() {
       // 파싱된 데이터 구조 확인
       console.log("파싱된 데이터:", jsonData);
 
-      if (
-        jsonData &&
-        jsonData.response &&
-        jsonData.response.body &&
-        jsonData.response.body.items
-      ) {
+      if (jsonData && jsonData.response && jsonData.response.body && jsonData.response.body.items) {
         const items = jsonData.response.body.items.item;
 
         // items가 배열이 아닌 경우 배열로 변환
         const holidays = Array.isArray(items) ? items : [items];
 
         const holidayDates = holidays.map(
-          (item: any) =>
-            new Date(
-              item.locdate
-                .toString()
-                .replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3"),
-            ),
+          (item: any) => new Date(item.locdate.toString().replace(/(\d{4})(\d{2})(\d{2})/, "$1-$2-$3")),
         );
 
         // Firestore에 저장
@@ -107,9 +94,7 @@ function Calendar() {
   useEffect(() => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear().toString();
-    const currentMonth = (currentDate.getMonth() + 1)
-      .toString()
-      .padStart(2, "0");
+    const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, "0");
 
     loadHolidays(currentYear, currentMonth);
   }, []);
@@ -121,34 +106,7 @@ function Calendar() {
     loadHolidays(year, month);
   };
 
-  return (
-    <div>
-      {loading && <p>로딩 중...</p>}
-      <DayPicker
-        mode="single"
-        selected={selected}
-        onSelect={setSelected}
-        onMonthChange={handleMonthChange} // 월 변경 시 처리
-        locale={ko}
-        weekStartsOn={0} // 일요일 시작
-        modifiers={{
-          saturday: (date: Date) => date.getDay() === 6, // 토요일
-          sunday: (date: Date) => date.getDay() === 0, // 일요일
-          holiday: holidays, // 공휴일
-        }}
-        modifiersClassNames={{
-          saturday: "text-blue-500",
-          sunday: "text-red-500",
-          holiday: "text-red-500",
-        }}
-        footer={
-          selected
-            ? `선택된 날짜는 ${selected.toLocaleDateString()} 입니다`
-            : "날짜를 선택해주세요"
-        }
-      />
-    </div>
-  );
-}
+  return { holidays, loading, selected, setSelected, handleMonthChange };
+};
 
-export default Calendar;
+export default useCalendar;

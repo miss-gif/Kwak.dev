@@ -1,6 +1,6 @@
 import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
-import Calendar from "@/features/Schedule/pages/Calendar";
+import Calendar from "@/features/Schedule/components/Calendar";
 
 const SchedulePage = () => {
   const props = {
