@@ -2,7 +2,7 @@ import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PrivateChat from "../components/PrivateChat";
-import Chat from "../components/PublicChat";
+import PublicChat from "../components/PublicChat";
 import RoomChat from "../components/RoomChat";
 
 const ChatPage = () => {
@@ -21,7 +21,7 @@ const ChatPage = () => {
             <TabsTrigger value="Private">Private</TabsTrigger>
           </TabsList>
           <TabsContent value="all">
-            <Chat />
+            <PublicChat />
           </TabsContent>
           <TabsContent value="room">
             <RoomChat />

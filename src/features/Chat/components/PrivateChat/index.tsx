@@ -1,11 +1,11 @@
 import PrivateChatContent from "./PrivateChatContent";
 import PrivateChatFooter from "./PrivateChatFooter";
-// import PrivateChatHeader from "./PrivateChatHeader";
+import PrivateChatHeader from "./PrivateChatHeader";
 
 const PrivateChat = () => {
   return (
     <div>
-      {/* <PrivateChatHeader /> */}
+      <PrivateChatHeader />
       <PrivateChatContent />
       <PrivateChatFooter />
     </div>
