@@ -2,7 +2,7 @@ import PageLayout from "@/components/common/PageLayout";
 import SectionWrapper from "@/components/common/SectionWrapper";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AdminTab from "../components/AdminTab";
-import AdminCharts from "../components/Admin-Charts";
+import AdminCharts from "../components/Charts/Admin-Charts";
 
 const AdminMainPage = () => {
   const props = {
