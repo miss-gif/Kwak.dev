@@ -8,6 +8,7 @@ interface PaymentData {
   buyer_name: string;
   buyer_email: string | null;
   timestamp: string;
+  type?: string;
 }
 
 // 결제 관련 커스텀 훅
@@ -16,16 +17,21 @@ const usePayment = () => {
 
   const savePaymentToFirebase = async (userId: string, paymentData: PaymentData) => {
     try {
+      // 결제 데이터에 type 추가
+      const updatedPaymentData = { ...paymentData, type: "recharge" };
+
       // 사용자 하위 컬렉션에 결제 내역 저장
       const userPaymentRef = collection(db, `users/${userId}/paymentHistory`);
-      await addDoc(userPaymentRef, paymentData);
+      await addDoc(userPaymentRef, updatedPaymentData);
+
+      console.log("디버깅2", updatedPaymentData);
 
       // 전역 결제 컬렉션에 저장
       const paymentsRef = collection(db, "payments");
-      await addDoc(paymentsRef, paymentData);
+      await addDoc(paymentsRef, updatedPaymentData);
 
       // 유저 포인트 업데이트
-      await updateUserPoints(userId, paymentData.amount);
+      await updateUserPoints(userId, updatedPaymentData.amount);
 
       console.log("결제 및 포인트 업데이트 완료");
     } catch (error) {
