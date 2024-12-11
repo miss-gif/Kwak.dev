@@ -1,6 +1,7 @@
 import { useAuthStore } from "@/stores/authStore";
 import { useState } from "react";
 import usePayment from "../../hooks/use-Payment";
+import { Button } from "@/components/ui/button";
 
 declare global {
   interface Window {
@@ -83,13 +84,13 @@ const Payment = () => {
         {/* 금액 선택 버튼 */}
         <div className="mb-4 flex flex-wrap gap-2">
           {predefinedAmounts.map((value) => (
-            <button
+            <Button
               key={value}
-              className={`rounded px-4 py-2 ${amount === value ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-gray-300"}`}
+              className={`text-neutral-800 ${amount === value ? "bg-blue-500 text-white" : "bg-gray-200 hover:bg-gray-300"}`}
               onClick={() => handlePredefinedAmountClick(value)}
             >
               {value.toLocaleString()}원
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -101,7 +102,7 @@ const Payment = () => {
         {/* 결제 수단 선택 */}
         <div className="mb-4">
           <h4 className="mb-2 text-sm font-medium">결제 수단</h4>
-          <button className="w-full rounded bg-blue-500 px-4 py-2 text-white">카카오페이(테스트)</button>
+          <Button className="w-full bg-blue-500">카카오페이(테스트)</Button>
         </div>
 
         {/* 동의 체크박스 */}
@@ -113,13 +114,13 @@ const Payment = () => {
         </div>
 
         {/* 결제 버튼 */}
-        <button
+        <Button
           onClick={onPay}
-          className={`w-full rounded bg-green-500 py-2 text-white ${!amount || !isAgreed ? "cursor-not-allowed opacity-50" : "hover:bg-green-600"}`}
+          className={`w-full bg-green-500 ${!amount || !isAgreed ? "cursor-not-allowed opacity-50" : "hover:bg-green-600"}`}
           disabled={!amount || !isAgreed}
         >
           결제하기
-        </button>
+        </Button>
       </div>
     </div>
   );

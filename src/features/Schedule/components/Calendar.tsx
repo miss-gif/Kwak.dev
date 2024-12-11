@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { db } from "@/firebaseConfig";
 import useCalendar from "@/hooks/Calendar/use-Calendar";
 import { useAuthStore } from "@/stores/authStore";
@@ -142,7 +143,7 @@ const Calendar: React.FC = () => {
   }, [user, selected]);
 
   return (
-    <div>
+    <div className="flex flex-col gap-2 py-5">
       {loading && <p>로딩 중...</p>}
       <DayPicker
         mode="single"
@@ -163,15 +164,9 @@ const Calendar: React.FC = () => {
           holiday: "text-red-500",
           present: "bg-green-500 text-white",
         }}
-        footer={
-          selected
-            ? `선택된 날짜(${selected.toLocaleDateString()})의 출석 인원: ${attendanceCount}명`
-            : "날짜를 선택해주세요"
-        }
+        footer={selected ? `${formatDate(selected)}의 출석 인원 ${attendanceCount}명` : "날짜를 선택해주세요"}
       />
-      <button onClick={handleAttendance} className="mt-4 rounded bg-blue-500 px-4 py-2 text-white">
-        출석 체크
-      </button>
+      <Button onClick={handleAttendance}>출석 체크</Button>
     </div>
   );
 };

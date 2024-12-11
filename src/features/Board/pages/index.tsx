@@ -22,8 +22,9 @@ const BoardPage = () => {
           </Button>
         </div>
       </StickyWrapper>
+
       <SectionWrapper>
-        <div className="min-h-[40vh] w-full">
+        <div className="min-h-[40vh] w-full py-5">
           <PostListPage />
         </div>
       </SectionWrapper>

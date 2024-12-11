@@ -6,7 +6,7 @@ function PaymentModal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">포인트 충전</Button>
+        <Button>포인트 충전</Button>
       </DialogTrigger>
       <DialogContent className="w-full">
         <Payment />

@@ -20,11 +20,7 @@ const PostListPage = () => {
     loadPosts();
   }, []);
 
-  return (
-    <div>
-      <PostList posts={posts} />
-    </div>
-  );
+  return <PostList posts={posts} />;
 };
 
 export default PostListPage;

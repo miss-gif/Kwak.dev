@@ -22,10 +22,10 @@ const PostDetailPage = () => {
 
   return (
     <PageLayout title={props.title} subtitle={props.subtitle}>
-      <SectionWrapper>
-        <div className="flex flex-col">
-          <PostDetailHeader post={post} postId={postId} />
+      <PostDetailHeader post={post} postId={postId} />
 
+      <SectionWrapper>
+        <div className="flex flex-col py-5">
           <PostDetail post={post} postId={postId} />
 
           <CommentList postId={postId} />

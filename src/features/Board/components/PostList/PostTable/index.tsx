@@ -13,7 +13,7 @@ const PostTable = ({ posts }: PostTableProps) => {
   return (
     <table className="w-full">
       <thead>
-        <tr className="h-12 bg-slate-700 font-semibold text-white">
+        <tr className="h-12 bg-neutral-600 font-semibold text-white">
           <th className="text-center text-sm">제목</th>
           <th className="text-center text-sm">작성자</th>
           <th className="min-w-14 text-center text-sm">추천</th>
@@ -37,21 +37,13 @@ const PostTable = ({ posts }: PostTableProps) => {
               className="cursor-pointer border-b hover:bg-gray-100"
             >
               <td className="px-2 py-4">
-                <p className="line-clamp-1">{post.title}</p>
+                <p className="line-clamp-1 text-sm">{post.title}</p>
               </td>
-              <td className="text-sm tracking-tighter">{post.author}</td>
-              <td className="text-center text-sm tracking-tighter text-blue-500">
-                {post.likes}
-              </td>
-              <td className="text-center text-sm tracking-tighter text-red-500">
-                {post.dislikes}
-              </td>
-              <td className="text-center text-sm tracking-tighter">
-                {post.views}
-              </td>
-              <td className="text-center text-sm tracking-tighter">
-                {formatDate(post.createdAt)}
-              </td>
+              <td className="text-xs tracking-tighter">{post.author}</td>
+              <td className="text-center text-xs tracking-tighter text-blue-500">{post.likes}</td>
+              <td className="text-center text-xs tracking-tighter text-red-500">{post.dislikes}</td>
+              <td className="text-center text-xs tracking-tighter">{post.views}</td>
+              <td className="text-center text-xs tracking-tighter">{formatDate(post.createdAt)}</td>
             </tr>
           ))
         )}
