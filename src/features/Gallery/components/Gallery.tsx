@@ -16,8 +16,14 @@ const Gallery = () => {
     <div>
       <div className="grid grid-cols-2 gap-4 py-4 md:grid-cols-3 xl:grid-cols-4">
         {galleryImageUrl.map((url, index) => (
-          <div className="h-[300px] overflow-hidden rounded-sm bg-neutral-50 p-2">
-            <img key={index} src={url} alt="" className="w-full cursor-pointer" onClick={() => handleModal(index)} />
+          <div className="h-[300px] overflow-hidden rounded-sm bg-neutral-50 p-1">
+            <img
+              key={index}
+              src={url}
+              alt="galleryImage"
+              className="h-80 w-full cursor-pointer object-cover"
+              onClick={() => handleModal(index)}
+            />
           </div>
         ))}
       </div>

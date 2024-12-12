@@ -11,7 +11,7 @@ const InterviewTabs = () => {
 
       <Button
         onClick={() => {
-          alert("질문하기 버튼 클릭");
+          alert("아직 미구현된 기능입니다.");
         }}
       >
         질문하기
