@@ -19,46 +19,45 @@ export const BOTTOM_MENU_ITEMS = [
 
 export const TOP_MENU_ITEMS = [
   { name: "게시판", path: "board" },
-  // { name: "실시간 채팅", path: "chat" },
-  // { name: "채팅 테스트", path: "/new/chat" },
   { name: "방명록", path: "schedule" },
   { name: "포인트", path: "point" },
   { name: "프리뷰", path: "preview" },
 ];
 
+const MenuList = ({
+  items,
+  selectedItem,
+  handleClick,
+}: {
+  items: { name: string; path: string }[];
+  selectedItem: string | null;
+  handleClick: (itemName: string | null) => void;
+}) => (
+  <ul className="flex gap-6">
+    {items.map((item) => (
+      <li key={item.name}>
+        <Link
+          to={item.path}
+          className={classNames("text-sm transition-colors duration-200 hover:text-blue-600", {
+            "font-bold text-blue-600": selectedItem === item.name,
+          })}
+          onClick={() => handleClick(item.name)}
+        >
+          {capitalizeFirstLetter(item.name)}
+        </Link>
+      </li>
+    ))}
+  </ul>
+);
+
 const Gnb = ({ selectedItem, handleClick }: GnbProps) => {
   return (
-    <nav className="hidden lg:block">
-      <ul className="flex justify-end gap-6">
-        {TOP_MENU_ITEMS.map((item, index) => (
-          <li key={index}>
-            <Link
-              to={item.path}
-              className={classNames("text-sm hover:text-blue-600", {
-                "font-bold": selectedItem === item.name,
-              })}
-              onClick={() => handleClick(item.name)}
-            >
-              {capitalizeFirstLetter(item.name)}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <ul className="flex gap-6">
-        {BOTTOM_MENU_ITEMS.map((item, index) => (
-          <li key={index}>
-            <Link
-              to={item.path}
-              className={classNames("text-sm hover:text-blue-600", {
-                "font-bold": selectedItem === item.name,
-              })}
-              onClick={() => handleClick(item.name)}
-            >
-              {capitalizeFirstLetter(item.name)}
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <nav className="hidden sm:flex sm:flex-col sm:items-end sm:justify-end">
+      {/* Top Menu */}
+      <MenuList items={TOP_MENU_ITEMS} selectedItem={selectedItem} handleClick={handleClick} />
+
+      {/* Bottom Menu */}
+      <MenuList items={BOTTOM_MENU_ITEMS} selectedItem={selectedItem} handleClick={handleClick} />
     </nav>
   );
 };

@@ -6,10 +6,10 @@ const HomePage = () => {
   useScrollTo();
 
   return (
-    <>
+    <main className="h-screen">
       <HeroVideo />
       <HomeInfo />
-    </>
+    </main>
   );
 };
 

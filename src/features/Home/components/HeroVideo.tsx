@@ -1,23 +1,11 @@
 import video from "@/assets/video/main.mp4";
-import styled from "@emotion/styled";
 
 const HeroVideo = () => {
   return (
-    <VideoStyled autoPlay muted loop>
+    <video autoPlay muted loop className="absolute left-0 top-0 -z-20 h-screen w-full object-cover opacity-30">
       <source src={video} type="video/mp4" />
-    </VideoStyled>
+    </video>
   );
 };
 
 export default HeroVideo;
-
-const VideoStyled = styled.video`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -9;
-  opacity: 0.3;
-  object-fit: cover;
-  width: 100%;
-  height: 100vh;
-`;

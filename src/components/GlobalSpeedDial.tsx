@@ -13,7 +13,7 @@ const GlobalSpeedDial = () => {
   };
 
   return (
-    <div className="fixed bottom-0 right-0 flex flex-col gap-2 p-5">
+    <div className="fixed bottom-0 right-0 flex flex-col gap-2 px-2 py-20 lg:p-5">
       <Button size="icon" asChild>
         <div>
           <ModeToggle />
