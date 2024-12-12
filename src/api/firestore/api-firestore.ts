@@ -1,4 +1,4 @@
-import { collection, doc, getDocs, query, setDoc, updateDoc, where } from "firebase/firestore";
+import { collection, doc, getDocs, orderBy, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "@/firebaseConfig";
 import { ProjectData } from "@/features/Project/types/type";
 import { getDocumentById } from "../firebase-crud-api";
@@ -41,11 +41,17 @@ export const fetchProjectById = async (id: string): Promise<ProjectFormData> => 
 export const fetchProjects = async (): Promise<ProjectData[]> => {
   try {
     const projectCollection = collection(db, "projects"); // "projects" 컬렉션 참조
-    const querySnapshot = await getDocs(projectCollection); // 컬렉션의 모든 문서 가져오기
+
+    // Firestore 쿼리: endDate를 기준으로 최신순 정렬
+    const projectQuery = query(projectCollection, orderBy("endDate", "desc"));
+
+    const querySnapshot = await getDocs(projectQuery); // 쿼리 실행
+
     const projects: ProjectData[] = querySnapshot.docs.map((doc) => ({
       docID: doc.id, // 문서 ID 추가
       ...doc.data(), // 문서 데이터 추가
     })) as ProjectData[]; // 타입 명시
+
     return projects;
   } catch (error) {
     console.error("프로젝트 데이터를 가져오는 중 에러 발생:", error);
