@@ -1,4 +1,5 @@
 import { useAuthStore } from "@/stores/authStore";
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import usePayment from "../hooks/use-Payment";
 
@@ -13,6 +14,7 @@ const PaymentPage = () => {
   const [isAgreed, setIsAgreed] = useState(false);
   const { user } = useAuthStore();
   const { savePaymentToFirebase } = usePayment();
+  const queryClient = useQueryClient(); // QueryClient 가져오기
 
   const predefinedAmounts = [1000, 5000, 10000, 20000, 50000, 100000];
 
@@ -61,7 +63,12 @@ const PaymentPage = () => {
 
           // Firebase 저장 호출
           savePaymentToFirebase(user.uid, paymentData)
-            .then(() => alert("결제 정보 저장 성공"))
+            .then(() => {
+              alert("결제 정보 저장 성공");
+
+              // 포인트 데이터 강제 새로고침
+              queryClient.invalidateQueries({ queryKey: ["users", user.uid] });
+            })
             .catch((error) => alert("결제 정보 저장 중 오류: " + error.message));
         }
       },

@@ -19,7 +19,7 @@ export const BOTTOM_MENU_ITEMS = [
 
 export const TOP_MENU_ITEMS = [
   { name: "게시판", path: "board" },
-  { name: "방명록", path: "schedule" },
+  { name: "출석체크", path: "schedule" },
   { name: "포인트", path: "point" },
   { name: "프리뷰", path: "preview" },
 ];

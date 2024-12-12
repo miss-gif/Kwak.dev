@@ -12,14 +12,15 @@ const PostTable = ({ posts }: PostTableProps) => {
 
   return (
     <table className="w-full">
-      <thead>
+      {/* sm 사이즈일 때 thead 숨김 처리 */}
+      <thead className="hidden sm:table-header-group">
         <tr className="h-12 bg-neutral-600 font-semibold text-white">
           <th className="text-center text-sm">제목</th>
           <th className="text-center text-sm">작성자</th>
-          <th className="min-w-14 text-center text-sm">추천</th>
-          <th className="min-w-14 text-center text-sm">비추천</th>
-          <th className="min-w-14 text-center text-sm">조회</th>
-          <th className="min-w-24 text-center text-sm">작성일</th>
+          <th className="text-center text-sm">추천</th>
+          <th className="text-center text-sm">비추천</th>
+          <th className="text-center text-sm">조회</th>
+          <th className="text-center text-sm">작성일</th>
         </tr>
       </thead>
       <Notice />
@@ -39,11 +40,12 @@ const PostTable = ({ posts }: PostTableProps) => {
               <td className="px-2 py-4">
                 <p className="line-clamp-1 text-sm">{post.title}</p>
               </td>
-              <td className="text-xs tracking-tighter">{post.author}</td>
+              {/* sm 사이즈일 때 숨김 처리 */}
+              <td className="hidden text-xs tracking-tighter sm:table-cell">{post.author}</td>
               <td className="text-center text-xs tracking-tighter text-blue-500">{post.likes}</td>
               <td className="text-center text-xs tracking-tighter text-red-500">{post.dislikes}</td>
               <td className="text-center text-xs tracking-tighter">{post.views}</td>
-              <td className="text-center text-xs tracking-tighter">{formatDate(post.createdAt)}</td>
+              <td className="min-w-20 text-center text-xs tracking-tighter">{formatDate(post.createdAt)}</td>
             </tr>
           ))
         )}

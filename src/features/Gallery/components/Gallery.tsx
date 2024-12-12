@@ -21,7 +21,7 @@ const Gallery = () => {
               key={index}
               src={url}
               alt="galleryImage"
-              className="h-80 w-full cursor-pointer object-cover"
+              className="h-80 w-full cursor-pointer object-cover transition-transform duration-300 hover:scale-125"
               onClick={() => handleModal(index)}
             />
           </div>

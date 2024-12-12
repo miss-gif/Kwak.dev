@@ -7,7 +7,7 @@ const Notice = () => {
             현재 게시판은 작업중입니다. 최대한 빠른 시일 내에 작업을 완료하겠습니다.
           </p>
         </td>
-        <td className="text-xs">Kwak.dev</td>
+        <td className="hidden text-xs sm:table-cell">Kwak.dev</td>
         <td className="text-center text-sm text-blue-500">-</td>
         <td className="text-center text-sm text-red-500">-</td>
         <td className="text-center text-sm">-</td>

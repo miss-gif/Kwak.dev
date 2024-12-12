@@ -4,8 +4,8 @@ import Calendar from "@/features/Schedule/components/Calendar";
 
 const SchedulePage = () => {
   const props = {
-    title: "일정",
-    subtitle: "✨ 일정을 확인하세요.",
+    title: "출석체크",
+    subtitle: "✨ 오늘의 일정을 확인하고 출석체크를 해주세요! ",
   };
 
   return (
