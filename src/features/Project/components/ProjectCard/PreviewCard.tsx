@@ -30,9 +30,9 @@ const PreviewCard = ({ project }: PreviewCardProps) => {
         {/* 작업 기간과 작업 인원 */}
         <div className="mb-3 flex flex-col gap-2 text-sm">
           <span className="font-semibold">
-            {startDate} ~ {endDate}
+            {startDate} - {endDate}
           </span>
-          <div className="flex gap-2">
+          <div className="flex gap-1">
             <Badge>{badgeProjectDevice}</Badge>
             <Badge>{badgeProjectType}</Badge>
             <Badge>{badgeParticipation}</Badge>
@@ -45,12 +45,9 @@ const PreviewCard = ({ project }: PreviewCardProps) => {
         {/* 사용 기술 */}
         <div className="flex flex-wrap gap-2 overflow-hidden">
           {techStack.map((tech: string, index: number) => (
-            <span
-              key={index}
-              className="rounded-full bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-800 dark:bg-gray-800 dark:text-white"
-            >
+            <Badge key={index} className="bg-neutral-100 font-light text-neutral-950">
               {tech}
-            </span>
+            </Badge>
           ))}
         </div>
       </div>

@@ -5,6 +5,7 @@ import { ProjectData } from "@/features/Project/types/type";
 const ProjectLinks = ({
   urls,
   editable = false,
+  onChange,
 }: {
   urls: Partial<ProjectData>;
   editable?: boolean;
@@ -20,15 +21,17 @@ const ProjectLinks = ({
 
   return (
     <div className="grid grid-cols-2 gap-2">
-      {links.map((link) =>
+      {links.map(({ label, name, value }) =>
         editable ? (
-          <InputWithLabel key={link.name} label={link.label} name={link.name} value={link.value || ""} />
+          <InputWithLabel key={name} label={label} name={name} value={value || ""} onChange={onChange} />
         ) : (
-          <Button variant="secondary" asChild>
-            <a key={link.name} href={link.value || "#"} target="_blank" rel="noopener noreferrer">
-              {link.label}
-            </a>
-          </Button>
+          value && (
+            <Button key={name} className="bg-neutral-600" asChild>
+              <a href={value} target="_blank" rel="noopener noreferrer">
+                {label}
+              </a>
+            </Button>
+          )
         ),
       )}
     </div>

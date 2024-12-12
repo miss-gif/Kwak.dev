@@ -12,9 +12,9 @@ const DimmedCard = ({ project }: DimmedCardProps) => {
   return (
     <>
       {/* 호버 시 딤드 효과 */}
-      <div className="absolute inset-0 grid bg-steel opacity-0 transition-opacity duration-200 hover:opacity-100">
+      <div className="absolute inset-0 grid bg-neutral-700 opacity-0 transition-opacity duration-200 hover:opacity-100">
         <div className="flex flex-col items-center justify-center gap-2">
-          <p className="mb-5 text-2xl font-semibold text-white">{projectName}</p>
+          <p className="mb-8 text-2xl font-semibold text-white">{projectName}</p>
 
           <Button className="w-52 py-6" asChild>
             <Link to={`/project/${docID}`}>자세히 보기</Link>
