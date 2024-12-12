@@ -85,7 +85,8 @@ const SkillsCanvas = () => {
       // canvas.removeEventListener('DOMMouseScroll', mouse.mousewheel)
 
       Events.on(mouseConstraint, "mousedown", () => {
-        const newSelected = mouseConstraint.body && formattedData[mouseConstraint.body.label as keyof typeof formattedData];
+        const newSelected =
+          mouseConstraint.body && formattedData[mouseConstraint.body.label as keyof typeof formattedData];
         newSelected && setSelected(newSelected);
       });
     };
@@ -189,7 +190,9 @@ const SkillsCanvas = () => {
         // 우측 사이드 영역
         <div className="flex min-h-[400px] w-full flex-col">
           <div className="flex flex-col items-center gap-4">
-            <h4 className="rounded-xl bg-blue-500 px-8 py-4 text-center text-5xl font-semibold text-white">{selected.name}</h4>
+            <h4 className="rounded-xl bg-blue-500 px-4 py-2 text-center text-4xl font-semibold text-white sm:px-8 sm:py-4 sm:text-6xl">
+              {selected.name}
+            </h4>
             <p>
               {Array(5)
                 .fill(null)
@@ -206,7 +209,7 @@ const SkillsCanvas = () => {
             </p>
             <p>
               {selected.description.map((item, index) => (
-                <span key={index} className="text-md leading-8 md:text-xl md:leading-10">
+                <span key={index} className="text-sm leading-8 sm:text-xl md:leading-10">
                   {item}
                   <br />
                 </span>

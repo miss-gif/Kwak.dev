@@ -12,7 +12,7 @@ const Heading = ({ title }: { title: string }) => {
       <div className="absolute -left-14 hidden -translate-x-1/2 transform text-5xl md:block">
         {/* <GraduationCapIcon className="h-20 w-20" /> */}
       </div>
-      <h3 className="border-b-4 border-neutral-800 py-2 text-center text-6xl font-semibold uppercase dark:border-white">
+      <h3 className="border-b-4 border-neutral-800 py-2 text-center text-5xl font-semibold uppercase dark:border-white">
         {title}
       </h3>
     </div>

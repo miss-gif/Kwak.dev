@@ -11,7 +11,7 @@ const Footer = () => {
 
   return (
     <footer className="absolute grid w-full bg-neutral-50 py-4 dark:bg-neutral-950">
-      <Inner className="flex justify-between">
+      <Inner className="flex items-center justify-between">
         <p className="text-sm">ⓒ {currentYear} miss-gif. All Rights Reserved.</p>
         <Link to="/charts" className="hover:text-blue-500">
           <Visitors />

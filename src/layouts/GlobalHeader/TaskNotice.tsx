@@ -7,12 +7,15 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { WrenchIcon } from "lucide-react";
 
 const TaskNotice = () => {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>작업안내</Button>
+        <Button size="icon">
+          <WrenchIcon />
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

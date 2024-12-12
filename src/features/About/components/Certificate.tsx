@@ -19,10 +19,10 @@ const Certificate = () => {
       ))}
       {!isCard && (
         <Card
-          className="flex h-[320px] cursor-pointer items-center justify-center border-2 border-blue-500 bg-white text-blue-500 transition-all delay-100 hover:bg-blue-500 hover:text-white"
+          className="flex h-[320px] cursor-pointer items-center justify-center border-2 border-blue-500 bg-neutral-200 bg-opacity-10 text-blue-500 transition-all delay-100 hover:bg-blue-500 hover:text-white"
           onClick={() => setIsCard((prev) => !prev)}
         >
-          그 외 자격증
+          <p className="font-semibold">그 외 자격증</p>
         </Card>
       )}
 

@@ -19,7 +19,7 @@ function CertificateCard({ type, title, date, organization, color = "bg-blue-500
 
       <CardContent className="flex h-32 items-end text-sm text-neutral-100">{organization}</CardContent>
 
-      <CardFooter className="flex gap-2 bg-white py-5 text-sm">
+      <CardFooter className="flex gap-2 bg-white py-5 text-sm text-neutral-800">
         <span className="text-neutral-400">PASS </span> {date}
       </CardFooter>
     </Card>
