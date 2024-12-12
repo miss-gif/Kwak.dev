@@ -4,22 +4,21 @@ import StickyBottomSubmit from "@/components/Button/StickyBottomSubmit";
 import CustomQuillEditor from "@/components/Quill/CustomQuillEditor";
 import { Badge } from "@/components/ui/badge";
 import { InputWithLabel } from "@/components/ui/InputWithLabel";
+import useProjectEdit from "@/hooks/project/use-Project-Edit";
 import Inner from "@/layouts/Inner";
 import { projectSchema } from "@/schema/project-Schema";
 import { ProjectFormData } from "@/types/ProjectFormData";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { TechStackModal } from "../ProjectDetail/Overview/TechStackModal";
 import RadioGroup from "../ProjectForm/RadioGroup";
-import useProjectEdit from "@/hooks/project/use-Project-Edit";
 import { ProjectCreate } from "../ProjectHeaderButton";
 
 const ProjectEdit = () => {
   const { handleUpdate } = useProjectEdit();
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const { control, handleSubmit, reset, watch, setValue } = useForm<ProjectFormData>({
     defaultValues: {
@@ -254,7 +253,6 @@ const ProjectEdit = () => {
             width="w-full"
             onClick={() => {
               onSubmit(watch());
-              navigate(`/project/${id}`);
             }}
           />
         </StickyBottomSubmit>
