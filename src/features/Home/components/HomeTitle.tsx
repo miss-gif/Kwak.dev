@@ -50,7 +50,7 @@ const LinkButton = ({ href, label, Icon }: LinkButtonProps) => (
 
 const HomeTitle = () => {
   return (
-    <div className="flex flex-col items-center px-4 py-8 sm:px-6 lg:px-8">
+    <div className="flex flex-col items-center sm:px-6 lg:px-8">
       {/* Title Section */}
       <div className="text-center">
         <p className="text-2xl font-bold">{text.subTitle}</p>
