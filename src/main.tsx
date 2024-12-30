@@ -9,7 +9,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
-import App from "./pages/App.tsx";
+import App from "./pages/App";
 import "./styles/global.css";
 
 const queryClient = new QueryClient();
