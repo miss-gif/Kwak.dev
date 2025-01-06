@@ -11,9 +11,7 @@ interface TabPanelProps {
   value: number;
 }
 
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
+const CustomTabPanel: React.FC<TabPanelProps> = ({ children, value, index, ...other }) => {
   return (
     <div
       role="tabpanel"
@@ -25,7 +23,7 @@ function CustomTabPanel(props: TabPanelProps) {
       {value === index && <Box>{children}</Box>}
     </div>
   );
-}
+};
 
 function a11yProps(index: number) {
   return {
@@ -34,7 +32,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function SkillsViewer() {
+const SkillsViewer: React.FC = () => {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -45,13 +43,11 @@ export default function SkillsViewer() {
   return (
     <>
       <div className="mb-10 flex items-center justify-end">
-        {/* 탭 영역 */}
         <Tabs value={value} onChange={handleChange}>
           <Tab label="캔버스" sx={{ color: "inherit" }} {...a11yProps(0)} />
           <Tab label="리스트" sx={{ color: "inherit" }} {...a11yProps(1)} />
         </Tabs>
       </div>
-      {/* 콘텐츠 영역 */}
       <CustomTabPanel value={value} index={0}>
         <SkillsCanvas />
       </CustomTabPanel>
@@ -60,4 +56,6 @@ export default function SkillsViewer() {
       </CustomTabPanel>
     </>
   );
-}
+};
+
+export default SkillsViewer;

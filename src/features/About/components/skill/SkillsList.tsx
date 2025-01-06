@@ -10,13 +10,13 @@ const SkillsList = () => {
   return (
     <div>
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {skills?.map(({ img, name, percentage, description, id }) => (
+        {skills?.map((skill) => (
           <SkillCard
-            key={id}
-            img={img}
-            name={name}
-            percentage={percentage}
-            description={description}
+            key={skill.id}
+            img={skill.img}
+            name={skill.name}
+            percentage={skill.percentage}
+            description={skill.description}
           />
         ))}
       </ul>
