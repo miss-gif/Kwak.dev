@@ -6,13 +6,11 @@ import SectionWrapper from "@/components/common/SectionWrapper";
 import SkillsViewer from "@/features/About/components/skill/SkillsViewer";
 
 const AboutPage = () => {
-  const props = {
-    title: "About Me",
-    subtitle: "✨ 개발자의 길을 향한 열정과 성장",
-  };
+  const title = "About Me";
+  const subtitle = "✨ 개발자의 길을 향한 열정과 성장";
 
   return (
-    <PageLayout title={props.title} subtitle={props.subtitle} className="grid gap-80">
+    <PageLayout title={title} subtitle={subtitle} className="grid gap-80">
       <SectionWrapper>
         <Intro />
       </SectionWrapper>

@@ -3,14 +3,14 @@ import AuthLayout from "@/layouts/AuthLayout";
 import Layout from "@/layouts/Layout";
 import { lazy, Suspense } from "react";
 import { useRoutes } from "react-router-dom";
-import LoadingPage from "./LoadingPage";
-import NotFoundPage from "./NotFoundPage";
-import { privateRoutes, routes } from "./routes";
+import LoadingPage from "@/pages/LoadingPage";
+import NotFoundPage from "@/pages/NotFoundPage";
+import { privateRoutes, routes } from "@/pages/routes";
 
-const PublicChat = lazy(() => import("../features/Chat/components/PublicChat")); // 채팅 페이지
-const TEST = lazy(() => import("../components/ChatWindow/ChatWindow"));
+const PublicChat = lazy(() => import("@/features/Chat/components/PublicChat"));
+const TestChatWindow = lazy(() => import("@/components/ChatWindow/ChatWindow"));
 
-const Loading = () => <LoadingPage />; // 로딩 페이지
+const Loading = () => <LoadingPage />;
 
 const AppRoutes = () => {
   const allRoutes = useRoutes([
@@ -24,14 +24,13 @@ const AppRoutes = () => {
       element: <AuthLayout />,
       children: privateRoutes,
     },
-    // layout이 적용되지 않는 페이지
     {
       path: "/new/chat",
       element: <PublicChat />,
     },
     {
       path: "/test",
-      element: <TEST />,
+      element: <TestChatWindow />,
     },
     {
       path: "preview",
