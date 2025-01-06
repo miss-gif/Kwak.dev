@@ -3,23 +3,14 @@ import ContactForm from "./ContactForm";
 import ThankYouMessage from "./ThankYouMessage";
 
 const Contact = () => {
-  const [complete, setComplete] = useState(false);
+  const [isComplete, setIsComplete] = useState(false);
 
-  const handleSubmitSuccess = () => {
-    setComplete(true);
-  };
-
-  const handleReset = () => {
-    setComplete(false);
-  };
+  const handleSubmitSuccess = () => setIsComplete(true);
+  const handleReset = () => setIsComplete(false);
 
   return (
     <div className="flex w-full justify-center">
-      {!complete ? (
-        <ContactForm onSubmitSuccess={handleSubmitSuccess} />
-      ) : (
-        <ThankYouMessage onReset={handleReset} />
-      )}
+      {isComplete ? <ThankYouMessage onReset={handleReset} /> : <ContactForm onSubmitSuccess={handleSubmitSuccess} />}
     </div>
   );
 };

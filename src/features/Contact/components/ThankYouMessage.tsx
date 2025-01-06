@@ -13,13 +13,7 @@ const ThankYouMessage: React.FC<ThankYouMessageProps> = ({ onReset }) => (
       빠른 시일 내에 답변드리겠습니다.
     </p>
 
-    <Button
-      onClick={() => {
-        onReset();
-      }}
-    >
-      추가 문의하기
-    </Button>
+    <Button onClick={onReset}>추가 문의하기</Button>
   </div>
 );
 
