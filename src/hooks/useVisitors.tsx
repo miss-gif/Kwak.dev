@@ -1,19 +1,30 @@
 import { db } from "@/firebaseConfig";
-import { format } from "date-fns";
+import { format, subMonths } from "date-fns";
 import { doc, getDoc, runTransaction } from "firebase/firestore";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 interface Cookies {
   lastVisit?: string;
 }
 
-export const useVisitors = (cookies: Cookies, setCookie: any) => {
-  const [totalCount, setTotalCount] = useState({ desktopCount: 0, mobileCount: 0 });
-  const [monthCount, setMonthCount] = useState<Array<{ date: string; desktop: number; mobile: number }>>([]);
-  const [todayCount, setTodayCount] = useState({ desktopCount: 0, mobileCount: 0 });
+interface VisitorCount {
+  desktopCount: number;
+  mobileCount: number;
+}
 
-  // 방문자 수 증가
+interface MonthlyData {
+  date: string;
+  desktop: number;
+  mobile: number;
+}
+
+export const useVisitors = (cookies: Cookies, setCookie: any) => {
+  const [totalCount, setTotalCount] = useState<VisitorCount>({ desktopCount: 0, mobileCount: 0 });
+  const [monthCount, setMonthCount] = useState<MonthlyData[]>([]);
+  const [todayCount, setTodayCount] = useState<VisitorCount>({ desktopCount: 0, mobileCount: 0 });
+
+  // 페이지 뷰 증가 함수
   const incrementPageViews = async () => {
     const today = format(new Date(), "yyyy-MM-dd");
     const month = format(new Date(), "yyyy-MM");
@@ -21,7 +32,6 @@ export const useVisitors = (cookies: Cookies, setCookie: any) => {
     const deviceType = isMobile ? "mobile" : "desktop";
 
     if (cookies.lastVisit) {
-      console.log("쿠키가 존재하여 카운트를 증가시키지 않습니다.");
       return;
     }
 
@@ -29,30 +39,25 @@ export const useVisitors = (cookies: Cookies, setCookie: any) => {
       await runTransaction(db, async (transaction) => {
         const totalRef = doc(db, "visitors", "totalViews");
         const dailyRef = doc(db, "visitors", `dailyViews-${today}`);
-
         const monthlyRef = doc(db, "visitors", `monthlyViews-${month}`);
-
-        const monthlySnap = await transaction.get(monthlyRef);
-        const monthlyData = monthlySnap.exists() ? monthlySnap.data().views : [];
 
         const totalSnap = await transaction.get(totalRef);
         const dailySnap = await transaction.get(dailyRef);
+        const monthlySnap = await transaction.get(monthlyRef);
 
-        const totalData = totalSnap.exists() ? totalSnap.data() : { desktopCount: 0, mobileCount: 0 };
-        const dailyData = dailySnap.exists() ? dailySnap.data() : { desktopCount: 0, mobileCount: 0 };
+        const totalData = totalSnap.exists() ? (totalSnap.data() as VisitorCount) : { desktopCount: 0, mobileCount: 0 };
+        const dailyData = dailySnap.exists() ? (dailySnap.data() as VisitorCount) : { desktopCount: 0, mobileCount: 0 };
+        const monthlyData = monthlySnap.exists() ? (monthlySnap.data().views as MonthlyData[]) : [];
 
-        // 디바이스별 카운트 증가
         const newTotalCount = {
           desktopCount: deviceType === "desktop" ? totalData.desktopCount + 1 : totalData.desktopCount,
           mobileCount: deviceType === "mobile" ? totalData.mobileCount + 1 : totalData.mobileCount,
         };
 
-        // 날짜별 데이터를 찾기
-        const existingEntryIndex = monthlyData.findIndex((entry: any) => entry.date === today);
+        const existingEntryIndex = monthlyData.findIndex((entry) => entry.date === today);
 
         if (existingEntryIndex >= 0) {
-          // 기존 데이터 업데이트
-          const updatedEntry = {
+          monthlyData[existingEntryIndex] = {
             ...monthlyData[existingEntryIndex],
             desktop:
               deviceType === "desktop"
@@ -63,9 +68,7 @@ export const useVisitors = (cookies: Cookies, setCookie: any) => {
                 ? monthlyData[existingEntryIndex].mobile + 1
                 : monthlyData[existingEntryIndex].mobile,
           };
-          monthlyData[existingEntryIndex] = updatedEntry;
         } else {
-          // 새로운 데이터 추가
           monthlyData.push({
             date: today,
             desktop: deviceType === "desktop" ? 1 : 0,
@@ -78,27 +81,24 @@ export const useVisitors = (cookies: Cookies, setCookie: any) => {
           mobileCount: deviceType === "mobile" ? dailyData.mobileCount + 1 : dailyData.mobileCount,
         };
 
-        // Firestore에 데이터 저장
         transaction.set(totalRef, newTotalCount, { merge: true });
         transaction.set(monthlyRef, { views: monthlyData }, { merge: true });
         transaction.set(dailyRef, { ...newTodayCount, date: today }, { merge: true });
 
-        // React 상태 업데이트
         setTotalCount(newTotalCount);
         setTodayCount(newTodayCount);
 
         toast.success("방문해 주셔서 감사합니다!");
-        console.log(`${deviceType === "desktop" ? "desktop" : "mobile"} Access`);
       });
 
-      setCookie("lastVisit", "true", { path: "/", maxAge: 3600 }); // 1시간
+      setCookie("lastVisit", "true", { path: "/", maxAge: 3600 });
     } catch (error) {
       toast.error("방문자 수 증가 실패");
       console.error("방문자 증가 오류:", error);
     }
   };
 
-  // 방문자 수 가져오기
+  // 방문자 수 데이터 가져오기 함수
   const fetchVisitorCounts = async () => {
     const today = format(new Date(), "yyyy-MM-dd");
     const month = format(new Date(), "yyyy-MM");
@@ -106,32 +106,39 @@ export const useVisitors = (cookies: Cookies, setCookie: any) => {
     try {
       const totalRef = doc(db, "visitors", "totalViews");
       const dailyRef = doc(db, "visitors", `dailyViews-${today}`);
-      const monthlyRef = doc(db, "visitors", `monthlyViews-${month}`);
+      const monthlyRefs = [
+        doc(db, "visitors", `monthlyViews-${month}`),
+        doc(db, "visitors", `monthlyViews-${format(subMonths(new Date(), 1), "yyyy-MM")}`),
+        doc(db, "visitors", `monthlyViews-${format(subMonths(new Date(), 2), "yyyy-MM")}`),
+      ];
 
       const totalSnap = await getDoc(totalRef);
       const dailySnap = await getDoc(dailyRef);
-      const monthlySnap = await getDoc(monthlyRef);
+      const monthlySnaps = await Promise.all(monthlyRefs.map((ref) => getDoc(ref)));
 
-      setTotalCount(
-        totalSnap.exists()
-          ? (totalSnap.data() as { desktopCount: number; mobileCount: number })
-          : { desktopCount: 0, mobileCount: 0 },
-      );
-      setTodayCount(
-        dailySnap.exists()
-          ? (dailySnap.data() as { desktopCount: number; mobileCount: number })
-          : { desktopCount: 0, mobileCount: 0 },
-      );
-      setMonthCount(
-        monthlySnap.exists()
-          ? (monthlySnap.data().views as Array<{ date: string; desktop: number; mobile: number }>)
-          : [],
-      );
+      setTotalCount(totalSnap.exists() ? (totalSnap.data() as VisitorCount) : { desktopCount: 0, mobileCount: 0 });
+      setTodayCount(dailySnap.exists() ? (dailySnap.data() as VisitorCount) : { desktopCount: 0, mobileCount: 0 });
+
+      const allMonthlyData: MonthlyData[] = [];
+      monthlySnaps.forEach((snap) => {
+        if (snap.exists()) {
+          allMonthlyData.push(...(snap.data().views as MonthlyData[]));
+        }
+      });
+
+      // 날짜 순서대로 정렬
+      allMonthlyData.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+      setMonthCount(allMonthlyData);
     } catch (error) {
       toast.error("방문자 데이터를 가져오는 데 실패했습니다.");
       console.error("데이터 페칭 오류:", error);
     }
   };
+
+  useEffect(() => {
+    fetchVisitorCounts();
+  }, []);
 
   return { incrementPageViews, fetchVisitorCounts, todayCount, monthCount, totalCount };
 };
