@@ -24,7 +24,7 @@ interface HomeNoticeProps {
 const HomeNotice = ({ title, image }: HomeNoticeProps) => {
   return (
     <div className="overflow-hidden rounded-md bg-white bg-opacity-90">
-      <img src={image} alt={title} />
+      <img src={image} alt={title} className="h-auto w-full" />
     </div>
   );
 };
@@ -32,8 +32,8 @@ const HomeNotice = ({ title, image }: HomeNoticeProps) => {
 const HomeContent = () => {
   return (
     <div className="flex flex-col justify-center gap-2">
-      {Object.values(HomeInfoData).map(({ title, image }) => (
-        <HomeNotice key={title} title={title} image={image} />
+      {Object.entries(HomeInfoData).map(([key, { title, image }]) => (
+        <HomeNotice key={key} title={title} image={image} />
       ))}
     </div>
   );

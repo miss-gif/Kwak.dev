@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { NotebookPenIcon } from "lucide-react";
+import React from "react";
 
 interface LinkButtonProps {
   href: string;
@@ -39,7 +40,7 @@ const links = [
   },
 ];
 
-const LinkButton = ({ href, label, Icon }: LinkButtonProps) => (
+const LinkButton: React.FC<LinkButtonProps> = ({ href, label, Icon }) => (
   <Button asChild>
     <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex items-center gap-2">
       <Icon />
@@ -48,7 +49,7 @@ const LinkButton = ({ href, label, Icon }: LinkButtonProps) => (
   </Button>
 );
 
-const HomeTitle = () => {
+const HomeTitle: React.FC = () => {
   return (
     <div className="flex flex-col items-center sm:px-6 lg:px-8">
       {/* Title Section */}
@@ -69,8 +70,8 @@ const HomeTitle = () => {
 
       {/* Link Section */}
       <div className="flex flex-wrap justify-center gap-2">
-        {links.map(({ href, label, Icon }, index) => (
-          <LinkButton key={index} href={href} label={label} Icon={Icon} />
+        {links.map(({ href, label, Icon }) => (
+          <LinkButton key={href} href={href} label={label} Icon={Icon} />
         ))}
       </div>
     </div>
