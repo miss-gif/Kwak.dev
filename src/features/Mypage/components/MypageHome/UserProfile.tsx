@@ -3,41 +3,30 @@ import useAccount from "@/hooks/useAccount";
 const UserProfile = () => {
   const { user, creationDate, lastSignInDate } = useAccount();
 
+  const userInfo = [
+    { label: "uid", value: user?.uid },
+    { label: "닉네임", value: user?.displayName },
+    { label: "인증여부", value: user?.isAnonymous ? "인증" : "게스트" },
+    { label: "아이디(이메일)", value: user?.email },
+    { label: "이메일 여부", value: user?.emailVerified ? "인증" : "미인증" },
+    { label: "프로필 이미지", value: user?.photoURL },
+    { label: "연락처", value: user?.phoneNumber },
+    { label: "계정 생성일", value: creationDate },
+    { label: "최근 로그인 날짜", value: lastSignInDate },
+  ];
+
   return (
-    <div>
-      <div className="회원정보내용 mb-4">
-        <p className="text-gray-600">
-          <span className="font-semibold">uid:</span> {user?.uid}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">닉네임:</span> {user?.displayName}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">인증여부:</span>
-          {user?.isAnonymous ? "인증" : "게스트"}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">아이디(이메일):</span> {user?.email}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">이메일 여부:</span>
-          {user?.emailVerified ? "인증" : "미인증"}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">프로필 이미지</span>
-          {user?.photoURL}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">연락처:</span>
-          {user?.phoneNumber}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">계정 생성일:</span> {creationDate}
-        </p>
-        <p className="text-gray-600">
-          <span className="font-semibold">최근 로그인 날짜:</span>
-          {lastSignInDate}
-        </p>
+    <div className="mx-auto max-w-md overflow-hidden rounded-lg border border-gray-300 bg-white shadow-lg">
+      <div className="p-6">
+        <h2 className="mb-4 text-2xl font-semibold">회원 정보</h2>
+        <div className="space-y-4">
+          {userInfo.map((info, index) => (
+            <div key={index} className="flex items-center justify-between border-b border-gray-200 pb-2">
+              <span className="font-semibold">{info.label}:</span>
+              <span>{info.value}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
