@@ -1,12 +1,16 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { OftenQuestionList } from "@/data/OftenQuestionList";
+import { Question } from "@/types/question";
+import parse from "html-react-parser";
+import { FlameIcon, MousePointerClickIcon } from "lucide-react";
+import { useCallback, useMemo } from "react";
 
 function OftenQuestion() {
   const headerHeight = 140;
   const section = "link-point";
 
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, section: string) => {
+  const handleClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>, section: string) => {
     event.preventDefault();
     const element = document.getElementById(section);
     if (element) {
@@ -15,7 +19,22 @@ function OftenQuestion() {
         behavior: "smooth",
       });
     }
-  };
+  }, []);
+
+  const questions: Question[] = useMemo(() => OftenQuestionList, []);
+
+  const groupedQuestions = useMemo(() => {
+    return questions.reduce(
+      (acc, question) => {
+        if (!acc[question.category]) {
+          acc[question.category] = [];
+        }
+        acc[question.category].push(question);
+        return acc;
+      },
+      {} as Record<string, Question[]>,
+    );
+  }, [questions]);
 
   return (
     <Accordion type="single" collapsible className="w-full py-10">
@@ -28,11 +47,27 @@ function OftenQuestion() {
         </Button>
       </div>
 
-      {OftenQuestionList.map((question, index) => (
-        <AccordionItem key={index} value={`item-${index}`}>
-          <AccordionTrigger className="text-base font-semibold">{question.question}</AccordionTrigger>
-          <AccordionContent className="text-base">{question.answer}</AccordionContent>
-        </AccordionItem>
+      {Object.entries(groupedQuestions).map(([category, questions], categoryIndex) => (
+        <div key={categoryIndex} className="mb-5">
+          <h4 className="flex items-center gap-2 bg-neutral-100 p-2 text-xl font-semibold">
+            <MousePointerClickIcon className="text-green-500" /> {category}
+          </h4>
+          {questions.map((question, index) => (
+            <AccordionItem key={index} value={`item-${categoryIndex}-${index}`}>
+              <AccordionTrigger className="flex text-base font-semibold">
+                <div className="flex items-center justify-center gap-2">
+                  {question.question}
+                  <span className="flex items-center">
+                    {Array.from({ length: question.frequency ?? 0 }).map((_, i) => (
+                      <FlameIcon key={i} className="w-4 fill-red-500 text-yellow-500" />
+                    ))}
+                  </span>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="text-base">{parse(question.answer)}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </div>
       ))}
     </Accordion>
   );
