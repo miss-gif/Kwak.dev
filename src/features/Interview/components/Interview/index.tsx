@@ -34,13 +34,17 @@ const Interview = () => {
 
   return (
     <div>
-      <InterviewSearchBar query={query} setQuery={setQuery} clearQuery={clearQuery} />
+      {/* 현재 기능을 비공개 중 */}
+      <div className="hidden">
+        <InterviewSearchBar query={query} setQuery={setQuery} clearQuery={clearQuery} />
+      </div>
 
       <Inner>
         <OftenQuestion />
       </Inner>
 
-      <div className="mt-4">
+      {/* 현재 기능을 비공개 중 */}
+      <div className="mt-4 hidden">
         <Inner>
           <Tabs defaultValue="answered">
             <InterviewTabs />

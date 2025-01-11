@@ -40,7 +40,7 @@ function OftenQuestion() {
     <Accordion type="single" collapsible className="w-full py-10">
       <div className="mb-5 flex items-center justify-between">
         <h3 className="text-2xl font-semibold">자주 묻는 질문(FAQ)</h3>
-        <Button variant="link" asChild>
+        <Button variant="link" asChild className="hidden">
           <a className="cursor-pointer" onClick={(event) => handleClick(event, section)}>
             다른 질문확인
           </a>
@@ -64,7 +64,7 @@ function OftenQuestion() {
                   </span>
                 </div>
               </AccordionTrigger>
-              <AccordionContent className="text-base">{parse(question.answer)}</AccordionContent>
+              <AccordionContent className="text-base leading-loose">{parse(question.answer)}</AccordionContent>
             </AccordionItem>
           ))}
         </div>
