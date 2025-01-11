@@ -7,6 +7,12 @@ interface GnbProps {
   handleClick: (itemName: string | null) => void;
 }
 
+interface MenuListProps {
+  items: { name: string; path: string }[];
+  selectedItem: string | null;
+  handleClick: (itemName: string | null) => void;
+}
+
 export const BOTTOM_MENU_ITEMS = [
   { name: "소개", path: "about" },
   { name: "프로젝트", path: "project" },
@@ -24,15 +30,7 @@ export const TOP_MENU_ITEMS = [
   { name: "프리뷰", path: "preview" },
 ];
 
-const MenuList = ({
-  items,
-  selectedItem,
-  handleClick,
-}: {
-  items: { name: string; path: string }[];
-  selectedItem: string | null;
-  handleClick: (itemName: string | null) => void;
-}) => (
+const MenuList = ({ items, selectedItem, handleClick }: MenuListProps) => (
   <ul className="flex gap-6">
     {items.map((item) => (
       <li key={item.name}>
