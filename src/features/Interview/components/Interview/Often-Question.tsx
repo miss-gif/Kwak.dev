@@ -49,7 +49,7 @@ function OftenQuestion() {
 
       {Object.entries(groupedQuestions).map(([category, questions], categoryIndex) => (
         <div key={categoryIndex} className="mb-5">
-          <h4 className="flex items-center gap-2 bg-neutral-100 p-2 text-xl font-semibold">
+          <h4 className="flex items-center gap-2 bg-neutral-100 p-2 text-xl font-semibold dark:bg-neutral-800">
             <MousePointerClickIcon className="text-green-500" /> {category}
           </h4>
           {questions.map((question, index) => (
