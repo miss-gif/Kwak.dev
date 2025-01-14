@@ -34,13 +34,14 @@ const Preview = () => {
     <main className="wrap">
       <video src="/src/assets/video/bg.mp4" loop muted />
       <div className="h-dvh w-full bg-neutral-900"></div>
-      <section id="circle">
+      <section id="circle" className="relative h-full w-full">
         {pages.map(({ component: PageComponent, className }, index) => (
-          <article key={index} className={className}>
+          <article key={index} className={`overflow-hidden bg-white ${className}`}>
             <PageComponent />
           </article>
         ))}
       </section>
+      <p className="absolute bottom-0 w-full bg-neutral-600 px-4 text-white">아직 실험 중인 페이지입니다.</p>
     </main>
   );
 };
