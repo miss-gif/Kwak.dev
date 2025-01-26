@@ -6,7 +6,7 @@ const HomePage = () => {
   useScrollTo();
 
   return (
-    <main className="h-screen pt-[132px]">
+    <main className="flex h-[calc(100vh-132px)] flex-col items-center justify-center">
       <HeroVideo />
       <HomeInfo />
     </main>
