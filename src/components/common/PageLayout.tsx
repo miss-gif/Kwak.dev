@@ -18,8 +18,12 @@ const PageLayout = ({
   return (
     <div className={`mx-auto flex w-full flex-col ${className}`}>
       {title && (
-        <div className="flex h-[40vh] items-center overflow-hidden">
-          <img src={bg} alt="test" className="absolute left-0 top-0 -z-10 h-[500px] w-full object-cover opacity-30" />
+        <div className="flex h-[20vh] items-center overflow-hidden">
+          <img
+            src={bg}
+            alt=""
+            className="absolute left-0 top-0 -z-10 h-[calc(20vh+132px)] w-full object-cover opacity-20"
+          />
           <div className="m-auto w-full max-w-screen-xl px-4">
             <h2 className="text-6xl font-bold sm:text-7xl">{title}</h2>
             <p className="pt-5">{subtitle}</p>
