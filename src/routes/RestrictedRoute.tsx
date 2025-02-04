@@ -1,5 +1,7 @@
-import { useAuthStore } from "@/stores/authStore";
-import { Navigate } from "react-router-dom";
+import { sitePublicState } from "@/utils/sitePublicState";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCookies } from "react-cookie";
 
 interface RestrictedRouteProps {
   children: React.ReactNode;
@@ -18,11 +20,29 @@ interface RestrictedRouteProps {
  */
 
 const RestrictedRoute = ({ children }: RestrictedRouteProps) => {
-  const { user } = useAuthStore();
+  const navigate = useNavigate();
+  const [cookies, setCookie] = useCookies(["SpecialCookie"]);
 
-  if (user) {
-    return <Navigate to="/restricted" replace />;
-  }
+  useEffect(() => {
+    const fetchState = async () => {
+      const state = await sitePublicState();
+
+      console.log("Public state: ", state);
+
+      if (state) {
+        return;
+      } else {
+        navigate("/restricted", { replace: true });
+      }
+    };
+
+    // 쿠키가 있으면 메인 페이지로 이동
+    if (cookies.SpecialCookie) {
+      navigate("/");
+    } else {
+      fetchState();
+    }
+  }, [cookies, setCookie]);
 
   return <>{children}</>;
 };

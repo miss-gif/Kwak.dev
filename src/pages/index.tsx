@@ -6,6 +6,7 @@ import { useRoutes } from "react-router-dom";
 import LoadingPage from "@/pages/LoadingPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { privateRoutes, routes } from "@/pages/routes";
+import { RestrictedPage } from "@/features/Restricted";
 
 const PublicChat = lazy(() => import("@/features/Chat/components/PublicChat"));
 const TestChatWindow = lazy(() => import("@/components/ChatWindow/ChatWindow"));
@@ -35,6 +36,10 @@ const AppRoutes = () => {
     {
       path: "preview",
       element: <PreviewPage />,
+    },
+    {
+      path: "restricted",
+      element: <RestrictedPage />,
     },
     {
       path: "*",
