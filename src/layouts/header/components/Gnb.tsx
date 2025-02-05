@@ -21,6 +21,7 @@ export const BOTTOM_MENU_ITEMS = [
   { name: "갤러리", path: "gallery" },
   { name: "통계", path: "charts" },
   { name: "문의", path: "contact" },
+  { name: "관리자", path: "admin" },
 ];
 
 export const TOP_MENU_ITEMS = [
