@@ -1,4 +1,4 @@
-import { sitePublicState } from "@/utils/sitePublicState";
+import { changeSitePublicState, sitePublicState } from "@/utils/sitePublicState";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form"; // 추가
@@ -43,6 +43,7 @@ const RestrictedPage = () => {
     setSubmitError(""); // 에러 초기화
     if (data.code === password) {
       setIsPublic(true);
+      changeSitePublicState(true);
     } else {
       setSubmitError("비밀번호가 일치하지 않습니다."); // 에러 메시지 설정
       toast.error("비밀번호가 일치하지 않습니다.");
